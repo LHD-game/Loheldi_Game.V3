@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoodsManager : MonoBehaviour
 {
     private static FoodsManager _instance;
+    public GameObject SoundManager;
     public static FoodsManager instance
     {
         get
@@ -62,11 +63,13 @@ public class FoodsManager : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb.gameObject.tag == "GoodFood")
         {
+            SoundManager.GetComponent<SoundEffect>().Sound("FoodGood");
             GameManager.instance.ScoreCnt();
             FoodFX.instance.GoodFoodFX();
         }
         else
         {
+            SoundManager.GetComponent<SoundEffect>().Sound("FoodNotGood");
             GameManager.instance.LifeCnt();
             FoodFX.instance.BadFoodFX();
         }

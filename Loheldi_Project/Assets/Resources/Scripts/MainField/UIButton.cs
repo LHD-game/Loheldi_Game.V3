@@ -2,129 +2,214 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using BackEnd;
 public class UIButton : MonoBehaviour
 {
     public static bool OnLand = false;    //Player가 바닥에 있는지 확인
     public GameObject Player;             //Player선언
-    public GameObject Map;                //Map선언
-    public GameObject Inv;
-    public GameObject ConditionWindow;                //Map선언
+    public GameObject Map;                //Map선언                
+    public GameObject GaguShop;           //가구점             
+    public GameObject Market;           //슈퍼         
+    public GameObject clothesShop;        
+    public GameObject HairShop;       
     public Rigidbody Playerrb;            //Player의 Rigidbody선언
-    public Text conditionLevelText;            //상태창 레벨
+    public GameObject JoyStick;
+    public GameObject Main_UI;
+    public GameObject FarmUI;
+    public GameObject chatBlock;
 
-    public GameObject ShopMok;             // 목공방
+
+    public Camera Camera1;
+    public Camera Camera2;
+
+    //public GameObject ShopMok;             // 목공방
     bool map;                              //지도가 열려있는지 확인
-    bool inv;
-    public static bool conditionWindow;      //상태창이 열려있는지 확인
 
     public FlieChoice Chat;
-    public Interaction npcName;
+    public LodingTxt chat;
+    public Interaction Inter;
 
+    public GameObject SoundEffectManager;
 
-    private void Awake()
-    {
-        ConditionWindow.SetActive(true); //상태창 열기
-        ChangColor.badge = GameObject.FindGameObjectsWithTag("badge"); //뱃지 태그 저장
+    public static bool is_pop_garden = false;
 
-        ChangColor.badgeList = Resources.LoadAll<Sprite>("Sprites/badgeList/imgList/"); //이미지 경로
+    public int time=0;
 
-        ConditionWindow.SetActive(false);//상태창 닫기
-        conditionWindow = false;
-    }
+    [SerializeField]
+    private Animator PA;
 
     void Start()
     {
         map = false;
-        conditionWindow = false;
-        Chat = GameObject.Find("chatManager").GetComponent<FlieChoice>();
-        npcName = GameObject.Find("Player").GetComponent<Interaction>();
     }
-
+    string NPCName=null;
+    public Transform NPC;
     public void JumpButton()                //점프버튼
     {
-        if (npcName.NearNPC)     //NPC주변에 있다면
+        GameObject SoundManager = GameObject.Find("SoundManager");
+        if (OnLand && Inter.NearNPC)     //NPC주변에 있다면
         {
-            if(npcName.NameNPC.Equals("tiger"))  //NPC이름이 이거면
+            NPCName = Inter.NameNPC;
+            Inter.NpcNameTF = false;
+            if (chat.bicycleRide.Ride)
+                chat.bicycleRide.RideOn();
+
+            Vector3 targetPositionNPC;
+            NPC = GameObject.Find(Inter.NameNPC).transform;
+            targetPositionNPC = new Vector3(Player.transform.position.x, NPC.position.y, Player.transform.position.z);
+            if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine"))
+            { stopCorou(); }
+            else if (chat.DontDestroy.QuestIndex.Equals("8_1") && Inter.NameNPC.Equals("Mei"))
+            { stopCorou(); }
+            else if (chat.DontDestroy.QuestIndex.Equals("13_1") && Inter.NameNPC.Equals("Suho"))
+            { stopCorou(); }
+            else if (Inter.NameNPC.Equals("ThankApplesTree"))
             {
-                Chat.tiger();
+                TimeCheck();
             }
-            else if (npcName.NameNPC.Equals("cat"))  //NPC이름이 이거면
+            else
             {
-                Chat.cat();
+                StartCoroutine(NPCturn(NPC, targetPositionNPC));
+                //NPC.transform.LookAt(targetPositionNPC);
             }
-            else if (npcName.NameNPC.Equals("chick"))  //NPC이름이 이거면
+            
+            chatBlock.SetActive(true);
+            StartCoroutine(Playerturn(NPC));
+            //Player.transform.LookAt(targetPositionPlayer);
+            Invoke("ChatStart", 1f);
+        }
+        else if (Inter.Door)
+        {
+            if (Inter.NameNPC.Equals("InDoor"))
             {
-                Chat.chick();
+                SoundEffectManager.GetComponent<SoundEffect>().Sound("OpenDoor");
+                SceneLoader.instance.GotoHouse();
             }
-            else if (npcName.NameNPC.Equals("rabbit"))  //NPC이름이 이거면
+            else if (Inter.NameNPC.Equals("ExitDoor"))
+                SceneLoader.instance.GotoMainField();
+            Inter.Door = false;
+        }
+        else if (Inter.Farm)
+        {
+            if (Camera1.enabled == true)
             {
-                Chat.rabbit();
+                Camera1.enabled = false;
+                Camera2.enabled = true;
+                JoyStick.SetActive(false);
+                FarmUI.SetActive(true);
+
+                GardenCategory.instance.PopGarden();
             }
-            else if (npcName.NameNPC.Equals("squirrel"))  //NPC이름이 이거면
+            else
             {
-                Chat.squirrel();
+                Camera2.enabled = false;
+                Camera1.enabled = true;
+                JoyStick.SetActive(true);
+                FarmUI.SetActive(false);
             }
-            else if (npcName.NameNPC.Equals("goat"))  //NPC이름이 이거면
-            {
-                Chat.goat();
-            }
-            else if (npcName.NameNPC.Equals("fox2"))  //NPC이름이 이거면
-            {
-                Chat.fox2();
-            }
-            else if (npcName.NameNPC.Equals("fox1"))  //NPC이름이 이거면
-            {
-                Chat.fox1();
-            }
-            else if (npcName.NameNPC.Equals("dog"))  //NPC이름이 이거면
-            {
-                Chat.dog();
-            }
-            //ShopMok.SetActive(true);
         }
         else                                                //NPC주변에 있지 않다면
         {
-            if (OnLand)                                         //Player가 바닥에 있다면
+            if (OnLand && (SceneManager.GetActiveScene().name == "MainField"))                                         //Player가 바닥에 있다면
             {
+                SoundEffectManager.GetComponent<SoundEffect>().Sound("Jump");
                 Playerrb.AddForce(transform.up * 15000);
-                OnLand = false;
-                MainGameManager.exp = MainGameManager.exp + 100;
             }
+        }
+
+        
+    }
+    void stopCorou()
+    {
+        if (Pstop)
+            Pstop = false;
+        if (Nstop)
+            Nstop = false;
+    }
+    void ChatStart()
+    {
+        Main_UI.SetActive(false);
+        Chat.NpcChoice(NPCName);
+        chatBlock.SetActive(false);
+    }
+    public bool Pstop = true;
+    public bool Nstop = true;
+    public Transform Ptransform=null;
+    public Transform Ntransform=null;
+    public IEnumerator Playerturn(Transform NPC)
+    {
+        Invoke("stopCorou", 1f);
+        PA.SetBool("ChatMove", true);
+        yield return new WaitForEndOfFrame();
+        Pstop = true;
+        Vector3 targetPositionPlayer;
+        targetPositionPlayer = new Vector3(NPC.transform.position.x, Player.transform.position.y, NPC.position.z);
+        Ptransform = Player.transform;
+        while (Pstop)
+        {
+            if (Player.transform.rotation == Quaternion.LookRotation(targetPositionPlayer - Ptransform.position))
+            {
+                Debug.Log("NPC스탑");
+                Pstop = false;
+            }
+            Player.transform.rotation = Quaternion.Lerp(Ptransform.rotation, Quaternion.LookRotation(targetPositionPlayer - Player.transform.position), Time.deltaTime * 5f);
+            yield return null;
+        }
+        PA.SetBool("ChatMove", false);
+    }
+    public IEnumerator NPCturn(Transform NPC, Vector3 targetPositionNPC)
+    {
+        if (NPC.gameObject.name.Equals("WallMirror"))
+        { }
+        else
+        {
+            Animator NA = NPC.GetChild(0).Find("Armature_").gameObject.GetComponent<Animator>();
+            NA.SetBool("NpcMove", true);
+
+            yield return new WaitForEndOfFrame();
+            Nstop = true;
+            //Vector3 targetPositionNPC;
+            //targetPositionNPC = new Vector3(Player.transform.position.x, NPC.position.y, Player.transform.position.z);
+            Ntransform = NPC.transform;
+            while (Nstop)
+            {
+                if (NPC.rotation == Quaternion.LookRotation(targetPositionNPC - NPC.transform.position))
+                {
+                    Debug.Log("NPC스탑");
+                    Nstop = false;
+                }
+                NPC.rotation = Quaternion.Lerp(NPC.rotation, Quaternion.LookRotation(targetPositionNPC - NPC.position), Time.deltaTime * 5f);
+                yield return null;
+            }
+            NA.SetBool("NpcMove", false);
         }
     }
 
-    /*public void MapButton()                 //지도버튼
+    public void TimeCheck()
     {
-        Map.SetActive(true);
-    }
+        var bro = Backend.GameData.GetMyData("USER_SUBQUEST", new Where());
 
-    public void InvButton()
-    {
-        if (inv)
+        if (bro.IsSuccess() == false)
         {
-            Inv.SetActive(false);
-            map = false;
+            Debug.Log("요청 실패");
+            return;
+        }
+        if (bro.GetReturnValuetoJSON()["rows"].Count <= 0)
+        {
+            Param param = new Param();  // 새 객체 생성
+
+            param.Add("LastThankTreeTime", time);    //객체에 값 추가
+
+            Backend.GameData.Insert("USER_SUBQUEST", param);   //객체를 서버에 업로드
         }
         else
         {
-            Inv.SetActive(true);
-            map = true;
+            var json = bro.GetReturnValuetoJSON();
+            var json_data = json["rows"][0];
+            ParsingJSON pj = new ParsingJSON();
+            MySubQuest data = pj.ParseBackendData<MySubQuest>(json_data);
+            time = data.LastThankTreeTime;
         }
     }
-
-    public  void ConditionButton()                 //상태창버튼
-    {
-        if (conditionWindow)                                            //상태창이 열려있다면
-        {
-            ConditionWindow.SetActive(false);
-            conditionWindow = false;
-        }
-        else                                                //상태창이 닫혀있다면
-        {
-            ConditionWindow.SetActive(true);
-            conditionWindow = true;
-            conditionLevelText.text = MainGameManager.level.ToString();
-        }
-    }*/
 }

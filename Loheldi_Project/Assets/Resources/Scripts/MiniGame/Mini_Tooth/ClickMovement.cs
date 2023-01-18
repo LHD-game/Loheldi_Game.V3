@@ -7,8 +7,17 @@ public class ClickMovement : MonoBehaviour
     private new Camera camera;
     private bool isMove;
     private Vector3 destination;
+    int layerMask;
+
+    //플레이어 애니메이션
+    public GameObject Player;
+    public Animator PlayerAnimation;
+    public Animator ToothbrushAnimation;
+    public GameObject SoundEffectManager;
+
     private void Awake()
     {
+        layerMask = 1 << LayerMask.NameToLayer("BTooth");
         camera = Camera.main;
     }
     void Update()
@@ -18,7 +27,7 @@ public class ClickMovement : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 RaycastHit hit;
-                if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit))
+                if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, layerMask))
                 {
                     SetDestination(hit.transform.gameObject);
                 }
@@ -34,16 +43,22 @@ public class ClickMovement : MonoBehaviour
     }
     private void Move()
     {
+
         if (isMove && !ToothGameManager.isPause)
         {
             if (Vector3.Distance(destination, transform.position) <= 0.1f)
             {
+                PlayerAnimation.SetBool("BrushMove", true);
+                ToothbrushAnimation.SetBool("BrushStart", true);
+                SoundEffectManager.GetComponent<SoundEffect>().Sound("ToothBrushing");
                 isMove = false;
             }
             else
             {
+                PlayerAnimation.SetBool("BrushMove", false);
+                ToothbrushAnimation.SetBool("BrushStart", false);
                 var dir = destination - transform.position;
-                transform.position += dir.normalized * Time.deltaTime * 100f;
+                Player.transform.position += dir.normalized * Time.deltaTime * 100f;
             }
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardCtrl : MonoBehaviour
 {
     bool isOpen = false;
+    public GameObject SoundManager;
 
     Animator anim;
 
@@ -44,13 +45,15 @@ public class CardCtrl : MonoBehaviour
         if (isOpen) return;
         isOpen = true;
         anim.Play("CardFlipAnimation");
-        CardFX.instance.TrunCardFX(this.gameObject);    //fx
+        SoundManager.GetComponent<SoundEffect>().Sound("CardFlip");
+        //CardFX.instance.TrunCardFX(this.gameObject);    //fx
         CardGameManager.state = CardGameManager.STATE.HIT;
         CardGameManager.OpenCard = this.gameObject;
 
     }
     IEnumerator CloseCard()
     {
+        //SoundManager.GetComponent<SoundEffect>().Sound("CardWrong");
         yield return new WaitForSeconds(0.5f);
         anim.Play("CardFlipBackAnimation");
         isOpen = false;
@@ -68,7 +71,8 @@ public class CardCtrl : MonoBehaviour
         yield return new WaitForSeconds(1);
         if (this.gameObject != null)
         {
-            CardFX.instance.DisCardFX(this.transform.position); //fx
+            SoundManager.GetComponent<SoundEffect>().Sound("CardCurrect");
+            //CardFX.instance.DisCardFX(this.transform.position); //fx
             Destroy(this.gameObject);
         }
 

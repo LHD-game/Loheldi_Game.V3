@@ -19,6 +19,25 @@ TagManager:
   - TMP
   - ChangeableFurniture
   - CCImage
+  - Buttons
+  - FxTemporaire
+  - SpeechBubble
+  - ExclamationMark
+  - Eraser
+  - Card5
+  - Card8
+  - Card3
+  - Card2
+  - Card7
+  - Card4
+  - Card1
+  - Card6
+  - Music
+  - Quest
+  - DestroyCard
+  - SaveCard
+  - note
+  - Farm
   layers:
   - Default
   - TransparentFX
@@ -30,17 +49,17 @@ TagManager:
   - Character_Model
   - Building_Pin
   - Character_Pin
+  - BTooth
+  - Draw
+  - Line
+  - Table
+  - Card
+  - NoScreenShot
+  - Player
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - OverUI
   - 
   - 
   - 
@@ -55,4 +74,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2407640347
+    locked: 0
+  - name: OverUI
+    uniqueID: 2640031679
     locked: 0
