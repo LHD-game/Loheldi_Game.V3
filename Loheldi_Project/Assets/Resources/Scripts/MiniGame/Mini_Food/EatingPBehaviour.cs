@@ -12,6 +12,7 @@ public class EatingPBehaviour : MonoBehaviour
     public float playerSpeed = 10;
 
     public GameObject gObject;
+    public GameObject AnimationTrigger;
 
 
     private void Awake()
@@ -53,9 +54,9 @@ public class EatingPBehaviour : MonoBehaviour
 
                     rMove = -90;
                 }
+                AnimationTrigger.GetComponent<AnimationTriggerforMinigame>().GetButtonDown = true;
             }
         }
-           
         else
         {
             rMove = 0;

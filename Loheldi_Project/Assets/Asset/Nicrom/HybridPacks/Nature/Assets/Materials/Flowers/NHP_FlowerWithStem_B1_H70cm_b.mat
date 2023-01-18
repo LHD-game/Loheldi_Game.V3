@@ -62,11 +62,11 @@ Material:
     - _ColorBlendEnd: 0.15
     - _ColorBlendStart: 0.1
     - _Cutoff: 0.5
-    - _DBHorizontalAmplitude: 8
+    - _DBHorizontalAmplitude: 0
     - _DBHorizontalFrequency: 1.16
     - _DBHorizontalMaxDistance: 0.1
     - _DBHorizontalMaxRadius: 0.05
-    - _DBHorizontalPhase: 1
+    - _DBHorizontalPhase: 0
     - _DBVerticalAmplitude: 1
     - _DBVerticalAmplitudeOffset: 1.2
     - _DBVerticalFrequency: 1.15
@@ -81,7 +81,7 @@ Material:
     - _EnableVerticalMovement: 0
     - _InnerRadius: 0.08
     - _InnerRadius1: 0.2
-    - _MBAmplitude: 6
+    - _MBAmplitude: 0
     - _MBAmplitudeOffset: 2
     - _MBDefaultBending: 0
     - _MBFrequency: 0.6
@@ -89,10 +89,10 @@ Material:
     - _MBFrequencyOffset1: 1
     - _MBGlobalWind: 0
     - _MBMaxHeight: 0.7
-    - _MBPhase: 3
+    - _MBPhase: 0
     - _MBWindDir: 0
     - _MBWindDirBlend: 0
-    - _MBWindDirOffset: 92.1
+    - _MBWindDirOffset: 0
     - _MBWindDirOffsetFrequency: 8.78
     - _MBWindDirOffsetPhase: 1
     - _MBWindDirVariation: 121
@@ -125,3 +125,4 @@ Material:
     - _StemColor: {r: 0.49654385, g: 0.6132076, b: 0.26321647, a: 1}
     - _StemColor1: {r: 0.6588235, g: 0.7921569, b: 0.43137258, a: 1}
     - _WindDirChangeSpeed1: {r: 0.1, g: 0.1, b: 0, a: 0}
+  m_BuildTextureStacks: []

@@ -10,27 +10,43 @@ using System;
 
 public class NewAccSave : MonoBehaviour
 {
+    //panel
+    [SerializeField]
+    private GameObject NariField;   //³ª¸®ÀÇ ¼³¸í
     [SerializeField]
     private GameObject NickNameField;   //´Ğ³×ÀÓ ÀÔ·Â È­¸é
     [SerializeField]
     private GameObject BirthField;   //»ı³â¿ùÀÏ ÀÔ·Â È­¸é
     [SerializeField]
-    private GameObject ResultField;   //ÀÓ½Ã °ª È®ÀÎ¿ë
+    private GameObject ParentsNoField;   //º¸È£ÀÚ ÀÎÁõ¹øÈ£ ÀÔ·Â È­¸é
+    [SerializeField]
+    private GameObject ResultField;   //°ª È®ÀÎ¿ë
 
+    //°ª ÀÔ·Â ÇÊµå
     [SerializeField]
     private InputField InputNickName;   //°èÁ¤ ´Ğ³×ÀÓ
     [SerializeField]
     private Dropdown[] InputBirth = new Dropdown[3];      //°èÁ¤ÁÖ »ı³â,¿ù,ÀÏ
+    [SerializeField]
+    private InputField InputParentsNo;   //°èÁ¤ º¸È£ÀÚ ÀÎÁõ¹øÈ£
+    public GameObject PrivacyChkBox;    //°³ÀÎÁ¤º¸ÀÌ¿ëµ¿ÀÇ Ã¼Å©¹Ú½º
 
-    string uNickName;   // ¼­¹ö¿¡ ÀúÀåµÇ±â Àü °ªÀ» ´ã¾Æ³õ´Â º¯¼ö
-    DateTime uBirth;    // À§¿Í °°À½
+    public static string uNickName;   // ¼­¹ö¿¡ ÀúÀåµÇ±â Àü °ªÀ» ´ã¾Æ³õ´Â º¯¼ö
+    public static DateTime uBirth;    // À§¿Í °°À½
+    public static string uParentsNo;   // ¼­¹ö¿¡ ÀúÀåµÇ±â Àü °ªÀ» ´ã¾Æ³õ´Â º¯¼ö
 
     public Text nick;
     public Text birth;
+    public Text parentsNo;
+
+    bool isPrivacyChk = false;
+    public static bool nari_can_talk = true;
 
     void Start()
     {
+        NariField.SetActive(true);
         NickNameField.SetActive(true);
+        ParentsNoField.SetActive(false);
         BirthField.SetActive(false);
         ResultField.SetActive(false);
     }
@@ -42,24 +58,27 @@ public class NewAccSave : MonoBehaviour
         {
             nick.text = "´Ğ³×ÀÓ: " + uNickName;
             birth.text = "»ı³â¿ùÀÏ: " + uBirth.ToString("yyyy³â M¿ù dÀÏ");
+            parentsNo.text = "º¸È£ÀÚ ÀÎÁõ¹øÈ£: " + uParentsNo;
         }
     }
 
     public void SaveNickName()  //´Ğ³×ÀÓ ÀÔ·Â ÈÄ ¹öÆ°À» ´­·¶À» °æ¿ì ½ÇÇà
     {
-        Regex regex = new Regex(@"[a-zA-Z°¡-ÆR0-9]{2,8}$"); //´Ğ³×ÀÓ Á¤±Ô½Ä. ¿µ´ë¼Ò¹®ÀÚ, ÇÑ±Û 2~8ÀÚ °¡´É
+        Regex regex = new Regex(@"[a-zA-Z°¡-ÆR¤¡-¤¾0-9]{2,8}$"); //´Ğ³×ÀÓ Á¤±Ô½Ä. ¿µ´ë¼Ò¹®ÀÚ, ÇÑ±Û 2~8ÀÚ °¡´É
 
         if ((regex.IsMatch(InputNickName.text))) //Á¤±Ô½Ä ÀÏÄ¡½Ã,
         {
             uNickName = InputNickName.text; //uNickName º¯¼ö¿¡ ÀÔ·Â°ªÀ» ÀúÀåÇÏ°í,
             
             ShowNHide(BirthField, NickNameField);   //´Ğ³×ÀÓ ÀÔ·Â ºñÈ°¼ºÈ­, »ıÀÏ ÀÔ·Â È°¼ºÈ­
+            nari_can_talk = true;
         }
         else    //Á¤±Ô½Ä ºÒÀÏÄ¡½Ã
         {
             //¿À·ù ÆË¾÷ È°¼ºÈ­
             Transform t = NickNameField.transform.Find("ErrorPop");
             t.gameObject.SetActive(true);
+            nari_can_talk = false;
         }
     }
 
@@ -74,6 +93,7 @@ public class NewAccSave : MonoBehaviour
             {
                 isOK = false;
                 Debug.Log(birthValue);
+                nari_can_talk = false;
             }
         }
 
@@ -84,13 +104,35 @@ public class NewAccSave : MonoBehaviour
             str += InputBirth[2].options[InputBirth[2].value].text; //yyyy/MM/dd
             Debug.Log(str);
             uBirth = Convert.ToDateTime(str);   //uBirth º¯¼ö¿¡ ÀÔ·Â°ª ÀúÀå
-            ShowNHide(ResultField, BirthField);
+            ShowNHide(ParentsNoField, BirthField);
+            nari_can_talk = true;
         }
         else    //Á¤±Ô½Ä ºÒÀÏÄ¡½Ã
         {
             //¿À·ù ÆË¾÷ È°¼ºÈ­
             Transform t = BirthField.transform.Find("ErrorPop");
             t.gameObject.SetActive(true);
+            nari_can_talk = false;
+        }
+    }
+
+    public void SaveParentsNo()  //º¸È£ÀÚ ÀÎÁõ¹øÈ£ ÀÔ·Â ÈÄ ¹öÆ°À» ´­·¶À» °æ¿ì ½ÇÇà
+    {
+        Regex regex = new Regex(@"[0-9]{4,6}$"); //Á¤±Ô½Ä. ¼ıÀÚ 4~6ÀÚ °¡´É
+
+        if ((regex.IsMatch(InputParentsNo.text))) //Á¤±Ô½Ä ÀÏÄ¡½Ã,
+        {
+            uParentsNo = InputParentsNo.text; //uParentsNo º¯¼ö¿¡ ÀÔ·Â°ªÀ» ÀúÀåÇÏ°í,
+
+            ShowNHide(ResultField, ParentsNoField);   //´Ğ³×ÀÓ ÀÔ·Â ºñÈ°¼ºÈ­, »ıÀÏ ÀÔ·Â È°¼ºÈ­
+            nari_can_talk = true;
+        }
+        else    //Á¤±Ô½Ä ºÒÀÏÄ¡½Ã
+        {
+            //¿À·ù ÆË¾÷ È°¼ºÈ­
+            Transform t = ParentsNoField.transform.Find("ErrorPop");
+            t.gameObject.SetActive(true);
+            nari_can_talk = false;
         }
     }
 
@@ -105,26 +147,55 @@ public class NewAccSave : MonoBehaviour
         go.SetActive(false);
     }
 
-    //ÃÖÁ¾ÀûÀ¸·Î ¼­¹ö¿¡ ´Ğ³×ÀÓ°ú »ı³â¿ùÀÏÀ» ÀúÀåÇÏ´Â ¸Ş¼Òµå
-    public void AccSave()
+    public void PrivacyChk()
     {
-        Param param = new Param();
-        param.Add("BIRTH", uBirth);
-        param.Add("NICKNAME", uNickName);
-
-
-        var bro = Backend.GameData.Insert("ACC_INFO", param);
-
-        if (bro.IsSuccess())
+        isPrivacyChk = PrivacyChkBox.GetComponent<Toggle>().isOn;
+        if (isPrivacyChk)
         {
-            Debug.Log("°èÁ¤ Á¤º¸ ¼³Á¤ ¿Ï·á!");
-            //SceneLoader.instance.GotoGameMove();
-            SceneLoader.instance.GotoPlayerCustom();    //Ä³¸¯ÅÍ Ä¿½ºÅÍ¸¶ÀÌÂ¡ ¾ÀÀ¸·Î ÀÌµ¿
+            nari_can_talk = true;
         }
         else
         {
-            Debug.Log("°èÁ¤ Á¤º¸ ¼³Á¤ ½ÇÆĞ!");
-            //todo: ¿À·ù ¹®ÀÇ ¾È³» ¹®±¸ ¶ç¿ì±â
+            //¿À·ù ÆË¾÷ È°¼ºÈ­
+            Transform t = ResultField.transform.Find("ErrorPop");
+            t.gameObject.SetActive(true);
+            nari_can_talk = false;
+        }
+    }
+
+    //°èÁ¤ Á¤º¸¸¦ ´Ù½Ã ÀÔ·ÂÇÏ±â À§ÇÑ ¸Ş¼Òµå(¾Æ´Ï¾ß! ¼±ÅÃ)
+    public void ReturnToFirst()
+    {
+        ResultField.SetActive(false);   //°á°ú ÆĞ³Î ºñÈ°¼ºÈ­
+        NickNameField.SetActive(true);  //´Ğ³×ÀÓ ÀÔ·Â ÆĞ³Î È°¼ºÈ­
+        AccNariAdvice.print_line = 6;
+    }
+
+    //ÃÖÁ¾ÀûÀ¸·Î ¼­¹ö¿¡ ´Ğ³×ÀÓ°ú »ı³â¿ùÀÏÀ» ÀúÀåÇÏ´Â ¸Ş¼Òµå
+    public void AccSave()
+    {
+        if (isPrivacyChk)
+        {
+            Param param = new Param();
+            param.Add("NICKNAME", uNickName);
+            param.Add("BIRTH", uBirth);
+            param.Add("PARENTSNO", uParentsNo);
+
+
+            var bro = Backend.GameData.Insert("ACC_INFO", param);
+
+            if (bro.IsSuccess())
+            {
+                Debug.Log("°èÁ¤ Á¤º¸ ¼³Á¤ ¿Ï·á!");
+
+                Save_Basic.LoadAccInfo();   //°èÁ¤Á¤º¸¸¦ ·ÎÄÃ¿¡ ÀúÀå
+                Save_Basic.SaveBasicClothes(); //±âº» ÀÇ»ó ¾ÆÀÌÅÛ ÀúÀå 
+            }
+            else
+            {
+                Debug.Log("°èÁ¤ Á¤º¸ ¼³Á¤ ½ÇÆĞ!");
+                //todo: ¿À·ù ¹®ÀÇ ¾È³» ¹®±¸ ¶ç¿ì±â
+            }
         }
     }
 }

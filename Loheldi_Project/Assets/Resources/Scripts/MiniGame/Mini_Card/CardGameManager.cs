@@ -4,8 +4,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class CardGameManager : MonoBehaviour
 {
     GameObject[] cards;     //카드를 프리펩에서 저장
@@ -23,6 +21,11 @@ public class CardGameManager : MonoBehaviour
     public GameObject WelcomePanel;
     public GameObject GameOverPanel;
     public GameObject PausePanel;
+
+    //결과 출력
+    public Text ResultTxt;
+    public Text ResultCoinTxt;
+    public Text ResultExpTxt;
 
     int cardCnt;
     int flipCnt = 0;
@@ -52,7 +55,6 @@ public class CardGameManager : MonoBehaviour
             {
                 case STATE.START:   //게임 시작
                     CardSet();
-                    
                     break;
                 case STATE.HIT:     //카드 눌렀을 때
                     CheckCard();
@@ -70,7 +72,6 @@ public class CardGameManager : MonoBehaviour
                     Card_TimeSlider.instance.TimeDel();
                     break;
             }
-
             //시간이 0이 되면 게임 오버
             if (Card_TimeSlider.nowTime <= 0)
             {
@@ -87,9 +88,9 @@ public class CardGameManager : MonoBehaviour
         GameStart = false;
         isPause = false;
         a = 0;
-        cards = Resources.LoadAll<GameObject>("Prefebs/Cards/");    //카드들을 전부 저장한다.
+        cards = Resources.LoadAll<GameObject>("Prefabs/Cards/");    //카드들을 전부 저장한다.
         stageNum = 1;   //스테이지 1로 초기화
-        Card_TimeSlider.instance.TimeInit();
+        //Card_TimeSlider.instance.TimeInit();
 
         WelcomePanel.SetActive(true);
         GameOverPanel.SetActive(false);
@@ -202,13 +203,31 @@ public class CardGameManager : MonoBehaviour
     {
         GameOverPanel.SetActive(true);
         GameStart = false;
+        GameResult();
     }
     public void StageFail()
     {
         GameStart = false;
         GameOverPanel.SetActive(true);
         DestroyAll();
+        GameResult();
     }
+
+    void GameResult()   //점수에 따른 보상 획득 메소드
+    {
+        float get_exp = 10f;
+        int get_coin = stageNum * 5;    //단계별로 * 5 (5, 10, 15, 20, 25...)
+        
+
+        PlayInfoManager.GetExp(get_exp);
+        PlayInfoManager.GetCoin(get_coin);
+
+        //보상 결과를 화면에 띄움
+        ResultTxt.text = stageNum + " 단계";
+        ResultCoinTxt.text = get_coin.ToString();
+        ResultExpTxt.text = get_exp.ToString();
+    }
+
     IEnumerator MakeStage()
     {
         state = STATE.WAIT;
@@ -248,6 +267,7 @@ public class CardGameManager : MonoBehaviour
                     case '*':
 
                         GameObject Tempcard = Instantiate(cardsMix[n-1]);
+                        Tempcard.transform.GetComponent<CardCtrl>().SoundManager = this.gameObject;
                         Tempcard.transform.position = new Vector3(x, 1f, sz);
                         AllCard.Add(Tempcard);  //세팅된 카드 오브젝트를 AllCard에 저장
 

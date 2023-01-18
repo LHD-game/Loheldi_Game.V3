@@ -39,16 +39,27 @@ public class GameManager : MonoBehaviour
     private GameObject GameOverPanel;
     [SerializeField]
     private GameObject PausePanel;
-    
+    public GameObject HPDisablePanel;   //hp 부족으로 인한 팝업 패널 오브젝트
+
+    //결과 출력
+    public Text ResultTxt;
+    public Text ResultCoinTxt;
+    public Text ResultExpTxt;
+
     private float[] foodDropSec = new float[] {1.8f, 1.6f, 1.4f, 1.0f, 0.8f, 0.5f, 0.4f, 0.3f, 0.3f  }; //중간단계 더 많이 떨어지게 수정
     private float newFoodDropSec;
 
     private bool stopTrigger = false;   //true일 동안 게임 동작
     private bool pauseTrigger = false;  //true일 경우 일시정지
-    
+
+    public GameObject SoundManager;
 
     private void Start()
     {
+        if(PlayerPrefs.HasKey("FoodHighScore"))
+        {
+            highScore =  PlayerPrefs.GetInt("FoodHighScore");
+        }
         highScoreTxt.text = "최고점수: " + highScore;
         Welcome();
     }
@@ -58,7 +69,6 @@ public class GameManager : MonoBehaviour
         
         while (stopTrigger)
         {
-            
             CreateFood();
             yield return new WaitForSeconds(newFoodDropSec);
         }
@@ -82,18 +92,31 @@ public class GameManager : MonoBehaviour
         CreateLife();
         InitScore();
         newFoodDropSec = foodDropSec[0];
-        foods = Resources.LoadAll<GameObject>("Prefebs/Foods/");
+        foods = Resources.LoadAll<GameObject>("Prefabs/Foods/");
 
     }
     public void GameStart()
     {
-        stopTrigger = true;
-        
-        //foods = GameObject.FindGameObjectsWithTag("Food");  //활성화된 오브젝트만!
-        StopCoroutine(CreateFoodRoutine());
-        StartCoroutine(CreateFoodRoutine());
-        WelcomePanel.SetActive(false);
-        Timer.instance.StartTimer();
+        int now_hp = PlayerPrefs.GetInt("HP");
+
+        if (now_hp > 0)  //현재 hp가 0보다 크다면
+        {
+            //hp 1 감소
+            PlayInfoManager.GetHP(-1);
+            stopTrigger = true;
+
+            //foods = GameObject.FindGameObjectsWithTag("Food");  //활성화된 오브젝트만!
+            StopCoroutine(CreateFoodRoutine());
+            StartCoroutine(CreateFoodRoutine());
+            WelcomePanel.SetActive(false);
+            Timer.instance.StartTimer();
+        }
+        else    //0 이하라면: 게임 플레이 불가
+        {
+            // hp가 부족합니다! 팝업 띄우기
+            HPDisablePanel.SetActive(true);
+        }
+
     }
 
 
@@ -113,6 +136,51 @@ public class GameManager : MonoBehaviour
             Destroy(disBfoods[i]);
         }
         GameOverPanel.SetActive(true);
+        GameResult();
+
+        //최고 점수를 prefs에 저장
+        PlayerPrefs.SetInt("FoodHighScore", highScore);
+    }
+
+    void GameResult()   //점수에 따른 보상 획득 메소드
+    {
+        //0개 이상 10개 미만: 경험치 10, 코인 5
+        //10개 이상 20개 미만: 경험치 10, 코인 10
+        //20개 이상 30개 미만: 경험치 10, 코인 15
+        //30개 이상 40개 미만: 경험치 10, 코인 20
+        //40개 이상: 경험치 10, 코인 (점수/2)
+
+        float get_exp = 10f;
+        int get_coin = 0;
+        
+        if(score >= 0 && score < 10)
+        {
+            get_coin = 5;
+        }
+        else if (score >= 10 && score < 20)
+        {
+            get_coin = 10;
+        }
+        else if (score >= 20 && score < 30)
+        {
+            get_coin = 15;
+        }
+        else if (score >= 30 && score < 40)
+        {
+            get_coin = 20;
+        }
+        else if (score >= 40)
+        {
+            get_coin = score / 2;
+        }
+
+        PlayInfoManager.GetExp(get_exp);
+        PlayInfoManager.GetCoin(get_coin);
+
+        //보상 결과를 화면에 띄움
+        ResultTxt.text = score + " 개";
+        ResultCoinTxt.text = get_coin.ToString();
+        ResultExpTxt.text = get_exp.ToString();
     }
 
     public void PauseGame()
@@ -165,8 +233,10 @@ public class GameManager : MonoBehaviour
                     randpos.y = 15.0f;
                     randpos.z = 0.0f;
                     int randFood = Random.Range(0, foods.Length);
-                    Instantiate(foods[randFood], randpos, Quaternion.Euler(0, 0, 0));
+                    GameObject Tempfood =  Instantiate(foods[randFood], randpos, Quaternion.Euler(0, 0, 0));
                     //나타날 오브젝트, 좌표값, 회전안함
+
+                    Tempfood.transform.GetComponent<FoodsManager>().SoundManager = this.gameObject;
 
                     break;
                 }
@@ -196,7 +266,7 @@ public class GameManager : MonoBehaviour
     private void InitScore()
     {
         score = 0;
-        scoreTxt.text = "점수: " + score;
+        scoreTxt.text = "현재 점수: " + score;
     }
 
     
@@ -207,7 +277,7 @@ public class GameManager : MonoBehaviour
         {
             highScore = score;
         }
-        scoreTxt.text = "점수: " + score;
+        scoreTxt.text = "현재 점수: " + score;
         highScoreTxt.text = "최고점수: " + highScore;
         //Debug.Log("score: "+score);
     }

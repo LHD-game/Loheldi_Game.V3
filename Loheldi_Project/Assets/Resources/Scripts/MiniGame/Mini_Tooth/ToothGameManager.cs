@@ -52,8 +52,33 @@ public class ToothGameManager : MonoBehaviour
     private GameObject GameOverPanel;
     [SerializeField]
     private GameObject PausePanel;
+
+    //결과 출력
+    public Text ResultTxt;
+    public Text ResultCoinTxt;
+    public Text ResultExpTxt;
+
+    public GameObject SoundManager;
+    public Animator PlayerAnimation;
+
+    public QuestDontDestroy DontDestroy;
     void Start()
     {
+        DontDestroy = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
+        if(DontDestroy.QuestIndex == "22")  //그 양치퀘스트 용
+        {
+            Debug.Log("양치");
+            GameObject.Find("Canvas").SetActive(false);
+            GameObject.Find("Player").transform.position = new Vector3(105, 6, -28);
+            GameObject.Find("toohtgame_Standing_toothbrush").SetActive(false);
+            Instantiate(Resources.Load<Canvas>("Prefabs/Tooth/QTooth/Canvas"), new Vector3(0, 0, -0), Quaternion.Euler(0, 0, 0));
+            Instantiate(Resources.Load<GameObject>("Prefabs/Tooth/QTooth/QToothBrush"), new Vector3(0, 0, -0), Quaternion.Euler(0, 0, 0));
+            Instantiate(Resources.Load<GameObject>("Scripts/Quest/PlayerCamera"), new Vector3(104.8f, 13.2f, -16.1f), Quaternion.Euler(0, 180, 0));
+
+            GameObject.Find("Dentalfloss").SetActive(false);
+            LodingTxt chat = GameObject.Find("chatManager").GetComponent<LodingTxt>();
+            chat.ToothQuest();
+        }
         //자식오브젝트들을 전부 배열에 저장한다.
         blackTooth = blackToothP.gameObject.GetComponentsInChildren<Transform>();
         blackTooth = blackTooth.Where(child => child.tag == "BTooth").ToArray();
@@ -99,7 +124,7 @@ public class ToothGameManager : MonoBehaviour
         WinText.SetActive(false);
         falseText.SetActive(false);
 
-        Player.transform.position = new Vector3(0f, 2.5f, 10f);
+        Player.transform.position = new Vector3(-14f, 14f, 10f);
 
         BlackToothArr();
         ToothCountDown.instance.ResetTimer();
@@ -120,6 +145,7 @@ public class ToothGameManager : MonoBehaviour
 
     public void GameStart()
     {
+        PlayerAnimation.SetBool("BrushStart", true);
         timer = timerLen[difficulty];   //난이도 선택 시 난이도에 따른 시간을 timer 변수에 저장.
         isRun = true;
         InvokeRepeating("BoxRandom", repeatLen[difficulty], repeatLen[difficulty]);
@@ -173,16 +199,19 @@ public class ToothGameManager : MonoBehaviour
      public void GameOver()
      {
          isRun = false;
-        isPause = true; //종료 후 캐릭터 못움직이게하기
+         isPause = true; //종료 후 캐릭터 못움직이게하기
          GameOverPanel.SetActive(true);
+         PlayerAnimation.SetBool("BrushStart", false);
          CancelInvoke("BoxRandom");
          if (timer <= 0)  //승리 조건
          {
-             WinText.SetActive(true);
+            WinText.SetActive(true);
+            GameResult(true);
          }
          else if(BlackCount >= 13)   //패배 조건
          {
-             falseText.SetActive(true);
+            falseText.SetActive(true);
+            GameResult(false);
          }
          else
          {
@@ -191,4 +220,65 @@ public class ToothGameManager : MonoBehaviour
          //그 외의 경우: 일시정지에서 처음으로 돌아가기 선택
 
      }
+
+
+    void GameResult(bool is_win)   //점수에 따른 보상 획득 메소드
+    {
+        //코인
+        //쉬움 난이도: 승리 - 10 패배 - 5
+        //보통 난이도: 승리 - 20 패배 - 7
+        //어려움 난이도: 승리 - 30 패배 - 9
+
+        float get_exp = 10f;
+        int get_coin = 0;
+        string result_txt = "";
+
+        if (difficulty == 1) //쉬움 난이도
+        {
+            if (is_win) //승리시
+            {
+                get_coin = 10;
+                result_txt = "이겼다!";
+            }
+            else
+            {
+                get_coin = 5;
+                result_txt = "졌다….";
+            }
+        }
+        else if (difficulty == 2)   //보통 난이도
+        {
+            if (is_win) //승리시
+            {
+                get_coin = 20;
+                result_txt = "이겼다!";
+            }
+            else
+            {
+                get_coin = 7;
+                result_txt = "졌다….";
+            }
+        }
+        else if (difficulty == 3)    //어려움 난이도
+        {
+            if (is_win) //승리시
+            {
+                get_coin = 30;
+                result_txt = "이겼다!";
+            }
+            else
+            {
+                get_coin = 9;
+                result_txt = "졌다….";
+            }
+        }
+
+        PlayInfoManager.GetExp(get_exp);
+        PlayInfoManager.GetCoin(get_coin);
+
+        //보상 결과를 화면에 띄움
+        ResultTxt.text = result_txt;
+        ResultCoinTxt.text = get_coin.ToString();
+        ResultExpTxt.text = get_exp.ToString();
+    }
 }
