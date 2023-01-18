@@ -38,6 +38,7 @@ TagManager:
   - SaveCard
   - note
   - Farm
+  - Ladder
   layers:
   - Default
   - TransparentFX
