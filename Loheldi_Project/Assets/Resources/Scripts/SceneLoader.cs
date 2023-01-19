@@ -80,6 +80,10 @@ public class SceneLoader : MonoBehaviour
     {
         LoadingSceneManager.LoadScene("Game_Tooth");
     }
+    public void GotoDropFruitGame()
+    {
+        LoadingSceneManager.LoadScene("Game_DropFruit");
+    }
 
     public void GotoComditionWindow() //삭제될 친구
     {
