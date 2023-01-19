@@ -119,6 +119,10 @@ public class NpcButtonClick : MonoBehaviour
         {
             SceneLoader.instance.GotoMainAcronVillage();
         }
+        else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("이동한다"))
+        {
+            SceneLoader.instance.GotoMainField();
+        }
     }
     public void CheckQuest()
     {
