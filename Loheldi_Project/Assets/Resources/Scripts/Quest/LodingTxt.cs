@@ -222,6 +222,16 @@ public class LodingTxt : MonoBehaviour
         }
         
     }
+
+    public void VideoTest()
+    {
+        video.videoClip.clip = video.VideoClip[11];
+        movie.SetActive(true);
+        video.OnPlayVideo();
+        Main_UI.SetActive(false);
+        SoundManager = GameObject.Find("SoundManager");
+        SoundManager.SetActive(false);
+    }
     public void QuestTest()
     {
         PlayerPrefs.SetInt("LastQTime", 0);
