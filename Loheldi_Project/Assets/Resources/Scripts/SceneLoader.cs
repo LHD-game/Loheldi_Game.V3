@@ -36,6 +36,11 @@ public class SceneLoader : MonoBehaviour
         PlayerTransForm();
         LoadingSceneManager.LoadScene("MainField");
     }
+    public void GotoMainAcronVillage()
+    {
+        PlayerTransForm();
+        LoadingSceneManager.LoadScene("AcornVillage");
+    }
 
     public void GotoCreateAcc()
     {

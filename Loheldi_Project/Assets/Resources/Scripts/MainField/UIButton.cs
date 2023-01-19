@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using BackEnd;
 public class UIButton : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class UIButton : MonoBehaviour
     public static bool is_pop_garden = false;
 
     public int time=0;
+    public bool isClick;
+    public float minClickTime = 1;
+    public float ClickTime;
 
     [SerializeField]
     private Animator PA;
@@ -43,8 +47,10 @@ public class UIButton : MonoBehaviour
     {
         map = false;
     }
+
     string NPCName=null;
     public Transform NPC;
+
     public void JumpButton()                //점프버튼
     {
         GameObject SoundManager = GameObject.Find("SoundManager");
@@ -73,7 +79,7 @@ public class UIButton : MonoBehaviour
                 StartCoroutine(NPCturn(NPC, targetPositionNPC));
                 //NPC.transform.LookAt(targetPositionNPC);
             }
-            
+
             chatBlock.SetActive(true);
             StartCoroutine(Playerturn(NPC));
             //Player.transform.LookAt(targetPositionPlayer);
@@ -111,15 +117,28 @@ public class UIButton : MonoBehaviour
         }
         else                                                //NPC주변에 있지 않다면
         {
-            if (OnLand && (SceneManager.GetActiveScene().name == "MainField"))                                         //Player가 바닥에 있다면
+            if (OnLand)// && (SceneManager.GetActiveScene().name == "MainField"))                                         //Player가 바닥에 있다면
             {
                 SoundEffectManager.GetComponent<SoundEffect>().Sound("Jump");
                 Playerrb.AddForce(transform.up * 15000);
             }
-        }
 
-        
+        }
     }
+    public void OnPointerDown()//PointerEventData eventData)
+    {
+        if (Inter.Ladder)
+        {
+            isClick = true;
+            StartCoroutine(Ladderup());
+        }
+    }
+    public void OnPointerUp()//PointerEventData eventData)
+    {
+        Debug.Log("터치끝");
+        isClick = false;
+    }
+
     void stopCorou()
     {
         if (Pstop)
@@ -137,7 +156,28 @@ public class UIButton : MonoBehaviour
     public bool Nstop = true;
     public Transform Ptransform=null;
     public Transform Ntransform=null;
-    public IEnumerator Playerturn(Transform NPC)
+    public IEnumerator Ladderup()
+    {
+        Playerrb.constraints = RigidbodyConstraints.FreezePositionY| RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        while (isClick)
+        {
+            //Debug.Log("isCLick");
+            if (ClickTime >= minClickTime&&Inter.Ladder)
+            {
+                //Debug.Log("홀드 중");
+                Player.transform.Translate(0, 1f, 0);
+
+                yield return new WaitForSecondsRealtime(0.01f);
+            }
+            ClickTime += Time.deltaTime;
+
+            yield return null;
+        }
+        ClickTime = 0;
+
+        Playerrb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ| RigidbodyConstraints.FreezeRotationY;
+    }
+        public IEnumerator Playerturn(Transform NPC)
     {
         Invoke("stopCorou", 1f);
         PA.SetBool("ChatMove", true);
