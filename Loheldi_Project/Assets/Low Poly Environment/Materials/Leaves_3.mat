@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material5
-  m_Shader: {fileID: 4800000, guid: 487d0d933c54d184f87c38ad4e18acd8, type: 3}
-  m_ShaderKeywords: _ENABLEDISTORTION_ON _ENABLEFOAM_ON
-  m_LightmapFlags: 4
+  m_Name: Leaves_3
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -35,10 +35,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DistortionTexture:
-        m_Texture: {fileID: 2800000, guid: 2225710a470f6f04db9e8ec19777b4cc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -49,10 +45,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: f245fb356e6caa846aaf27ada7c2d5aa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -67,39 +59,16 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distortion: 0.3
     - _DstBlend: 0
-    - _EdgeBlend: 0.09
-    - _EnableDistortion: 1
-    - _EnableFoam: 1
-    - _FoamDepth: 10
-    - _FoamDepthOffset: 5
-    - _FoamSpeed: 10
-    - _FoamWidth: 30
-    - _GlossMapScale: 1
     - _Glossiness: 0.5
-    - _GlossyReflections: 1
-    - _Map1Strength: 0.6
-    - _Map2Strength: 0.4
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Smoothness: 0.2
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaterDepth: 0.15
     - _ZWrite: 1
-    - __dirty: 1
     m_Colors:
-    - _Color: {r: 0.745283, g: 0.47308, b: 0.26295832, a: 1}
-    - _DeepWater: {r: 0.8773585, g: 0.804362, b: 0, a: 1}
-    - _DistSpeedMap1XYMap2ZW: {r: 0.1, g: -0.1, b: -0.2, a: 0.1}
-    - _DistTilingMap1XYMap2ZW: {r: 0.2, g: 0.2, b: 0.4, a: 0.4}
+    - _Color: {r: 0.8000001, g: 0.008460615, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShallowWater: {r: 0.6792453, g: 0.31944704, b: 0, a: 1}
-    - _SpeedMap1XYMap2ZW: {r: 0.6, g: 0.7, b: -0.8, a: 0.6}
-    - _TilingMap1XYMap2ZW: {r: 0.18, g: 0.18, b: 0.1, a: 0}
   m_BuildTextureStacks: []
