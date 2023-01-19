@@ -12,8 +12,8 @@ public class VirtualJoystick : MonoBehaviour
     public Transform Stick;
     public GameObject BicycleAnimator;
     public GameObject PlayerAnimator;
-    public float speed1 = 8f;
-    public float speed2 = 11f;
+    public float speed1 = 0.1f;
+    public float speed2 = 3f;
     public bool MoveFlag;
 
     private Vector3 StickFirstPos;
@@ -30,13 +30,13 @@ public class VirtualJoystick : MonoBehaviour
         {
             if (my_lev >= 10)   //레벨이 10 이상
             {
-                speed1 = 10f;
-                speed2 = 13f;
+                speed1 = 2f;
+                speed2 = 5f;
             }
             else //레벨이 5 이상 10 미만
             {
-                speed1 = 9f;
-                speed2 = 12f;
+                speed1 = 1f;
+                speed2 = 4f;
             }
         }
         Debug.Log("속도: " + speed1);
@@ -68,7 +68,7 @@ public class VirtualJoystick : MonoBehaviour
                 {
                     Playerrb.velocity = Playerrb.velocity.normalized / speed2;
                 }
-                else if (SceneManager.GetActiveScene().name == "MainField")
+                else if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")
                 {
                     //Debug.Log("메인속도");
                     Playerrb.velocity = Playerrb.velocity.normalized * speed2;  //최대 속도
@@ -84,7 +84,7 @@ public class VirtualJoystick : MonoBehaviour
 
         else
         {
-            if (SceneManager.GetActiveScene().name == "MainField")
+            if (SceneManager.GetActiveScene().name == "MainField" || SceneManager.GetActiveScene().name == "AcornVillage")
             {
                 if (BicycleAnimator.GetComponent<BicycleRide>().Ride)
                 {

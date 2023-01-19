@@ -156,6 +156,10 @@ public class FlieChoice : MonoBehaviour
                 chat.Num = "23";
                 chat.NPCButton += 2;
                 break;
+            case "KangTeagon":
+                chat.Num = "24";
+                chat.NPCButton += 2;
+                break;
         }
         // CCImageList = Resources.LoadAll<Sprite>("Sprites/CCImage/"+chat.Inter.NameNPC); //이미지 경로
         chat.NewChat();
