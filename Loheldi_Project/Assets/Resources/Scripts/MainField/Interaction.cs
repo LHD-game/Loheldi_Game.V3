@@ -14,6 +14,7 @@ public class Interaction : MonoBehaviour
     public bool Gacha;
     public bool Farm = false;
     public bool ThankTree = false;
+    public bool Ladder = false;
 
     public bool NpcNameTF = false;
     public List<string> Npcs = new List<string>();
@@ -94,6 +95,11 @@ public class Interaction : MonoBehaviour
             Farm = true;
             text.text = "농장";
         }
+        else if(other.gameObject.tag == "Ladder")
+        {
+            text.text = "오르기";
+            Ladder = true;
+        }
     }
 
     void OnTriggerExit(Collider other)              //다른 콜리더와 떨어졌을때
@@ -122,7 +128,7 @@ public class Interaction : MonoBehaviour
                 }
             }
         }
-        if (other.gameObject.tag == "NPC" || other.gameObject.name == "InDoor" || other.gameObject.name == "GachaMachine" || other.gameObject.name == "Field")          //콜리더의 Tag가 NPC라면
+        if (other.gameObject.tag == "NPC" || other.gameObject.name == "InDoor" ||other.gameObject.tag == "Ladder"|| other.gameObject.name == "GachaMachine" || other.gameObject.name == "Field")          //콜리더의 Tag가 NPC라면
         {
             if (other.gameObject.tag == "NPC")
             {
@@ -133,6 +139,7 @@ public class Interaction : MonoBehaviour
             Farm = false;
             ThankTree = false;
             NearNPC = false;
+            Ladder = false;
             text.text = "점프";
             NameNPC = " ";
         }
@@ -140,7 +147,7 @@ public class Interaction : MonoBehaviour
     }
     public void NpcNameActive(GameObject other)
     {
-        if (NameNPC == "ThankApplesTree" || NameNPC == "parents(Clone)") ;
+        if (NameNPC == "ThankApplesTree" || NameNPC == "parents(Clone)"|| NameNPC == "Kangteagom") ;
         else
         {
             int NpcNum = Npcs.IndexOf(NameNPC);

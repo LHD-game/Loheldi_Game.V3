@@ -7841,6 +7841,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -85}
   m_SizeDelta: {x: -60, y: -270}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &366020084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 366020085}
+  - component: {fileID: 366020086}
+  m_Layer: 0
+  m_Name: Kangteagom
+  m_TagString: NPC
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &366020085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366020084}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 29.28002, y: 5.005455, z: -51.897842}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2052810092}
+  m_Father: {fileID: 1377254903309052866}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &366020086
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366020084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2806606, y: 4.581342, z: 3.4971645}
+  m_Center: {x: 0.0015428662, y: 2.5418446, z: -0.10948205}
 --- !u!1 &370211499
 GameObject:
   m_ObjectHideFlags: 0
@@ -15968,7 +16013,6 @@ MonoBehaviour:
   PlayerstatusImg: {fileID: 796638607}
   MyInfoImg: {fileID: 579526125}
   PlayerImage: {fileID: 2100000, guid: 465d533e027848d4eb31246602eea9f5, type: 2}
-  PlayerImageTexture: {fileID: 0}
   PCamLight: {fileID: 811939614}
 --- !u!20 &785685534
 Camera:
@@ -25203,6 +25247,7 @@ MonoBehaviour:
   Gacha: 0
   Farm: 0
   ThankTree: 0
+  Ladder: 0
   NpcNameTF: 0
   Npcs:
   - Himchan
@@ -36759,7 +36804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1648452995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45852,6 +45897,92 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046177197}
   m_CullTransparentMesh: 1
+--- !u!1001 &2052810091
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 366020085}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+      propertyPath: m_Name
+      value: "npc_basic form_\uAC15\uD0DC\uACF0"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+--- !u!4 &2052810092 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+  m_PrefabInstance: {fileID: 2052810091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2052810093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5850457858804700752, guid: 74671d570d14e7d4191c78528e65771a, type: 3}
+  m_PrefabInstance: {fileID: 2052810091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2052810094
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052810093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71ae3b2f38b4aea4e890ca6f22c256a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2053560732
 GameObject:
   m_ObjectHideFlags: 0
@@ -52316,6 +52447,7 @@ Transform:
   - {fileID: 1483451693065036928}
   - {fileID: 1483451694110084548}
   - {fileID: 1381154401}
+  - {fileID: 366020085}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74887,6 +75019,9 @@ MonoBehaviour:
   Inter: {fileID: 1117155289}
   SoundEffectManager: {fileID: 7452531430917375598}
   time: 0
+  isClick: 0
+  minClickTime: 1
+  ClickTime: 0
   PA: {fileID: 1554472995}
   NPC: {fileID: 0}
   Pstop: 1
@@ -85040,7 +85175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9005044757335894822}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -85132,6 +85267,7 @@ GameObject:
   - component: {fileID: 9005044757335894819}
   - component: {fileID: 9005044757335894818}
   - component: {fileID: 9005044757335894816}
+  - component: {fileID: 9005044757335894824}
   m_Layer: 5
   m_Name: jump
   m_TagString: Untagged
@@ -85159,6 +85295,63 @@ RectTransform:
   m_AnchoredPosition: {x: 763.3334, y: 50}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9005044757335894824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005044757335894822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7452531430917375604}
+          m_TargetAssemblyTypeName: UIButton, Assembly-CSharp
+          m_MethodName: OnPointerDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7452531430917375604}
+          m_TargetAssemblyTypeName: UIButton, Assembly-CSharp
+          m_MethodName: OnPointerUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7452531430917375604}
+          m_TargetAssemblyTypeName: UIButton, Assembly-CSharp
+          m_MethodName: JumpButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &9005044757335894828
 CanvasRenderer:
   m_ObjectHideFlags: 0

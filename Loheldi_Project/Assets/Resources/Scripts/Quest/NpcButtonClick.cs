@@ -115,6 +115,10 @@ public class NpcButtonClick : MonoBehaviour
             ThankTreeUI.SetActive(true);
             UIB.chat.ChatEnd();
         }
+        else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("¿Ãµø"))
+        {
+            SceneLoader.instance.GotoMainAcronVillage();
+        }
     }
     public void CheckQuest()
     {
