@@ -165,7 +165,7 @@ public class UIButton : MonoBehaviour
             if (ClickTime >= minClickTime&&Inter.Ladder)
             {
                 //Debug.Log("È¦µå Áß");
-                Player.transform.Translate(0, 0.1f, 0);
+                Player.transform.Translate(0, 0.05f, 0);
 
                 yield return new WaitForSecondsRealtime(0.01f);
             }

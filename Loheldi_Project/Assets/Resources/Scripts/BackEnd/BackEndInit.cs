@@ -8,6 +8,9 @@ public class BackEndInit : MonoBehaviour
 
     [SerializeField]
     GameObject VersionUpdatePanel;
+    [SerializeField]
+    QuestDontDestroy QDD;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,7 @@ public class BackEndInit : MonoBehaviour
         else if (float.Parse(version) < float.Parse(appversion))
         {
             Debug.Log("스토어 업데이트");
+            QDD.NtoSControl = true;
             return;
         }
         else

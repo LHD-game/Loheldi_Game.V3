@@ -13,7 +13,7 @@ public class VirtualJoystick : MonoBehaviour
     public GameObject BicycleAnimator;
     public GameObject PlayerAnimator;
     public float speed1 = 0.1f;
-    public float speed2 = 3f;
+    public float speed2 = 0.5f;
     public bool MoveFlag;
 
     private Vector3 StickFirstPos;
@@ -30,13 +30,13 @@ public class VirtualJoystick : MonoBehaviour
         {
             if (my_lev >= 10)   //레벨이 10 이상
             {
-                speed1 = 2f;
-                speed2 = 5f;
+                speed1 = 0.1f;
+                speed2 = 0.9f;
             }
             else //레벨이 5 이상 10 미만
             {
-                speed1 = 1f;
-                speed2 = 4f;
+                speed1 = 0.1f;
+                speed2 = 0.7f;
             }
         }
         Debug.Log("속도: " + speed1);
@@ -76,7 +76,7 @@ public class VirtualJoystick : MonoBehaviour
                     {
                         BicycleAnimator.GetComponent<Animator>().speed = 1;
                         PlayerAnimator.GetComponent<Animator>().speed = 1;
-                        Playerrb.velocity = Playerrb.velocity.normalized * speed2 * 2;  //최대 속도
+                        Playerrb.velocity = (Playerrb.velocity.normalized * speed2 * 3);  //최대 속도
                     }
                 }
             }
