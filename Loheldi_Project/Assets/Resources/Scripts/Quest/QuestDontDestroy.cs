@@ -17,6 +17,7 @@ public class QuestDontDestroy : MonoBehaviour
     public int ToDay=0;      //¿À´Ã ³¯Â¥
     public List<int> badgeList = new List<int>();  //È¹µæÇÑ ºªÁö 
 
+    public bool NtoSControl = false;
     public bool ToothQ = false;
     public bool weekend = false;
     public bool SDA = false;

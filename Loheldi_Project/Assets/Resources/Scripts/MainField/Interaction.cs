@@ -147,7 +147,7 @@ public class Interaction : MonoBehaviour
     }
     public void NpcNameActive(GameObject other)
     {
-        if (NameNPC == "ThankApplesTree" || NameNPC == "parents(Clone)"|| NameNPC == "Kangteagom") ;
+        if (NameNPC == "ThankApplesTree" || NameNPC == "parents(Clone)"|| NameNPC == "Kangteagom"|| NameNPC == "Kangteagon") ;
         else
         {
             int NpcNum = Npcs.IndexOf(NameNPC);
