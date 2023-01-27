@@ -85,6 +85,7 @@ public class UIButton : MonoBehaviour
             //Player.transform.LookAt(targetPositionPlayer);
             Invoke("ChatStart", 1f);
         }
+        else if (Inter.Ladder) return;
         else if (Inter.Door)
         {
             if (Inter.NameNPC.Equals("InDoor"))
@@ -120,7 +121,7 @@ public class UIButton : MonoBehaviour
             if (OnLand)// && (SceneManager.GetActiveScene().name == "MainField"))                                         //Player가 바닥에 있다면
             {
                 SoundEffectManager.GetComponent<SoundEffect>().Sound("Jump");
-                Playerrb.AddForce(transform.up * 15000);
+                Playerrb.AddForce(transform.up * 10000);
             }
 
         }
@@ -158,6 +159,9 @@ public class UIButton : MonoBehaviour
     public Transform Ntransform=null;
     public IEnumerator Ladderup()
     {
+        if (chat.bicycleRide.Ride)
+            chat.bicycleRide.RideOn();
+
         Playerrb.constraints = RigidbodyConstraints.FreezePositionY| RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
         while (isClick)
         {
