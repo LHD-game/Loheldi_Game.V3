@@ -147,7 +147,7 @@ public class Interaction : MonoBehaviour
     }
     public void NpcNameActive(GameObject other)
     {
-        if (NameNPC == "ThankApplesTree" || NameNPC == "parents(Clone)"|| NameNPC == "Kangteagom"|| NameNPC == "Kangteagon") ;
+        if (NameNPC == "ThankApplesTree" || NameNPC == "parents(Clone)") return;
         else
         {
             int NpcNum = Npcs.IndexOf(NameNPC);
@@ -161,7 +161,7 @@ public class Interaction : MonoBehaviour
         GameObject NPCName_ = NpcNames[NpcNum];
         while (NpcNameTF)
         {
-            NPCName_.transform.position = Camera.main.WorldToScreenPoint(Npc.transform.position + new Vector3(0, 7f, 0));
+            NPCName_.transform.position = Camera.main.WorldToScreenPoint(Npc.transform.position + new Vector3(0, 1.5f, 0));
             yield return null;
         }
         NPCName_.SetActive(false);

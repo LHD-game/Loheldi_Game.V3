@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -31,7 +32,8 @@ public class MainGameManager : MonoBehaviour
     {
         GetDailyHP();
         UpdateField();
-        StartCoroutine(NowTimeChk());
+        if (SceneManager.GetActiveScene().name != "AcornVillage")
+            StartCoroutine(NowTimeChk());
     }
 
     private void Awake()
@@ -80,7 +82,8 @@ public class MainGameManager : MonoBehaviour
         ExpSlider.value = (now_exp / max_exp) * 100;
         HouseLv = PlayerPrefs.GetInt("HouseLv");
         HouseShape = PlayerPrefs.GetString("HouseShape");
-        HouseChange();
+        if (SceneManager.GetActiveScene().name != "AcornVillage")
+            HouseChange();
     }
 
     void GetDailyHP()   //일자를 검사하여 hp를 5 제공

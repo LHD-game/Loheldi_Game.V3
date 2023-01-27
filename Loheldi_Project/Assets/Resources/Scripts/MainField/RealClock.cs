@@ -88,7 +88,7 @@ public class RealClock : MonoBehaviour
             if (Time == 5 || Time == 17)    //»õº®, Àú³á
             {
                 RenderSettings.skybox = NoonSky;
-                Light.GetComponent<Light>().color = new Color(139f / 255f, 9f / 255f, 202f / 255f);
+                Light.GetComponent<Light>().color = new Color(113f / 255f, 34f / 255f, 74f / 255f);
                 Light.transform.rotation = Quaternion.Euler(50, -90, 0);    //ºûÀÇ À§Ä¡¸¦ ÃÊ±âÈ­ÇÔ (ÇØ°¡ ¶ß¸é ºµÀ» ÂØ°í, ´ÞÀÌ ¶ß¸é ´ÞÀ» ÂØ°í)
                 if (Time == 17)             //±¤¿øÀº Àú³á¿¡ ÄÑÁü
                 {

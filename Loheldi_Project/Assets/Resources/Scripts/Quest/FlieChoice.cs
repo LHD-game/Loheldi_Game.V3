@@ -153,11 +153,11 @@ public class FlieChoice : MonoBehaviour
                 }
                 break;
             case "Kangteagom":
-                chat.Num = "23";
-                chat.NPCButton += 2;
-                break;
-            case "KangTeagon":
-                chat.Num = "24";
+
+                if (SceneManager.GetActiveScene().name == "AcornVillage")
+                    chat.Num = "24";
+                else
+                    chat.Num = "23";
                 chat.NPCButton += 2;
                 break;
         }
