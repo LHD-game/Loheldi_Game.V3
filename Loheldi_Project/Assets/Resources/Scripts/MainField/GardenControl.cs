@@ -147,10 +147,10 @@ public class GardenControl : MonoBehaviour
                 {
                     empty_ground[i] = false;
                     garden_crops[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Crops/Spring")); //객체 생성: 새싹
-                    garden_crops[i].transform.SetParent(garden_ground[i].transform);   //이를 텃밭 오브젝트에 하위로 넣는다
+                    garden_crops[i].transform.SetParent(garden_ground[i].transform, false);   //이를 텃밭 오브젝트에 하위로 넣는다
                     garden_crops[i].transform.GetChild(0).GetComponent<Text>().text = g_seed[i];    //icode를 입력해둔다
                     garden_crops[i].transform.GetChild(1).GetComponent<Text>().text = g_timer[i].ToString();    //성장시간을 입력해둔다
-                    garden_crops[i].transform.localPosition = new Vector3(0, 0, 0); //작물 객체 위치 재설정
+                    garden_crops[i].transform.localPosition = new Vector3(0, -0.1f, 0); //작물 객체 위치 재설정
                 }
             }
         }
