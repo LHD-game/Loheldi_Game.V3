@@ -2,27 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shaking : MonoBehaviour
+public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
 {
-    public GameObject Acorn;
-    float Dropx;
+    public GameObject Acorn;                    //도토리 오브젝트(프리펩)
+    public GameObject Acorns;                   //바구니 속 도토리 오브젝트
+    float Dropx;                            //도토리 생성 범위
     float Dropy;
     float Dropz;
 
-    float tiltx;
+    float tiltx;                            //핸드폰의 기울기 값
     float tilty;
     float tiltz;
 
-    bool tiltbool = false;
-    bool tempbool = false;
+    bool xbool = false;                     //기울어진 축을 읽기위한 값
+    bool ybool = false;
+    bool zbool = false;
 
-    public void Shake()
+    public GameObject Drop;                 //생성될 도토리들의 부모 오브젝트
+    int DropCount = 0;                      //도토리 갯수(바구니 리셋용)
+    int DropCount2 = 0;                     //도토리 갯수(점수)
+
+    public void Shake()                         //"흔들림"을 인식했을때
     {
-        Dropx = Random.Range(0.5f, -0.5f);
+        Dropx = Random.Range(0.5f, -0.5f);          //도토리가 생성될 범위 랜덤 설정
         Dropy = 1f;
         Dropz = Random.Range(0.5f, -0.5f);
-        Instantiate(Acorn, new Vector3(Dropx, Dropy, Dropz), Quaternion.identity);
+        GameObject DropAcorn = Instantiate(Acorn, new Vector3(Dropx, Dropy, Dropz), Quaternion.identity);   //도토리 생성
+        DropAcorn.transform.parent = Drop.transform;
+        DropCount++;                                //도토리 갯수 카운트( 1은 바구니 리셋용, 2가 점수용 )
+        DropCount2++;
+        Acorns.transform.localPosition = new Vector3(-0.00011f, -0.0026f, Acorns.transform.localPosition.z + 0.00075f);     //바구니속 도토리 위치 설정
+        if (DropCount >= 20)                        //바구니 리셋 함수
+        {
+            Handheld.Vibrate();                     //바구니 리셋시 진동
+            Acorns.transform.localPosition = new Vector3(-0.00011f, -0.0026f, 0.015f);                  //바구니속 도토리 위치 초기화
+            DropCount = 0;                          //바구니 리셋용 도토리 갯수 카운트 초기화
+        }
+        Debug.Log(DropCount2);
     }
+
     void Update()
     {
         //변수 x, y, z 에 tilt센서 값을 입력
@@ -30,22 +48,34 @@ public class Shaking : MonoBehaviour
         tilty = Input.acceleration.y;
         tiltz = Input.acceleration.z;
 
-        if (tiltbool)
+        if (tiltx <= 0.2f && tiltx >= -0.2 && xbool == false)       //x축이 범위 밖으로 나감
         {
-            Shake();
-            tiltbool = false;
+            xbool = true;                                       //x축 기울어짐
         }
-        else
+        else if ((tiltx > 0.2f || tiltx < -0.2) && xbool == true)   //x축이 다시 범위 안으로 들어옴
         {
-            if((tiltx <= 0.2f && tiltx >= -0.2) || (tilty <= 0.2f && tilty >= -0.2) || (tiltz <= 0.2f && tiltz >= -0.2) && !tempbool)
-            {
-                tempbool = true;
-            }
-            else if((tiltx >= 0.2f || tiltx <= -0.2) || (tilty >= 0.2f || tilty <= -0.2) || (tiltz >= 0.2f || tiltz <= -0.2) && tempbool)
-            {
-                tempbool = false;
-                Shake();
-            }
+            xbool = false;                                      //x축 초기화
+            Shake();                                            //핸드폰이 흔들렸음
+        }
+
+        if (tilty <= 0.2f && tilty >= -0.2 && ybool == false)       //y축 이하동일
+        {
+            ybool = true;
+        }
+        else if ((tilty > 0.2f || tilty < -0.2) && ybool == true)
+        {
+            ybool = false;
+            Shake();
+        }
+
+        if (tiltz <= 0.2f && tiltz >= -0.2 && zbool == false)       //z축 이하동일
+        {
+            zbool = true;
+        }
+        else if ((tiltz > 0.2f || tiltz < -0.2) && zbool == true)
+        {
+            zbool = false;
+            Shake();
         }
     }
 }
