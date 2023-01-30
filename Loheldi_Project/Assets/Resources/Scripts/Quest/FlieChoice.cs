@@ -12,10 +12,11 @@ public class FlieChoice : MonoBehaviour
 
     [SerializeField]
     private UIButton UI;
-
+    public QuestDontDestroy QDD;
     public Interaction Inter;
     private void Awake()
     {
+        QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
         if (SceneManager.GetActiveScene().name == "MainField")
             EPin.SetActive(false);
         if (SceneManager.GetActiveScene().name == "Quiz")
@@ -56,7 +57,10 @@ public class FlieChoice : MonoBehaviour
             //Debug.Log(chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
             chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/Quest" + chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
         }
-        chat.FileAdress = "Scripts/Quest/script";
+        if (QDD.weekend) 
+            chat.FileAdress = "Scripts/Quest/scriptWeekend";
+        else
+            chat.FileAdress = "Scripts/Quest/script";
         chat.Num = chat.DontDestroy.QuestIndex;
         chat.NewChat();
         if (SceneManager.GetActiveScene().name == "Quiz") ;

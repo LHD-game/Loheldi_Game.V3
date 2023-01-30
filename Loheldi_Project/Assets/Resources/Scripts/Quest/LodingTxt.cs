@@ -273,8 +273,8 @@ public class LodingTxt : MonoBehaviour
     public void ToothQuest()
     {
         ToothAnimator = GameObject.Find("ToothBrush").transform.Find("Armature").gameObject.GetComponent<Animator>();
-        Num = "22_2";
-        FileAdress = "Scripts/Quest/script";
+        Num = "1_2";
+        FileAdress = "Scripts/Quest/scriptWeekend";
         NewChat();
     }
 
@@ -360,61 +360,61 @@ public class LodingTxt : MonoBehaviour
     {
         switch (o)
         {
-            case 1:
-                Player.transform.position = new Vector3(-145.300003f, 12.6158857f, -21.80023f);
+            case 1: //언덕 위
+                Player.transform.position = new Vector3(-36.2f, -4.95455313f, -9.4f);
                 break;
-            case 2:
+            case 2:  //집앞
                 cuttoon.SetActive(false);
-                Player.transform.position = new Vector3(45f, 5f, 40f);
+                Player.transform.position = new Vector3(1.6f, -6.41821432f, 1.4f);
                 break;
-            case 3:
+            case 3: //집에서 나옴
                 if (DontDestroy.tutorialLoading)
-                    Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+                    Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 DontDestroy.tutorialLoading = false;
                 break;
-            case 4:
-                Player.transform.position = new Vector3(103.51342f, 15.7201061f, 165.103439f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 4: //이장님
+                Player.transform.position = new Vector3(12.9f, -4.33371019f, 26.4f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 5:
-                Player.transform.position = new Vector3(-44.7900009f, 5.319489f, 79.5400085f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 5: //무무
+                Player.transform.position = new Vector3(-16.6f, -6.41383314f, 8.8f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 6:
-                Player.transform.position = new Vector3(288.572632f, 5.31948948f, 98.3887405f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 6: //여미
+                Player.transform.position = new Vector3(49.5f, -6.41383314f, 14.2f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 7:
-                Player.transform.position = new Vector3(255, 5.31949139f, 101.299973f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 7: //요미
+                Player.transform.position = new Vector3(43.3f, -6.41383266f, 14.3f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 8:
-                Player.transform.position = new Vector3(69.9799881f, 5.67073011f, -16.2484417f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 8: //놀이터
+                Player.transform.position = new Vector3(5.7f, -6.39158726f, -10.2f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 9:
-                Player.transform.position = new Vector3(-46f, 5.57700014f, -13.6999998f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 9:  //연못
+                Player.transform.position = new Vector3(-16.8f, -6.41383314f, -9.1f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 10:
-                Player.transform.position = new Vector3(317.426666f, 5.67073059f, 25.669136f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 10: //슈퍼맨
+                Player.transform.position = new Vector3(58.1f, -6.41383362f, -2.5f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 11:
-                Player.transform.position = new Vector3(45f, 5f, 40f);
-                Nari.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+            case 11: //집
+                Player.transform.position = new Vector3(1.6f, -6.41821432f, 1.4f);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 break;
-            case 12:
+            case 12:  //튜토리얼 종료
                 PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
                 PlayInfoManager.GetQuestPreg();
                 //Save_Log.instance.SaveQEndLog();    //퀘스트 종료 로그 기록
                 SceneLoader.instance.GotoMainField();
                 break;
             case 13:
-                Player.transform.position = new Vector3(-139.300003f, 12.6158857f, -21.80023f);
+                Player.transform.position = new Vector3(-36.2f, -4.95455313f, -9.4f);
                 Player.transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
                 GameObject Parents = GameObject.Find("parents(Clone)");
-                Parents.transform.position = Player.transform.position + new Vector3(-6, 0, 0);
+                Parents.transform.position = Player.transform.position + new Vector3(-1.5f, 0, 0);
                 Parents.transform.rotation = Quaternion.Euler(new Vector3(0, 150, 0));
                 break;
             default:

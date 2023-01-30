@@ -24,7 +24,14 @@ public class QuestLoad : MonoBehaviour
     {
         DontDestroy = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
         Quest = GameObject.Find("chatManager").GetComponent<QuestScript>();
-        string selectedProbabilityFileId = "57524";
+
+        string selectedProbabilityFileId = "";
+
+        if (DontDestroy.weekend)
+            selectedProbabilityFileId = "69724";
+        else
+            selectedProbabilityFileId = "69711";
+
         var bro3 = Backend.Chart.GetChartContents(selectedProbabilityFileId);
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];
 
