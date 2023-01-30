@@ -118,7 +118,7 @@ public class QuestScript : MonoBehaviour
         Debug.Log("Äù½ºÆ® ´À³¦Ç¥ »ý¼º");
         Transform Parent = GameObject.Find(DontDestroy.ButtonPlusNpc).GetComponent<Transform>();
         GameObject child;
-        child = Instantiate(ExclamationMark[1], GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position+new Vector3(0,6,0), GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation);
+        child = Instantiate(ExclamationMark[1], GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position+new Vector3(0,1.5f,0), GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation);
         child.transform.parent = Parent;
         file.EPin.SetActive(true);
         file.EPin.GetComponent<MapPin>().Owner = GameObject.Find(DontDestroy.ButtonPlusNpc);
