@@ -13,9 +13,8 @@ public class LodingTxt : MonoBehaviour
 {
     public Transform Player;
     public Transform Nari;
-    //public GameObject PlayerCamera;
-    //public Camera MainCamera;
-    //public Camera QuizCamera;
+    public Transform NariMom;
+
 
     public Text chatName;
     //public Text QuizName;
@@ -73,6 +72,7 @@ public class LodingTxt : MonoBehaviour
     public GameObject BikeNPC;
 
     public GameObject AppleTreeObj;
+    public GameObject Kangteagom;
 
     public GameObject SoundEffectManager;
     GameObject SoundManager;
@@ -157,9 +157,8 @@ public class LodingTxt : MonoBehaviour
 
         DontDestroy.LastDay = PlayerPrefs.GetInt("LastQTime");
 
-        if (SceneManager.GetActiveScene().name == "MainField")     //메인 필드에 있을 떄만 사용
+        if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")     //메인 필드에 있을 떄만 사용
         {
-            Player.position = DontDestroy.gameObject.transform.position;
             DontDestroy.LastDay = PlayerPrefs.GetInt("LastQTime");
 
             string[] QQ = PlayerPrefs.GetString("QuestPreg").Split('_');
@@ -169,10 +168,20 @@ public class LodingTxt : MonoBehaviour
             if (Int32.Parse(QQ[0]) > 3);
             else
                 Ride.SetActive(false);
-            if (Int32.Parse(QQ[0]) > 12)
-                AppleTreeObj.SetActive(true);
-            else
-                AppleTreeObj.SetActive(false);
+            if (SceneManager.GetActiveScene().name == "MainField")
+            {
+                Player.position = DontDestroy.gameObject.transform.position;
+                if (Int32.Parse(QQ[0]) > 12)
+                    AppleTreeObj.SetActive(true);
+                else
+                    AppleTreeObj.SetActive(false); 
+
+                if (Int32.Parse(QQ[0]) > 21)
+                    Kangteagom.SetActive(true);
+                else
+                    Kangteagom.SetActive(false);
+            }
+            
             //주말체크
             DateTime nowDT = DateTime.Now;
             if (nowDT.DayOfWeek == DayOfWeek.Saturday)
@@ -183,6 +192,14 @@ public class LodingTxt : MonoBehaviour
                 DontDestroy.weekend = false;
             DontDestroy.ToDay = Int32.Parse(DateTime.Now.ToString("yyyyMMdd"));   //퀘스트용 오늘날짜 저장 */
 
+            if(DontDestroy.QuestIndex == "22_10")
+            {
+                Num = "22_10";
+                FileAdress = "Scripts/Quest/script";
+                NewChat();
+                DontDestroy.QuestIndex = "22_1";
+                return;
+            }
             if (Int32.Parse(QQ[0]) == 0)
             {
                 QuestLoad.QuestLoadStart();
@@ -193,23 +210,10 @@ public class LodingTxt : MonoBehaviour
             }
             else
             {
-                if (!DontDestroy.weekend)
-                {
-                    if (Int32.Parse(QQ[0]) < 21)
-                    {
-                        if (DontDestroy.ToDay != DontDestroy.LastDay)
-                            QuestLoad.QuestLoadStart();
-                    }
-                }
-                else if(DontDestroy.weekend)
-                {
-                    if (Int32.Parse(qq[0]) < 25)
-                    {
-                        if (DontDestroy.ToDay != DontDestroy.LastDay)
-                            QuestLoad.QuestLoadStart();
-                    }
-                }
+                if (DontDestroy.ToDay != DontDestroy.LastDay)
+                    QuestLoad.QuestLoadStart();
             }
+            
         }
         else if (SceneManager.GetActiveScene().name == "Quiz")
         {
@@ -236,13 +240,14 @@ public class LodingTxt : MonoBehaviour
     {
         PlayerPrefs.SetInt("LastQTime", 0);
         DontDestroy.LastDay = 0;
+        
         string QuestType = null;
         if (!DontDestroy.weekend)
         {
-            QuestType = "QuestPreg";
+            QuestType = PlayerPrefs.GetString("QuestPreg");
         }
         else
-            QuestType = "WeeklyQuestPreg";
+            QuestType = PlayerPrefs.GetString("WeeklyQuestPreg");
         DontDestroy.QuestIndex = QuestType;
         QuestLoad.QuestLoadStart();
     }
@@ -356,6 +361,32 @@ public class LodingTxt : MonoBehaviour
         Main_UI.SetActive(false);
     }
 
+    public void AchangeMoment()  //플레이어 이동, 카메라 무브
+    {
+        switch (o)
+        {
+            case 1: //비빔밥
+                Player.transform.position = new Vector3(12.6f, -8.4f, -4);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
+                Player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                NariMom.transform.position = Player.transform.position + new Vector3(2, 0, 0);
+                NariMom.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                break;
+            case 2:  //장작
+                Player.transform.position = new Vector3(13.6f, -8.4f, -4);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
+                NariMom.transform.position = Player.transform.position + new Vector3(2, 0, 0);
+                break;
+            case 3: //열매따기
+                Player.transform.position = new Vector3(14.6f, -8.4f, -4);
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
+                NariMom.transform.position = Player.transform.position + new Vector3(2, 0, 0);
+                break;
+            default:
+                break;
+        }
+    }
     public void changeMoment()  //플레이어 이동, 카메라 무브
     {
         switch (o)
@@ -464,6 +495,15 @@ public class LodingTxt : MonoBehaviour
             }
 
         }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("AMove"))  //선택지
+        {
+            o += 1;
+            AchangeMoment();
+
+            j += 1;
+            Line();
+
+        }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("ReloadEnd"))  //main으로
         {
             QuestEnd();
@@ -504,15 +544,15 @@ public class LodingTxt : MonoBehaviour
             InvokeRepeating("Panorama", 0f, 1f);
         } //컷툰 보이기
         else if (data_Dialog[j]["scriptType"].ToString().Equals("tutorial"))//튜토리얼
-        { 
-            scriptLine(); 
+        {
+            scriptLine();
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("video"))//동영상 실행
         {
             video.videoClip.clip = video.VideoClip[Int32.Parse(data_Dialog[j]["cuttoon"].ToString())];
             movie.SetActive(true);
             video.OnPlayVideo();
-            ChatWin.SetActive(false); 
+            ChatWin.SetActive(false);
             SoundManager = GameObject.Find("SoundManager");
             SoundManager.SetActive(false);
             j++;
@@ -558,7 +598,7 @@ public class LodingTxt : MonoBehaviour
             }
             else if (QBikeSpeed == 12)
             {
-                BikeQ = false; 
+                BikeQ = false;
                 Vector3 targetPositionNPC;
                 Vector3 targetPositionPlayer;
                 targetPositionNPC = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z);
@@ -571,7 +611,7 @@ public class LodingTxt : MonoBehaviour
             }
             else if (BikeQ)
             {
-                
+
                 //페이드 인 페이드 아웃하면서 화면에 한시간 후... 띄우기
                 QBikeSpeed = 12;
                 Maxtime = 3;
@@ -582,7 +622,7 @@ public class LodingTxt : MonoBehaviour
                 timer = 0;
                 NPCJumpAnimator.SetBool("BikeWalk", false);
             }
-            
+
             scriptLine();
 
         }
@@ -714,7 +754,7 @@ public class LodingTxt : MonoBehaviour
             }
             else if (data_Dialog[j]["cuttoon"].ToString().Equals("2"))
             {
-                JumpAnimator.speed = 1f; 
+                JumpAnimator.speed = 1f;
                 JumpAnimatorRope.speed = 1f;
             }
             else if (data_Dialog[j]["cuttoon"].ToString().Equals("3"))
@@ -747,7 +787,7 @@ public class LodingTxt : MonoBehaviour
                 GameObject NPC = GameObject.Find(Inter.NameNPC);
 
                 Player.transform.position = new Vector3(54, 5, -15);
-                NPC.transform.position = Player.transform.position+ new Vector3(5, 0, 0);
+                NPC.transform.position = Player.transform.position + new Vector3(5, 0, 0);
                 NPCRope.SetActive(true);
 
                 Vector3 targetPositionNPC;
@@ -832,7 +872,7 @@ public class LodingTxt : MonoBehaviour
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("Tooth"))
         {
-            if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString())==0)
+            if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 0)
             {
                 DontDestroy.QuestIndex = "22";
                 SceneLoader.instance.GotoToothGame();
@@ -921,18 +961,35 @@ public class LodingTxt : MonoBehaviour
             StartCoroutine(JumpButtons.NPCturn(NPC, targetPositionNPC));
             if (Quest.note)
             {
-                    Quest.note = false;
-                    GameObject[] objs = GameObject.FindGameObjectsWithTag("note");
-                    for (int i = 0; i < objs.Length; i++)
-                        Destroy(objs[i]);
+                Quest.note = false;
+                GameObject[] objs = GameObject.FindGameObjectsWithTag("note");
+                for (int i = 0; i < objs.Length; i++)
+                    Destroy(objs[i]);
             }
-            else if(data_Dialog[j]["scriptNumber"].ToString().Equals("19_1"))
+            else if (data_Dialog[j]["scriptNumber"].ToString().Equals("19_1"))
             {
                 Transform NPC2 = GameObject.Find("Nari").transform;
                 StartCoroutine(JumpButtons.NPCturn(NPC2, targetPositionNPC));
             }
             Invoke("stopCorou", 1f);
-               //딜레이 후 스크립트 띄움
+            //딜레이 후 스크립트 띄움
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("moveTos"))
+        {
+            Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
+            Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+
+            Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
+            Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+
+            Kangteagom.SetActive(true);
+            scriptLine();
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("moveToA"))
+        {
+            Cuttoon();
+            DontDestroy.QuestIndex = "22_10";
+            SceneLoader.instance.GotoMainAcronVillage();
         }
     }
     void stopCorou()
@@ -1268,7 +1325,7 @@ public class LodingTxt : MonoBehaviour
         }
         else
         {
-            if (SceneManager.GetActiveScene().name == "MainField")
+            if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")
                 QuestLoad.QuestLoadStart();
         }
 

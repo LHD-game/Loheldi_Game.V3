@@ -7858,7 +7858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &366020085
 Transform:
   m_ObjectHideFlags: 0
@@ -7867,7 +7867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366020084}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 29.28002, y: 5.005455, z: -51.897842}
+  m_LocalPosition: {x: -74, y: 5.005455, z: 38.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2052810092}
@@ -75699,6 +75699,7 @@ MonoBehaviour:
   chat: {fileID: 7504651044331650487}
   EPin: {fileID: 106923646}
   UI: {fileID: 7452531430917375604}
+  QDD: {fileID: 0}
   Inter: {fileID: 1117155289}
 --- !u!4 &7504651044331650486
 Transform:
@@ -75728,6 +75729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1117155291}
   Nari: {fileID: 1483451693536831144}
+  NariMom: {fileID: 0}
   chatName: {fileID: 7504651045759774412}
   chatTxt: {fileID: 7504651045105659593}
   Mailcontent: {fileID: 444696588}
@@ -75787,6 +75789,7 @@ MonoBehaviour:
   Bike: {fileID: 180299994}
   BikeNPC: {fileID: 1032567025}
   AppleTreeObj: {fileID: 1000867622}
+  Kangteagom: {fileID: 366020084}
   SoundEffectManager: {fileID: 7452531430917375598}
   NPCButton: 0
   LoadTxt: 

@@ -134,4 +134,5 @@ public class QuestInfo{
     public string Content;
     public string Reward;
     public string authorName;
+    public string Type;
 }

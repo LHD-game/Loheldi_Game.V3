@@ -13,6 +13,9 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
     public static List<GameObject> right_detail_text = new List<GameObject>();
     
     public static string this_qid = "null";
+    public static string this_type = "null";
+
+    string Type;
 
     //리스트 중 우편 선택시 -> 해당 버튼에 있는 제목 등등을 모두 가져와 오른쪽 화면에 띄운다.
     public void SelectMail()
@@ -22,6 +25,12 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
         GameObject qid = this.transform.Find("QID").gameObject;
         Text qid_txt = qid.GetComponent<Text>();
         this_qid = qid_txt.text;
+
+        GameObject type = this.transform.Find("Type").gameObject;
+        Text type_txt = type.GetComponent<Text>();
+        this_type = type_txt.text;
+
+        Debug.Log("this_type:" + type_txt.text);
 
         GameObject title = this.transform.Find("Title").gameObject;
         Text title_txt = title.GetComponent<Text>();
@@ -80,7 +89,13 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
             reward_disable_btn.SetActive(true);
             string[] q_qid = qid_txt.text.Split('_');
             string QuestType = null;
-            if (Int32.Parse(q_qid[0]) < 22)
+
+            if (this_type == "week")
+                QDD.WeekQMail = true;
+            else if (this_type == "weekend")
+                QDD.WeekQMail = false;
+
+            if (QDD.WeekQMail)
             {
                 QuestType = "QuestPreg";
             }
@@ -106,15 +121,17 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
             }
             else
             {
+                Debug.Log("this_type == \"weekend\":" + (this_type == "weekend")+ this_type);
+                Debug.Log("this_type == \"weekend\":" + (this_type == "week"));
                 if (QDD.SDA && (q_front !=0&& q_back !=2))
                 {
                     content_detail_txt.text = "토요일은 퀘스트 진행이 불가합니다";
                 }
-                else if (!QDD.weekend && QuestType.Equals("WeeklyQuestPreg"))
+                else if (!QDD.weekend && this_type == "weekend")
                 {
                     content_detail_txt.text = "해당 퀘스트는 일요일에만 진행이 가능합니다";
                 }
-                else if (QDD.weekend && QuestType.Equals("QuestPreg"))
+                else if (QDD.weekend && this_type == "week")
                     content_detail_txt.text = "해당 퀘스트는 평일에만 진행이 가능합니다";
             }
         }
