@@ -50,11 +50,10 @@ public class FlieChoice : MonoBehaviour
     }
     public void Quest()
     {
-        if (SceneManager.GetActiveScene().name == "MainField")
+        if (SceneManager.GetActiveScene().name == "MainField" || SceneManager.GetActiveScene().name == "AcornVillage")
         {
             EPin.SetActive(false);
             Inter.NpcNameTF = false;
-            //Debug.Log(chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
             chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/Quest" + chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
         }
         if (QDD.weekend) 
@@ -165,7 +164,6 @@ public class FlieChoice : MonoBehaviour
                 chat.NPCButton += 2;
                 break;
         }
-        // CCImageList = Resources.LoadAll<Sprite>("Sprites/CCImage/"+chat.Inter.NameNPC); //이미지 경로
         chat.NewChat();
         chat.Buttons();
 

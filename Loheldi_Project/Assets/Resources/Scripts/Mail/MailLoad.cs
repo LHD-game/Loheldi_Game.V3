@@ -119,6 +119,7 @@ public class MailLoad : MonoBehaviour
         item.Add("Content", data.Content);
         item.Add("Reward", data.Reward);
         item.Add("authorName", data.authorName);
+        item.Add("Type", data.Type);
     }
 
     GameObject itemBtn;
@@ -162,6 +163,10 @@ public class MailLoad : MonoBehaviour
             GameObject mail_reward = child.transform.Find("Reward").gameObject;
             Text reward_txt = mail_reward.GetComponent<Text>();
             reward_txt.text = dialog[i]["Reward"].ToString();
+
+            GameObject mail_Type = child.transform.Find("Type").gameObject;
+            Text Type_txt = mail_Type.GetComponent<Text>();
+            Type_txt.text = dialog[i]["Type"].ToString();
         }
     }
 
@@ -186,27 +191,6 @@ public class MailLoad : MonoBehaviour
                 mail_alarm_ui.SetActive(true);
             }
         }
-        /*        BackendReturnObject bro = Backend.UPost.GetPostList(PostType.Admin, 10);  //서버에서 메일 리스트 불러오기
-                JsonData json = bro.GetReturnValuetoJSON()["postList"];
-
-                if (Quest.Quest)
-                    TotalCount = json.Count + 1;
-                else if (!Quest.Quest)
-                    TotalCount = json.Count;
-
-                if (TotalCount != 0)
-                {
-                    MailCountImage.SetActive(true);
-                    MailCount.text = TotalCount.ToString();
-                    if (TotalCount >= 10)
-                    {
-                        MailCount.text = "9+";
-                    }
-                }
-                else if (TotalCount == 0)
-                {
-                    MailCountImage.SetActive(false);
-                }*/
     }
 
     public void RecieveMailBtn()    //버튼 클릭 수행 후 MainGameManager의 UpdateField() 실행하도록

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
@@ -32,19 +30,17 @@ public class QuestScript : MonoBehaviour
     public void QuestStart()
     {
         DontDestroy = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
-        Debug.Log("퀘스트스크립트스타트실행" + PlayerPrefs.GetString("QuestPreg"));
 
-        if (PlayerPrefs.GetString("QuestPreg").Equals("0_0"))
+        if (PlayerPrefs.GetString("QuestPreg").Equals("0_0")) //튜토리얼
         {
             file.Tutorial();
             DontDestroy.QuestIndex = "0_1";
-            Debug.Log("튜토리얼");
         }
-        else if (PlayerPrefs.GetString("QuestPreg").Equals("0_1"))
+        else if (PlayerPrefs.GetString("QuestPreg").Equals("0_1")) //밭 튜토리얼
         {
             StartCoroutine("QFarmLoop");
         }
-        else if (DontDestroy.weekend&&PlayerPrefs.GetString("WeeklyQuestPreg").Equals("22_1"))
+        else if (DontDestroy.weekend&&PlayerPrefs.GetString("WeeklyQuestPreg").Equals("01_1")) //양치게임 해보기
         {
             Debug.Log("양치");
             DontDestroy.ToothQ = true;
@@ -58,8 +54,8 @@ public class QuestScript : MonoBehaviour
 
     public void QuestChoice()
     {
-        if (DontDestroy.QuestIndex.Equals("4_1"))
-                Instantiate(Resources.Load<GameObject>("Prefabs/Q/Qbicycle"), new Vector3(65.1100006f, 5.41002083f, -17.799999f), Quaternion.Euler(0, 51.4773521f, 0));
+        if (DontDestroy.QuestIndex.Equals("4_1"))  //힘찬이 옆에 자전거 만들기
+                Instantiate(Resources.Load<GameObject>("Prefabs/Q/Qbicycle"), new Vector3(4.2f, -6.39158726f, -9.8f), Quaternion.Euler(0, 51.4773521f, 0));
         else if (DontDestroy.QuestIndex.Equals("8_1"))
         {
             note = true;
@@ -67,30 +63,38 @@ public class QuestScript : MonoBehaviour
         }
         else if (DontDestroy.QuestIndex.Equals("11_1")|| DontDestroy.QuestIndex.Equals("14_1")|| DontDestroy.QuestIndex.Equals("18_1")|| DontDestroy.QuestIndex.Equals("20_1")|| DontDestroy.QuestIndex.Equals("22_1"))
         {
-            GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(54, 5, 37);
+            //캐릭터 플레이어 집 앞으로 데려오기
+            GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(3.8f, -6.41383314f, -0.1f);
         }
-        else if (DontDestroy.QuestIndex.Equals("13_1"))
+        else if (DontDestroy.QuestIndex.Equals("13_1")) //이장님 감사나무 앞
         {
             note = true;
-            GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(125, 15, 170);
+            GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(17.3f, -4.3f, 27.4f);
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation = Quaternion.Euler(new Vector3(0, 77, 0));
         }
-        else if (DontDestroy.QuestIndex.Equals("19_1"))
+        else if (DontDestroy.QuestIndex.Equals("19_1")) //힘찬이 옆에 나리가져다놓기
         {
             //GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(125, 15, 170);
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation = Quaternion.Euler(new Vector3(0, 157, 0));
 
             GameObject NariIm = GameObject.Find("Nari");
-            NariIm.transform.position = new Vector3(68, 5, -16);
+            NariIm.transform.position = GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position+new Vector3(2, 0, -1);
             NariIm.transform.rotation = Quaternion.Euler(new Vector3(0, 207, 0));
         }
-        else if (DontDestroy.QuestIndex.Equals("21_1")|| DontDestroy.QuestIndex.Equals("23_1")|| DontDestroy.QuestIndex.Equals("24_1"))
+        else if (DontDestroy.QuestIndex.Equals("21_1")|| DontDestroy.QuestIndex.Equals("02_1")|| DontDestroy.QuestIndex.Equals("03_1")) //부모님 데려다 놓기
         {
-            Instantiate(Resources.Load<GameObject>("Models/NPC/npc/parents"), new Vector3(30, 5, 33), Quaternion.Euler(new Vector3(0, 133, 0)));
+            Instantiate(Resources.Load<GameObject>("Models/NPC/npc/parents"), new Vector3(-0.2f, -6.4f, 0), Quaternion.Euler(new Vector3(0, 133, 0)));
         }
 
+
         if (SceneManager.GetActiveScene().name == "MainField")
+        {
+            if (DontDestroy.QuestIndex.Equals("22_2"))
+            {
+                GameObject.Find(DontDestroy.ButtonPlusNpc).SetActive(false);
+            }
             ExclamationMarkCreate();
+        }
     }
 
 
