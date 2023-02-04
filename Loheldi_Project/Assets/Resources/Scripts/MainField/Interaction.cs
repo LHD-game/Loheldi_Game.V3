@@ -153,10 +153,10 @@ public class Interaction : MonoBehaviour
             int NpcNum = Npcs.IndexOf(NameNPC);
             NpcNameTF = true;
             NpcNames[NpcNum].SetActive(true);
-            StartCoroutine(NpcNameFollow(other, NpcNum));
+            //StartCoroutine(NpcNameFollow(other, NpcNum));
         }
     }
-    IEnumerator NpcNameFollow(GameObject Npc, int NpcNum)
+    /*IEnumerator NpcNameFollow(GameObject Npc, int NpcNum)
     {
         GameObject NPCName_ = NpcNames[NpcNum];
         while (NpcNameTF)
@@ -166,5 +166,5 @@ public class Interaction : MonoBehaviour
         }
         NPCName_.SetActive(false);
         yield break;
-    }
+    }*/
 }
