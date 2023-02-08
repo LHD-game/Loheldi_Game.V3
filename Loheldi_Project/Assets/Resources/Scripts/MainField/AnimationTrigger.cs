@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationTrigger : MonoBehaviour
 {
     private Animator animator;
+    private Animator animator2;
     private bool Jumping;
     private bool running=false;
 
@@ -57,6 +58,11 @@ public class AnimationTrigger : MonoBehaviour
                 {
                     animator.SetBool("JumpDown", true);
                 }
+            }
+
+            if (UIButton.ClickTime >= UIButton.minClickTime && UIButton.Inter.Ladder)
+            {
+                //
             }
             yield return null;
         }
