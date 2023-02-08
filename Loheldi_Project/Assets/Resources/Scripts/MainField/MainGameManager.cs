@@ -46,7 +46,7 @@ public class MainGameManager : MonoBehaviour
         while (true)
         {
             DateTime now = DateTime.Now;
-            Debug.Log(now.Hour);
+            //Debug.Log(now.Hour);
             if ((now.Hour >= 21 || now.Hour < 6)&&(!QDD.NtoSControl))
             {
                 NineOClockPanel.SetActive(true);
@@ -116,8 +116,8 @@ public class MainGameManager : MonoBehaviour
         Destroy(HousePlace.transform.GetChild(0).gameObject);
         if (HouseShape == "")
             HouseShape = "Plane";
-        Debug.Log(HouseLv);
-        Debug.Log(HouseShape);
+        //Debug.Log(HouseLv);
+        //Debug.Log(HouseShape);
         switch (HouseLv)
         {
             case 1:

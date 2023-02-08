@@ -39,7 +39,7 @@ public class VirtualJoystick : MonoBehaviour
                 speed2 = 0.7f;
             }
         }
-        Debug.Log("속도: " + speed1);
+        //Debug.Log("속도: " + speed1);
 
         Scene scene = SceneManager.GetActiveScene();
 

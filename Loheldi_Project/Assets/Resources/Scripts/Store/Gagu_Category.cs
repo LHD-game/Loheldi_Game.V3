@@ -95,7 +95,7 @@ public class Gagu_Category : StoreCategoryControl
         MakeCategory(c_classic, classicItem, classic_list);
         MakeCategory(c_wallpaper, wallpaperItem, wallpaper_list);
 
-        Debug.Log("cnt" + cnt_my_gagu);
+        //Debug.Log("cnt" + cnt_my_gagu);
         if (cnt_my_gagu == 5)
         {
             BadgeManager.GetBadge("B10");

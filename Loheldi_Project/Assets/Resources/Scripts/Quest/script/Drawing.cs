@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Unity.Mathematics;
-
-
+using TMPro;
 
 public class Drawing : MonoBehaviour
 {
@@ -475,5 +474,114 @@ public class Drawing : MonoBehaviour
         BMI = (1.3f * float.Parse(W.text)) / math.pow(H2, 2.5f);
         BMIText.text = BMI.ToString("F2");
         BMITalk.text = BMI.ToString("F2");
+    }
+    ///////////////보석 카드//////////////////////////////////////////
+
+    private int JuwelLength = 0;
+    private int MaxJuwelLength = 3;
+    int J;
+    //public Sprite JuwelCardBackImage;
+    //public GameObject JuwelButton;
+    public Text Jtext;
+    public GameObject[] Juwels;
+    public GameObject Image;
+    public GameObject JButton;
+
+    public void JFinishWrite()
+    {
+        Jtext.text = MaxJuwelLength.ToString() + "개의 보석을 선택하세요";
+        for (int i = 0; i < Juwels.Length; i++)
+        {
+            Destroy(Juwels[i].GetComponent<TMP_InputField>());
+        }
+
+        Destroy(Image);
+        JButton.SetActive(false);
+        //Invoke("JAddButton", 0.1f);
+    }
+    public void JAddButton()
+    {
+        for (int i = 0; i < Juwels.Length; i++)
+        {
+            Juwels[i].AddComponent<Button>().onClick.AddListener(JSelect);
+        }
+    }
+    public void JNextLevel()
+    {
+        J = 0;
+        if (JuwelLength < MaxJuwelLength)
+        {
+            Debug.Log(MaxJuwelLength + "개의 보석을 선택하세요");
+        }
+        else
+        {
+            /*JuwelCardBack = GameObject.Find("JuwelCardBack");
+            spriteJ = JuwelCardBack.GetComponent<Image>();
+            spriteJ.sprite = JuwelCardBackImage;
+            JuwelButton.SetActive(false);*/
+
+            RectTransform RectTransform;
+            GameObject parentsObject = GameObject.Find("JuwelCards").gameObject;
+
+            for (int i = 0; i < parentsObject.transform.childCount; i++)
+            {
+                GameObject gameObject = GameObject.Find("JuwelCards").transform.GetChild(i).gameObject;
+                RectTransform = gameObject.GetComponent<RectTransform>();
+                if (gameObject.tag.Equals("DestroyCard"))
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    switch (J)
+                    {
+                        case 1:
+                            RectTransform.anchoredPosition = new Vector2(-781f, -215f);
+                            break;
+                        case 2:
+                            RectTransform.anchoredPosition = new Vector2(-299f, -215f);
+                            break;
+                        case 3:
+                            RectTransform.anchoredPosition = new Vector2(174f, -215f);
+                            break;
+                        case 4:
+                            RectTransform.anchoredPosition = new Vector2(678f, -215f);
+                            break;
+                        case 5:
+                            RectTransform.anchoredPosition = new Vector2(1157f, -215f);
+                            //Debug.Log("끝!");
+                            Jtext.gameObject.SetActive(false);
+                            Invoke("scriptLine", 1f);   //딜레이 후 스크립트 띄움
+                            break;
+                    }
+
+                    //gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                }
+
+            }
+        }
+    }
+
+    public void JSelect()
+    {
+        GameObject click = EventSystem.current.currentSelectedGameObject;
+        if (click.tag.Equals("DestroyCard"))
+        {
+            if (JuwelLength < MaxJuwelLength)
+            {
+                click.gameObject.tag = "SaveCard";
+                click.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                JuwelLength++;
+            }
+        }
+        else
+        {
+            click.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            click.gameObject.tag = "DestroyCard";
+            JuwelLength--;
+        }
+
+        Invoke("scriptLine", 1f);   //딜레이 후 스크립트 띄움
+
     }
 }
