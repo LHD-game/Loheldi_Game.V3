@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.EventSystems;
-using UnityEngine.Video;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class LodingTxt : MonoBehaviour
 {
@@ -68,6 +66,9 @@ public class LodingTxt : MonoBehaviour
     public GameObject LoveNature;
     public GameObject BMI;
     public GameObject BMItalk;
+    public GameObject Nanum;
+    public GameObject Jewel;
+    public GameObject Healthy;
 
     public GameObject Ride;
     public GameObject Bike;
@@ -346,8 +347,8 @@ public class LodingTxt : MonoBehaviour
     {
         Input.multiTouchEnabled = false;
         //PlayerCamera.SetActive(true);
-        //Debug.Log("퀴즈3");
         data_Dialog = CSVReader.Read(FileAdress);
+        Debug.Log("스크립트 길이"+data_Dialog.Count);
         for (int k = 0; k <= data_Dialog.Count; k++)
         {
             if (data_Dialog[k]["scriptNumber"].ToString().Equals(Num))
@@ -501,7 +502,7 @@ public class LodingTxt : MonoBehaviour
                 Line();
             }
 
-        }
+        }  //Main Move
         else if (data_Dialog[j]["scriptType"].ToString().Equals("AMove"))  //선택지
         {
             o += 1;
@@ -510,7 +511,7 @@ public class LodingTxt : MonoBehaviour
             j += 1;
             Line();
 
-        }
+        } //dotori Move
         else if (data_Dialog[j]["scriptType"].ToString().Equals("ReloadEnd"))  //main으로
         {
             QuestEnd();
@@ -1017,7 +1018,7 @@ public class LodingTxt : MonoBehaviour
             Cuttoon();
             DontDestroy.QuestIndex = "22_10";
             SceneLoader.instance.GotoMainAcronVillage();
-        }
+        } //도토리마을로 이동
         else if (data_Dialog[j]["scriptType"].ToString().Equals("JumpRope"))
         {
             //줄넘기
@@ -1101,6 +1102,46 @@ public class LodingTxt : MonoBehaviour
             JumpAnimatorRope.SetBool("JumpRopeBack", false);
             scriptLine();
         }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("Nanum")) //26
+        {
+            cuttoon.SetActive(false);
+            Nanum.SetActive(true);
+            ChatWin.SetActive(false);
+            j++;
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("NanumEnd"))
+        {
+            Nanum.SetActive(false);
+            scriptLine();
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("Jewel")||data_Dialog[j]["scriptType"].ToString().Equals("Jewelselect"))
+        {
+            ChatWin.SetActive(false);
+            Jewel.SetActive(true);
+            j++;
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("JewelFinish"))        //퀘스트중간애들
+        {
+            Draw.JFinishWrite();
+            scriptLine();
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("JewelEnd"))
+        {
+            Jewel.SetActive(false);
+            scriptLine();
+
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("Healthy")) //26
+        {
+            Healthy.SetActive(true);
+            ChatWin.SetActive(false);
+            j++;
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("HealthyEnd"))
+        {
+            Healthy.SetActive(false);
+            scriptLine();
+        }
     }
 
     void stopCorou()
@@ -1148,15 +1189,11 @@ public class LodingTxt : MonoBehaviour
     }
     public void Line()  //줄넘김 (scriptType이 뭔지 걸러냄)
     {
-        if (data_Dialog[j]["SoundEffect"].ToString().Equals("Null"))
-        { }
-        else
-        {
-            string SoundName = data_Dialog[j]["SoundEffect"].ToString();
-            SoundEffectManager.GetComponent<SoundEffect>().Sound(SoundName);
-        }
+        
         block.SetActive(true);
-        //Debug.Log(data_Dialog[j]["scriptNumber"].ToString());
+        //Debug.Log("scriptNumber" + data_Dialog[j]["scriptNumber"].ToString());
+        //Debug.Log("scriptCount" + j);
+        //Debug.Log("script" + data_Dialog[j]["dialog"].ToString());
         if (tuto && tutoFinish)
         {
             chatCanvus.SetActive(true);
@@ -1189,6 +1226,14 @@ public class LodingTxt : MonoBehaviour
             if (data_Dialog[j]["scriptNumber"].ToString().Equals("0_1"))
                 Main_UI.SetActive(false);
 
+        }
+        //Debug.Log(data_Dialog[j]["SoundEffect"].ToString());
+        if (data_Dialog[j]["SoundEffect"].ToString().Equals("Null"))
+        {; }
+        else
+        {
+            string SoundName = data_Dialog[j]["SoundEffect"].ToString();
+            SoundEffectManager.GetComponent<SoundEffect>().Sound(SoundName);
         }
         //if (move)
         //    changeMoment();

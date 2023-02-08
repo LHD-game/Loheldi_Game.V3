@@ -42,14 +42,14 @@ public class frame_count : MonoBehaviour
         {
 
             yield return new WaitForSeconds(5.0f);
-            Debug.Log("内风凭 角青");
+            //Debug.Log("内风凭 角青");
             if (fps < 20.0f)
             {
                 for (int i = 0; i < HiddenObjectList.Length; i++)
                 {
                     HiddenObjectList[i].SetActive(false);
                 }
-                Debug.Log("内风凭 辆丰");
+                //Debug.Log("内风凭 辆丰");
                 StopCoroutine(crt);
             }
             

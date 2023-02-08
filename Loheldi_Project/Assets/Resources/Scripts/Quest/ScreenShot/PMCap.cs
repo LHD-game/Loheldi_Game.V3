@@ -23,7 +23,6 @@ public class PMCap : MonoBehaviour
     public GameObject PCamLight;
     void Start()
     {
-        Debug.Log("플레이어 증명사진");
         int Time;
         Time = int.Parse(DateTime.Now.ToString("HH"));
         if (Time < 4 || Time > 16) ;
@@ -31,13 +30,11 @@ public class PMCap : MonoBehaviour
         else
             PCamLight.GetComponent<Light>().intensity = 0.5f;
         
-        Debug.Log("플레이어 증명사진1");
         if (SceneManager.GetActiveScene().name == "Game_Tooth")
             ScreenshotImg = GameObject.Find("PlayerImage").GetComponent<Image>(); //이미지 띄울 곳;
         resWidth = 2400;
         resHeight = 2400;
         path = Application.dataPath + "/ScreenShot/";
-        Debug.Log("플레이어 증명사진2");
         StartCoroutine(ClickScreenShot());
 
 
@@ -45,7 +42,6 @@ public class PMCap : MonoBehaviour
 
     public IEnumerator ClickScreenShot()
     {
-        Debug.Log("플레이어 증명사진 코루틴");
         yield return new WaitForEndOfFrame();
         RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
         camera.targetTexture = rt;
@@ -55,7 +51,6 @@ public class PMCap : MonoBehaviour
         screenShot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
         screenShot.Apply();
 
-        Debug.Log("플레이어 증명사진 코루틴1");
         //ffbyte[] bytes = screenShot.EncodeToPNG();
         //File.WriteAllBytes(name, bytes);
         Sprite sprite = Sprite.Create(screenShot, new Rect(0, 0, screenShot.width, screenShot.height), new Vector2(0.5f, 0.5f));
@@ -63,7 +58,6 @@ public class PMCap : MonoBehaviour
 
         this.transform.position = this.transform.position + new Vector3(0, -1, 2);
 
-        Debug.Log("플레이어 증명사진 코루틴2");
         if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")
         {
             PlayerstatusImg.SetActive(true);

@@ -170,7 +170,7 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
                 var json_data = json["rows"][0];
                 ParsingJSON pj = new ParsingJSON();
                 PlayInfo data = pj.ParseBackendData<PlayInfo>(json_data);
-                Debug.Log("퀘스트 진행도:" + data.QuestPreg);
+                //Debug.Log("퀘스트 진행도:" + data.QuestPreg);
                 PlayerPrefs.SetInt("Wallet", data.Wallet);
                 PlayerPrefs.SetInt("Level", data.Level);
                 PlayerPrefs.SetFloat("NowExp", data.NowExp);

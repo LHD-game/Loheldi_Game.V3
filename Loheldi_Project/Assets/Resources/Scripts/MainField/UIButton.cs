@@ -136,7 +136,6 @@ public class UIButton : MonoBehaviour
     }
     public void OnPointerUp()//PointerEventData eventData)
     {
-        Debug.Log("ÅÍÄ¡³¡");
         isClick = false;
     }
 

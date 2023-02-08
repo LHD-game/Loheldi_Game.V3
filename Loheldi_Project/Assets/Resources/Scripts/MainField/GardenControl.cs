@@ -88,10 +88,10 @@ public class GardenControl : MonoBehaviour
                 garden_crops[garden_num] = Instantiate(Resources.Load<GameObject>("Prefabs/Crops/" + g_seed[garden_num] + "_crops"));
                 garden_crops[garden_num].transform.SetParent(garden_ground[garden_num].transform);
                 garden_crops[garden_num].transform.localPosition = new Vector3(0, 0, 0); //작물 객체 위치 재설정
-                Debug.Log("작물 다 자라서 객체 변화");
+                //Debug.Log("작물 다 자라서 객체 변화");
             }
         }
-        Debug.Log("GrowTimeChk() 실행");
+        //Debug.Log("GrowTimeChk() 실행");
         return;
     }
     

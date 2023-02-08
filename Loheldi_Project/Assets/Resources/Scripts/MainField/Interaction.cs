@@ -67,7 +67,7 @@ public class Interaction : MonoBehaviour
             NearNPC = true;
             NameNPC = other.gameObject.name.ToString();
             NpcNameActive(other.gameObject);
-            Debug.Log("NPC이름=" + NameNPC);
+            //Debug.Log("NPC이름=" + NameNPC);
             
         }
         else if (other.gameObject.name == "change")          //콜리더의 name가 change라면 (하우징)
