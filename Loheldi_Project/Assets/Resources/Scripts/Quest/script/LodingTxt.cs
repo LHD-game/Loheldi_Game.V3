@@ -1131,7 +1131,7 @@ public class LodingTxt : MonoBehaviour
             scriptLine();
 
         }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Healthy")) //26
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("Healthy")) //29
         {
             Healthy.SetActive(true);
             ChatWin.SetActive(false);
