@@ -6,7 +6,8 @@ public class NPCRandomMove : MonoBehaviour
 {
 
     Rigidbody rigid;
-    public float nextMove1;//´ÙÀ½ Çàµ¿ÁöÇ¥¸¦ °áÁ¤ÇÒ º¯¼ö
+    
+    public float nextMove1;//ë‹¤ìŒ í–‰ë™ì§€í‘œë¥¼ ê²°ì •í•  ë³€ìˆ˜
     public float nextMove2;
 
     float time = 5f;
@@ -15,25 +16,26 @@ public class NPCRandomMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         Debug.Log("1");
-        Invoke("Thinking", time); // ÃÊ±âÈ­ ÇÔ¼ö ¾È¿¡ ³Ö¾î¼­ ½ÇÇàµÉ ¶§ ¸¶´Ù(ÃÖÃÊ 1È¸) nextMoveº¯¼ö°¡ ÃÊ±âÈ­ µÇµµ·ÏÇÔ
+        Invoke("Thinking", time); // ì´ˆê¸°í™” í•¨ìˆ˜ ì•ˆì— ë„£ì–´ì„œ ì‹¤í–‰ë  ë•Œ ë§ˆë‹¤(ìµœì´ˆ 1íšŒ) nextMoveë³€ìˆ˜ê°€ ì´ˆê¸°í™” ë˜ë„ë¡í•¨
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rigid.velocity = new Vector3(nextMove1, rigid.velocity.y, nextMove2); //nextMove ¿¡ 0:¸ØÃã -1:¿ŞÂÊ 1:¿À¸¥ÂÊ À¸·Î ÀÌµ¿ 
+        rigid.velocity = new Vector3(nextMove1, rigid.velocity.y, nextMove2); //nextMove ì— 0:ë©ˆì¶¤ -1:ì™¼ìª½ 1:ì˜¤ë¥¸ìª½ ìœ¼ë¡œ ì´ë™ 
     }
 
     public void Thinking()
-    {//¸ó½ºÅÍ°¡ ½º½º·Î »ı°¢ÇØ¼­ ÆÇ´Ü (-1:¿ŞÂÊÀÌµ¿ ,1:¿À¸¥ÂÊ ÀÌµ¿ ,0:¸ØÃã  À¸·Î 3°¡Áö Çàµ¿À» ÆÇ´Ü)
+    {//ëª¬ìŠ¤í„°ê°€ ìŠ¤ìŠ¤ë¡œ ìƒê°í•´ì„œ íŒë‹¨ (-1:ì™¼ìª½ì´ë™ ,1:ì˜¤ë¥¸ìª½ ì´ë™ ,0:ë©ˆì¶¤  ìœ¼ë¡œ 3ê°€ì§€ í–‰ë™ì„ íŒë‹¨)
 
         Debug.Log("2");
-        //Random.Range : ÃÖ¼Ò<= ³­¼ö <ÃÖ´ë /¹üÀ§ÀÇ ·£´ı ¼ö¸¦ »ı¼º(ÃÖ´ë´Â Á¦¿ÜÀÌ¹Ç·Î ÁÖÀÇÇØ¾ßÇÔ)
+        //Random.Range : ìµœì†Œ<= ë‚œìˆ˜ <ìµœëŒ€ /ë²”ìœ„ì˜ ëœë¤ ìˆ˜ë¥¼ ìƒì„±(ìµœëŒ€ëŠ” ì œì™¸ì´ë¯€ë¡œ ì£¼ì˜í•´ì•¼í•¨)
+        
         nextMove1 = Random.Range(-1f, 2f);
         nextMove2 = Random.Range(-1f, 2f);
 
-        time = Random.Range(2f, 5f); //»ı°¢ÇÏ´Â ½Ã°£À» ·£´ıÀ¸·Î ºÎ¿© 
-        //Think(); : Àç±ÍÇÔ¼ö : µô·¹ÀÌ¸¦ ¾²Áö ¾ÊÀ¸¸é CPU°úºÎÈ­ µÇ¹Ç·Î Àç±ÍÇÔ¼ö¾µ ¶§´Â Ç×»ó ÁÖÀÇ ->Think()¸¦ Á÷Á¢ È£ÃâÇÏ´Â ´ë½Å Invoke()»ç¿ë
-        Invoke("Thinking", time); //¸Å°³º¯¼ö·Î ¹ŞÀº ÇÔ¼ö¸¦ timeÃÊÀÇ µô·¹ÀÌ¸¦ ºÎ¿©ÇÏ¿© Àç½ÇÇà 
+        time = Random.Range(2f, 5f); //ìƒê°í•˜ëŠ” ì‹œê°„ì„ ëœë¤ìœ¼ë¡œ ë¶€ì—¬ 
+        //Think(); : ì¬ê·€í•¨ìˆ˜ : ë”œë ˆì´ë¥¼ ì“°ì§€ ì•Šìœ¼ë©´ CPUê³¼ë¶€í™” ë˜ë¯€ë¡œ ì¬ê·€í•¨ìˆ˜ì“¸ ë•ŒëŠ” í•­ìƒ ì£¼ì˜ ->Think()ë¥¼ ì§ì ‘ í˜¸ì¶œí•˜ëŠ” ëŒ€ì‹  Invoke()ì‚¬ìš©
+        Invoke("Thinking", time); //ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ í•¨ìˆ˜ë¥¼ timeì´ˆì˜ ë”œë ˆì´ë¥¼ ë¶€ì—¬í•˜ì—¬ ì¬ì‹¤í–‰ 
     }
 }
