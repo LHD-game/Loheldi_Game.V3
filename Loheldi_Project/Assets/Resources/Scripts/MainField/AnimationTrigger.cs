@@ -14,6 +14,7 @@ public class AnimationTrigger : MonoBehaviour
     {
         animator = GetComponent<Animator>();   //애니메이터 컴포넌트 불러오기
         StartCoroutine("PlayerMove");
+        animator.SetBool("JumpUp", false);
     }
 
     IEnumerator PlayerMove()

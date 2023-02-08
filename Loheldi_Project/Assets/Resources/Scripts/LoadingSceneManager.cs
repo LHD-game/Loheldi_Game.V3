@@ -11,6 +11,11 @@ public class LoadingSceneManager : MonoBehaviour
 
     public static Text tiptext;
 
+    public Image LoadingImage1;
+    public Image LoadingImage2;
+    public Image LoadingImage3;
+    public Image LoadingImage4;
+
     private void Start()
     {
         tiptext = GameObject.Find("Text").GetComponent<Text>();
@@ -41,7 +46,25 @@ public class LoadingSceneManager : MonoBehaviour
             default:
                 break;
         }
+        int imagenum = Random.Range(0, 4);
         StartCoroutine(LoadScene());
+        switch (imagenum)
+        {
+            case 0:
+                LoadingImage1.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading1");
+                break;
+            case 1:
+                LoadingImage2.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading2");
+                break;
+            case 2:
+                LoadingImage3.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading3");
+                break;
+            case 3:
+                LoadingImage4.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading4");
+                break;
+            default:
+                break;
+        }
     }
 
     public static void LoadScene(string sceneName)
