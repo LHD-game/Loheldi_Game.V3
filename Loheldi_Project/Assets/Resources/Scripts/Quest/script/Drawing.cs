@@ -584,4 +584,17 @@ public class Drawing : MonoBehaviour
         Invoke("scriptLine", 1f);   //딜레이 후 스크립트 띄움
 
     }
+
+    //////////주문/////////////
+
+    public void SFinishWrite()
+    {
+        Jtext.text = MaxJuwelLength.ToString() + "개의 보석을 선택하세요";
+        for (int i = 0; i < Juwels.Length; i++)
+        {
+            Destroy(Juwels[i].GetComponent<TMP_InputField>());
+        }
+
+        //Invoke("JAddButton", 0.1f);
+    }
 }
