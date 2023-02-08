@@ -586,15 +586,39 @@ public class Drawing : MonoBehaviour
     }
 
     //////////주문/////////////
-
+    public void startWrite()
+    {
+        writting = true;
+        StartCoroutine(write());
+    }
     public void SFinishWrite()
     {
-        Jtext.text = MaxJuwelLength.ToString() + "개의 보석을 선택하세요";
         for (int i = 0; i < Juwels.Length; i++)
         {
             Destroy(Juwels[i].GetComponent<TMP_InputField>());
         }
-
         //Invoke("JAddButton", 0.1f);
+    }
+
+    public Text text1;
+    public Text text2;
+    public Text text3;
+
+    public Text write1;
+    public Text write2;
+    public Text write3;
+    public bool writting = true;
+    IEnumerator write()
+    {
+        Debug.Log(" 시작");
+        while(writting)
+        {
+            text1.text= "나는 ("+ write1.text+" )장점을 가지고 있어!";
+            text2.text= "나에게는 ("+ write2.text + ") 재능이 있어!";
+            text3.text= "내 곁에는 나를 응원하는 ("+ write3.text + ") 있어!";
+
+            yield return null;
+        }
+
     }
 }
