@@ -29,7 +29,7 @@ public class UIButton : MonoBehaviour
 
     public FlieChoice Chat;
     public LodingTxt chat;
-    public Interaction Inter;
+    public static Interaction Inter;
 
     public GameObject SoundEffectManager;
 
@@ -37,8 +37,8 @@ public class UIButton : MonoBehaviour
 
     public int time=0;
     public bool isClick;
-    public float minClickTime = 1;
-    public float ClickTime;
+    public static float minClickTime = 1;
+    public static float ClickTime;
 
     [SerializeField]
     private Animator PA;

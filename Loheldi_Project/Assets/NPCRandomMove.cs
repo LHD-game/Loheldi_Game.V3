@@ -6,8 +6,9 @@ public class NPCRandomMove : MonoBehaviour
 {
 
     Rigidbody rigid;
-    public int nextMove1;//´ÙÀ½ Çàµ¿ÁöÇ¥¸¦ °áÁ¤ÇÒ º¯¼ö
-    public int nextMove2;
+    
+    public float nextMove1;//ë‹¤ìŒ í–‰ë™ì§€í‘œë¥¼ ê²°ì •í•  ë³€ìˆ˜
+    public float nextMove2;
 
     float time = 5f;
 
@@ -15,50 +16,26 @@ public class NPCRandomMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         Debug.Log("1");
-        Invoke("Thinking", time); // ÃÊ±âÈ­ ÇÔ¼ö ¾È¿¡ ³Ö¾î¼­ ½ÇÇàµÉ ¶§ ¸¶´Ù(ÃÖÃÊ 1È¸) nextMoveº¯¼ö°¡ ÃÊ±âÈ­ µÇµµ·ÏÇÔ
+        Invoke("Thinking", time); // ì´ˆê¸°í™” í•¨ìˆ˜ ì•ˆì— ë„£ì–´ì„œ ì‹¤í–‰ë  ë•Œ ë§ˆë‹¤(ìµœì´ˆ 1íšŒ) nextMoveë³€ìˆ˜ê°€ ì´ˆê¸°í™” ë˜ë„ë¡í•¨
     }
 
+    // Update is called once per frame
     void FixedUpdate()
     {
-        //Move
-        rigid.velocity = new Vector3(nextMove1, rigid.velocity.y, nextMove2); //nextMove ¿¡ 0:¸ØÃã -1:¿ŞÂÊ 1:¿À¸¥ÂÊ À¸·Î ÀÌµ¿ 
-
-
-        //Platform check(¸Ê ¾ÕÀÌ ³¶¶³¾îÁö¸é µÚµ¹±â À§ÇØ¼­ ÁöÇüÀ» Å½»ö)
-
-
-        //ÀÚ½ÅÀÇ ÇÑ Ä­ ¾Õ ÁöÇüÀ» Å½»öÇØ¾ßÇÏ¹Ç·Î position.x + nextMove(-1,1,0ÀÌ¹Ç·Î ÀûÀıÇÔ)
-        Vector3 frontVec = new Vector3(rigid.position.x + nextMove1 * 1f, rigid.position.y, rigid.position.z + nextMove2 * 1f);
-
-        //ÇÑÄ­ ¾Õ ºÎºĞ¾Æ·¡ ÂÊÀ¸·Î ray¸¦ ½ô
-        Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
-
-        int layerMask = 3;
-
-        //·¹ÀÌ¸¦ ½÷¼­ ¸ÂÀº ¿ÀºêÁ§Æ®¸¦ Å½Áö 
-        bool raycastbool = Physics.Raycast(frontVec, Vector3.down, 1, layerMask);
-
-        //Å½ÁöµÈ ¿ÀºêÁ§Æ®°¡ null : ±× ¾Õ¿¡ ÁöÇüÀÌ ¾øÀ½
-        if (!raycastbool)
-        {
-            Invoke("Thinking", time);
-            nextMove1 = nextMove1 * (-1); //¿ì¸®°¡ Á÷Á¢ ¹æÇâÀ» ¹Ù²Ù¾î ÁÖ¾úÀ¸´Ï Think´Â Àá½Ã ¸ØÃß¾î¾ßÇÔ
-            nextMove2 = nextMove2 * (-1); //¿ì¸®°¡ Á÷Á¢ ¹æÇâÀ» ¹Ù²Ù¾î ÁÖ¾úÀ¸´Ï Think´Â Àá½Ã ¸ØÃß¾î¾ßÇÔ
-            CancelInvoke(); //think¸¦ Àá½Ã ¸ØÃá ÈÄ Àç½ÇÇà
-        }
-
+        rigid.velocity = new Vector3(nextMove1, rigid.velocity.y, nextMove2); //nextMove ì— 0:ë©ˆì¶¤ -1:ì™¼ìª½ 1:ì˜¤ë¥¸ìª½ ìœ¼ë¡œ ì´ë™ 
     }
 
     public void Thinking()
-    {//¸ó½ºÅÍ°¡ ½º½º·Î »ı°¢ÇØ¼­ ÆÇ´Ü (-1:¿ŞÂÊÀÌµ¿ ,1:¿À¸¥ÂÊ ÀÌµ¿ ,0:¸ØÃã  À¸·Î 3°¡Áö Çàµ¿À» ÆÇ´Ü)
+    {//ëª¬ìŠ¤í„°ê°€ ìŠ¤ìŠ¤ë¡œ ìƒê°í•´ì„œ íŒë‹¨ (-1:ì™¼ìª½ì´ë™ ,1:ì˜¤ë¥¸ìª½ ì´ë™ ,0:ë©ˆì¶¤  ìœ¼ë¡œ 3ê°€ì§€ í–‰ë™ì„ íŒë‹¨)
 
         Debug.Log("2");
-        //Random.Range : ÃÖ¼Ò<= ³­¼ö <ÃÖ´ë /¹üÀ§ÀÇ ·£´ı ¼ö¸¦ »ı¼º(ÃÖ´ë´Â Á¦¿ÜÀÌ¹Ç·Î ÁÖÀÇÇØ¾ßÇÔ)
-        nextMove1 = Random.Range(-1, 1);
-        nextMove1 = Random.Range(-1, 1);
+        //Random.Range : ìµœì†Œ<= ë‚œìˆ˜ <ìµœëŒ€ /ë²”ìœ„ì˜ ëœë¤ ìˆ˜ë¥¼ ìƒì„±(ìµœëŒ€ëŠ” ì œì™¸ì´ë¯€ë¡œ ì£¼ì˜í•´ì•¼í•¨)
+        
+        nextMove1 = Random.Range(-1f, 2f);
+        nextMove2 = Random.Range(-1f, 2f);
 
-        time = Random.Range(2f, 5f); //»ı°¢ÇÏ´Â ½Ã°£À» ·£´ıÀ¸·Î ºÎ¿© 
-        //Think(); : Àç±ÍÇÔ¼ö : µô·¹ÀÌ¸¦ ¾²Áö ¾ÊÀ¸¸é CPU°úºÎÈ­ µÇ¹Ç·Î Àç±ÍÇÔ¼ö¾µ ¶§´Â Ç×»ó ÁÖÀÇ ->Think()¸¦ Á÷Á¢ È£ÃâÇÏ´Â ´ë½Å Invoke()»ç¿ë
-        Invoke("Thinking", time); //¸Å°³º¯¼ö·Î ¹ŞÀº ÇÔ¼ö¸¦ timeÃÊÀÇ µô·¹ÀÌ¸¦ ºÎ¿©ÇÏ¿© Àç½ÇÇà 
+        time = Random.Range(2f, 5f); //ìƒê°í•˜ëŠ” ì‹œê°„ì„ ëœë¤ìœ¼ë¡œ ë¶€ì—¬ 
+        //Think(); : ì¬ê·€í•¨ìˆ˜ : ë”œë ˆì´ë¥¼ ì“°ì§€ ì•Šìœ¼ë©´ CPUê³¼ë¶€í™” ë˜ë¯€ë¡œ ì¬ê·€í•¨ìˆ˜ì“¸ ë•ŒëŠ” í•­ìƒ ì£¼ì˜ ->Think()ë¥¼ ì§ì ‘ í˜¸ì¶œí•˜ëŠ” ëŒ€ì‹  Invoke()ì‚¬ìš©
+        Invoke("Thinking", time); //ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì€ í•¨ìˆ˜ë¥¼ timeì´ˆì˜ ë”œë ˆì´ë¥¼ ë¶€ì—¬í•˜ì—¬ ì¬ì‹¤í–‰ 
     }
 }
