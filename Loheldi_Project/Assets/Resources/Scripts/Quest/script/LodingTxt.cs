@@ -100,11 +100,12 @@ public class LodingTxt : MonoBehaviour
 
     public GameObject CCImage;     //캐릭터 이미지
     public static Sprite[] CCImageList;
-    static Image spriteR;
+    public static Image spriteR;
 
     public GameObject cuttoon;        //컷툰 이미지
     public Sprite[] cuttoonImageList;
     static Image cuttoonspriteR;
+    public Text cuttontext;
 
     public TMP_InputField KeyToDreamInput;
     //public Fadeln fade_in_out;
@@ -348,7 +349,6 @@ public class LodingTxt : MonoBehaviour
         Input.multiTouchEnabled = false;
         //PlayerCamera.SetActive(true);
         data_Dialog = CSVReader.Read(FileAdress);
-        Debug.Log("스크립트 길이"+data_Dialog.Count);
         for (int k = 0; k <= data_Dialog.Count; k++)
         {
             if (data_Dialog[k]["scriptNumber"].ToString().Equals(Num))
@@ -374,7 +374,7 @@ public class LodingTxt : MonoBehaviour
         switch (o)
         {
             case 1: //비빔밥
-                Player.transform.position = new Vector3(12.6f, -8.4f, -4);
+                Player.transform.position = new Vector3(9.8f, -5.4f, -22f);
                 Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 Player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
@@ -382,12 +382,12 @@ public class LodingTxt : MonoBehaviour
                 NariMom.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 break;
             case 2:  //장작
-                Player.transform.position = new Vector3(13.6f, -8.4f, -4);
+                Player.transform.position = new Vector3(9.8f, -5.4f, -22f);
                 Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 NariMom.transform.position = Player.transform.position + new Vector3(2, 0, 0);
                 break;
             case 3: //열매따기
-                Player.transform.position = new Vector3(14.6f, -8.4f, -4);
+                Player.transform.position = new Vector3(9.8f, -5.4f, -22f);
                 Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 NariMom.transform.position = Player.transform.position + new Vector3(2, 0, 0);
                 break;
@@ -984,14 +984,16 @@ public class LodingTxt : MonoBehaviour
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("moveTos"))
         {
-            Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
+            StartCoroutine(fade());
+
+            /*Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
             Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
 
             Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
             Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
 
             Kangteagom.SetActive(true);
-            scriptLine();
+            scriptLine();*/
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("BMI"))
         {
@@ -1011,7 +1013,11 @@ public class LodingTxt : MonoBehaviour
         else if (data_Dialog[j]["scriptType"].ToString().Equals("BMIEnd"))
         {
             Inter.NpcNameTF = false;
-            scriptLine();
+
+            LoadTxt = "그럼 나는" + Draw.BMIresult + "이네.";
+            spriteR.sprite = CCImageList[9];
+            j++;
+            StartCoroutine(_typing());
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("moveToA"))
         {
@@ -1144,6 +1150,66 @@ public class LodingTxt : MonoBehaviour
         }
     }
 
+    public void testFaed()
+    {
+        StartCoroutine(fade());
+    }
+
+    IEnumerator fade()
+    {
+        ChatWin.SetActive(false);
+        cuttontext.text = "다음날 아침";
+        cuttontext.gameObject.SetActive(true);
+        cuttoon.SetActive(true);
+        cuttoonspriteR = cuttoon.GetComponent<Image>();
+        cuttoonspriteR.sprite = null;
+        cuttoonspriteR.color = Color.black;
+        bool fadein = true;
+
+        Color color = cuttoonspriteR.color;
+        color.a = 0.0f;
+        while (fadein)
+        {
+            Debug.Log("페이드 인");
+            cuttoonspriteR.color = color;
+            color.a += 0.1f;
+            yield return new WaitForSecondsRealtime(0.05f);
+            if(color.a > 1.1f)
+            {
+                fadein =false;
+            }
+        }
+        yield return new WaitForSecondsRealtime(0.2f);
+        Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
+        Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+
+        Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
+        Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+
+        Kangteagom.SetActive(true);
+        //scriptLine();
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        while (!fadein)
+        {
+            Debug.Log("페이드 아웃");
+            cuttoonspriteR.color = color;
+            color.a -= 0.1f;
+            yield return new WaitForSecondsRealtime(0.05f);
+            if(color.a < 0.0f)
+            {
+                //yield break;
+                fadein = true;
+            }
+        }
+        color.a = 1;
+        cuttoonspriteR.color = color;
+        cuttontext.gameObject.SetActive(false);
+        cuttoon.SetActive(false);
+        cuttoonspriteR.color = Color.white;
+        //j++;
+        scriptLine();
+    }
     void stopCorou()
     {
         JumpButtons.Nstop = false;
@@ -1341,7 +1407,7 @@ public class LodingTxt : MonoBehaviour
             typingSkip = false;
         }
     }
-    IEnumerator _typing()  //타이핑 효과
+    public IEnumerator _typing()  //타이핑 효과
     {
         typingSkip = true;
         if (!ChatWin.activeSelf)

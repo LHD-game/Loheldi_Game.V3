@@ -60,10 +60,10 @@ public class AnimationTrigger : MonoBehaviour
                 }
             }
 
-            if (UIButton.ClickTime >= UIButton.minClickTime && UIButton.Inter.Ladder)
+            /*if (UIButton.ClickTime >= UIButton.minClickTime && UIButton.Inter.Ladder)
             {
                 //
-            }
+            }*/
             yield return null;
         }
     }

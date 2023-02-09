@@ -467,13 +467,30 @@ public class Drawing : MonoBehaviour
     double BMI;
     public Text BMIText;
     public Text BMITalk;
+    public string BMIresult = "";
 
     public void BMIculcu()
     {
         H2 =  float.Parse(H.text)* 0.01f;
         BMI = (1.3f * float.Parse(W.text)) / math.pow(H2, 2.5f);
-        BMIText.text = BMI.ToString("F2");
+        if (BMI < 18.5f)
+            BMIresult = "저체중";
+        else if (BMI > 18.5&& BMI<22.9)
+            BMIresult = "정상";
+        else if (BMI > 22.9 && BMI<24.9)
+            BMIresult = "과체중";
+        else if (BMI > 24.9)
+            BMIresult = "비만";
+        BMIText.text = BMI.ToString("F2")+ "\n"+BMIresult;
         BMITalk.text = BMI.ToString("F2");
+
+    }
+
+    public void BMItalk()
+    {
+        chat.LoadTxt = "그리고 P_name의 BMI는 " + BMI.ToString("F2") + "입니다.";
+        LodingTxt.spriteR.sprite = LodingTxt.CCImageList[3];
+        StartCoroutine(chat._typing());
     }
     ///////////////보석 카드//////////////////////////////////////////
 
@@ -508,7 +525,7 @@ public class Drawing : MonoBehaviour
     }
     public void JNextLevel()
     {
-        J = 0;
+        J = 1;
         if (JuwelLength < MaxJuwelLength)
         {
             Debug.Log(MaxJuwelLength + "개의 보석을 선택하세요");
@@ -533,6 +550,7 @@ public class Drawing : MonoBehaviour
                 }
                 else
                 {
+                    J++;
                     switch (J)
                     {
                         case 1:

@@ -69,6 +69,7 @@ public class FlieChoice : MonoBehaviour
 
     public void NpcChoice(string NameNPC) //npc와 대화 선택하는 함수
     {
+        chat.NPCButton = 0;
         chat.FileAdress = "Scripts/Quest/DialogNPC";
 
         string[] QuestF = chat.DontDestroy.QuestIndex.Split('_');

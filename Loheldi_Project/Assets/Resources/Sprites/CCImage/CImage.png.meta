@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 170e8f3b37a3aee46b96bfc001c2345c
+guid: 122baae1914eecf4780003075568001e
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -38,6 +38,18 @@ TextureImporter:
   - first:
       213: -2711886523543675740
     second: CImage_11
+  - first:
+      213: -8589038184365053857
+    second: CImage_12
+  - first:
+      213: -1126428472164403648
+    second: CImage_13
+  - first:
+      213: -7094429460002530945
+    second: CImage_14
+  - first:
+      213: -4700759642727814543
+    second: CImage_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -68,7 +80,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -101,10 +113,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,22 +125,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 1024
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,10 +137,22 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -154,10 +166,10 @@ TextureImporter:
       name: CImage_0
       rect:
         serializedVersion: 2
-        x: 111
-        y: 602
-        width: 406
-        height: 426
+        x: 108
+        y: 1052
+        width: 402
+        height: 421
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +187,10 @@ TextureImporter:
       name: CImage_1
       rect:
         serializedVersion: 2
-        x: 600
-        y: 599
-        width: 407
-        height: 426
+        x: 591
+        y: 1050
+        width: 403
+        height: 421
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +208,10 @@ TextureImporter:
       name: CImage_2
       rect:
         serializedVersion: 2
-        x: 1074
-        y: 596
-        width: 407
-        height: 426
+        x: 1060
+        y: 1047
+        width: 401
+        height: 420
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +229,10 @@ TextureImporter:
       name: CImage_3
       rect:
         serializedVersion: 2
-        x: 1543
-        y: 591
-        width: 407
-        height: 426
+        x: 1523
+        y: 1042
+        width: 401
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,10 +250,10 @@ TextureImporter:
       name: CImage_4
       rect:
         serializedVersion: 2
-        x: 2027
-        y: 584
-        width: 408
-        height: 431
+        x: 2000
+        y: 1035
+        width: 402
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,10 +271,10 @@ TextureImporter:
       name: CImage_5
       rect:
         serializedVersion: 2
-        x: 2508
-        y: 581
-        width: 410
-        height: 427
+        x: 2478
+        y: 1032
+        width: 404
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,10 +292,10 @@ TextureImporter:
       name: CImage_6
       rect:
         serializedVersion: 2
-        x: 107
-        y: 74
-        width: 407
-        height: 427
+        x: 106
+        y: 532
+        width: 402
+        height: 421
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,10 +313,10 @@ TextureImporter:
       name: CImage_7
       rect:
         serializedVersion: 2
-        x: 611
-        y: 68
-        width: 407
-        height: 425
+        x: 603
+        y: 525
+        width: 401
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,10 +334,10 @@ TextureImporter:
       name: CImage_8
       rect:
         serializedVersion: 2
-        x: 1084
-        y: 59
-        width: 407
-        height: 428
+        x: 1070
+        y: 516
+        width: 401
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,10 +355,10 @@ TextureImporter:
       name: CImage_9
       rect:
         serializedVersion: 2
-        x: 1564
-        y: 47
-        width: 406
-        height: 427
+        x: 1543
+        y: 505
+        width: 402
+        height: 421
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -364,10 +376,10 @@ TextureImporter:
       name: CImage_10
       rect:
         serializedVersion: 2
-        x: 2042
-        y: 50
-        width: 406
-        height: 427
+        x: 2015
+        y: 504
+        width: 401
+        height: 428
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -385,10 +397,10 @@ TextureImporter:
       name: CImage_11
       rect:
         serializedVersion: 2
-        x: 2511
-        y: 50
-        width: 410
-        height: 427
+        x: 2476
+        y: 504
+        width: 403
+        height: 425
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,10 +414,94 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: CImage_12
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 27
+        width: 408
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f58a7aa274b9dc880800000000000000
+      internalID: -8589038184365053857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CImage_13
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 27
+        width: 407
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04631cbc54f1e50f0800000000000000
+      internalID: -1126428472164403648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CImage_14
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 27
+        width: 407
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f799b787ef58b8d90800000000000000
+      internalID: -7094429460002530945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CImage_15
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 26
+        width: 405
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17a67b8b20c83ceb0800000000000000
+      internalID: -4700759642727814543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f3b7bfe48ac05414c9140ba434b5e08d
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

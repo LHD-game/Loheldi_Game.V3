@@ -29,7 +29,7 @@ public class UIButton : MonoBehaviour
 
     public FlieChoice Chat;
     public LodingTxt chat;
-    public static Interaction Inter;
+    public Interaction Inter;
 
     public GameObject SoundEffectManager;
 
@@ -53,6 +53,7 @@ public class UIButton : MonoBehaviour
 
     public void JumpButton()                //점프버튼
     {
+        Debug.Log("점프");
         GameObject SoundManager = GameObject.Find("SoundManager");
         if (OnLand && Inter.NearNPC)     //NPC주변에 있다면
         {
@@ -85,7 +86,6 @@ public class UIButton : MonoBehaviour
             //Player.transform.LookAt(targetPositionPlayer);
             Invoke("ChatStart", 1f);
         }
-        else if (Inter.Ladder) return;
         else if (Inter.Door)
         {
             if (Inter.NameNPC.Equals("InDoor"))
@@ -128,15 +128,20 @@ public class UIButton : MonoBehaviour
     }
     public void OnPointerDown()//PointerEventData eventData)
     {
+        Debug.Log("Down");
         if (Inter.Ladder)
         {
             isClick = true;
             StartCoroutine(Ladderup());
         }
+        else
+            JumpButton();
     }
     public void OnPointerUp()//PointerEventData eventData)
     {
-        isClick = false;
+        Debug.Log("UP");
+        if (!isClick)
+            isClick = false;
     }
 
     void stopCorou()
