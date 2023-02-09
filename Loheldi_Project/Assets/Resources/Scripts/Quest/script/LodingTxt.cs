@@ -143,7 +143,7 @@ public class LodingTxt : MonoBehaviour
     public GameObject PlayerRope;
     public GameObject NPCRope;
 
-    string PlayerName;
+    public string PlayerName;
 
     Animator ToothAnimator;
     private void Awake()
@@ -1010,12 +1010,18 @@ public class LodingTxt : MonoBehaviour
             j++;
             scriptLine();
         }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("BMITalkT"))
+        {
+            j++;
+            Draw.BMItalk();
+        }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("BMIEnd"))
         {
             Inter.NpcNameTF = false;
 
-            LoadTxt = "그럼 나는" + Draw.BMIresult + "이네.";
-            spriteR.sprite = CCImageList[9];
+            chatName.text = PlayerName;
+            LoadTxt = "그럼 나는 " + Draw.BMIresult + "이네."; 
+            CCImage.SetActive(false);
             j++;
             StartCoroutine(_typing());
         }
@@ -1135,7 +1141,6 @@ public class LodingTxt : MonoBehaviour
         {
             Jewel.SetActive(false);
             scriptLine();
-
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("Healthy")) //29
         {
