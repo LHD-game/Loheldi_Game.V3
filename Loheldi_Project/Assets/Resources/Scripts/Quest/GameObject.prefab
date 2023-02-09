@@ -4150,6 +4150,7 @@ MonoBehaviour:
   H: {fileID: 8831148850650060374}
   BMIText: {fileID: 8831148851452243504}
   BMITalk: {fileID: 8831148852275622534}
+  BMIresult: 
   Jtext: {fileID: 8831148851889021097}
   Juwels:
   - {fileID: 8831148851788215931}
@@ -19721,6 +19722,7 @@ MonoBehaviour:
   CCImage: {fileID: 5751474791343029894}
   cuttoon: {fileID: 2302545409950171822}
   cuttoonImageList: []
+  cuttontext: {fileID: 0}
   KeyToDreamInput: {fileID: 314829419705685013}
   JumpButtons: {fileID: 2153352630308454644}
   tu: {fileID: 1345286879411780403}
@@ -23760,6 +23762,7 @@ MonoBehaviour:
   Camera2: {fileID: 8831148850752348931}
   Chat: {fileID: 1345286879411780405}
   chat: {fileID: 1345286879411780407}
+  Inter: {fileID: 0}
   SoundEffectManager: {fileID: 2153352630308454638}
   time: 0
   isClick: 0

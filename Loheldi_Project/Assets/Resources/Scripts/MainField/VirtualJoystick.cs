@@ -60,7 +60,10 @@ public class VirtualJoystick : MonoBehaviour
     {
         if (MoveFlag)  //Player가 움직이고 있다면
         {
-            Playerrb.AddRelativeForce(Vector3.forward * 3000f);  //앞 방향으로 밀기 (방향 * 힘)
+            if (UIButton.OnLand)
+            {
+                Playerrb.AddRelativeForce(Vector3.forward * 3000f);  //앞 방향으로 밀기 (방향 * 힘)
+            }
 
             if (Playerrb.velocity.magnitude > speed1)
             {

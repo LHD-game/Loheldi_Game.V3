@@ -1,8 +1,14 @@
 fileFormatVersion: 2
-guid: 3008807ac775a8846a26842cf5dc7eb9
+guid: e23032daa5adda447ae87faa36cf7c45
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -1149524611650042550
+    second: Armature|minigame_wood_01_player_
+  - first:
+      74: -2241489093398225663
+    second: Armature|walk01
   externalObjects: {}
   materials:
     materialImportMode: 2
