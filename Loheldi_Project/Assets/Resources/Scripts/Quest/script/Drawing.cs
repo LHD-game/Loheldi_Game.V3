@@ -464,7 +464,7 @@ public class Drawing : MonoBehaviour
     public Text W;
     public Text H;
     double H2;
-    double BMI;
+    double BMI=0;
     public Text BMIText;
     public Text BMITalk;
     public string BMIresult = "";
@@ -488,7 +488,7 @@ public class Drawing : MonoBehaviour
 
     public void BMItalk()
     {
-        chat.LoadTxt = "그리고 P_name의 BMI는 " + BMI.ToString("F2") + "입니다.";
+        chat.LoadTxt = "그리고 "+chat.PlayerName + "의 BMI는 " + BMI.ToString("F2") + "입니다.";
         LodingTxt.spriteR.sprite = LodingTxt.CCImageList[3];
         StartCoroutine(chat._typing());
     }
@@ -599,7 +599,6 @@ public class Drawing : MonoBehaviour
             JuwelLength--;
         }
 
-        Invoke("scriptLine", 1f);   //딜레이 후 스크립트 띄움
 
     }
 

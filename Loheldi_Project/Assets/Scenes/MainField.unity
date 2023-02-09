@@ -8318,7 +8318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1424139406287663728, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: -7602575295300105166, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9904,7 +9904,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4346895846211917646, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: -4763430351799203668, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12833,7 +12833,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD80\uBAA8\uB2D8 \uBC88\uD638\uB97C \uC798\uBABB \uC785\uB825\uD558\uC168\uC2B5\uB2C8\uB2E4."
+  m_Text: "\uBD80\uBAA8\uB2D8 \uBC88\uD638\uB97C \uC798\uBABB \uC785\uB825\uD558\uC168\uC2B5\uB2C8\uB2E4.\n"
 --- !u!222 &486901982
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14988,7 +14988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8234124664376470694, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: -4733043043097316182, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26492,18 +26492,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7504651044331650487}
-        m_TargetAssemblyTypeName: LodingTxt, Assembly-CSharp
-        m_MethodName: Line
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &973870216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29086,7 +29074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7916265515694018154, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: 1333511102003508737, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33164,7 +33152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2109923860601011832, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: 4994364927991842229, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36032,8 +36020,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -65, y: 132}
-  m_SizeDelta: {x: 263.93115, y: 145.0669}
+  m_AnchoredPosition: {x: -109.21777, y: 98.513916}
+  m_SizeDelta: {x: 175.4955, y: 78.0947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294366623
 MonoBehaviour:
@@ -46635,7 +46623,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7409334403842283928, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: -64283603411894120, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -47800,7 +47788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -94176746981238118, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: 3711257849883874657, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -51808,7 +51796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2675533480646972573, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: 5615629449627316907, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -53808,18 +53796,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 9138072642835312428}
-        m_TargetAssemblyTypeName: Drawing, Assembly-CSharp
-        m_MethodName: JFinishWrite
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &1893435011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54389,7 +54365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7809773699998519, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: -5792363425603713987, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -55882,7 +55858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6869507578990508668, guid: 52c39f36d6408534da1e54f23e563f63, type: 3}
+  m_Sprite: {fileID: -8721410393241497762, guid: 9ad3458d5ea90884094d4ad47b323f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -64566,7 +64542,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
   m_Text: "\uBD80\uBAA8\uB2D8 \uC778\uC99D\uC774 \uC644\uB8CC\uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uC6B0\uD3B8\uD568\uC5D0\uC11C
-    \uBCF4\uC0C1\uC744 \uBC1B\uC73C\uC138\uC694!"
+    \uBCF4\uC0C1\uC744 \uBC1B\uC73C\uC138\uC694!\n"
 --- !u!222 &1084547807219010979
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71603,7 +71579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 26.814}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -57}
+  m_AnchoredPosition: {x: 41.3, y: -18.5}
   m_SizeDelta: {x: 58.645, y: 63.2461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2781096369029536450
@@ -89907,6 +89883,7 @@ MonoBehaviour:
   PlayerhulaAnimator: {fileID: 1507578648}
   PlayerRope: {fileID: 718603742}
   NPCRope: {fileID: 697102040}
+  PlayerName: 
   typingSkip: 0
 --- !u!224 &7504651044441404308
 RectTransform:
