@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using BackEnd;
 public class UIButton : MonoBehaviour
 {
-    public static bool OnLand = false;    //Player가 바닥에 있는지 확인
+    public static bool OnLand = true;    //Player가 바닥에 있는지 확인
     public GameObject Player;             //Player선언
     public GameObject Map;                //Map선언                
     public GameObject GaguShop;           //가구점             
@@ -140,7 +140,7 @@ public class UIButton : MonoBehaviour
     public void OnPointerUp()//PointerEventData eventData)
     {
         Debug.Log("UP");
-        if (!isClick)
+        if (isClick)
             isClick = false;
     }
 
