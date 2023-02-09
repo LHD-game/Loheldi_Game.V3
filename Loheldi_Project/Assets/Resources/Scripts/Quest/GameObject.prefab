@@ -4156,6 +4156,13 @@ MonoBehaviour:
   - {fileID: 8831148851644394851}
   Image: {fileID: 8831148850987860471}
   JButton: {fileID: 8831148852169424896}
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  text3: {fileID: 0}
+  write1: {fileID: 0}
+  write2: {fileID: 0}
+  write3: {fileID: 0}
+  writting: 1
 --- !u!114 &314829418576619923
 MonoBehaviour:
   m_ObjectHideFlags: 0
