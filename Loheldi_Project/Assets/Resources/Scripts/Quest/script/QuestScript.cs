@@ -85,6 +85,10 @@ public class QuestScript : MonoBehaviour
         {
             Instantiate(Resources.Load<GameObject>("Models/NPC/npc/parents"), new Vector3(-0.2f, -6.4f, 0), Quaternion.Euler(new Vector3(0, 133, 0)));
         }
+        else if (DontDestroy.QuestIndex.Equals("24_1")) //ÈûÂùÀÌ ÈÇ¶óÈÄÇÁ
+        {
+            chat.NPCHula.SetActive(true);
+        }
 
 
         if (SceneManager.GetActiveScene().name == "MainField")

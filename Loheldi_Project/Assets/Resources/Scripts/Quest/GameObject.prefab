@@ -19743,6 +19743,7 @@ MonoBehaviour:
   PlayerhulaAnimator: {fileID: 8831148851783538072}
   PlayerRope: {fileID: 8440742201966974201}
   NPCRope: {fileID: 8440742202014580723}
+  PlayerName: 
   typingSkip: 0
 --- !u!114 &1345286879411780405
 MonoBehaviour:

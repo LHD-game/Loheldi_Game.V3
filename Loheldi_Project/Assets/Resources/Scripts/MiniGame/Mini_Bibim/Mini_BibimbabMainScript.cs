@@ -8,7 +8,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     public GameObject[] food;
     public Material[] Egg;
     public Material[] Egg_material;
-    public bool[] FoodActive;
+    public bool[] Foodorder;
     private bool EggFinish=false;
 
     private void Start()
@@ -103,6 +103,16 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                     }
                     return;
                 }
+                else if (hit.collider.gameObject.name.Equals("11"))
+                {
+                    GameObject target = hit.collider.transform.parent.gameObject;
+                    Debug.Log(hit.collider.gameObject.name);
+                    foreach (GameObject i in food)
+                    {
+                        i.SetActive(false);
+                    }
+                    return;
+                }
                 //Destroy(target);
 
                 Debug.Log(foodNum);
@@ -119,6 +129,26 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             EggFinish=true;
             Egg_material[1] = Egg[1]; //0에 메테리얼 번호
             food[0].GetComponent<MeshRenderer>().materials = Egg_material;
+        }
+
+        void order()
+        {
+            int RamdomorderCount;
+            RamdomorderCount = UnityEngine.Random.Range(0, 9);
+
+            for(int i=0; i< RamdomorderCount; i++)
+            {
+                int foodNum = UnityEngine.Random.Range(0, 9);
+                if (Foodorder[foodNum])
+                    ;
+                else
+                    Foodorder[foodNum] = false;
+            }
+        }
+
+        void CheckMenu()
+        {
+
         }
     }
 }
