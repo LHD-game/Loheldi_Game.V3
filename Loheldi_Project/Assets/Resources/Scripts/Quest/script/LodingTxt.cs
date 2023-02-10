@@ -135,13 +135,21 @@ public class LodingTxt : MonoBehaviour
     [SerializeField]
     private ParticleSystem hairPs;
 
-    public Animator JumpAnimator;
-    public Animator NPCJumpAnimator;
+    public Animator JumpAnimator; //플레이어 애니메이터
+    public Animator NPCJumpAnimator;  //힘찬이 애니메이터
     public Animator JumpAnimatorRope;
     public Animator NPCJumpAnimatorRope;
-    public Animator PlayerhulaAnimator;
     public GameObject PlayerRope;
     public GameObject NPCRope;
+
+    public Animator PlayerHulaAnimator;  //플레이어 accessories에 들어있는 애니메이터
+    public Animator NPCHulaAnimator;   //힘찬이 모델링 최상위오브젝트에 든 애니메이터
+    public Animator PHulaAnimator; //플레이어 훌라후프 애니메이터
+    public Animator NHulaAnimator;  //NPC훌라후프 애니메이터
+    public GameObject PlayerHula; //플레이어 훌라후프 모델링
+    public GameObject NPCHula;  //NPC훌라후프 모델링
+
+
 
     public string PlayerName;
 
@@ -234,7 +242,7 @@ public class LodingTxt : MonoBehaviour
 
     public void AnimationActivation()
     {
-        PlayerhulaAnimator.enabled = true;
+        PlayerHulaAnimator.enabled = true;
     }
     public void VideoTest()
     {
@@ -1043,7 +1051,7 @@ public class LodingTxt : MonoBehaviour
             }
             else if (data_Dialog[j]["cuttoon"].ToString().Equals("1"))
             {
-                Player.position = new Vector3(54, 5, -14);
+                Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
                 Player.rotation = Quaternion.Euler(0, 180, 0);
                 JumpAnimator.SetBool("JumpRope", true);
                 JumpAnimatorRope.SetBool("JumpRope", true);
@@ -1152,6 +1160,81 @@ public class LodingTxt : MonoBehaviour
         {
             Healthy.SetActive(false);
             scriptLine();
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("Hulahoop"))
+        {
+            //훌라후프
+        /*public Animator PlayerHulaAnimator;  //플레이어 accessories에 들어있는 애니메이터
+        public Animator NPCHulaAnimator;   //힘찬이 모델링 최상위오브젝트에 든 애니메이터
+        public Animator PHulaAnimator; //플레이어 훌라후프 애니메이터
+        public Animator NHulaAnimator;  //NPC훌라후프 애니메이터
+        public GameObject PlayerHula; //플레이어 훌라후프 모델링
+        public GameObject NPCHula;  //NPC훌라후프 모델링*/
+            if (data_Dialog[j]["cuttoon"].ToString().Equals("0")) //플레이어한테 훌라후프 만들기 기존 애니메이터 끄기
+            {
+                GameObject.Find("Himchan").transform.rotation = Quaternion.Euler(0, 180, 0);
+                Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
+                Player.rotation = Quaternion.Euler(0, 180, 0);
+
+                PlayerHula.SetActive(true) ;  //P H active
+            }
+            else if (data_Dialog[j]["cuttoon"].ToString().Equals("1")) //힘찬 훌라후프 애니매니터 켜기 힘찬이 훌라후프 들기
+            {
+                JumpAnimator.enabled = false; //P A off
+                NPCJumpAnimator.enabled = false;  //N A off
+                NPCHulaAnimator.enabled = true;
+                NHulaAnimator.SetBool("Hoopup", true);
+                NPCHulaAnimator.SetBool("Hoopup", true);  //들기
+            }
+            else if (data_Dialog[j]["cuttoon"].ToString().Equals("2")) //플레이어 훌라후프 애니메이터 켜기 플레이어 훌라후프 들기
+            {
+                PlayerHulaAnimator.enabled = true;
+                PHulaAnimator.SetBool("Hoopup", true);
+                PlayerHulaAnimator.SetBool("Hoopup", true);  //들기
+            }
+            else if (data_Dialog[j]["cuttoon"].ToString().Equals("3")) //힘찬이 훌라후프 돌리기, 플레이어 돌리다 떨구기 1
+            {
+                NHulaAnimator.SetBool("HoopStart", true);
+                NPCHulaAnimator.SetBool("HoopStart", true); //돌리기 시작
+                NHulaAnimator.SetBool("HoopRotation", true);
+                NPCHulaAnimator.SetBool("HoopRotation", true); //돌리기
+
+                PHulaAnimator.SetBool("HoopStart", true);
+                PlayerHulaAnimator.SetBool("HoopStart", true); //돌리기 시작
+                PHulaAnimator.SetBool("HoopRotation", true);
+                PlayerHulaAnimator.SetBool("HoopRotation", true); //돌리기
+                PHulaAnimator.SetBool("HoopFail", true);
+                PlayerHulaAnimator.SetBool("HoopFail", true); //떨구기
+            }
+            else if (data_Dialog[j]["cuttoon"].ToString().Equals("4")) //계속 돌리기
+            {
+                PHulaAnimator.SetBool("HoopFail", false);
+                PlayerHulaAnimator.SetBool("HoopFail", false); //떨구기 취소
+            }
+            else if (data_Dialog[j]["cuttoon"].ToString().Equals("5")) //멈추고 내려두기 그리고 대기모션
+            {
+                NHulaAnimator.SetBool("HoopEnd", true);
+                NPCHulaAnimator.SetBool("HoopEnd", true); //멈추기
+                NHulaAnimator.SetBool("HoopDown", true);
+                NPCHulaAnimator.SetBool("HoopDown", true); //내리기
+
+                PHulaAnimator.SetBool("HoopEnd", true);
+                PlayerHulaAnimator.SetBool("HoopEnd", true); //멈추기
+                PHulaAnimator.SetBool("HoopDown", true);
+                PlayerHulaAnimator.SetBool("HoopDown", true); //내리기
+
+
+            }
+            else if (data_Dialog[j]["cuttoon"].ToString().Equals("6")) //훌라후프들 없애기
+            {
+                NPCHulaAnimator.enabled = false;
+                PlayerHulaAnimator.enabled = false;
+                JumpAnimator.enabled = true; //P A off
+                NPCJumpAnimator.enabled = true;  //N A off
+                PlayerHula.SetActive(false);  //P H active
+                NPCHula.SetActive(false);  //P H active
+            }
+            Invoke("scriptLine", 2f);
         }
     }
 
