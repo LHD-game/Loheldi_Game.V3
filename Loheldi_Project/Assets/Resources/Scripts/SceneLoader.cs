@@ -84,6 +84,10 @@ public class SceneLoader : MonoBehaviour
     {
         LoadingSceneManager.LoadScene("Game_DropFruit");
     }
+    public void GotoBibimbapGame()
+    {
+        LoadingSceneManager.LoadScene("Game_Bibimbap");
+    }
 
     public void GotoComditionWindow() //삭제될 친구
     {

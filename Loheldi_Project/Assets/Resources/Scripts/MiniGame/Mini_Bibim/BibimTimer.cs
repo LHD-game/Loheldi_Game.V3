@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class BibimTimer : MonoBehaviour
 {
+    public Mini_BibimbabMainScript Bibim;
+
     private static Timer _instance;
+    public Slider[] WaitS;
+
     public static Timer instance
     {
         get
@@ -39,16 +43,18 @@ public class BibimTimer : MonoBehaviour
     {
         time_current -= Time.deltaTime;
         timeTxt.text = $"{time_current:N1}";
-        if (GameManager.instance.ReturnLife() <= 0)
+        if (time_current <= 0)
         {
             EndTimer();
         }
 
     }
+
     public void EndTimer()
     {
         timeTxt.text = $"{time_current:N1}";
         isRun = false;
+        Bibim.GameReset();
     }
 
 
@@ -63,7 +69,7 @@ public class BibimTimer : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void PauseTimer()
+    public void PauseTimer()  //일시정지
     {
         if (!isPause)
         {
@@ -78,22 +84,15 @@ public class BibimTimer : MonoBehaviour
 
     }
 
-
-    /*public int GameLvUp()
+    public IEnumerator WaitTimer(int i)
     {
-        float time = 10.0f;
-        if (time_current >= time_current_tmp + time)
+        WaitS[i].value = WaitS[i].maxValue;
+        while (WaitS[i].value > 0)
         {
-            time_current_tmp += time;
-            gLevel++;
-            if (gLevel > 8)
-            {
-                gLevel = 8;
-            }
-            Debug.Log("gLevel: " + gLevel);
-            GameManager.instance.FoodDropsec(gLevel);
+            WaitS[i].value -= 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
         }
-
-        return gLevel;
-    }*/
+        Debug.Log(i + "타임아웃");
+        Bibim.ResetGuest(i);
+    }
 }
