@@ -1298,7 +1298,7 @@ GameObject:
   - component: {fileID: 500271131}
   - component: {fileID: 500271128}
   m_Layer: 0
-  m_Name: NariMom
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
