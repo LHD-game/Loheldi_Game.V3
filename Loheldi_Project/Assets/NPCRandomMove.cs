@@ -25,6 +25,7 @@ public class NPCRandomMove : MonoBehaviour
         nextMove1 = Random.Range(-1f, 2f);    //생성 위치 랜덤
         nextMove2 = Random.Range(-1f, 2f);
         Box = Instantiate(boxorigin, new Vector3(this.gameObject.transform.position.x + nextMove1, -5.4f, this.gameObject.transform.position.z + nextMove2), Quaternion.identity);
+        Box.transform.parent = this.transform.parent;
         rigid = GetComponent<Rigidbody>();    //↑ NPC주변에 랜덤한 범위에 Box생성
         Invoke("Stop", time);                 //처음에는 Stop Invoke 실행
     }

@@ -20,20 +20,27 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
     bool zbool = false;
 
     public GameObject Drop;                 //생성될 도토리들의 부모 오브젝트
-    public GameObject Panel;                //게임 종료시 진행을 막을 UI
+    public GameObject Panel;                //게임 종료시 진행을 막을 UI, 흔들라는 이미지가 나올때 나올 UI
+    public GameObject PleaseShake;          //흔들라는 이미지 UI
     public GameObject ReStartButton;        //게임 다시시작 버튼
+
+
     int DropCount = 0;                      //도토리 갯수(바구니 리셋용)
     int DropCount2 = 0;                     //도토리 갯수(임시)
     int BasketScore = 0;                    //채운 바구니 갯수(점수)
 
     [SerializeField]
     public static float nowTime = 30;       //게임 플레이 시간
+    public static float LastShakeTime = 2;  //마지막으로 흔들린 시간
 
     public Text TimerText;                  //시간제한 텍스트 오브젝트
     public Text Score;                      //점수 텍스트 오브젝트
 
     public void Shake()                         //"흔들림"을 인식했을때
     {
+        Panel.SetActive(false);                     //판넬 치우기
+        PleaseShake.SetActive(false);               //흔들기 UI도 치우기
+        LastShakeTime = 2;                          //마지막으로 흔들린 시간 초기화
         Dropx = Random.Range(0.5f, -0.5f);          //도토리가 생성될 범위 랜덤 설정
         Dropy = 1f;
         Dropz = Random.Range(0.5f, -0.5f);
@@ -58,7 +65,8 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         DropCount2 = 0;
         BasketScore = 0;
         nowTime = 30;
-        Panel.SetActive(false);
+        Panel.SetActive(true);
+        PleaseShake.SetActive(true);
         ReStartButton.SetActive(false);
     }
 
@@ -100,12 +108,18 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         }
 
         nowTime -= Time.deltaTime;                                  //현재 타이머에서 전 프레임이 지난 시간을 뺌
+        LastShakeTime -= Time.deltaTime;
         if (nowTime <= 0 || BasketScore >=3)                        //시간 제한이 끝나거나 일정 점수를 획득하면( 프로토타입용 임시, 분리예정)
         {
             nowTime = 0;                                            //시간 0으로 고정
             Panel.SetActive(true);                                  //게임 진행 정지용 판넬 등장
             ReStartButton.SetActive(true);                          //게임 제시작 버튼 두두둥장
         }
-        TimerText.text = string.Format(" :  {0:N2}", nowTime);      //타이머 UI에 반영
+        if (LastShakeTime <= 0)                                     //일정시간동안 흔들리지 않았으면
+        {
+            Panel.SetActive(true);                                  //판넬UI등장
+            PleaseShake.SetActive(true);                            //흔들어주세요
+        }
+        TimerText.text = string.Format(" : {0:N2}", nowTime);      //타이머 UI에 반영
     }
 }
