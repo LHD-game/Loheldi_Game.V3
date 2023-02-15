@@ -19740,9 +19740,14 @@ MonoBehaviour:
   NPCJumpAnimator: {fileID: 8831148850589939359}
   JumpAnimatorRope: {fileID: 5013930170792532868}
   NPCJumpAnimatorRope: {fileID: 5013930170779316366}
-  PlayerhulaAnimator: {fileID: 8831148851783538072}
   PlayerRope: {fileID: 8440742201966974201}
   NPCRope: {fileID: 8440742202014580723}
+  PlayerHulaAnimator: {fileID: 0}
+  NPCHulaAnimator: {fileID: 0}
+  PHulaAnimator: {fileID: 0}
+  NHulaAnimator: {fileID: 0}
+  PlayerHula: {fileID: 0}
+  NPCHula: {fileID: 0}
   PlayerName: 
   typingSkip: 0
 --- !u!114 &1345286879411780405
