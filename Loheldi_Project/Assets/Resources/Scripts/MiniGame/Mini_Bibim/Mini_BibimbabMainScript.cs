@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class Mini_BibimbabMainScript : MonoBehaviour
 {
+    public BibimTimer BibimT;
+
+    public float WaitTime = 0;
+
     public int Level;
     public GameObject[] NowGuest = new GameObject[3];
 
@@ -17,7 +21,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     public int[] FoodCook = new int[9];
     int[][] FoodOrders = new int[3][] { new int[9], new int[9], new int[9] };
-    public GameObject[][] FoodImg = new GameObject[3][];//{ new GameObject[7], new GameObject[7], new GameObject[7] };
+    public GameObject[][] FoodImg = new GameObject[3][];
     public GameObject[] FoodImg1 =new GameObject[7];
     public GameObject[] FoodImg2 =new GameObject[7];
     public GameObject[] FoodImg3 =new GameObject[7];
@@ -34,21 +38,19 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     IEnumerator coroutine;
 
+    IEnumerator[] WaitTimer = new IEnumerator[3];
+
     private void Start()
     {
         FoodImg[0] = FoodImg1;
         FoodImg[1] = FoodImg2;
         FoodImg[2] = FoodImg3;
+        coroutine = EggFrie();
         Egg_material = food[0].GetComponent<MeshRenderer>().materials;
+        GameReset();
     }
     public void GameReset()
     {
-        coroutine = EggFrie();
-        FoodImg[0] = FoodImg1;
-        FoodImg[2] = FoodImg2;
-        FoodImg[1] = FoodImg3;
-        Egg_material = food[0].GetComponent<MeshRenderer>().materials;
-
         for(int i=0; i<3; i++)
         {
             NowGuest[i] = null;
@@ -59,13 +61,20 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         foreach (GameObject o in TalkBallon)
             o.SetActive(false);
 
-        BibimScore.text = "0";
+        foreach (IEnumerator i in WaitTimer)
+        {
+            if (i == null)
+                continue;
+            else
+                StopCoroutine(i);
+        }
         BibimReset();
-        GameStart();
         EggreSet();
+        //GameStart();
     }
-    void GameStart()
+    public void GameStart()
     {
+        BibimScore.text = "0";
         for (int i = 0; i < Level; i++)
         {
             orderPosition(i);
@@ -90,7 +99,6 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             if (hit.collider.tag == "BibimFood")
             {
                 int foodNum = Int32.Parse(hit.collider.gameObject.name);
-                //foodNum -= 1;
                 if (foodNum > 8)
                 {
                     if (hit.collider.gameObject.name.Equals("9"))
@@ -103,7 +111,6 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                     {
                         GameObject target = hit.collider.transform.parent.gameObject;
                         CheckMenu();
-                        //BibimReset();
                         return;
                     }
                 }
@@ -120,7 +127,6 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                     else if (hit.collider.gameObject.name.Equals("6"))
                     {
                         GameObject target = hit.collider.transform.parent.gameObject;
-                        //Debug.Log(hit.collider.gameObject.name);
                         if (!EggFinish)
                         {
                             return;
@@ -134,10 +140,6 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
                         EggreSet();
                     }
-
-                    //Destroy(target);
-
-                    Debug.Log("foodNum = " + foodNum);
 
                     food[foodNum].SetActive(true);
                     if (FoodCook[foodNum] == 0)
@@ -170,7 +172,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         EggFinish = false;
         EggBurn = false;
         food[0].SetActive(true);
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(3f);
         EggFinish = true;
         Egg_material[1] = Egg[1]; //0에 메테리얼 번호
         food[0].GetComponent<MeshRenderer>().materials = Egg_material;
@@ -192,6 +194,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         FoodCook = Enumerable.Repeat(1, 9).ToArray();
         FoodCook[0] = 0;
     }
+
     void EggreSet()
     {
         StopCoroutine(coroutine);
@@ -200,8 +203,13 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         Egg_material[0] = Egg[4];
         food[0].GetComponent<MeshRenderer>().materials = Egg_material;
     }
+
     void NpcCoice(int i)
     {
+        foreach (GameObject j in FoodImg[i])
+        {
+            j.SetActive(false);
+        }
         GuestNum[i] = UnityEngine.Random.Range(0, 7);
         if (!Guest[GuestNum[i]].activeSelf)
         {
@@ -209,6 +217,9 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             NowGuest[i].SetActive(true);
             TalkBallon[i].SetActive(true);
             NowGuest[i].transform.position = Position[i].transform.position;
+            Debug.Log(WaitTime);
+            WaitTimer[i] = BibimT.WaitTimer(i);
+            StartCoroutine(WaitTimer[i]);
         }
         else
             NpcCoice(i);
@@ -250,21 +261,22 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                 {
                     FoodOrders[i][foodNum] = 1;
                     FoodImg[i][foodNum].SetActive(true);
-                    //Debug.Log("주문 = " + FoodName[foodNum] + " 빼주세요");
+                    Debug.Log("주문 = " + FoodName[foodNum] + " 빼주세요");
                 }
         }
         //Array.Copy(Foodorder, FoodCook, 9);
         //Foodorder.CopyTo(FoodCook, 9);
     }
-    bool success=true;
+    bool success;
     void CheckMenu()
     {
         for (int i = 0; i < Level; i++)
         {
-            success = true;
-            for (int check = 0; check < FoodOrders.Length; check++)
+            success = true; 
+            Debug.Log(i+"번째 매뉴와 비교");
+            for (int check = 0; check < FoodOrders[i].Length; check++)
             {
-                //Debug.Log("주문 = " + FoodOrders[i][check] + "\n" + "요리 = " + FoodCook[check]);
+                Debug.Log("주문 = " + FoodOrders[i][check] + "\n" + "요리 = " + FoodCook[check]);
                 if ((int)FoodCook[check] != (int)FoodOrders[i][check])
                 {
                     Debug.Log("매뉴 오류");
@@ -276,18 +288,27 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             }
             if (success)
             {
-                NowGuest[i].SetActive(false);
-                NowGuest[i] = null;
+                ResetGuest(i);
                 BibimScore.text = (Int32.Parse(BibimScore.text) + 1).ToString();
-                BibimReset();
                 Debug.Log("조리성공 i = " + i);
-                //Invoke("order(i)", 1f);  //요거요거
-                order(i);
-
-
                 return;
             }
         }
-        
+    }
+
+    public void ResetGuest(int i)
+    {
+        NowGuest[i].SetActive(false);
+        TalkBallon[i].SetActive(false);
+        NowGuest[i] = null;
+        BibimReset();
+        StartCoroutine(NextGuest(i));
+        StopCoroutine(WaitTimer[i]);
+    }
+
+    IEnumerator NextGuest(int i)
+    {
+        yield return new WaitForSeconds(2f);
+        order(i);
     }
 }
