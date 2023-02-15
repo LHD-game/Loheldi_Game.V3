@@ -9,15 +9,18 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     public GameObject[] food;
     public Material[] Egg;
     public Material[] Egg_material;
-    public bool[] Foodorder;
-    public bool[] FoodCook;
+    
+    public int[] Foodorder = new int[9];
+    public int[] FoodCook = new int[9];
+    public string[] FoodName = new string[9];
     private bool EggFinish=false;
+
+    public GameObject[] Guest;
 
     private void Start()
     {
-        Foodorder = new bool[9];
-        FoodCook = new bool[9];
         Egg_material = food[0].GetComponent<MeshRenderer>().materials;
+        BibimReset();
     }
     void Update()
     {
@@ -64,7 +67,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                     GameObject target = hit.collider.transform.parent.gameObject;
                     StartCoroutine(EggFrie());
                     return;
-                }
+                }/*
                 else if (hit.collider.gameObject.name.Equals("1"))
                 {
                     GameObject target = hit.collider.transform.parent.gameObject;
@@ -99,7 +102,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                 {
                     GameObject target = hit.collider.transform.parent.gameObject;
                     Debug.Log(hit.collider.gameObject.name);
-                }
+                }*/
                 else if (hit.collider.gameObject.name.Equals("8"))
                 {
                     GameObject target = hit.collider.transform.parent.gameObject;
@@ -120,10 +123,10 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                 Debug.Log(foodNum);
 
                 food[foodNum].SetActive(true);
-                if (FoodCook[foodNum])
-                    FoodCook[foodNum] = false;
+                if (FoodCook[foodNum] == 0)
+                    FoodCook[foodNum] = 1;
                 else
-                    FoodCook[foodNum] = true;
+                    FoodCook[foodNum] = 0;
             }
             else
                 return;
@@ -146,7 +149,8 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             if (i != food[0])
                 i.SetActive(false);
         }
-        FoodCook = (bool[])Foodorder.Clone();
+        FoodCook = Enumerable.Repeat(1, 9).ToArray();
+        FoodCook[0] = 0;
     }
     void EggreSet()
     {
@@ -158,14 +162,14 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     public void order()
     {
         Debug.Log("새로운 주문");
-        Foodorder = Enumerable.Repeat(true, 9).ToArray();
+        Foodorder = Enumerable.Repeat(0, 9).ToArray();
         int RamdomorderCount;
         RamdomorderCount = UnityEngine.Random.Range(3, 4);  //랜덤으로 정해지는 재료 갯수 a~b-1
         for (int i = 0; i < RamdomorderCount; i++)
         {
             int foodNum = UnityEngine.Random.Range(1, 9);  //랜덤으로 정해지는 빠지는 재료
             Debug.Log(foodNum);
-            if (!Foodorder[foodNum])
+            if (Foodorder[foodNum]==1)
             {
                 Debug.Log("이미받은주문입니다");
                 i--;
@@ -173,28 +177,31 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             }
             else
             {
-                Foodorder[foodNum] = false;
+                Foodorder[foodNum] = 1;
 
-                Debug.Log("주문 = " + food[foodNum] + " 빼주세요");
+                Debug.Log("주문 = " + FoodName[foodNum] + " 빼주세요");
             }
         }
 
         //Array.Copy(Foodorder, FoodCook, 9);
         //Foodorder.CopyTo(FoodCook, 9);
-        FoodCook = (bool[])Foodorder.Clone();
     }
 
     void CheckMenu()
     {
-        foreach (bool check in FoodCook)
+        foreach (int check in FoodCook)
         {
-            if (!check)
+            foreach (int order in Foodorder)
             {
-                Debug.Log("매뉴 오류");
-                return;
+                Debug.Log("주문 = "+ order +"\n"+"요리 = "+check);
+                if (check != order)
+                {
+                    Debug.Log("매뉴 오류");
+                    return;
+                }
+                else
+                    continue;
             }
-            else
-                continue;
         }
         Debug.Log("조리성공");
         BibimReset();
