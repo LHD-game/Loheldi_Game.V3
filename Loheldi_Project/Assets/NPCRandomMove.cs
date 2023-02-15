@@ -22,10 +22,11 @@ public class NPCRandomMove : MonoBehaviour
 
     void Awake()
     {
-        nextMove1 = Random.Range(-1f, 2f);    //생성 위치 랜덤
-        nextMove2 = Random.Range(-1f, 2f);
+        RandomPosition();
         Box = Instantiate(boxorigin, new Vector3(this.gameObject.transform.position.x + nextMove1, -5.4f, this.gameObject.transform.position.z + nextMove2), Quaternion.identity);
-        Box.transform.parent = this.transform.parent;
+        Box.transform.parent = this.transform.parent.transform.parent;
+        Box.GetComponent<NPCRandomMove_Cube>().Range = this.transform.parent.gameObject;
+        Box.GetComponent<NPCRandomMove_Cube>().Owner = this.gameObject;
         rigid = GetComponent<Rigidbody>();    //↑ NPC주변에 랜덤한 범위에 Box생성
         Invoke("Stop", time);                 //처음에는 Stop Invoke 실행
     }
@@ -50,21 +51,25 @@ public class NPCRandomMove : MonoBehaviour
     {
         Move = true;                           //움직임
 
-        nextMove1 = Random.Range(-1f, 2f);     //생성 위치 랜덤
-        nextMove2 = Random.Range(-1f, 2f);
-
-        Box.transform.position = new Vector3(this.gameObject.transform.position.x + nextMove1, -5.4f, this.gameObject.transform.position.z + nextMove2);
+        Box.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(this.gameObject.transform.position.x * nextMove1, 0f, this.gameObject.transform.position.z * nextMove2));
                                                //↑ NPC주변에 랜덤한 범위에 Box생성
         time = Random.Range(5f, 8f);           //움직이는 시간을 랜덤으로 부여 
         CancelInvoke();                        //Stop Invoke 정지
         Invoke("Stop", time);                  //time시간 뒤 Stop Invoke 실행 (time 시간동안 이동)
     }
+    public void RandomPosition()
+    {
+        nextMove1 = Random.Range(-1f, 1f);     //생성 위치 랜덤
+        nextMove2 = Random.Range(-1f, 1f);
+    }
+
     public void Stop()
     {
         Move = false;                          //움직이지 않음
         rigid.velocity = new Vector3(0,0,0);   //가속도 초기화
         time = Random.Range(5f, 8f);           //멈춰있는 시간을 랜덤으로 부여 
         CancelInvoke();                        //Move Invoke 정지
+        RandomPosition();
         Invoke("MoveBox", time);               //time시간 뒤 Move Invoke 실행
     }
 }
