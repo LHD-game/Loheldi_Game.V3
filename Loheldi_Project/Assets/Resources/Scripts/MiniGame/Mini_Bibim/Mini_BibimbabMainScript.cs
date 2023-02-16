@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Mini_BibimbabMainScript : MonoBehaviour
 {
+    public GameObject[] FoodNameTag;
     public BibimTimer BibimT;
 
     public float WaitTime = 0;
@@ -37,6 +38,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
 
     IEnumerator coroutine;
+    public IEnumerator Timecoroutine;
 
     IEnumerator[] WaitTimer = new IEnumerator[3];
 
@@ -289,6 +291,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             if (success)
             {
                 ResetGuest(i);
+                BibimReset();
                 BibimScore.text = (Int32.Parse(BibimScore.text) + 1).ToString();
                 Debug.Log("조리성공 i = " + i);
                 return;
@@ -301,8 +304,8 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         NowGuest[i].SetActive(false);
         TalkBallon[i].SetActive(false);
         NowGuest[i] = null;
-        BibimReset();
-        StartCoroutine(NextGuest(i));
+        Timecoroutine = NextGuest(i);
+        StartCoroutine(Timecoroutine);
         StopCoroutine(WaitTimer[i]);
     }
 
@@ -310,5 +313,11 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         order(i);
+    }
+
+    public void BallonesPositioning()
+    {
+        foreach (GameObject i in Position)
+            this.transform.position = Camera.main.WorldToScreenPoint(i.transform.position + new Vector3(0, 1.5f, 0));
     }
 }

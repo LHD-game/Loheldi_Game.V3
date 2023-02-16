@@ -10,6 +10,7 @@ public class Bibim_Level : MonoBehaviour
 
     public void LelveReset()
     {
+        StopCoroutine(Bibim.Timecoroutine);
         BibimT.EndTimer();
         Bibim.GameReset();
     }
