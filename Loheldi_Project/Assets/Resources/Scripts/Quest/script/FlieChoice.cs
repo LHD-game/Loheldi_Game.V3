@@ -17,26 +17,10 @@ public class FlieChoice : MonoBehaviour
     private void Awake()
     {
         QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
-        if (SceneManager.GetActiveScene().name == "MainField")
-            EPin.SetActive(false);
         if (SceneManager.GetActiveScene().name == "Quiz")
         {
             Quest(); 
         }
-    }
-    public void test()
-    {
-        chat.Num = "1_15";
-        chat.FileAdress = "Scripts/Quest/test";
-        chat.NewChat();
-        chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/Quest1");
-    }
-
-    public void test2()
-    {
-        chat.Num = "2";
-        chat.FileAdress = "Scripts/Quest/Dialog";
-        chat.NewChat();
     }
     public void Tutorial()
     {
@@ -56,9 +40,9 @@ public class FlieChoice : MonoBehaviour
             Inter.NpcNameTF = false;
             chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/Quest" + chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
         }
-        if (QDD.weekend) 
+        /*if (QDD.weekend) 
             chat.FileAdress = "Scripts/Quest/scriptWeekend";
-        else
+        else*/
             chat.FileAdress = "Scripts/Quest/script";
         chat.Num = chat.DontDestroy.QuestIndex;
         chat.NewChat();
