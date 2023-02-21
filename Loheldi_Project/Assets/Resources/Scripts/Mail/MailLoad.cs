@@ -16,12 +16,10 @@ public class MailLoad : MonoBehaviour
     GameObject mail_alarm_ui;
 
     //우편
-    //public GameObject ThisType;                         //메일 타입(서버인지 퀘스트인지)
     [SerializeField]
     GameObject c_mail;                          //전체 메일 리스트 content
     [SerializeField]
     GameObject c_announce;                          //전체 공지사항 리스트 content
-    //public GameObject TempObject;
     [SerializeField]
     GameObject AlreadyRecieveBtn;
 
@@ -119,7 +117,7 @@ public class MailLoad : MonoBehaviour
         item.Add("Content", data.Content);
         item.Add("Reward", data.Reward);
         item.Add("authorName", data.authorName);
-        item.Add("Type", data.Type);
+        //item.Add("Type", data.Type);
     }
 
     GameObject itemBtn;
@@ -164,9 +162,9 @@ public class MailLoad : MonoBehaviour
             Text reward_txt = mail_reward.GetComponent<Text>();
             reward_txt.text = dialog[i]["Reward"].ToString();
 
-            GameObject mail_Type = child.transform.Find("Type").gameObject;
+            /*GameObject mail_Type = child.transform.Find("Type").gameObject;
             Text Type_txt = mail_Type.GetComponent<Text>();
-            Type_txt.text = dialog[i]["Type"].ToString();
+            Type_txt.text = dialog[i]["Type"].ToString();*/
         }
     }
 

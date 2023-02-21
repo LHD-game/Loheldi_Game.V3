@@ -502,6 +502,7 @@ public class Drawing : MonoBehaviour
     public Text Jtext;
     public GameObject[] Juwels;
     public GameObject Image;
+    public GameObject Basket;
     public GameObject JButton;
 
     public void JFinishWrite()
@@ -540,6 +541,7 @@ public class Drawing : MonoBehaviour
             RectTransform RectTransform;
             GameObject parentsObject = GameObject.Find("JuwelCards").gameObject;
 
+            Basket.SetActive(true);
             for (int i = 0; i < parentsObject.transform.childCount; i++)
             {
                 GameObject gameObject = GameObject.Find("JuwelCards").transform.GetChild(i).gameObject;
@@ -554,22 +556,18 @@ public class Drawing : MonoBehaviour
                     switch (J)
                     {
                         case 1:
-                            RectTransform.anchoredPosition = new Vector2(-781f, -215f);
+                            RectTransform.localScale = new Vector3(0.8f, 0.8f, 1);
+                            RectTransform.anchoredPosition = new Vector3(-428, 53, 0);
                             break;
                         case 2:
-                            RectTransform.anchoredPosition = new Vector2(-299f, -215f);
+                            RectTransform.localScale = new Vector3(0.8f, 0.8f, 1);
+                            RectTransform.anchoredPosition = new Vector3(-150, 86, 0);
                             break;
                         case 3:
-                            RectTransform.anchoredPosition = new Vector2(174f, -215f);
-                            break;
-                        case 4:
-                            RectTransform.anchoredPosition = new Vector2(678f, -215f);
-                            break;
-                        case 5:
+                            RectTransform.localScale = new Vector3(102, 185, 0);
                             RectTransform.anchoredPosition = new Vector2(1157f, -215f);
                             //Debug.Log("끝!");
                             Jtext.gameObject.SetActive(false);
-                            Invoke("scriptLine", 1f);   //딜레이 후 스크립트 띄움
                             break;
                     }
 
