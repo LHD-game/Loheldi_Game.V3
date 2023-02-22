@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2953854643164321107}
     m_Modifications:
+    - target: {fileID: 2685186292326706979, guid: 925c6d4997a70b84d9e90ceb2fa4c8ad, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: 2d85ce6efb5d5b44bbe9dbf97744d59a, type: 2}
     - target: {fileID: 5059949396704397328, guid: 925c6d4997a70b84d9e90ceb2fa4c8ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -886,6 +890,10 @@ PrefabInstance:
       propertyPath: m_Range
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5761823334082948760, guid: 47d02d9aef5566a49946c85986e1e863, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 2d85ce6efb5d5b44bbe9dbf97744d59a, type: 2}
     - target: {fileID: 6910762323851367634, guid: 47d02d9aef5566a49946c85986e1e863, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
@@ -5779,6 +5787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Nari: {fileID: 0}
+  NariMom: {fileID: 0}
   chatName: {fileID: 4578157347405030646}
   chatTxt: {fileID: 4578157346213389555}
   Mailcontent: {fileID: 0}
@@ -5844,10 +5853,16 @@ MonoBehaviour:
   screenShotExit: {fileID: 0}
   nutrient: {fileID: 0}
   LoveNature: {fileID: 0}
+  BMI: {fileID: 0}
+  BMItalk: {fileID: 0}
+  Nanum: {fileID: 0}
+  Jewel: {fileID: 0}
+  Healthy: {fileID: 0}
   Ride: {fileID: 0}
   Bike: {fileID: 0}
   BikeNPC: {fileID: 0}
   AppleTreeObj: {fileID: 0}
+  Kangteagom: {fileID: 0}
   SoundEffectManager: {fileID: 5149831034500970561}
   NPCButton: 0
   LoadTxt: 
@@ -5863,6 +5878,7 @@ MonoBehaviour:
   CCImage: {fileID: 1673590601387860345}
   cuttoon: {fileID: 3663610446106529300}
   cuttoonImageList: []
+  cuttontext: {fileID: 0}
   KeyToDreamInput: {fileID: 0}
   JumpButtons: {fileID: 0}
   tu: {fileID: 0}
@@ -5882,6 +5898,13 @@ MonoBehaviour:
   NPCJumpAnimatorRope: {fileID: 0}
   PlayerRope: {fileID: 0}
   NPCRope: {fileID: 0}
+  PlayerHulaAnimator: {fileID: 0}
+  NPCHulaAnimator: {fileID: 0}
+  PHulaAnimator: {fileID: 0}
+  NHulaAnimator: {fileID: 0}
+  PlayerHula: {fileID: 0}
+  NPCHula: {fileID: 0}
+  PlayerName: 
   typingSkip: 1
 --- !u!114 &4578157345972647823
 MonoBehaviour:
@@ -5898,6 +5921,7 @@ MonoBehaviour:
   chat: {fileID: 4578157345972647821}
   EPin: {fileID: 0}
   UI: {fileID: 0}
+  QDD: {fileID: 0}
   Inter: {fileID: 0}
 --- !u!224 &4578157346213389552
 RectTransform:

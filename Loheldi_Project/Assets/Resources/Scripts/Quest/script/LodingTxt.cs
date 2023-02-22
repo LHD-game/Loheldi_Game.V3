@@ -213,6 +213,7 @@ public class LodingTxt : MonoBehaviour
                 FileAdress = "Scripts/Quest/script";
                 NewChat();
                 DontDestroy.QuestIndex = "26_1";
+                Nari.transform.position = Player.transform.position + new Vector3(-1, 0, 0);
                 return;
             }
             if (Int32.Parse(QQ[0]) == 0)
@@ -1032,7 +1033,7 @@ public class LodingTxt : MonoBehaviour
             Inter.NpcNameTF = false;
 
             chatName.text = PlayerName;
-            LoadTxt = "그럼 나는 " + Draw.BMIresult + "이네."; 
+            LoadTxt = "그럼 나는 " + Draw.BMIresult + "이네. 그런데, 과체중이랑 비만이 무슨 뜻이야?"; 
             CCImage.SetActive(false);
             j++;
             StartCoroutine(_typing());
@@ -1040,7 +1041,7 @@ public class LodingTxt : MonoBehaviour
         else if (data_Dialog[j]["scriptType"].ToString().Equals("moveToA"))
         {
             Cuttoon();
-            DontDestroy.QuestIndex = "22_10";
+            DontDestroy.QuestIndex = "26_10";
             SceneLoader.instance.GotoMainAcronVillage();
         } //도토리마을로 이동
         else if (data_Dialog[j]["scriptType"].ToString().Equals("JumpRope"))
