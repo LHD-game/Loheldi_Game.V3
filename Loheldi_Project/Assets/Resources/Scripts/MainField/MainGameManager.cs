@@ -30,7 +30,6 @@ public class MainGameManager : MonoBehaviour
 
     void Start()
     {
-        QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
         GetDailyHP();
         UpdateField();
         if (SceneManager.GetActiveScene().name != "AcornVillage")

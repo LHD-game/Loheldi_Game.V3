@@ -175,22 +175,21 @@ public class LodingTxt : MonoBehaviour
             DontDestroy.LastDay = PlayerPrefs.GetInt("LastQTime");
 
             string[] QQ = PlayerPrefs.GetString("QuestPreg").Split('_');
-            //string[] qq = PlayerPrefs.GetString("WeeklyQuestPreg").Split('_');
+            string[] qq = PlayerPrefs.GetString("WeeklyQuestPreg").Split('_');
 
-            //string[] q_qid = DontDestroy.QuestIndex.Split('_');
-
+            string[] q_qid = DontDestroy.QuestIndex.Split('_');
             if (Int32.Parse(QQ[0]) > 3);
             else
                 Ride.SetActive(false);
             if (SceneManager.GetActiveScene().name == "MainField")
             {
                 Player.position = DontDestroy.gameObject.transform.position;
-                if (Int32.Parse(QQ[0]) > 14)
+                if (Int32.Parse(QQ[0]) > 12)
                     AppleTreeObj.SetActive(true);
                 else
                     AppleTreeObj.SetActive(false); 
 
-                if (Int32.Parse(QQ[0]) > 25)
+                if (Int32.Parse(QQ[0]) > 21)
                     Kangteagom.SetActive(true);
                 else
                     Kangteagom.SetActive(false);
@@ -200,19 +199,18 @@ public class LodingTxt : MonoBehaviour
             DateTime nowDT = DateTime.Now;
             if (nowDT.DayOfWeek == DayOfWeek.Saturday)
                 DontDestroy.SDA = true;
-            /*
             else if (nowDT.DayOfWeek == DayOfWeek.Sunday)
                 DontDestroy.weekend = true;
             else
-                DontDestroy.weekend = false;*/
+                DontDestroy.weekend = false;
             DontDestroy.ToDay = Int32.Parse(DateTime.Now.ToString("yyyyMMdd"));   //퀘스트용 오늘날짜 저장 */
 
-            if(DontDestroy.QuestIndex == "26_10")
+            if(DontDestroy.QuestIndex == "22_10")
             {
-                Num = "26_10";
+                Num = "22_10";
                 FileAdress = "Scripts/Quest/script";
                 NewChat();
-                DontDestroy.QuestIndex = "26_1";
+                DontDestroy.QuestIndex = "22_1";
                 return;
             }
             if (Int32.Parse(QQ[0]) == 0)
@@ -260,48 +258,45 @@ public class LodingTxt : MonoBehaviour
         PlayerPrefs.SetInt("LastQTime", 0);
         DontDestroy.LastDay = 0;
         
-        string QuestType = PlayerPrefs.GetString("QuestPreg");
-
-        /*if (!DontDestroy.weekend)
+        string QuestType = null;
+        if (!DontDestroy.weekend)
         {
             QuestType = PlayerPrefs.GetString("QuestPreg");
         }
         else
-            QuestType = PlayerPrefs.GetString("WeeklyQuestPreg");*/
-        
+            QuestType = PlayerPrefs.GetString("WeeklyQuestPreg");
         DontDestroy.QuestIndex = QuestType;
         QuestLoad.QuestLoadStart();
     }
-
     public void QuestMoveTest()
     {
         PlayerPrefs.SetInt("LastQTime", 0);
         DontDestroy.LastDay = 0;
         string[] q_qid = DontDestroy.QuestIndex.Split('_');
-        //string QuestType = null;
-        //if (Int32.Parse(q_qid[0]) < 22)
-        //{
-            //QuestType = "QuestPreg";
-        //}
-        //else
-            //QuestType = "WeeklyQuestPreg";
-        PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+        string QuestType = null;
+        if (Int32.Parse(q_qid[0]) < 22)
+        {
+            QuestType = "QuestPreg";
+        }
+        else
+            QuestType = "WeeklyQuestPreg";
+        PlayerPrefs.SetString(QuestType, DontDestroy.QuestIndex);
         PlayInfoManager.GetQuestPreg();
         QuestLoad.QuestLoadStart();
     }
 
-    /*public void NotWeekend()
+    public void NotWeekend()
     {
         if (DontDestroy.weekend)
             DontDestroy.weekend = false;
         else
             DontDestroy.weekend = true;
-    }*/
-    public void ToothQuest()  //수정
+    }
+    public void ToothQuest()
     {
         ToothAnimator = GameObject.Find("ToothBrush").transform.Find("Armature").gameObject.GetComponent<Animator>();
-        Num = "6_2";     //양치게임 스크립트 번호로 수정필요
-        FileAdress = "Scripts/Quest/script";
+        Num = "1_2";
+        FileAdress = "Scripts/Quest/scriptWeekend";
         NewChat();
     }
 
@@ -499,7 +494,7 @@ public class LodingTxt : MonoBehaviour
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("Move"))  //선택지
         {
-            if (data_Dialog[j]["scriptNumber"].ToString().Equals("18_1"))  //수정한 원 주말퀘스트 번호
+            if (data_Dialog[j]["scriptNumber"].ToString().Equals("24_1"))
                 o = 13;
             else if (DontDestroy.tutorialLoading)
                 o = 3;
@@ -686,6 +681,7 @@ public class LodingTxt : MonoBehaviour
             j++;
             ChatWin.SetActive(false);
             nutrient.SetActive(true);
+            Debug.Log("nut");
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("nutrientEnd"))
         {
@@ -890,11 +886,11 @@ public class LodingTxt : MonoBehaviour
             KeyToDream.SetActive(false);
             scriptLine();
         }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Tooth"))    //양치게임 전 주말퀘숫자 수정
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("Tooth"))
         {
             if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 0)
             {
-                DontDestroy.QuestIndex = "6_10";
+                DontDestroy.QuestIndex = "22";
                 SceneLoader.instance.GotoToothGame();
             }
             else if (SceneManager.GetActiveScene().name == "Game_Tooth")
@@ -964,8 +960,8 @@ public class LodingTxt : MonoBehaviour
                 else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 7)
                 {
                     DontDestroy.ToothQ = true;
-                    DontDestroy.QuestIndex = "6_1";
-                    PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+                    DontDestroy.QuestIndex = "22_1";
+                    PlayerPrefs.SetString("WeeklyQuestPreg", DontDestroy.QuestIndex); //주말
                     SceneLoader.instance.GotoMainField();
                     return;
                 }
@@ -973,7 +969,7 @@ public class LodingTxt : MonoBehaviour
                 Invoke("scriptLine", 3f);   //딜레이 후 스크립트 띄움
             }
         }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("LookAt"))  //퀘스트번호쓰는거 수정  사방치기퀘스트
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("LookAt"))
         {
             Transform NPC = GameObject.Find(Inter.NameNPC).transform;
             Vector3 targetPositionNPC;
@@ -986,7 +982,7 @@ public class LodingTxt : MonoBehaviour
                 for (int i = 0; i < objs.Length; i++)
                     Destroy(objs[i]);
             }
-            else if (data_Dialog[j]["scriptNumber"].ToString().Equals("22_1"))
+            else if (data_Dialog[j]["scriptNumber"].ToString().Equals("19_1"))
             {
                 Transform NPC2 = GameObject.Find("Nari").transform;
                 StartCoroutine(JumpButtons.NPCturn(NPC2, targetPositionNPC));
@@ -1242,6 +1238,11 @@ public class LodingTxt : MonoBehaviour
         }
     }
 
+    public void testFaed()
+    {
+        StartCoroutine(fade());
+    }
+
     IEnumerator fade()
     {
         ChatWin.SetActive(false);
@@ -1439,11 +1440,11 @@ public class LodingTxt : MonoBehaviour
         //PlayerCamera.SetActive(false);
         NPCButton = 0;
         ButtonsFalse();
-        if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine")|| Inter.NameNPC.Equals("ThankApplesTree"))  //여긴 뭘까 한번 확인좀.. 수정
+        if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine")|| Inter.NameNPC.Equals("ThankApplesTree"))
         { stopCorou(); }
-        else if (DontDestroy.QuestIndex.Equals("9_1") && Inter.NameNPC.Equals("Mei"))
+        else if (DontDestroy.QuestIndex.Equals("8_1") && Inter.NameNPC.Equals("Mei"))
         { stopCorou(); }
-        else if (DontDestroy.QuestIndex.Equals("15_1") && Inter.NameNPC.Equals("Suho"))
+        else if (DontDestroy.QuestIndex.Equals("13_1") && Inter.NameNPC.Equals("Suho"))
         { stopCorou(); }
         else
         {
@@ -1620,12 +1621,12 @@ public class LodingTxt : MonoBehaviour
         DontDestroy.ButtonPlusNpc = "";
         //Quest.Load.QuestMail = false;
 
-        /*if (DontDestroy.weekend)
+        if (DontDestroy.weekend)
             PlayerPrefs.SetString("WeeklyQuestPreg", DontDestroy.QuestIndex); //주말
         else
-            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);*/
+            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
 
-        PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+
         if (data_Dialog[j]["dialog"].ToString().Equals("end"))
         {
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
@@ -1645,11 +1646,10 @@ public class LodingTxt : MonoBehaviour
     {
         if (ParentscheckTxt.text.Equals(parentscheckTxTNum))
         {
-            /*if (DontDestroy.weekend)
+            if (DontDestroy.weekend)
                 PlayerPrefs.SetString("WeeklyQuestPreg", DontDestroy.QuestIndex); //주말
             else
-                PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);*/
-            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+                PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
             DontDestroy.LastDay = DontDestroy.ToDay;
             DontDestroy.From = " ";

@@ -83,7 +83,7 @@ public class PlayInfoManager : MonoBehaviour
         int new_hp = PlayerPrefs.GetInt("HP");
         int new_last_hp_time = PlayerPrefs.GetInt("LastHPTime");
         int new_house_lv = PlayerPrefs.GetInt("HouseLv");
-        //string new_weekly_quest_preg = PlayerPrefs.GetString("WeeklyQuestPreg");
+        string new_weekly_quest_preg = PlayerPrefs.GetString("WeeklyQuestPreg");
 
         Param param = new Param();
         param.Add("Wallet", new_wallet);
@@ -95,7 +95,7 @@ public class PlayInfoManager : MonoBehaviour
         param.Add("HP", new_hp);
         param.Add("LastHPTime", new_last_hp_time);
         param.Add("HouseLv", new_house_lv);
-        param.AddNull("WeeklyQuestPreg");  //null로 넣기
+        param.Add("WeeklyQuestPreg", new_weekly_quest_preg);
 
         //유저 현재 row 검색
         var bro = Backend.GameData.Get("PLAY_INFO", new Where());

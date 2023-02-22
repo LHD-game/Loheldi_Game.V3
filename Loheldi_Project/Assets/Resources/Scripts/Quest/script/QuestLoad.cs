@@ -21,7 +21,7 @@ public class QuestLoad : MonoBehaviour
     public QuestScript Quest;
     public QuestDontDestroy DontDestroy;
     
-    
+
     public void QuestLoadStart()
     {
         DontDestroy = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
@@ -29,10 +29,10 @@ public class QuestLoad : MonoBehaviour
 
         string selectedProbabilityFileId = "";
 
-        /*if (DontDestroy.weekend)
+        if (DontDestroy.weekend)
             selectedProbabilityFileId = "69953"; //주말퀘 차트
-        else*/
-        selectedProbabilityFileId = "71687"; //평일퀘 차트
+        else
+            selectedProbabilityFileId = "70083"; //평일퀘 차트
 
         var bro3 = Backend.Chart.GetChartContents(selectedProbabilityFileId);
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];
@@ -50,21 +50,16 @@ public class QuestLoad : MonoBehaviour
             Param param2 = new Param();
             
             string QuestPreg;
-            /*if (DontDestroy.weekend) //주말일 때
+            if (DontDestroy.weekend) //주말일 때
                 QuestPreg = PlayerPrefs.GetString("WeeklyQuestPreg"); //주말 퀘스트 번호로 바뀔 예정
-            else //주말이 아닐 떄*/
-            QuestPreg = PlayerPrefs.GetString("QuestPreg");
+            else //주말이 아닐 떄
+                QuestPreg = PlayerPrefs.GetString("QuestPreg");
 
             if (Type == "end")
             {
                 Debug.Log("마지막 퀘스트입니다");
                 return;
             }
-            /*else if (Type == "Weekend")   //주말 합체시키는 용의 if문
-            {
-                Debug.Log("수정 전 주말퀘스트");
-                return;
-            }*/
 
 
 
@@ -163,13 +158,5 @@ public class QuestLoad : MonoBehaviour
             Quest.QuestStart();
         }
         
-    }
-
-    void changeWeekendNumber()  //주말 수정할 경우 이것
-    {
-        if(PlayerPrefs.GetString("WeeklyQuestPreg") !=null)
-        {
-            ;
-        }
     }
 }

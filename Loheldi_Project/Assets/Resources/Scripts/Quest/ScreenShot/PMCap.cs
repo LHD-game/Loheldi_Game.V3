@@ -56,7 +56,7 @@ public class PMCap : MonoBehaviour
         Sprite sprite = Sprite.Create(screenShot, new Rect(0, 0, screenShot.width, screenShot.height), new Vector2(0.5f, 0.5f));
         //ScreenshotImg.sprite = sprite;
 
-        //this.transform.position = this.transform.position + new Vector3(0, -1, 2);
+        this.transform.position = this.transform.position + new Vector3(0, -1, 2);
 
         if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")
         {
