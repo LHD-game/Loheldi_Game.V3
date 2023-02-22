@@ -30,6 +30,8 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     public bool EggFinish=false;
     public bool EggBurn=false;
 
+    public bool Game = false;
+
     public Text BibimScore;
 
     public GameObject[] Guest;
@@ -38,7 +40,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
 
     IEnumerator coroutine;
-    public IEnumerator Timecoroutine;
+    public IEnumerator[] Timecoroutine = new IEnumerator[3];
 
     IEnumerator[] WaitTimer = new IEnumerator[3];
 
@@ -81,6 +83,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         {
             orderPosition(i);
         }
+        Game = true;
     }
     void Update()
     {
@@ -304,15 +307,16 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         NowGuest[i].SetActive(false);
         TalkBallon[i].SetActive(false);
         NowGuest[i] = null;
-        Timecoroutine = NextGuest(i);
-        StartCoroutine(Timecoroutine);
+        Timecoroutine[i] = NextGuest(i);
+        StartCoroutine(Timecoroutine[i]);
         StopCoroutine(WaitTimer[i]);
     }
 
     IEnumerator NextGuest(int i)
     {
         yield return new WaitForSeconds(2f);
-        order(i);
+        if (Game)
+            order(i);
     }
 
     public void BallonesPositioning()

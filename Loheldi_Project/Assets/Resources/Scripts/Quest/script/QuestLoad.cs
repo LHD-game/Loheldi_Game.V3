@@ -32,7 +32,7 @@ public class QuestLoad : MonoBehaviour
         /*if (DontDestroy.weekend)
             selectedProbabilityFileId = "69953"; //주말퀘 차트
         else*/
-        selectedProbabilityFileId = "71687"; //평일퀘 차트
+        selectedProbabilityFileId = "71773"; //평일퀘 차트
 
         var bro3 = Backend.Chart.GetChartContents(selectedProbabilityFileId);
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];
