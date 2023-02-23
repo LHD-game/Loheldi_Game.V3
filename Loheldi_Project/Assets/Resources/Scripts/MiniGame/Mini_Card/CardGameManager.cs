@@ -77,8 +77,6 @@ public class CardGameManager : MonoBehaviour
             {
                 state = STATE.FAIL;
             }
-            
-            
         }
     }
 

@@ -30,7 +30,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
     int BasketScore = 0;                    //채운 바구니 갯수(점수)
 
     [SerializeField]
-    public static float nowTime = 30;       //게임 플레이 시간
+    public static float nowTime = 9999;       //게임 플레이 시간
     public static float LastShakeTime = 2;  //마지막으로 흔들린 시간
 
     public Text TimerText;                  //시간제한 텍스트 오브젝트
