@@ -35423,6 +35423,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8015933212144337768}
     m_Modifications:
+    - target: {fileID: 2685186292326706979, guid: 925c6d4997a70b84d9e90ceb2fa4c8ad, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: 4cf79b3644c1c0d4da91f8b2d27932b2, type: 2}
     - target: {fileID: 5059949396704397328, guid: 925c6d4997a70b84d9e90ceb2fa4c8ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

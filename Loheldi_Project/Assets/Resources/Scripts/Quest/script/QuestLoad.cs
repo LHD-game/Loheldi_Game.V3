@@ -68,7 +68,7 @@ public class QuestLoad : MonoBehaviour
 
 
 
-            if (QuestPreg.Equals("0_0"))
+            if (QuestPreg.Equals("0_0")) //조건문 추가(request일 때도 실행되게)
             {
                 QID2 = rows[0]["QID"]["S"].ToString();
                 QName = rows[0]["QName"]["S"].ToString();
@@ -113,18 +113,23 @@ public class QuestLoad : MonoBehaviour
             }
             else
             {
+                int r;
                 for (int i = 0; i < rows.Count; i++)
                 {
+                    if (DontDestroy.ReQuest)
+                        r = i;
+                    else
+                        r = i + 1;
                     string QID = rows[i]["QID"]["S"].ToString();
                     if (QID == QuestPreg)   //0_0은 아닌 상태에서 퀘스트 진행도와 일치
                     {
-                        QID3 = rows[i + 1]["QID"]["S"].ToString();
-                        QName = rows[i + 1]["QName"]["S"].ToString();
-                        From = rows[i + 1]["From"]["S"].ToString();
-                        Content = rows[i + 1]["Content"]["S"].ToString();  //replace는 우편함에서 실행하니 하지 않으셔도 무방합니다.
-                        Reward = rows[i + 1]["Reward"]["S"].ToString();
-                        authorName = rows[i + 1]["authorName"]["S"].ToString();
-                        Type = rows[i+1]["Type"]["S"].ToString();
+                        QID3 = rows[r]["QID"]["S"].ToString();
+                        QName = rows[r]["QName"]["S"].ToString();
+                        From = rows[r]["From"]["S"].ToString();
+                        Content = rows[r]["Content"]["S"].ToString();  //replace는 우편함에서 실행하니 하지 않으셔도 무방합니다.
+                        Reward = rows[r]["Reward"]["S"].ToString();
+                        authorName = rows[r]["authorName"]["S"].ToString();
+                        Type = rows[r]["Type"]["S"].ToString();
 
                         DontDestroy.QuestIndex = QID3;
                         PlayerPrefs.SetString("NowQID", QID3);

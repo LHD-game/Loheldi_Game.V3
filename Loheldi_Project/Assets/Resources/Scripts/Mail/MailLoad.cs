@@ -195,42 +195,44 @@ public class MailLoad : MonoBehaviour
     {
         //보상 수령
         List<GameObject> reward = MailSelect.reward_list;
-
-        for(int i=0; i<reward.Count; i++)
+        if (DontDestroy.ReQuest) ;
+        else
         {
-            GameObject i_code = reward[i].transform.Find("ICode").gameObject;
-            Text i_code_txt = i_code.GetComponent<Text>();
-            string item_type = i_code_txt.text;
+            for (int i = 0; i < reward.Count; i++)
+            {
+                GameObject i_code = reward[i].transform.Find("ICode").gameObject;
+                Text i_code_txt = i_code.GetComponent<Text>();
+                string item_type = i_code_txt.text;
 
-            GameObject amount = reward[i].transform.Find("Amount").gameObject;
-            Text amount_txt = amount.GetComponent<Text>();
+                GameObject amount = reward[i].transform.Find("Amount").gameObject;
+                Text amount_txt = amount.GetComponent<Text>();
 
-            if (item_type.Equals("Exp"))  //경험치
-            {
-                float exp = float.Parse(amount_txt.text);
-                PlayInfoManager.GetExp(exp);
-            }
-            else if (item_type.Equals("Coin"))   //코인
-            {
-                int coin = int.Parse(amount_txt.text);
-                PlayInfoManager.GetCoin(coin);
-            }
-            else if (item_type.Contains("B"))    //뱃지
-            {
-                BadgeManager.GetBadge(amount_txt.text);
-            }
-            else if (item_type.Contains("C"))    //의상, coin은 앞에서 이미 검사했으므로 걸리지 않을 것이다..!
-            {
-                
-            }
-            else    //인벤토리 아이템
-            {
-                string code = i_code_txt.text;
-                int am = int.Parse(amount_txt.text);
-                SaveInvenItem(code, am);
+                if (item_type.Equals("Exp"))  //경험치
+                {
+                    float exp = float.Parse(amount_txt.text);
+                    PlayInfoManager.GetExp(exp);
+                }
+                else if (item_type.Equals("Coin"))   //코인
+                {
+                    int coin = int.Parse(amount_txt.text);
+                    PlayInfoManager.GetCoin(coin);
+                }
+                else if (item_type.Contains("B"))    //뱃지
+                {
+                    BadgeManager.GetBadge(amount_txt.text);
+                }
+                else if (item_type.Contains("C"))    //의상, coin은 앞에서 이미 검사했으므로 걸리지 않을 것이다..!
+                {
+
+                }
+                else    //인벤토리 아이템
+                {
+                    string code = i_code_txt.text;
+                    int am = int.Parse(amount_txt.text);
+                    SaveInvenItem(code, am);
+                }
             }
         }
-
         //퀘스트 테이블 삭제
         DeleteQuestInfo();
         //메일 업데이트
