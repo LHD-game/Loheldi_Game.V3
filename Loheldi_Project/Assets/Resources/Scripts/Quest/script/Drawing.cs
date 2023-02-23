@@ -552,20 +552,24 @@ public class Drawing : MonoBehaviour
                 }
                 else
                 {
-                    J++;
+                    J+=1;
+                    Debug.Log("J = " + j);
                     switch (J)
                     {
-                        case 1:
-                            RectTransform.localScale = new Vector3(0.8f, 0.8f, 1);
-                            RectTransform.anchoredPosition = new Vector3(-428, 53, 0);
-                            break;
                         case 2:
                             RectTransform.localScale = new Vector3(0.8f, 0.8f, 1);
-                            RectTransform.anchoredPosition = new Vector3(-150, 86, 0);
+                            RectTransform.anchoredPosition = new Vector3(150, 90, 0);
+                            gameObject.transform.GetChild(1).gameObject.SetActive(false);
                             break;
                         case 3:
-                            RectTransform.localScale = new Vector3(102, 185, 0);
-                            RectTransform.anchoredPosition = new Vector2(1157f, -215f);
+                            RectTransform.localScale = new Vector3(0.8f, 0.8f, 1);
+                            RectTransform.anchoredPosition = new Vector3(-140, 0, 0);
+                            gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                            break;
+                        case 4:
+                            RectTransform.localScale = new Vector3(0.8f, 0.8f, 1);
+                            RectTransform.anchoredPosition = new Vector2(-460, 0);
+                            gameObject.transform.GetChild(1).gameObject.SetActive(false);
                             //Debug.Log("³¡!");
                             Jtext.gameObject.SetActive(false);
                             break;

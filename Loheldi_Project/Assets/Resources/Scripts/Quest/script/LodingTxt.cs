@@ -149,8 +149,6 @@ public class LodingTxt : MonoBehaviour
     public GameObject PlayerHula; //ÇÃ·¹ÀÌ¾î ÈÇ¶óÈÄÇÁ ¸ðµ¨¸µ
     public GameObject NPCHula;  //NPCÈÇ¶óÈÄÇÁ ¸ðµ¨¸µ
 
-
-
     public string PlayerName;
 
     Animator ToothAnimator;
@@ -261,7 +259,7 @@ public class LodingTxt : MonoBehaviour
         PlayerPrefs.SetInt("LastQTime", 0);
         DontDestroy.LastDay = 0;
         
-        string QuestType = PlayerPrefs.GetString("QuestPreg");
+        //string QuestType = PlayerPrefs.GetString("QuestPreg");
 
         /*if (!DontDestroy.weekend)
         {
@@ -270,7 +268,7 @@ public class LodingTxt : MonoBehaviour
         else
             QuestType = PlayerPrefs.GetString("WeeklyQuestPreg");*/
         
-        DontDestroy.QuestIndex = QuestType;
+        //DontDestroy.QuestIndex = QuestType;
         QuestLoad.QuestLoadStart();
     }
 
@@ -278,16 +276,9 @@ public class LodingTxt : MonoBehaviour
     {
         PlayerPrefs.SetInt("LastQTime", 0);
         DontDestroy.LastDay = 0;
-        string[] q_qid = DontDestroy.QuestIndex.Split('_');
-        //string QuestType = null;
-        //if (Int32.Parse(q_qid[0]) < 22)
-        //{
-            //QuestType = "QuestPreg";
-        //}
-        //else
-            //QuestType = "WeeklyQuestPreg";
+
         PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
-        PlayInfoManager.GetQuestPreg();
+        //PlayInfoManager.GetQuestPreg();
         QuestLoad.QuestLoadStart();
     }
 
@@ -1638,8 +1629,10 @@ public class LodingTxt : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")
                 QuestLoad.QuestLoadStart();
         }
-
-        PlayInfoManager.GetQuestPreg();
+        if (DontDestroy.ReQuest)
+            ;
+        else
+            PlayInfoManager.GetQuestPreg();
     }
 
     public void ParentsCheck()
