@@ -69,6 +69,7 @@ public class LodingTxt : MonoBehaviour
     public GameObject Nanum;
     public GameObject Jewel;
     public GameObject Healthy;
+    public GameObject spell;
 
     public GameObject Ride;
     public GameObject Bike;
@@ -274,10 +275,12 @@ public class LodingTxt : MonoBehaviour
 
     public void QuestMoveTest()
     {
+        DontDestroy.ReQuest = true;
+        DontDestroy.QuestNF = false;
         PlayerPrefs.SetInt("LastQTime", 0);
         DontDestroy.LastDay = 0;
 
-        PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+        //PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
         //PlayInfoManager.GetQuestPreg();
         QuestLoad.QuestLoadStart();
     }
@@ -524,7 +527,10 @@ public class LodingTxt : MonoBehaviour
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("over"))  //main으로
         {
-            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+            if (DontDestroy.ReQuest)
+                ;
+            else
+                PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
             SceneLoader.instance.GotoMainField();
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("cuttoonE"))
@@ -957,7 +963,10 @@ public class LodingTxt : MonoBehaviour
                 {
                     DontDestroy.ToothQ = true;
                     DontDestroy.QuestIndex = "6_1";
-                    PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+                    if (DontDestroy.ReQuest)
+                        ;
+                    else
+                        PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
                     SceneLoader.instance.GotoMainField();
                     return;
                 }
@@ -1231,6 +1240,23 @@ public class LodingTxt : MonoBehaviour
                 NPCHula.SetActive(false);  //P H active
             }
             Invoke("scriptLine", 2f);
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("spell")) //29
+        {
+            spell.SetActive(true);
+            Draw.startWrite();
+            ChatWin.SetActive(false);
+            j++;
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("spellWriteEnd"))
+        {
+            Draw.SFinishWrite();
+            j++;
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("spellEnd"))
+        {
+            spell.SetActive(false);
+            scriptLine();
         }
     }
 
@@ -1610,40 +1636,37 @@ public class LodingTxt : MonoBehaviour
             Save_Log.instance.SaveQEndLog();    //퀘스트 종료 로그 기록
 
         DontDestroy.ButtonPlusNpc = "";
-        //Quest.Load.QuestMail = false;
 
-        /*if (DontDestroy.weekend)
-            PlayerPrefs.SetString("WeeklyQuestPreg", DontDestroy.QuestIndex); //주말
+        if (DontDestroy.ReQuest)
+            ;
         else
-            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);*/
-
-        PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
         if (data_Dialog[j]["dialog"].ToString().Equals("end"))
         {
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
             NpcButton.Chat.EPin.SetActive(false);
+            if (DontDestroy.ReQuest)
+                DontDestroy.QuestNF = false;
             DontDestroy.LastDay = DontDestroy.ToDay;
         }
         else
         {
+            if (DontDestroy.ReQuest)
+                DontDestroy.QuestNF = true;
             if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")
                 QuestLoad.QuestLoadStart();
         }
-        if (DontDestroy.ReQuest)
-            ;
-        else
-            PlayInfoManager.GetQuestPreg();
+        PlayInfoManager.GetQuestPreg();
     }
 
     public void ParentsCheck()
     {
         if (ParentscheckTxt.text.Equals(parentscheckTxTNum))
         {
-            /*if (DontDestroy.weekend)
-                PlayerPrefs.SetString("WeeklyQuestPreg", DontDestroy.QuestIndex); //주말
+            if (DontDestroy.ReQuest)
+                ;
             else
-                PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);*/
-            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+                PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
             DontDestroy.LastDay = DontDestroy.ToDay;
             DontDestroy.From = " ";

@@ -600,11 +600,17 @@ public class Drawing : MonoBehaviour
             click.gameObject.tag = "DestroyCard";
             JuwelLength--;
         }
-
-
     }
 
     //////////주문/////////////
+
+
+    public GameObject[] SpellsWrites;
+    public GameObject[] Spells;
+    public Text Spelltext;
+    public Text SpellFocustext;
+    public GameObject SpellFocus;
+
     public void startWrite()
     {
         writting = true;
@@ -612,11 +618,23 @@ public class Drawing : MonoBehaviour
     }
     public void SFinishWrite()
     {
-        for (int i = 0; i < Juwels.Length; i++)
+        StopAllCoroutines();
+        for (int i = 0; i < SpellsWrites.Length; i++)
         {
-            Destroy(Juwels[i].GetComponent<TMP_InputField>());
+            Destroy(SpellsWrites[i]);
         }
-        //Invoke("JAddButton", 0.1f);
+        Spelltext.text = "주문을 하나 골라보세요";
+        for (int i = 0; i < Spells.Length; i++)
+        {
+            Spells[i].AddComponent<Button>().onClick.AddListener(SelecSpell);
+        }
+    }
+
+    public void SelecSpell()
+    {
+        GameObject click = EventSystem.current.currentSelectedGameObject;
+        SpellFocustext.text = click.transform.GetChild(0).gameObject.GetComponent<Text>().text;
+        SpellFocus.SetActive(true);
     }
 
     public Text text1;

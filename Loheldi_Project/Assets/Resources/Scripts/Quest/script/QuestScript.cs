@@ -61,9 +61,9 @@ public class QuestScript : MonoBehaviour
             note = true;
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (DontDestroy.QuestIndex.Equals("13_1")|| DontDestroy.QuestIndex.Equals("16_1")|| DontDestroy.QuestIndex.Equals("21_1")|| DontDestroy.QuestIndex.Equals("23_1")|| DontDestroy.QuestIndex.Equals("26_1"))
+        else if (DontDestroy.QuestIndex.Equals("13_1")|| DontDestroy.QuestIndex.Equals("16_1")|| DontDestroy.QuestIndex.Equals("21_1")|| DontDestroy.QuestIndex.Equals("23_1")|| DontDestroy.QuestIndex.Equals("26_1")|| DontDestroy.QuestIndex.Equals("33_1"))
         {
-            //미량 영양소, 줄넘기, 음악의 힘, 내 삶의 주인되기, 건강해진 내 모습, 도토리마을로 가기
+            //미량 영양소, 줄넘기, 음악의 힘, 내 삶의 주인되기, 건강해진 내 모습, 도토리마을로 가기, 메이 주문
             //캐릭터 플레이어 집 앞으로 데려오기
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(3.8f, -6.41383314f, -0.1f);
         }
