@@ -53,7 +53,10 @@ public class QuestLoad : MonoBehaviour
             /*if (DontDestroy.weekend) //주말일 때
                 QuestPreg = PlayerPrefs.GetString("WeeklyQuestPreg"); //주말 퀘스트 번호로 바뀔 예정
             else //주말이 아닐 떄*/
-            QuestPreg = PlayerPrefs.GetString("QuestPreg");
+            if (DontDestroy.ReQuest)
+                QuestPreg = DontDestroy.QuestIndex;
+            else
+                QuestPreg = PlayerPrefs.GetString("QuestPreg");
 
             if (Type == "end")
             {
@@ -116,7 +119,7 @@ public class QuestLoad : MonoBehaviour
                 int r;
                 for (int i = 0; i < rows.Count; i++)
                 {
-                    if (DontDestroy.ReQuest)
+                    if (DontDestroy.ReQuest&&!DontDestroy.QuestNF)
                         r = i;
                     else
                         r = i + 1;

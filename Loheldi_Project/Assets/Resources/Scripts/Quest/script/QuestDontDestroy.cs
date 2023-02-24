@@ -12,6 +12,7 @@ public class QuestDontDestroy : MonoBehaviour
     public string From;  //실천해보기 구분 용
     //public int QuestSubNum;         //퀘스트 스크립트 앞번호
     public string QuestIndex;   //몇번째 퀘스트차례인지 (서버저장)
+    //public string ReQuestIndex;   //몇번째 퀘스트차례인지 (다시하기)
 
     public int LastDay=0;  //마지막으로 퀘스트를 클리어한 날짜(서버 저장)
     public int ToDay=0;      //오늘 날짜
@@ -24,6 +25,7 @@ public class QuestDontDestroy : MonoBehaviour
     public bool tutorialLoading=false; //튜토리얼 진행 중인지(하우징갔다가 메인왔을 때 진행 시키는 용)
 
     public bool ReQuest = false;
+    public bool QuestNF = false;
     //public bool WeekQMail = true; //주말, 평일 퀘 메일 구분용
     //public bool RiciveQuest = false; //퀘스트를 받았는지 확인하는 bool값
 

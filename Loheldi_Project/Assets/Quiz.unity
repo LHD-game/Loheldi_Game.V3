@@ -890,6 +890,10 @@ PrefabInstance:
       propertyPath: m_Range
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5761823333572380056, guid: 47d02d9aef5566a49946c85986e1e863, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5761823334082948760, guid: 47d02d9aef5566a49946c85986e1e863, type: 3}
       propertyPath: m_TargetTexture
       value: 

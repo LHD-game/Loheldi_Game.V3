@@ -15,7 +15,10 @@ public class ToothStartButton : MonoBehaviour
         DontDestroy = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
         if(DontDestroy.ToothQ)
         {
-            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+            if (DontDestroy.ReQuest)
+                ;
+            else
+                PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
             DontDestroy.LastDay = DontDestroy.ToDay;
             DontDestroy.ToothQ = false;
