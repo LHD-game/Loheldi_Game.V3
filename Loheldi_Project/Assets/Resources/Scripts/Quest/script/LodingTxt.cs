@@ -113,7 +113,7 @@ public class LodingTxt : MonoBehaviour
     public UIButton JumpButtons;
     public tutorial tu;
     public Interaction Inter;
-
+    public QuestStatus QS;
 
 
     int m = 0;                                  //Ä«¸Þ¶ó ¹«ºù
@@ -215,6 +215,7 @@ public class LodingTxt : MonoBehaviour
                 Nari.transform.position = Player.transform.position + new Vector3(-1, 0, 0);
                 return;
             }
+            /*
             if (Int32.Parse(QQ[0]) == 0)
             {
                 QuestLoad.QuestLoadStart();
@@ -227,8 +228,9 @@ public class LodingTxt : MonoBehaviour
             {
                 if (DontDestroy.ToDay != DontDestroy.LastDay)
                     QuestLoad.QuestLoadStart();
-            }
-            
+            }*/
+            QuestLoad.QuestLoadStart();
+
         }
         else if (SceneManager.GetActiveScene().name == "Quiz")
         {
@@ -1640,7 +1642,10 @@ public class LodingTxt : MonoBehaviour
         if (DontDestroy.ReQuest)
             ;
         else
+        {
             PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+            QS.QuestStepNumber++;
+        }
         if (data_Dialog[j]["dialog"].ToString().Equals("end"))
         {
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
@@ -1666,7 +1671,10 @@ public class LodingTxt : MonoBehaviour
             if (DontDestroy.ReQuest)
                 ;
             else
+            { 
                 PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+                QS.QuestStepNumber++;
+            }
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
             DontDestroy.LastDay = DontDestroy.ToDay;
             DontDestroy.From = " ";

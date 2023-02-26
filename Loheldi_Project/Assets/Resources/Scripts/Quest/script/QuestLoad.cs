@@ -16,16 +16,16 @@ public class QuestLoad : MonoBehaviour
     string From;
     string Content;
     string Reward;
-    string authorName; 
-    string Type; 
+    string authorName;
+    string Type;
     public QuestScript Quest;
     public QuestDontDestroy DontDestroy;
-    
-    
+    public QuestStatus QS;
+
     public void QuestLoadStart()
     {
         DontDestroy = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
-        Quest = GameObject.Find("chatManager").GetComponent<QuestScript>();
+        //Quest = GameObject.Find("chatManager").GetComponent<QuestScript>();
 
         string selectedProbabilityFileId = "";
 
@@ -38,7 +38,7 @@ public class QuestLoad : MonoBehaviour
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];
 
         var bro2 = Backend.GameData.GetMyData("QUEST_INFO", new Where());
-        
+
         if (!bro3.IsSuccess())
         {
             Debug.LogError(bro3.ToString());
@@ -46,9 +46,9 @@ public class QuestLoad : MonoBehaviour
         }
         if (bro2.IsSuccess())
         {
-            
+
             Param param2 = new Param();
-            
+
             string QuestPreg;
             /*if (DontDestroy.weekend) //주말일 때
                 QuestPreg = PlayerPrefs.GetString("WeeklyQuestPreg"); //주말 퀘스트 번호로 바뀔 예정
@@ -95,7 +95,7 @@ public class QuestLoad : MonoBehaviour
                 where.Equal("QID", QID2);
                 var chk_bro = Backend.GameData.GetMyData("QUEST_INFO", where);
                 JsonData chk_rows = chk_bro.GetReturnValuetoJSON()["rows"];
-                
+
                 if (chk_rows.Count <= 0)
                 {
                     Param param = new Param();
@@ -119,65 +119,63 @@ public class QuestLoad : MonoBehaviour
                 int r;
                 for (int i = 0; i < rows.Count; i++)
                 {
-                    if (DontDestroy.ReQuest&&!DontDestroy.QuestNF)
+                    if (DontDestroy.ReQuest && !DontDestroy.QuestNF)
                         r = i;
                     else
                         r = i + 1;
                     string QID = rows[i]["QID"]["S"].ToString();
                     if (QID == QuestPreg)   //0_0은 아닌 상태에서 퀘스트 진행도와 일치
                     {
-                        QID3 = rows[r]["QID"]["S"].ToString();
-                        QName = rows[r]["QName"]["S"].ToString();
-                        From = rows[r]["From"]["S"].ToString();
-                        Content = rows[r]["Content"]["S"].ToString();  //replace는 우편함에서 실행하니 하지 않으셔도 무방합니다.
-                        Reward = rows[r]["Reward"]["S"].ToString();
-                        authorName = rows[r]["authorName"]["S"].ToString();
-                        Type = rows[r]["Type"]["S"].ToString();
-
-                        DontDestroy.QuestIndex = QID3;
-                        PlayerPrefs.SetString("NowQID", QID3);
-                        DontDestroy.ButtonPlusNpc = authorName;
-                        DontDestroy.From = From;
-                        //Debug.Log(QID3);
-                        //Debug.Log(QName);
-                        //Debug.Log(DontDestroy.QuestIndex);
-
-                        //이미 퀘스트가 들어가있는지 검사
-                        Where where = new Where();
-                        where.Equal("QID", QID3);
-                        var chk_bro = Backend.GameData.GetMyData("QUEST_INFO", where);
-                        JsonData chk_rows = chk_bro.GetReturnValuetoJSON()["rows"];
-                        if (chk_rows.Count <= 0)
+                        QS.QuestStepNumber = i;
+                        if (DontDestroy.SDA)
+                            return;
+                        else if (DontDestroy.ToDay != DontDestroy.LastDay)
                         {
-                            param2.Add("QID", QID3);
-                            param2.Add("QName", QName);
-                            param2.Add("From", From);
-                            param2.Add("Content", Content);
-                            param2.Add("Reward", Reward);
-                            param2.Add("authorName", authorName);
-                            param2.Add("Type", Type);
-                            Backend.GameData.Insert("QUEST_INFO", param2);
-                            Debug.Log("퀘스트 수령 완료");
-                            break;
-                        }
-                        else
-                        {
-                            Debug.Log("이미 해당 퀘스트를 수령했습니다.");
+                            QID3 = rows[r]["QID"]["S"].ToString();
+                            QName = rows[r]["QName"]["S"].ToString();
+                            From = rows[r]["From"]["S"].ToString();
+                            Content = rows[r]["Content"]["S"].ToString();  //replace는 우편함에서 실행하니 하지 않으셔도 무방합니다.
+                            Reward = rows[r]["Reward"]["S"].ToString();
+                            authorName = rows[r]["authorName"]["S"].ToString();
+                            Type = rows[r]["Type"]["S"].ToString();
+
+                            DontDestroy.QuestIndex = QID3;
+                            PlayerPrefs.SetString("NowQID", QID3);
+                            DontDestroy.ButtonPlusNpc = authorName;
+                            DontDestroy.From = From;
+                            //Debug.Log(QID3);
+                            //Debug.Log(QName);
+                            //Debug.Log(DontDestroy.QuestIndex);
+
+                            //이미 퀘스트가 들어가있는지 검사
+                            Where where = new Where();
+                            where.Equal("QID", QID3);
+                            var chk_bro = Backend.GameData.GetMyData("QUEST_INFO", where);
+                            JsonData chk_rows = chk_bro.GetReturnValuetoJSON()["rows"];
+                            if (chk_rows.Count <= 0)
+                            {
+                                param2.Add("QID", QID3);
+                                param2.Add("QName", QName);
+                                param2.Add("From", From);
+                                param2.Add("Content", Content);
+                                param2.Add("Reward", Reward);
+                                param2.Add("authorName", authorName);
+                                param2.Add("Type", Type);
+                                Backend.GameData.Insert("QUEST_INFO", param2);
+                                Debug.Log("퀘스트 수령 완료");
+                                break;
+                            }
+                            else
+                            {
+                                Debug.Log("이미 해당 퀘스트를 수령했습니다.");
+                            }
                         }
                     }
+                    Debug.Log("Type:" + Type);
                 }
-                Debug.Log("Type:" + Type);
+                Quest.QuestStart();
             }
-            Quest.QuestStart();
-        }
-        
-    }
 
-    void changeWeekendNumber()  //주말 수정할 경우 이것
-    {
-        if(PlayerPrefs.GetString("WeeklyQuestPreg") !=null)
-        {
-            ;
         }
     }
 }
