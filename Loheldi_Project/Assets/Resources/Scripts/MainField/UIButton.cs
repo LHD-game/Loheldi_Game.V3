@@ -67,13 +67,17 @@ public class UIButton : MonoBehaviour
             targetPositionNPC = new Vector3(Player.transform.position.x, NPC.position.y, Player.transform.position.z);
             if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine"))
             { stopCorou(); }
-            else if (chat.DontDestroy.QuestIndex.Equals("8_1") && Inter.NameNPC.Equals("Mei"))
+            else if (chat.DontDestroy.QuestIndex.Equals("9_1") && Inter.NameNPC.Equals("Mei"))  //퀘스트 수정
             { stopCorou(); }
-            else if (chat.DontDestroy.QuestIndex.Equals("13_1") && Inter.NameNPC.Equals("Suho"))
+            else if (chat.DontDestroy.QuestIndex.Equals("15_1") && Inter.NameNPC.Equals("Suho"))
             { stopCorou(); }
             else if (Inter.NameNPC.Equals("ThankApplesTree"))
             {
                 TimeCheck();
+            }
+            else if (Inter.text.text.Equals("미니게임"))
+            {
+                ;
             }
             else
             {

@@ -66,6 +66,7 @@ public class WelcomeManager : MonoBehaviour
             {
                 // play_info를 서버에서 불러와 로컬에 저장
                 Save_Basic.LoadPlayInfo();
+                Save_Basic.LoadSubQuestInfo();
                 Save_Log.instance.SaveLoginLog();
                 Save_Basic.LoadUserGarden();
 

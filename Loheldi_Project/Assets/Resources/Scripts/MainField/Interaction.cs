@@ -59,6 +59,10 @@ public class Interaction : MonoBehaviour
                 ThankTree = true;
                 text.text = "감사나무";
             }
+            else if (other.gameObject.name == "Bibim" || other.gameObject.name == "Fruit" || other.gameObject.name == "Wood")
+            {
+                text.text = "미니게임";
+            }
             else
             {
                 ThankTree = false;

@@ -142,6 +142,7 @@ public class Register : MonoBehaviour
             Save_Basic.UserGardenInit();    //텃밭 초기 행 저장
             Save_Basic.UserHousingInit();    //하우징 초기 행 저장
             Save_Basic.UserHousingInit2();    //하우징 초기 행 2 저장
+            Save_Basic.SubQuestInfoInit();    //하우징 초기 행 2 저장
             //Save_Basic.Save0_0Quest();
 
 
@@ -206,6 +207,7 @@ public class Register : MonoBehaviour
             Save_Basic.LoadPlayInfo();
             Save_Log.instance.SaveLoginLog();
             Save_Basic.LoadUserGarden();
+            Save_Basic.LoadSubQuestInfo();
 
             if (AccChk())   //계정 정보 만들어져 있으면, 계정 정보를 로컬에 저장하고, 필드로
             {

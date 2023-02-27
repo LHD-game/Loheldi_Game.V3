@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Mini_BibimbabMainScript : MonoBehaviour
 {
-    public GameObject[] FoodNameTag;
+    //public GameObject[] FoodNameTag;
     public BibimTimer BibimT;
 
     public float WaitTime = 0;
@@ -38,6 +38,11 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     public GameObject[] Position;
     public int[] GuestNum = new int[3];
 
+    public GameObject WelcomePanel;
+    public GameObject GameOverPanel;
+    public GameObject PausePanel;
+    public GameObject HPDisablePanel;   //hp 부족으로 인한 팝업 패널 오브젝트
+    public GameObject DifficultyPanel;  // 난이도 선택 화면 패널 오브젝트
 
     IEnumerator coroutine;
     public IEnumerator[] Timecoroutine = new IEnumerator[3];
@@ -55,6 +60,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     }
     public void GameReset()
     {
+        Game = false;
         for(int i=0; i<3; i++)
         {
             NowGuest[i] = null;
@@ -74,23 +80,58 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         }
         BibimReset();
         EggreSet();
+
+        BibimT.isPause = false;
+
+        GameOverPanel.SetActive(false);
+        WelcomePanel.SetActive(true);
+        PausePanel.SetActive(false);
+
+        //player.velocity = new Vector3(0, 0, 0);
+
+        //FinishSound = false;
         //GameStart();
     }
+    
+    public void GameStartButton()
+    {
+        int now_hp = PlayerPrefs.GetInt("HP");
+
+        if (now_hp > 0)  //현재 hp가 0보다 크다면
+        {
+            //hp 1 감소
+            PlayInfoManager.GetHP(-1);
+            WelcomePanel.SetActive(false);
+            DifficultyPanel.SetActive(true);
+        }
+        else    //0 이하라면: 게임 플레이 불가
+        {
+            // hp가 부족합니다! 팝업 띄우기
+            HPDisablePanel.SetActive(true);
+        }
+
+    }
+
     public void GameStart()
     {
+        
         BibimScore.text = "0";
         for (int i = 0; i < Level; i++)
         {
             orderPosition(i);
         }
         Game = true;
+
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Game)
         {
-            //Debug.Log("비빔");
-            BibimDeco();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                //Debug.Log("비빔");
+                BibimDeco();
+            }
         }
     }
     void BibimDeco()

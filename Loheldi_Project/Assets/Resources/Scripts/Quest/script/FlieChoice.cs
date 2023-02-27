@@ -24,6 +24,7 @@ public class FlieChoice : MonoBehaviour
     }
     public void Tutorial()
     {
+        Debug.Log("튜토리얼");
         //Save_Log.instance.SaveQStartLog();  //퀘스트 시작 시간 로그
         chat.Main_UI.SetActive(false);
         chat.FileAdress = "Scripts/Quest/script";
@@ -146,6 +147,21 @@ public class FlieChoice : MonoBehaviour
                     chat.Num = "24";
                 else
                     chat.Num = "23";
+                chat.NPCButton += 2;
+                break;
+            case "Bibim":
+
+                    chat.Num = "25";
+                chat.NPCButton += 2;
+                break;
+            case "Wood":
+
+                    chat.Num = "26";
+                chat.NPCButton += 2;
+                break;
+            case "Fruit":
+
+                    chat.Num = "27";
                 chat.NPCButton += 2;
                 break;
         }

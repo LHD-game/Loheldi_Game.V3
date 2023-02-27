@@ -88,6 +88,10 @@ public class SceneLoader : MonoBehaviour
     {
         LoadingSceneManager.LoadScene("Game_Bibimbap");
     }
+    public void GotoWoodGame()
+    {
+        LoadingSceneManager.LoadScene("Game_Wood");
+    }
 
     public void GotoComditionWindow() //삭제될 친구
     {
@@ -117,7 +121,7 @@ public class SceneLoader : MonoBehaviour
 
     private void PlayerTransForm()
     {
-        if (SceneManager.GetActiveScene().name == "MainField")
+        if (SceneManager.GetActiveScene().name == "MainField")//|| SceneManager.GetActiveScene().name == "AcornVillage")
         {
             QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
             QDD.LastPlayerTransform.transform.position = Player.transform.position;

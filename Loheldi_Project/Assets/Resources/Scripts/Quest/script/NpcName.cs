@@ -11,7 +11,9 @@ public class NpcName : MonoBehaviour
     void Update()
     {
         if (Inter.NpcNameTF)
+        {
             this.transform.position = Camera.main.WorldToScreenPoint(Npc.transform.position + new Vector3(0, 1.5f, 0));
+        }
         else
             this.gameObject.SetActive(false);
     }

@@ -46,6 +46,7 @@ public class BibimTimer : MonoBehaviour
         if (time_current <= 0)
         {
             EndTimer();
+
         }
 
     }
@@ -73,11 +74,13 @@ public class BibimTimer : MonoBehaviour
     {
         if (!isPause)
         {
+            Bibim.PausePanel.SetActive(true);
             isPause = true;
             Time.timeScale = 0f;
         }
         else
         {
+            Bibim.PausePanel.SetActive(false);
             isPause = false;
             Time.timeScale = 1f;
         }

@@ -17,6 +17,7 @@ public class Bibim_Level : MonoBehaviour
 
     public void Lelve1()
     {
+        Bibim.DifficultyPanel.SetActive(false);
         foreach (var i in BibimT.WaitS)
             i.maxValue = 90f;
         Bibim.Level = 2;
@@ -28,6 +29,7 @@ public class Bibim_Level : MonoBehaviour
     }
     public void Lelve2()
     {
+        Bibim.DifficultyPanel.SetActive(false);
         foreach (var i in BibimT.WaitS)
             i.maxValue = 10f;
         Bibim.WaitTime = 10f;
@@ -41,6 +43,7 @@ public class Bibim_Level : MonoBehaviour
     }
     public void Lelve3()
     {
+        Bibim.DifficultyPanel.SetActive(false);
         foreach (var i in BibimT.WaitS)
             i.maxValue = 7f;
         Bibim.WaitTime = 7f;

@@ -13,6 +13,7 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
     public static List<GameObject> right_detail_text = new List<GameObject>();
     
     public static string this_qid = "null";
+    public static string this_type = "null";
     //public static string this_type = "null";
 
     //string Type;
@@ -26,9 +27,9 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
         Text qid_txt = qid.GetComponent<Text>();
         this_qid = qid_txt.text;
 
-       /* GameObject type = this.transform.Find("Type").gameObject;
+        GameObject type = this.transform.Find("Type").gameObject;
         Text type_txt = type.GetComponent<Text>();
-        this_type = type_txt.text;*/
+        this_type = type_txt.text;
 
         GameObject title = this.transform.Find("Title").gameObject;
         Text title_txt = title.GetComponent<Text>();
@@ -49,6 +50,18 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
         Text qid_d_txt = qid_detail.GetComponent<Text>();
         qid_d_txt.text = qid_txt.text;
 
+        GameObject type_detail = QuestDetail.transform.Find("RType").gameObject;
+        Text type_d_txt = type_detail.GetComponent<Text>();
+        type_d_txt.text = type_txt.text;
+        if (type_d_txt.text.Equals("ReQuest"))
+        {
+            type_detail.SetActive(true);
+        }
+        else
+        {
+            type_detail.SetActive(false);
+        }
+
         GameObject title_detail = QuestDetail.transform.Find("RTitle").gameObject;
         Text title_detail_txt = title_detail.GetComponent<Text>();
         title_detail_txt.text = title_txt.text;
@@ -67,9 +80,9 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
             right_detail_text.Add(title_detail);
             right_detail_text.Add(from_detail);
             right_detail_text.Add(content_detail);
+            right_detail_text.Add(type_detail);
         }
-
-        if (this_qid != "")
+            if (this_qid != "")
         {
             //todo: reward
             MakeRewardList(reward_txt.text);

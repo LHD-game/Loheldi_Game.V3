@@ -92,7 +92,7 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
         param.Add("NowExp", 0);
         param.Add("MaxExp", 10);
         param.Add("QuestPreg", "0_0");
-        param.AddNull("WeeklyQuestPreg");
+        //param.AddNull("WeeklyQuestPreg");
         param.Add("LastQTime", today.Day);
         param.Add("HP", 5);
         param.Add("LastHPTime", today.Day);
@@ -110,6 +110,24 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
             Debug.Log("PlayerInfoInit() Fail");
         }
         
+    }
+
+    public static void SubQuestInfoInit()
+    {
+        Param param = new Param();
+
+        param.Add("LastThankTreeTime", 0);
+
+        var bro = Backend.GameData.Insert("USER_SUBQUEST", param);
+
+        if (bro.IsSuccess())
+        {
+            Debug.Log("SubQuestInfoInit() Success");
+        }
+        else
+        {
+            Debug.Log("SubQuestInfoInit() Fail");
+        }
     }
 
     //USER_GARDEN 테이블 초기값 저장
@@ -179,7 +197,7 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
                 PlayerPrefs.SetInt("LastQTime", data.LastQTime);
                 PlayerPrefs.SetInt("HP", data.HP);
                 PlayerPrefs.SetInt("LastHPTime", data.LastHPTime);
-                PlayerPrefs.SetString("WeeklyQuestPreg", data.WeeklyQuestPreg);
+                //PlayerPrefs.SetString("WeeklyQuestPreg", data.WeeklyQuestPreg);
                 PlayerPrefs.SetInt("HouseLv", data.HouseLv);
                 PlayerPrefs.SetString("HouseShape", data.HouseShape);
             }
@@ -190,6 +208,27 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
         }
     }
 
+    public static void LoadSubQuestInfo()
+    {
+        BackendReturnObject bro = Backend.GameData.GetMyData("USER_SUBQUEST", new Where(), 10);
+
+        if (bro.IsSuccess())
+        {
+            var json = bro.GetReturnValuetoJSON();
+
+            try
+            {
+                var json_data = json["rows"][0];
+                ParsingJSON pj = new ParsingJSON();
+                MySubQuest data = pj.ParseBackendData<MySubQuest>(json_data);
+                PlayerPrefs.SetInt("LastThankTreeTime", data.LastThankTreeTime);
+            }
+            catch (Exception ex) //조회에는 성공했으나, 해당 값이 없음(NullPointException)
+            {
+                Debug.Log(ex);
+            }
+        }
+    }
     //acc info 테이블 가져와 로컬에 저장하는 메소드: 닉네임, 생년월일, 보호자인증번호
     public static void LoadAccInfo()
     {
