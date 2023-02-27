@@ -172,7 +172,7 @@ public class LodingTxt : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainField"|| SceneManager.GetActiveScene().name == "AcornVillage")     //메인 필드에 있을 떄만 사용
         {
             DontDestroy.LastDay = PlayerPrefs.GetInt("LastQTime");
-
+            Debug.Log(PlayerPrefs.GetString("QuestPreg"));
             string[] QQ = PlayerPrefs.GetString("QuestPreg").Split('_');
             //string[] qq = PlayerPrefs.GetString("WeeklyQuestPreg").Split('_');
 
@@ -215,20 +215,6 @@ public class LodingTxt : MonoBehaviour
                 Nari.transform.position = Player.transform.position + new Vector3(-1, 0, 0);
                 return;
             }
-            /*
-            if (Int32.Parse(QQ[0]) == 0)
-            {
-                QuestLoad.QuestLoadStart();
-            }
-            else if (DontDestroy.SDA)
-            {
-                return;
-            }
-            else
-            {
-                if (DontDestroy.ToDay != DontDestroy.LastDay)
-                    QuestLoad.QuestLoadStart();
-            }*/
             QuestLoad.QuestLoadStart();
 
         }
@@ -1459,7 +1445,7 @@ public class LodingTxt : MonoBehaviour
         //PlayerCamera.SetActive(false);
         NPCButton = 0;
         ButtonsFalse();
-        if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine")|| Inter.NameNPC.Equals("ThankApplesTree"))  //여긴 뭘까 한번 확인좀.. 수정
+        if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine")|| Inter.NameNPC.Equals("ThankApplesTree")|| Inter.NameNPC.Equals("Bibim")|| Inter.NameNPC.Equals("Wood")|| Inter.NameNPC.Equals("Fruit"))  //물체들 대화 수정
         { stopCorou(); }
         else if (DontDestroy.QuestIndex.Equals("9_1") && Inter.NameNPC.Equals("Mei"))
         { stopCorou(); }

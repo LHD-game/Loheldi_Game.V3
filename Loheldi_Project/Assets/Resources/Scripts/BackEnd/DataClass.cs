@@ -37,7 +37,7 @@ public class PlayInfo
     public int LastQTime;
     public int HP;
     public int LastHPTime;
-    public string WeeklyQuestPreg;
+    //public string WeeklyQuestPreg;
     public int HouseLv;
     public string HouseShape;
 }

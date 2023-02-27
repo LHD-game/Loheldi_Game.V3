@@ -17,14 +17,16 @@ public class MailLoad : MonoBehaviour
 
     //우편
     [SerializeField]
-    GameObject c_mail;                          //전체 메일 리스트 content
+    GameObject c_mail;                              //전체 메일 리스트 content
+    [SerializeField]
+    Text c_Type;                              //퀘스트 타입              
     [SerializeField]
     GameObject c_announce;                          //전체 공지사항 리스트 content
     [SerializeField]
     GameObject AlreadyRecieveBtn;
 
     [SerializeField]
-    GameObject[] RightDetail = new GameObject[4];
+    GameObject[] RightDetail = new GameObject[5];
 
     //공지사항
     public Transform NoticeContent;
@@ -89,6 +91,8 @@ public class MailLoad : MonoBehaviour
         {
             Destroy(MailSelect.reward_list[i]);
         }
+
+        c_Type.gameObject.SetActive(false);
         
         
         GetQuestMail();
@@ -117,14 +121,14 @@ public class MailLoad : MonoBehaviour
         item.Add("Content", data.Content);
         item.Add("Reward", data.Reward);
         item.Add("authorName", data.authorName);
-        //item.Add("Type", data.Type);
+        item.Add("Type", data.Type);
     }
 
     GameObject itemBtn;
     protected void MakeCategory(GameObject category, List<Dictionary<string, object>> dialog, List<GameObject> itemObject)
     {
         itemBtn = (GameObject)Resources.Load("Prefabs/UI/Mail");
-        ParsingJSON pj = new ParsingJSON();
+        //ParsingJSON pj = new ParsingJSON();
 
         for (int i = 0; i < dialog.Count; i++)
         {
@@ -162,9 +166,9 @@ public class MailLoad : MonoBehaviour
             Text reward_txt = mail_reward.GetComponent<Text>();
             reward_txt.text = dialog[i]["Reward"].ToString();
 
-            /*GameObject mail_Type = child.transform.Find("Type").gameObject;
+            GameObject mail_Type = child.transform.Find("Type").gameObject;
             Text Type_txt = mail_Type.GetComponent<Text>();
-            Type_txt.text = dialog[i]["Type"].ToString();*/
+            Type_txt.text = dialog[i]["Type"].ToString();
         }
     }
 
@@ -195,7 +199,7 @@ public class MailLoad : MonoBehaviour
     {
         //보상 수령
         List<GameObject> reward = MailSelect.reward_list;
-        if (DontDestroy.ReQuest) ;
+        if (c_Type.text.Equals("ReQuest") );
         else
         {
             for (int i = 0; i < reward.Count; i++)

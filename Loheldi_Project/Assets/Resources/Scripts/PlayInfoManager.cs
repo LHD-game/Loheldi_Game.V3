@@ -95,7 +95,7 @@ public class PlayInfoManager : MonoBehaviour
         param.Add("HP", new_hp);
         param.Add("LastHPTime", new_last_hp_time);
         param.Add("HouseLv", new_house_lv);
-        param.AddNull("WeeklyQuestPreg");  //null로 넣기
+        //param.AddNull("WeeklyQuestPreg");  //null로 넣기
 
         //유저 현재 row 검색
         var bro = Backend.GameData.Get("PLAY_INFO", new Where());

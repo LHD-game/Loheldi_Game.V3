@@ -20,7 +20,6 @@ public class QuestLoad : MonoBehaviour
     string Type;
     public QuestScript Quest;
     public QuestDontDestroy DontDestroy;
-    public QuestStatus QS;
 
     public void QuestLoadStart()
     {
@@ -29,10 +28,7 @@ public class QuestLoad : MonoBehaviour
 
         string selectedProbabilityFileId = "";
 
-        /*if (DontDestroy.weekend)
-            selectedProbabilityFileId = "69953"; //주말퀘 차트
-        else*/
-        selectedProbabilityFileId = "71773"; //평일퀘 차트
+        selectedProbabilityFileId = "72120"; //퀘스트 차트
 
         var bro3 = Backend.Chart.GetChartContents(selectedProbabilityFileId);
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];
@@ -58,11 +54,6 @@ public class QuestLoad : MonoBehaviour
             else
                 QuestPreg = PlayerPrefs.GetString("QuestPreg");
 
-            if (Type == "end")
-            {
-                Debug.Log("마지막 퀘스트입니다");
-                return;
-            }
             /*else if (Type == "Weekend")   //주말 합체시키는 용의 if문
             {
                 Debug.Log("수정 전 주말퀘스트");
@@ -126,18 +117,27 @@ public class QuestLoad : MonoBehaviour
                     string QID = rows[i]["QID"]["S"].ToString();
                     if (QID == QuestPreg)   //0_0은 아닌 상태에서 퀘스트 진행도와 일치
                     {
-                        QS.QuestStepNumber = i;
+                        QName = rows[r]["QName"]["S"].ToString();
+                        if (QName == "end")
+                        {
+                            Debug.Log("마지막 퀘스트입니다");
+                            DontDestroy.ReQuest = true;
+                            return;
+                        }
                         if (DontDestroy.SDA)
                             return;
                         else if (DontDestroy.ToDay != DontDestroy.LastDay)
                         {
                             QID3 = rows[r]["QID"]["S"].ToString();
-                            QName = rows[r]["QName"]["S"].ToString();
+                            //QName = rows[r]["QName"]["S"].ToString();
                             From = rows[r]["From"]["S"].ToString();
                             Content = rows[r]["Content"]["S"].ToString();  //replace는 우편함에서 실행하니 하지 않으셔도 무방합니다.
                             Reward = rows[r]["Reward"]["S"].ToString();
                             authorName = rows[r]["authorName"]["S"].ToString();
-                            Type = rows[r]["Type"]["S"].ToString();
+                            if (DontDestroy.ReQuest)
+                                Type = "ReQuest";
+                            else
+                                Type = rows[0]["Type"]["S"].ToString();
 
                             DontDestroy.QuestIndex = QID3;
                             PlayerPrefs.SetString("NowQID", QID3);
@@ -171,11 +171,10 @@ public class QuestLoad : MonoBehaviour
                             }
                         }
                     }
-                    Debug.Log("Type:" + Type);
+                    //Debug.Log("Type:" + Type);
                 }
-                Quest.QuestStart();
             }
-
+            Quest.QuestStart();
         }
     }
 }

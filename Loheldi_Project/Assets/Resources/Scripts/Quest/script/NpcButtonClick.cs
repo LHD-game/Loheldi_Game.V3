@@ -15,6 +15,7 @@ public class NpcButtonClick : MonoBehaviour
     public FlieChoice Chat;
     public GameObject ParentscheckUI;
     public GameObject ThankTreeUI;
+    public Interaction Inter;
 
 
     public void SecondButtonClick()
@@ -24,7 +25,16 @@ public class NpcButtonClick : MonoBehaviour
         UIB = GameObject.Find("EventSystem").GetComponent<UIButton>();
 
         if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("미니게임 하기"))
-            SceneLoader.instance.GotoLobby();
+        {
+            if (Inter.NameNPC.Equals("Bibim"))
+                SceneLoader.instance.GotoBibimbapGame();
+            else if (Inter.NameNPC.Equals("Fruit"))
+                SceneLoader.instance.GotoDropFruitGame();
+            else if (Inter.NameNPC.Equals("Wood"))
+                SceneLoader.instance.GotoWoodGame();
+            else
+                SceneLoader.instance.GotoLobby();
+        }
         else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("미용실 이용하기"))
         {
             Chat.chat.Main_UI.SetActive(true);
@@ -57,7 +67,7 @@ public class NpcButtonClick : MonoBehaviour
         {
             SceneLoader.instance.GotoPlayerCustom();
         }
-        else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("퀘스트 하미"))
+        else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("퀘스트 하기") || click.transform.GetChild(0).GetComponent<Text>().text.Equals("어서오세요!"))
         {
             Chat.Quest();
             CheckQuest();
@@ -66,7 +76,7 @@ public class NpcButtonClick : MonoBehaviour
         {
             SceneLoader.instance.GotoQuizGame();
         }
-        else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("퀘스트 힘찬"))
+        /*else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("퀘스트 힘찬"))
         {
             Chat.Quest();
             CheckQuest();
@@ -95,16 +105,16 @@ public class NpcButtonClick : MonoBehaviour
         {
             Chat.Quest();
             CheckQuest();
-        }
+        }*/
         else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("뽑기하기"))
         {
             SceneLoader.instance.GotoGacha();
         }
-        else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("어서오세요!"))
+        /*else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("어서오세요!"))
         {
             Chat.Quest();
             CheckQuest();
-        }
+        }*/
         else if (click.transform.GetChild(0).GetComponent<Text>().text.Equals("미션 인증하기"))
         {
             UIB.chat.ChatEnd();

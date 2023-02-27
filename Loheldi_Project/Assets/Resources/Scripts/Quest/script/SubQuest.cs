@@ -88,7 +88,7 @@ public class SubQuest : MonoBehaviour
             var bro2 = Backend.GameData.UpdateV2("USER_SUBQUEST", rowIndate, Backend.UserInDate, param);
             if (bro2.IsSuccess())
             {
-                Debug.Log("SAVESUBQUEST 성공. PLAY_INFO가 업데이트 되었습니다.");
+                Debug.Log("SAVESUBQUEST 성공. USER_SUBQUEST 업데이트 되었습니다.");
             }
             else
             {
