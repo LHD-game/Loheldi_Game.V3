@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using static UnityEngine.Tilemaps.TilemapRenderer;
 
 public class Mini_BibimbabMainScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     public int Level;
     public GameObject[] NowGuest = new GameObject[3];
+    public bool StartOrder = false;
 
     public GameObject[] TalkBallon = new GameObject[3];
     public GameObject[] food;
@@ -59,7 +61,9 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         GameReset();
     }
     public void GameReset()
-    {
+    {   BibimT.isPause = false;
+        BibimT.isRun = false;
+        StartOrder = false;
         Game = false;
         for(int i=0; i<3; i++)
         {
@@ -114,11 +118,16 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     public void GameStart()
     {
-        
+        Time.timeScale = 1f;
+        BibimT.isRun = true;
         BibimScore.text = "0";
-        for (int i = 0; i < Level; i++)
+
+        orderPosition(0);
+        for (int i = 1; i < Level; i++)
         {
-            orderPosition(i);
+            Timecoroutine[i] = NextGuest(i);
+            StartCoroutine(Timecoroutine[i]);
+            StartOrder = true;
         }
         Game = true;
 
@@ -263,7 +272,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
             NowGuest[i].SetActive(true);
             TalkBallon[i].SetActive(true);
             NowGuest[i].transform.position = Position[i].transform.position;
-            Debug.Log(WaitTime);
+            //Debug.Log(WaitTime);
             WaitTimer[i] = BibimT.WaitTimer(i);
             StartCoroutine(WaitTimer[i]);
         }
@@ -307,7 +316,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                 {
                     FoodOrders[i][foodNum] = 1;
                     FoodImg[i][foodNum].SetActive(true);
-                    Debug.Log("주문 = " + FoodName[foodNum] + " 빼주세요");
+                    //Debug.Log("주문 = " + FoodName[foodNum] + " 빼주세요");
                 }
         }
         //Array.Copy(Foodorder, FoodCook, 9);
@@ -319,13 +328,13 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         for (int i = 0; i < Level; i++)
         {
             success = true; 
-            Debug.Log(i+"번째 매뉴와 비교");
+            //Debug.Log(i+"번째 매뉴와 비교");
             for (int check = 0; check < FoodOrders[i].Length; check++)
             {
-                Debug.Log("주문 = " + FoodOrders[i][check] + "\n" + "요리 = " + FoodCook[check]);
+                //Debug.Log("주문 = " + FoodOrders[i][check] + "\n" + "요리 = " + FoodCook[check]);
                 if ((int)FoodCook[check] != (int)FoodOrders[i][check])
                 {
-                    Debug.Log("매뉴 오류");
+                    //Debug.Log("매뉴 오류");
                     success = false;
                     break;
                 }
@@ -337,7 +346,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
                 ResetGuest(i);
                 BibimReset();
                 BibimScore.text = (Int32.Parse(BibimScore.text) + 1).ToString();
-                Debug.Log("조리성공 i = " + i);
+                //Debug.Log("조리성공 i = " + i);
                 return;
             }
         }
@@ -355,9 +364,15 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     IEnumerator NextGuest(int i)
     {
+        while (StartOrder)
+        {
+            yield return null;//new WaitForSeconds(2f);
+            //StartOrder = false;
+        }
         yield return new WaitForSeconds(2f);
         if (Game)
             order(i);
+        StartOrder=false;
     }
 
     public void BallonesPositioning()
