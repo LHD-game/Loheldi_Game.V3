@@ -22,7 +22,6 @@ public class Bibim_Level : MonoBehaviour
             i.maxValue = 90f;
         Bibim.Level = 2;
         BibimT.time_current = 90;
-        BibimT.isRun = true;
         BibimT.WaitS[0].gameObject.SetActive(false);
         BibimT.WaitS[1].gameObject.SetActive(false);
         Bibim.GameStart();
@@ -35,7 +34,6 @@ public class Bibim_Level : MonoBehaviour
         Bibim.WaitTime = 10f;
         Bibim.Level = 3;
         BibimT.time_current = 90;
-        BibimT.isRun = true;
         BibimT.WaitS[0].gameObject.SetActive(true);
         BibimT.WaitS[1].gameObject.SetActive(true);
 
@@ -49,7 +47,6 @@ public class Bibim_Level : MonoBehaviour
         Bibim.WaitTime = 7f;
         Bibim.Level = 3;
         BibimT.time_current = 90;
-        BibimT.isRun = true;
         BibimT.WaitS[0].gameObject.SetActive(true);
         BibimT.WaitS[1].gameObject.SetActive(true);
 

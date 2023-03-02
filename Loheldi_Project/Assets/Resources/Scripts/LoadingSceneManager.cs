@@ -11,10 +11,10 @@ public class LoadingSceneManager : MonoBehaviour
 
     public static Text tiptext;
 
-    public Image LoadingImage1;
-    public Image LoadingImage2;
-    public Image LoadingImage3;
-    public Image LoadingImage4;
+    public Sprite[] LoadingImages;
+    public Image LoadingImage;
+    //public Image LoadingImage3;
+    //public Image LoadingImage4;
 
     private void Start()
     {
@@ -48,23 +48,24 @@ public class LoadingSceneManager : MonoBehaviour
         }
         int imagenum = Random.Range(0, 4);
         StartCoroutine(LoadScene());
-        switch (imagenum)
+        LoadingImage.sprite = LoadingImages[imagenum];
+        /*switch (imagenum)
         {
             case 0:
-                LoadingImage1.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading1");
+                LoadingImage.sprite = LoadingImages[imagenum];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading1");
                 break;
             case 1:
-                LoadingImage2.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading2");
+                LoadingImage.sprite = LoadingImages[1];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading2");
                 break;
             case 2:
-                LoadingImage3.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading3");
+                LoadingImage.sprite = LoadingImages[2];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading3");
                 break;
             case 3:
-                LoadingImage4.sprite = Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading4");
+                LoadingImage.sprite = LoadingImages[3];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading4");
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     public static void LoadScene(string sceneName)
