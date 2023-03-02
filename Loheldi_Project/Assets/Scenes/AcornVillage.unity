@@ -8905,7 +8905,7 @@ MonoBehaviour:
   Chat: {fileID: 512197132339665698}
   ParentscheckUI: {fileID: 0}
   ThankTreeUI: {fileID: 8015933211502296996}
-  Inter: {fileID: 0}
+  Inter: {fileID: 8015933212295743822}
 --- !u!114 &512197132339665702
 MonoBehaviour:
   m_ObjectHideFlags: 0
