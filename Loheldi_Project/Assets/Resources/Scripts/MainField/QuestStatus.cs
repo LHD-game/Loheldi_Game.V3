@@ -22,6 +22,8 @@ public class QuestStatus : MonoBehaviour
     public Text ContentText;
     public Text FromText;
 
+    public Sprite CompletButton;
+
     List<Dictionary<string, object>> Quest_Mail = new List<Dictionary<string, object>>();
 
     QuestDontDestroy QDD;
@@ -76,8 +78,10 @@ public class QuestStatus : MonoBehaviour
     public void PlayerStepCheck()
     {
         Debug.Log("QuestStepNumber = " + QuestStepNumber);
-        child = Instantiate(PImag, QuestButtons[QuestStepNumber].transform.position, Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
+        child = Instantiate(PImag, new Vector3(QuestButtons[QuestStepNumber].transform.position.x, QuestButtons[QuestStepNumber].transform.position.y + 70, QuestButtons[QuestStepNumber].transform.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
         child.transform.parent = QuestButtons[QuestStepNumber].GetComponent<Transform>();
+
+        ButtonActive();
 
         Debug.Log("child = " + child.transform.position.x);
         float QFx = child.transform.position.x - 1500;
@@ -86,6 +90,15 @@ public class QuestStatus : MonoBehaviour
         Debug.Log("child = " + QF);
         Qsr.content.localPosition = QF;
         //QuestButtons[QuestStepNumber];
+    }
+
+    void ButtonActive()
+    {
+        for(int i = 0; i <= QuestStepNumber; i++)
+        {
+            QuestButtons[i].GetComponent<Button>().enabled = true;
+            QuestButtons[i].GetComponent<Image>().sprite = CompletButton;
+        }
     }
     public void ResetQS()
     {

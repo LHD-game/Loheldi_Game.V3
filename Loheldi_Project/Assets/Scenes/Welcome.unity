@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 3f6e86166e09b2643b369f4d3e1b5ffc, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: a77384d9f011ff14a9d183b986dcb554, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 007007b6ba169ba439aa0f0468645d35, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -25244,9 +25244,10 @@ MonoBehaviour:
   badgeList: 
   NtoSControl: 0
   ToothQ: 0
-  weekend: 0
   SDA: 0
   tutorialLoading: 0
+  ReQuest: 0
+  QuestNF: 0
   LastPlayerTransform: {fileID: 2725399510364555320}
 --- !u!114 &2725399510364555324
 MonoBehaviour:
