@@ -53,6 +53,7 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
         GameObject type_detail = QuestDetail.transform.Find("RType").gameObject;
         Text type_d_txt = type_detail.GetComponent<Text>();
         type_d_txt.text = type_txt.text;
+
         if (type_d_txt.text.Equals("ReQuest"))
         {
             type_detail.SetActive(true);
