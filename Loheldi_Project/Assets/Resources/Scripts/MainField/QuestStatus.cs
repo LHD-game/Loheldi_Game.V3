@@ -78,7 +78,7 @@ public class QuestStatus : MonoBehaviour
     public void PlayerStepCheck()
     {
         Debug.Log("QuestStepNumber = " + QuestStepNumber);
-        child = Instantiate(PImag, new Vector3(QuestButtons[QuestStepNumber].transform.position.x, QuestButtons[QuestStepNumber].transform.position.y + 70, QuestButtons[QuestStepNumber].transform.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
+        child = Instantiate(PImag, new Vector3(QuestButtons[QuestStepNumber+1].transform.position.x, QuestButtons[QuestStepNumber].transform.position.y + 70, QuestButtons[QuestStepNumber].transform.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
         child.transform.parent = QuestButtons[QuestStepNumber].GetComponent<Transform>();
 
         ButtonActive();
