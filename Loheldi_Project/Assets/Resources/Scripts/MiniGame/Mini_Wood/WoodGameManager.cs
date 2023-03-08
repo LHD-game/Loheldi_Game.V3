@@ -11,6 +11,7 @@ public class WoodGameManager : MonoBehaviour
     private bool isPause = false; //true일때 pause 상태
 
     public GameObject WelcomePanel;
+    public GameObject DifficultyPanel;
     public GameObject GameOverPanel;
     public GameObject PausePanel;
 
@@ -26,9 +27,9 @@ public class WoodGameManager : MonoBehaviour
 
     public enum STATE   //현재 게임 상태 저장
     {
-        START, STOP, IDLE, FAIL, CLEAR
+        SELECT, START, STOP, IDLE, FAIL, CLEAR
     };
-    static public STATE state;
+    public STATE state;
 
     void Start()
     {
@@ -41,6 +42,9 @@ public class WoodGameManager : MonoBehaviour
         {
             switch (state)
             {
+                case STATE.SELECT:
+                    DifficultySelect();
+                    break;
                 case STATE.START:   //게임 시작
                     WoodSet();
                     break;
@@ -57,12 +61,12 @@ public class WoodGameManager : MonoBehaviour
                     break;
             }
         }
-        if (nowTime <= 0) //시간 제한이 끝나거면
+        if (state == STATE.IDLE && nowTime <= 0) //시간 제한이 끝나거면
         {
             GameStart = true;
             state = STATE.FAIL;
         }
-        if (EventSystem.GetComponent<AxeMove>().Score >= 3)   //일정 점수를 획득하면
+        if (state == STATE.IDLE && EventSystem.GetComponent<AxeMove>().Score >= EventSystem.GetComponent<AxeMove>().ScoreMax)   //일정 점수를 획득하면
         {
             GameStart = true;
             state = STATE.CLEAR;
@@ -70,24 +74,33 @@ public class WoodGameManager : MonoBehaviour
         if (state == STATE.IDLE)
         {
             nowTime -= Time.deltaTime;                                  //현재 타이머에서 전 프레임이 지난 시간을 뺌
-            TimerText.text = string.Format(" : {0:N2}", nowTime);       //타이머 UI에 반영
+            TimerText.text = string.Format("{0:N2}", nowTime);       //타이머 UI에 반영
         }
     }
 
     public void Welcome()   //게임 초기화 함수
     {
-        state = STATE.START;
         GameStart = false;
         isPause = false;
+        EventSystem.GetComponent<AxeMove>().Score = 0;
 
         WelcomePanel.SetActive(true);
+        DifficultyPanel.SetActive(true);
         GameOverPanel.SetActive(false);
         PausePanel.SetActive(false);
+    }
+
+    public void DifficultySelect()
+    {
+        WelcomePanel.SetActive(false);
+        DifficultyPanel.SetActive(true);
+        state = STATE.SELECT;
     }
 
     public void WoodSet()
     {
         nowTime = 30;
+        DifficultyPanel.SetActive(false);
         WelcomePanel.SetActive(false);
         state = STATE.IDLE;
     }

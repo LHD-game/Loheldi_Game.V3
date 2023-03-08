@@ -2328,7 +2328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3348349259548654465, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Text
-      value: "\uC7A5\uC791\uD328\uAE30"
+      value: "\uB3C4\uD1A0\uB9AC\uC90D\uAE30"
       objectReference: {fileID: 0}
     - target: {fileID: 3348349259697357432, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Sprite
