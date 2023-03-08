@@ -468,21 +468,38 @@ public class Drawing : MonoBehaviour
     public Text BMIText;
     public Text BMITalk;
     public string BMIresult = "";
+    public Slider BMISlinder;
 
     public void BMIculcu()
     {
-        H2 =  float.Parse(H.text)* 0.01f;
+        H2 = float.Parse(H.text) * 0.01f;
         BMI = (1.3f * float.Parse(W.text)) / math.pow(H2, 2.5f);
         if (BMI < 18.5f)
-            BMIresult = "저체중";
-        else if (BMI > 18.5&& BMI<22.9)
-            BMIresult = "정상";
-        else if (BMI > 22.9 && BMI<24.9)
-            BMIresult = "과체중";
-        else if (BMI > 24.9)
-            BMIresult = "비만";
-        BMIText.text = BMI.ToString("F2")+ "\n"+BMIresult;
-        BMITalk.text = BMI.ToString("F2");
+        {
+            //"저체중";
+            BMISlinder.value = 1;
+        }
+        else if (BMI > 18.5 && BMI < 22.9)
+        {
+            //"정상";
+            BMISlinder.value = 3;
+        }
+        else if (BMI > 22.9 && BMI < 24.9)
+        {
+            //"과체중";
+            BMISlinder.value = 5;
+        }
+        else if (BMI > 24.9 && BMI < 30)
+        {
+            //"비만";
+            BMISlinder.value = 7;
+        }
+        else if (BMI > 30)
+        {
+            //"고도비만";
+            BMISlinder.value = 9;
+        }
+        BMIText.text = BMI.ToString("F2");
 
     }
 

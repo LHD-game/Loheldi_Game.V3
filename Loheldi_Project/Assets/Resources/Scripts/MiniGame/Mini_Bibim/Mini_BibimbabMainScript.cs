@@ -13,21 +13,21 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     public float WaitTime = 0;
 
-    public int Level;
-    public GameObject[] NowGuest = new GameObject[3];
+    public int Level;  //나오는 인원 수
+    public GameObject[] NowGuest = new GameObject[3];  //주문하는 NPC
     public bool StartOrder = false;
 
-    public GameObject[] TalkBallon = new GameObject[3];
+    public GameObject[] TalkBallon = new GameObject[3];  //주문 창
     public GameObject[] food;
     public Material[] Egg;
     public Material[] Egg_material;
 
     public int[] FoodCook = new int[9];
     int[][] FoodOrders = new int[3][] { new int[9], new int[9], new int[9] };
-    public GameObject[][] FoodImg = new GameObject[3][];
-    public GameObject[] FoodImg1 =new GameObject[7];
-    public GameObject[] FoodImg2 =new GameObject[7];
-    public GameObject[] FoodImg3 =new GameObject[7];
+    public GameObject[][] FoodImg = new GameObject[3][]; //주문창들 배열
+    public GameObject[] FoodImg1 =new GameObject[7];  //1번 주문창 X이미지
+    public GameObject[] FoodImg2 =new GameObject[7];  //2번 주문창 X이미지
+    public GameObject[] FoodImg3 =new GameObject[7];  //3번 주문창 X이미지
     public string[] FoodName = new string[9];
     public bool EggFinish=false;
     public bool EggBurn=false;
@@ -45,6 +45,9 @@ public class Mini_BibimbabMainScript : MonoBehaviour
     public GameObject PausePanel;
     public GameObject HPDisablePanel;   //hp 부족으로 인한 팝업 패널 오브젝트
     public GameObject DifficultyPanel;  // 난이도 선택 화면 패널 오브젝트
+
+    public Text CoinTxt;  //코인 보상
+    public Text ExpTxt;   //경험치 보상
 
     IEnumerator coroutine;
     public IEnumerator[] Timecoroutine = new IEnumerator[3];
@@ -90,6 +93,48 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         GameOverPanel.SetActive(false);
         WelcomePanel.SetActive(true);
         PausePanel.SetActive(false);
+
+        //player.velocity = new Vector3(0, 0, 0);
+
+        //FinishSound = false;
+        //GameStart();
+    }
+    public void GameEnd()
+    {   BibimT.isPause = false;
+        BibimT.isRun = false;
+        StartOrder = false;
+        Game = false;
+        for(int i=0; i<3; i++)
+        {
+            NowGuest[i] = null;
+        }
+
+        foreach (GameObject o in Guest)
+            o.SetActive(false);
+        foreach (GameObject o in TalkBallon)
+            o.SetActive(false);
+
+        foreach (IEnumerator i in WaitTimer)
+        {
+            if (i == null)
+                continue;
+            else
+                StopCoroutine(i);
+        }
+        BibimReset();
+        EggreSet();
+
+        BibimT.isPause = false;
+
+        //보상창
+        CoinTxt.text = BibimScore.text;
+
+        float get_exp = 10f;
+        int get_coin = Int32.Parse(BibimScore.text);
+
+        PlayInfoManager.GetExp(get_exp);
+        PlayInfoManager.GetCoin(get_coin);
+        GameOverPanel.SetActive(true);
 
         //player.velocity = new Vector3(0, 0, 0);
 
@@ -231,12 +276,14 @@ public class Mini_BibimbabMainScript : MonoBehaviour
         EggFinish = true;
         Egg_material[1] = Egg[1]; //0에 메테리얼 번호
         food[0].GetComponent<MeshRenderer>().materials = Egg_material;
-
-        yield return new WaitForSecondsRealtime(5f);
-        Egg_material[1] = Egg[2];
-        Egg_material[0] = Egg[3];
-        food[0].GetComponent<MeshRenderer>().materials = Egg_material;
-        EggBurn = true;
+        if (Level > 2)
+        {
+            yield return new WaitForSecondsRealtime(5f);
+            Egg_material[1] = Egg[2];
+            Egg_material[0] = Egg[3];
+            food[0].GetComponent<MeshRenderer>().materials = Egg_material;
+            EggBurn = true;
+        }
     }
 
     void BibimReset()

@@ -35,7 +35,8 @@ public class QuestStatus : MonoBehaviour
         QuestIndexCheck();
         //GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
     }
-    void GetButtons()
+
+    void GetButtons()  //인스펙터에 버튼넣는 야매 함수
     {
         //Debug.Log("버튼들 가져오기 샤라라라랄랄라");
         //GameObject ButtonParent = GameObject.Find("QuestContent");
@@ -78,8 +79,8 @@ public class QuestStatus : MonoBehaviour
     public void PlayerStepCheck()
     {
         Debug.Log("QuestStepNumber = " + QuestStepNumber);
-        child = Instantiate(PImag, new Vector3(QuestButtons[QuestStepNumber+1].transform.position.x, QuestButtons[QuestStepNumber].transform.position.y + 70, QuestButtons[QuestStepNumber].transform.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
-        child.transform.parent = QuestButtons[QuestStepNumber].GetComponent<Transform>();
+        child = Instantiate(PImag, new Vector3(QuestButtons[QuestStepNumber+1].transform.position.x, QuestButtons[QuestStepNumber+1].transform.position.y, QuestButtons[QuestStepNumber].transform.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
+        child.transform.parent = QuestButtons[QuestStepNumber+1].GetComponent<Transform>();
 
         ButtonActive();
 
@@ -132,6 +133,15 @@ public class QuestStatus : MonoBehaviour
             }
         }
         QSPanel.SetActive(true);
+    }
+
+    private void PresentCheck()
+    {
+        
+    }
+    public void GetPresent()
+    {
+
     }
 
 }
