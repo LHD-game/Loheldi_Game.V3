@@ -19,7 +19,7 @@ public class WoodGameManager : MonoBehaviour
     public Text ResultCoinTxt;
     public Text ResultExpTxt;
 
-    public float nowTime = 30;            //게임 플레이 시간
+    public float nowTime = 30;                   //게임 플레이 시간
     public Text TimerText;                       //시간제한 텍스트 오브젝트
 
     public GameObject EventSystem;
@@ -94,8 +94,8 @@ public class WoodGameManager : MonoBehaviour
 
     void Clear()
     {
-        GameOverPanel.SetActive(true);
         GameStart = false;
+        GameOverPanel.SetActive(true);
         GameResult();
     }
     public void StageFail()
