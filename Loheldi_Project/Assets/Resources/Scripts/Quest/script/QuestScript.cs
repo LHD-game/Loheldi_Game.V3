@@ -55,7 +55,7 @@ public class QuestScript : MonoBehaviour
     public void QuestChoice()
     {
         if (DontDestroy.QuestIndex.Equals("4_1"))  //힘찬이 옆에 자전거 만들기  자전거퀘스트
-                Instantiate(Resources.Load<GameObject>("Prefabs/Q/Qbicycle"), new Vector3(4.2f, -6.39158726f, -9.8f), Quaternion.Euler(0, 51.4773521f, 0));
+                Instantiate(Resources.Load<GameObject>("Prefabs/Q/Qbicycle"), new Vector3(4.2f, -6.39158726f, -9.8f), Quaternion.Euler(0, 146.6f, 0));
         else if (DontDestroy.QuestIndex.Equals("9_1"))  //스트레스야 안녕
         {
             note = true;

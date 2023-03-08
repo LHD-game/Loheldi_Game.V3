@@ -301,21 +301,21 @@ public class LodingTxt : MonoBehaviour
                     if (bikerotate)
                     {
                         JumpButtons.Playerrb.velocity = JumpButtons.Playerrb.velocity.normalized * 0;
-                        NPCBike = new Vector3(-4, 0, 0);
+                        NPCBike = new Vector3(-0.7f, 0, 0);
                         Player.rotation = Quaternion.Euler(0, 90, 0);
                         bikerotate = false;
                     }
                     else
                     {
                         JumpButtons.Playerrb.velocity = JumpButtons.Playerrb.velocity.normalized * 0;
-                        NPCBike = new Vector3(4, 0, 0);
+                        NPCBike = new Vector3(0.7f, 0, 0);
                         Player.rotation = Quaternion.Euler(0, -90, 0);
                         bikerotate = true;
                     }
                     timer = 0;
                 }
                 JumpButtons.Playerrb.velocity = JumpButtons.Playerrb.velocity.normalized * QBikeSpeed;
-                if (Maxtime == 8)
+                if (Maxtime == 3)
                 {
                     BikeNPC.transform.position = Player.position + NPCBike;
                     BikeNPC.transform.rotation = Player.rotation;
@@ -592,18 +592,18 @@ public class LodingTxt : MonoBehaviour
         {
             if (!BikeQ)
             {
-                NPCBike = new Vector3(-4, 0, 0);
+                NPCBike = new Vector3(-1, 0, 0);
                 bicycleRide.RideOn();
                 Destroy(GameObject.Find("Qbicycle(Clone)"));
-                Player.position = new Vector3(36, 5, -23);
+                Player.position = new Vector3(0, -6.39158726f, -10.6f);
                 Player.rotation = Quaternion.Euler(0, 90, 0);
-                QBikeSpeed = 3;
-                Maxtime = 8;
+                QBikeSpeed = 1;
+                Maxtime = 3;
                 BikeQ = true;
                 StartCoroutine("QBikeLoop");
                 NPCJumpAnimator.SetBool("BikeWalk", true);
             }
-            else if (QBikeSpeed == 12)
+            else if (QBikeSpeed == 3)
             {
                 BikeQ = false;
                 Vector3 targetPositionNPC;
@@ -620,10 +620,10 @@ public class LodingTxt : MonoBehaviour
             {
 
                 //페이드 인 페이드 아웃하면서 화면에 한시간 후... 띄우기
-                QBikeSpeed = 12;
-                Maxtime = 3;
-                Player.position = new Vector3(36, 5, -23);
-                BikeNPC.transform.position = Player.position + new Vector3(10, 0, 10);
+                QBikeSpeed = 3;
+                Maxtime = 2f;
+                Player.position = new Vector3(0, -6.39158726f, -10.6f);
+                BikeNPC.transform.position = Player.position + new Vector3(3, 0, 3);
                 Player.rotation = Player.rotation = Quaternion.Euler(0, 90, 0);
                 bikerotate = false;
                 timer = 0;
@@ -1630,7 +1630,9 @@ public class LodingTxt : MonoBehaviour
         else
         {
             PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
-            QS.QuestStepNumber++;
+            if (SceneManager.GetActiveScene().name == "Quiz") ;
+            else
+                QS.QuestStepNumber++;
         }
         if (data_Dialog[j]["dialog"].ToString().Equals("end"))
         {
