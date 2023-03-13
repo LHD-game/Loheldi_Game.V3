@@ -30,7 +30,7 @@ public class Bibim_Level : MonoBehaviour
     {
         Bibim.DifficultyPanel.SetActive(false);
         foreach (var i in BibimT.WaitS)
-            i.maxValue = 10f;
+            i.maxValue = 20f;
         Bibim.WaitTime = 10f;
         Bibim.Level = 3;
         BibimT.time_current = 90;
@@ -43,7 +43,7 @@ public class Bibim_Level : MonoBehaviour
     {
         Bibim.DifficultyPanel.SetActive(false);
         foreach (var i in BibimT.WaitS)
-            i.maxValue = 7f;
+            i.maxValue = 13f;
         Bibim.WaitTime = 7f;
         Bibim.Level = 3;
         BibimT.time_current = 90;

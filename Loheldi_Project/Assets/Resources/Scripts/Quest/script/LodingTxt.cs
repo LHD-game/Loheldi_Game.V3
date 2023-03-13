@@ -636,7 +636,7 @@ public class LodingTxt : MonoBehaviour
         else if (data_Dialog[j]["scriptType"].ToString().Equals("hair"))
         {
             ChatWin.SetActive(false);
-            hairFX(GameObject.Find("Player"));
+            hairFX(Player.gameObject);
             j++;
             Invoke("clearHair", 1f);
         }
@@ -1683,7 +1683,7 @@ public class LodingTxt : MonoBehaviour
     {
         Debug.Log("¹ÝÂ¦");
         ParticleSystem newfx = Instantiate(hairPs);
-        newfx.transform.position = go.transform.position+new Vector3(0,5,0);
+        newfx.transform.position = go.transform.position+new Vector3(0,1,0);
         newfx.transform.SetParent(go.transform);
 
         newfx.Play();

@@ -182,9 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 5761823334082948760}
-  PI: {fileID: 0}
   ScreenshotImg: {fileID: 0}
   PlayerstatusImg: {fileID: 0}
   MyInfoImg: {fileID: 0}
   PlayerImage: {fileID: 2100000, guid: 465d533e027848d4eb31246602eea9f5, type: 2}
+  PlayerRenderTexture: {fileID: 8400000, guid: 9789942d16fcfa54dbc55b1b84f62eaf, type: 2}
   PCamLight: {fileID: 5761823333572380056}

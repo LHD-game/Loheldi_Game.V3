@@ -88,6 +88,11 @@ public class PlayerInfoControl : MonoBehaviour
         foodB.Clear();
         mindB.Clear();
         homeB.Clear();
+        if(allBadgeChart == null) 
+        {
+            Debug.Log("뱃지 리스트 빔 다시 불러오기");
+            is_get_b_chart= false; 
+        }
         if (!is_get_b_chart)
         {
             allBadgeChart = Backend.Chart.GetChartContents(itemChart);
