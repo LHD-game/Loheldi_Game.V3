@@ -3747,6 +3747,7 @@ MonoBehaviour:
   Gacha: 0
   Farm: 0
   ThankTree: 0
+  Ladder: 0
   NpcNameTF: 0
   Npcs: []
   NpcNames: []
@@ -5416,7 +5417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e883dfba62a9954c9a3819e4ad4dfc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58f194e4e37399a489202ab412964e98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7744,6 +7745,7 @@ MonoBehaviour:
   Inter: {fileID: 129476282}
   SoundEffectManager: {fileID: 219778277}
   time: 0
+  isClick: 0
   PA: {fileID: 0}
   NPC: {fileID: 0}
   Pstop: 1
