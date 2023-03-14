@@ -4151,12 +4151,19 @@ MonoBehaviour:
   BMIText: {fileID: 8831148851452243504}
   BMITalk: {fileID: 8831148852275622534}
   BMIresult: 
+  BMISlinder: {fileID: 0}
   Jtext: {fileID: 8831148851889021097}
   Juwels:
   - {fileID: 8831148851788215931}
   - {fileID: 8831148851644394851}
   Image: {fileID: 8831148850987860471}
+  Basket: {fileID: 0}
   JButton: {fileID: 8831148852169424896}
+  SpellsWrites: []
+  Spells: []
+  Spelltext: {fileID: 0}
+  SpellFocustext: {fileID: 0}
+  SpellFocus: {fileID: 0}
   text1: {fileID: 0}
   text2: {fileID: 0}
   text3: {fileID: 0}
@@ -19702,6 +19709,7 @@ MonoBehaviour:
   Nanum: {fileID: 8831148851845338031}
   Jewel: {fileID: 8831148851031501477}
   Healthy: {fileID: 8831148850342531293}
+  spell: {fileID: 0}
   Ride: {fileID: 8831148851862697669}
   Bike: {fileID: 8831148850460552794}
   BikeNPC: {fileID: 8831148851184828017}
@@ -19727,6 +19735,7 @@ MonoBehaviour:
   JumpButtons: {fileID: 2153352630308454644}
   tu: {fileID: 1345286879411780403}
   Inter: {fileID: 8831148851401697625}
+  QS: {fileID: 0}
   o: 0
   DontDestroy: {fileID: 0}
   Quest: {fileID: 1345286879411780401}
@@ -19824,6 +19833,7 @@ MonoBehaviour:
   Chat: {fileID: 1345286879411780405}
   ParentscheckUI: {fileID: 8831148852318169389}
   ThankTreeUI: {fileID: 8831148850599747507}
+  Inter: {fileID: 0}
 --- !u!1 &1345286879670596885
 GameObject:
   m_ObjectHideFlags: 0
@@ -67418,10 +67428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 8831148850927852190}
-  ScreenshotImg: {fileID: 0}
   PlayerstatusImg: {fileID: 4374690950581908252}
-  MyInfoImg: {fileID: 8831148850866101101}
-  PlayerImage: {fileID: 2100000, guid: 465d533e027848d4eb31246602eea9f5, type: 2}
+  PlayerRenderTexture: {fileID: 0}
   PCamLight: {fileID: 8831148851102937502}
 --- !u!1 &8831148850934096150
 GameObject:
@@ -80030,6 +80038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StonePrefeb: {fileID: 9145008442557892442, guid: 03136e55ca9005d48b2b4217aa09939d, type: 3}
   chat: {fileID: 0}
+  trans: {fileID: 0}
 --- !u!1 &8831148851419626800
 GameObject:
   m_ObjectHideFlags: 0
@@ -82833,6 +82842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mail_alarm_ui: {fileID: 8831148851359581356}
   c_mail: {fileID: 8831148851380089812}
+  c_Type: {fileID: 0}
   c_announce: {fileID: 8831148851171226915}
   AlreadyRecieveBtn: {fileID: 8831148850241434469}
   RightDetail:
