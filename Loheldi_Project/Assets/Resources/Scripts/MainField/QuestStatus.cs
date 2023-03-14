@@ -24,7 +24,9 @@ public class QuestStatus : MonoBehaviour
     public Text ContentText;
     public Text FromText;
 
-    public Sprite CompletButton;
+    public Sprite CompleteButton;
+
+    public List<GameObject> QuestButtonList = new List<GameObject>();
 
     List<Dictionary<string, object>> Quest_Mail = new List<Dictionary<string, object>>();
 
@@ -93,6 +95,12 @@ public class QuestStatus : MonoBehaviour
         Debug.Log("child = " + QF);
         Qsr.content.localPosition = QF;
         //QuestButtons[QuestStepNumber];
+
+        int i = 0;
+        foreach (GameObject a in QuestButtonList)
+        {
+            PresentCheck(i++);
+        }
     }
 
     void ButtonActive()
@@ -100,7 +108,7 @@ public class QuestStatus : MonoBehaviour
         for(int i = 0; i <= QuestStepNumber; i++)
         {
             QuestButtons[i].GetComponent<Button>().enabled = true;
-            QuestButtons[i].GetComponent<Image>().sprite = CompletButton;
+            QuestButtons[i].GetComponent<Image>().sprite = CompleteButton;
         }
     }
     public void ResetQS()
@@ -139,12 +147,12 @@ public class QuestStatus : MonoBehaviour
 
     private void PresentCheck(int num)
     {
-        var bro = Backend.GameData.Get("QUEST_PRESENT", new Where());
-
-        JsonData Quest_row = bro.GetReturnValuetoJSON()["rows"];
-        ParsingJSON pj = new ParsingJSON();
-
-        //¥Î√Ê;
+        Save_Basic.LoadQuestPresentInfo();
+        if (PlayerPrefs.GetInt("Q" + num) == 1)
+        {
+            QuestButtonList[num].GetComponent<Image>().sprite = CompleteButton;
+            QuestButtonList[num].GetComponent<Button>().enabled = false;
+        }
     }
 
     public void GetPresent()
