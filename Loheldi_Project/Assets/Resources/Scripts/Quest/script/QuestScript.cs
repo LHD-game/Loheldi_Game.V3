@@ -91,17 +91,22 @@ public class QuestScript : MonoBehaviour
         {
             chat.NPCHula.SetActive(true);
         }
-
-
-        if (SceneManager.GetActiveScene().name == "MainField")
+        else if (DontDestroy.QuestIndex.Equals("26_2")) //도토리마을
         {
-            //도토리마을
-            if (DontDestroy.QuestIndex.Equals("26_2"))
+            if (SceneManager.GetActiveScene().name == "MainField")
             {
                 GameObject.Find(DontDestroy.ButtonPlusNpc).SetActive(false);
             }
-            ExclamationMarkCreate();
+            else if(SceneManager.GetActiveScene().name == "AcornVillage")
+            {
+                chat.Nari.position = new Vector3(-12.29f, 16.25f, 36.34f);
+                chat.NariMom.position = chat.Nari.position + new Vector3(-1,0,0);
+                GameObject.Find("NariDad").gameObject.transform.position = chat.Nari.position + new Vector3(-2, 0, 0);
+            }
         }
+
+
+        
     }
 
 

@@ -751,7 +751,6 @@ public class LodingTxt : MonoBehaviour
             }
             else if (data_Dialog[j]["cuttoon"].ToString().Equals("1"))
             {
-                Player.position = new Vector3(54, 5, -14);
                 Player.rotation = Quaternion.Euler(0, 180, 0);
                 JumpAnimator.SetBool("JumpRope", true);
                 JumpAnimatorRope.SetBool("JumpRope", true);
@@ -792,8 +791,9 @@ public class LodingTxt : MonoBehaviour
 
                 GameObject NPC = GameObject.Find(Inter.NameNPC);
 
-                Player.transform.position = new Vector3(54, 5, -15);
-                NPC.transform.position = Player.transform.position + new Vector3(5, 0, 0);
+
+                Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
+                NPC.transform.position = Player.transform.position + new Vector3(1.5f, 0, 0);
                 NPCRope.SetActive(true);
 
                 Vector3 targetPositionNPC;
