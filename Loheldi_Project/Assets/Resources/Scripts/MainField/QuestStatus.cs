@@ -1,3 +1,5 @@
+using BackEnd;
+using LitJson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -135,13 +137,18 @@ public class QuestStatus : MonoBehaviour
         QSPanel.SetActive(true);
     }
 
-    private void PresentCheck()
+    private void PresentCheck(int num)
     {
-        
+        var bro = Backend.GameData.Get("QUEST_PRESENT", new Where());
+
+        JsonData Quest_row = bro.GetReturnValuetoJSON()["rows"];
+        ParsingJSON pj = new ParsingJSON();
+
+        //¥Î√Ê;
     }
+
     public void GetPresent()
     {
 
     }
-
 }
