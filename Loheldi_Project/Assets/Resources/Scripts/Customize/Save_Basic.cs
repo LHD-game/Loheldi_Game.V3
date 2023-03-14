@@ -207,6 +207,40 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
             }
         }
     }
+    public static void LoadQuestPresentInfo()
+    {
+        BackendReturnObject bro = Backend.GameData.GetMyData("QUEST_PRESENT", new Where(), 10);
+        
+        if (bro.IsSuccess())
+        {
+            var json = bro.GetReturnValuetoJSON();
+
+            try
+            {
+                var json_data = json["rows"][0];
+                ParsingJSON pj = new ParsingJSON();
+                QuestPresent data = pj.ParseBackendData<QuestPresent>(json_data);
+                //Debug.Log("퀘스트 진행도:" + data.QuestPreg);
+                PlayerPrefs.SetInt("Q0", data.Q0);
+                PlayerPrefs.SetInt("Q01", data.Q1);
+                PlayerPrefs.SetInt("Q04", data.Q2);
+                PlayerPrefs.SetInt("Q07", data.Q3);
+                PlayerPrefs.SetInt("Q10", data.Q4);
+                PlayerPrefs.SetInt("Q13", data.Q5);
+                PlayerPrefs.SetInt("Q16", data.Q6);
+                PlayerPrefs.SetInt("Q19", data.Q7);
+                PlayerPrefs.SetInt("Q22", data.Q8);
+                PlayerPrefs.SetInt("Q25", data.Q9);
+                PlayerPrefs.SetInt("Q28", data.Q10);
+                PlayerPrefs.SetInt("Q31", data.Q11);
+                PlayerPrefs.SetInt("Q34", data.Q12);
+            }
+            catch (Exception ex) //조회에는 성공했으나, 해당 값이 없음(NullPointException)
+            {
+                Debug.Log(ex);
+            }
+        }
+    }
 
     public static void LoadSubQuestInfo()
     {
