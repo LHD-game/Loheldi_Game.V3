@@ -136,3 +136,8 @@ public class QuestInfo{
     public string authorName;
     public string Type;
 }
+public class QuestPresent
+{
+    public int Qnum;
+    public bool Qbool;
+}
