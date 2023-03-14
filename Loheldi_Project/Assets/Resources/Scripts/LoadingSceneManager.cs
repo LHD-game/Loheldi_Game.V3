@@ -19,7 +19,7 @@ public class LoadingSceneManager : MonoBehaviour
     private void Start()
     {
         tiptext = GameObject.Find("Text").GetComponent<Text>();
-        int tipnum = Random.Range(0, 6);
+        int tipnum = Random.Range(0, 4);
         switch (tipnum)
         {
             case 0:
@@ -36,12 +36,6 @@ public class LoadingSceneManager : MonoBehaviour
                 break;
             case 4:
                 tiptext.text = "게임에 필요한 데이터를 가져오고 있으니 잠시만 기다려 주세요.";
-                break;
-            case 5:
-                tiptext.text = "퀘스트는 평일 퀘스트와 주말 퀘스트가 구분되어 있습니다.";
-                break;
-            case 6:
-                tiptext.text = "토요일에는 주민들의 휴식을 위해 퀘스트 진행이 되지 않습니다.";
                 break;
             default:
                 break;

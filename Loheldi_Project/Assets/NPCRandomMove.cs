@@ -35,7 +35,6 @@ public class NPCRandomMove : MonoBehaviour
     {
         if (Move)
         {
-
             this.gameObject.transform.position = Vector3.SmoothDamp(transform.position, Box.transform.position, ref velocity, SmoothTime);     //해당위치로 NPC천천히 이동
             transform.LookAt(new Vector3(Box.transform.position.x, transform.position.y, Box.transform.position.z));                           //Box위치를 보고있기
             if (Vector3.Distance(this.transform.position, Box.transform.position) <= 0.2f)                                                     //박스위치와 본인위치의 거리를 비교해서 도착하면 자동으로 멈춤
@@ -57,6 +56,7 @@ public class NPCRandomMove : MonoBehaviour
         CancelInvoke();                        //Stop Invoke 정지
         Invoke("Stop", time);                  //time시간 뒤 Stop Invoke 실행 (time 시간동안 이동)
     }
+
     public void RandomPosition()
     {
         nextMove1 = Random.Range(-1f, 1f);     //생성 위치 랜덤
