@@ -221,7 +221,7 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
                 ParsingJSON pj = new ParsingJSON();
                 QuestPresent data = pj.ParseBackendData<QuestPresent>(json_data);
                 //Debug.Log("퀘스트 진행도:" + data.QuestPreg);
-                PlayerPrefs.SetInt("Q0", data.Q0);
+                PlayerPrefs.SetInt("Q00", data.Q0);
                 PlayerPrefs.SetInt("Q01", data.Q1);
                 PlayerPrefs.SetInt("Q04", data.Q2);
                 PlayerPrefs.SetInt("Q07", data.Q3);

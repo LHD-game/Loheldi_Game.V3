@@ -27,6 +27,7 @@ public class QuestStatus : MonoBehaviour
     public Sprite CompleteButton;
 
     public List<GameObject> QuestButtonList = new List<GameObject>();
+    int Qnum;
 
     List<Dictionary<string, object>> Quest_Mail = new List<Dictionary<string, object>>();
 
@@ -107,7 +108,7 @@ public class QuestStatus : MonoBehaviour
     {
         for(int i = 0; i <= QuestStepNumber; i++)
         {
-            QuestButtons[i].GetComponent<Button>().enabled = true;
+            QuestButtons[i].GetComponent<Button>().enabled = false;
             QuestButtons[i].GetComponent<Image>().sprite = CompleteButton;
         }
     }
@@ -155,8 +156,74 @@ public class QuestStatus : MonoBehaviour
         }
     }
 
-    public void GetPresent()
+    public void GetPresent(GameObject gameobject)
     {
+        Save_Basic.LoadQuestPresentInfo();
 
+        switch (gameobject.name)
+        {
+            case "ButtonBse" :
+                Qnum = 00;
+                break;
+            case "ButtonBse (5)":
+                Qnum = 01;
+                break;
+            case "ButtonBse (12)":
+                Qnum = 04;
+                break;
+            case "ButtonBse (19)":
+                Qnum = 07;
+                break;
+            case "ButtonBse (24)":
+                Qnum = 10;
+                break;
+            case "ButtonBse (31)":
+                Qnum = 13;
+                break;
+            case "ButtonBse (35)":
+                Qnum = 16;
+                break;
+            case "ButtonBse (40)":
+                Qnum = 19;
+                break;
+            case "ButtonBse (44)":
+                Qnum = 22;
+                break;
+            case "ButtonBse (48)":
+                Qnum = 25;
+                break;
+            case "ButtonBse (52)":
+                Qnum = 28;
+                break;
+            case "ButtonBse (57)":
+                Qnum = 31;
+                break;
+            case "ButtonBse (61)":
+                Qnum = 34;
+                break;
+            default:
+                break;
+        }
+
+        QuestButtonList[0].GetComponent<Image>().sprite = CompleteButton;
+        QuestButtonList[0].GetComponent<Button>().enabled = false;
+
+        Param param = new Param();
+        param.Add("Q" + Qnum, 1);
+
+        var bro = Backend.GameData.Get("QUEST_PRESENT", new Where());
+        string rowIndate = bro.FlattenRows()[0]["inDate"].ToString();
+
+        var bro2 = Backend.GameData.UpdateV2("QUEST_PRESENT", rowIndate, Backend.UserInDate, param);
+
+        if (bro2.IsSuccess())
+        {
+            Debug.Log("오예~");
+            Debug.Log("GetPresent 성공. QUEST_PRESENT 업데이트 되었습니다.");
+        }
+        else
+        {
+            Debug.Log("GetPresent 실패.");
+        }
     }
 }
