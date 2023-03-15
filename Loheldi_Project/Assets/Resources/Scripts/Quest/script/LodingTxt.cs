@@ -370,7 +370,7 @@ public class LodingTxt : MonoBehaviour
         switch (o)
         {
             case 1: //ºñºö¹ä
-                Player.transform.position = new Vector3(9.8f, -5.4f, -22f);
+                Player.transform.position = new Vector3(32.6f, -5.4f, -0.1f);
                 Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 Player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
@@ -378,12 +378,12 @@ public class LodingTxt : MonoBehaviour
                 NariMom.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 break;
             case 2:  //ÀåÀÛ
-                Player.transform.position = new Vector3(9.8f, -5.4f, -22f);
+                Player.transform.position = new Vector3(-18.4f, 1.8f, 20);
                 Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 NariMom.transform.position = Player.transform.position + new Vector3(2, 0, 0);
                 break;
             case 3: //¿­¸Åµû±â
-                Player.transform.position = new Vector3(9.8f, -5.4f, -22f);
+                Player.transform.position = new Vector3(1.5f, -3.4f, -11.7f);
                 Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
                 NariMom.transform.position = Player.transform.position + new Vector3(2, 0, 0);
                 break;

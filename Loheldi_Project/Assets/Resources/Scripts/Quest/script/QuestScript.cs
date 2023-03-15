@@ -99,14 +99,15 @@ public class QuestScript : MonoBehaviour
             }
             else if(SceneManager.GetActiveScene().name == "AcornVillage")
             {
-                chat.Nari.position = new Vector3(-12.29f, 16.25f, 36.34f);
+                chat.Nari.position = new Vector3(-12.29f, 16.9f, 36.34f);
                 chat.NariMom.position = chat.Nari.position + new Vector3(-1,0,0);
                 GameObject.Find("NariDad").gameObject.transform.position = chat.Nari.position + new Vector3(-2, 0, 0);
             }
         }
 
+        ExclamationMarkCreate();
 
-        
+
     }
 
 
