@@ -164,6 +164,9 @@ public class FlieChoice : MonoBehaviour
                     chat.Num = "27";
                 chat.NPCButton += 2;
                 break;
+            default:
+                return;
+                break;
         }
         chat.NewChat();
         chat.Buttons();
