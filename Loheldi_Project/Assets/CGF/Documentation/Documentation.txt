@@ -1,0 +1,8 @@
+User manual
+http://doc.azuritetechs.com:8089/
+
+API reference
+http://chloroplastgames.com/documentation/cgf-api
+
+Contact us
+info@chloroplastgames.com
