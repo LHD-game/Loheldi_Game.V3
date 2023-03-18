@@ -273,13 +273,10 @@ public class LodingTxt : MonoBehaviour
         QuestLoad.QuestLoadStart();
     }
 
-    /*public void NotWeekend()
+    public void NotSDA()
     {
-        if (DontDestroy.weekend)
-            DontDestroy.weekend = false;
-        else
-            DontDestroy.weekend = true;
-    }*/
+            DontDestroy.SDA = false;
+    }
     public void ToothQuest()  //¼öÁ¤
     {
         ToothAnimator = GameObject.Find("ToothBrush").transform.Find("Armature").gameObject.GetComponent<Animator>();
@@ -1127,7 +1124,12 @@ public class LodingTxt : MonoBehaviour
             Nanum.SetActive(false);
             scriptLine();
         }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Jewel")||data_Dialog[j]["scriptType"].ToString().Equals("Jewelselect"))
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("Jewel"))
+        {
+            ChatWin.SetActive(false);
+            Jewel.SetActive(true);
+            j++;
+        }else if (data_Dialog[j]["scriptType"].ToString().Equals("Jewelselect"))
         {
             ChatWin.SetActive(false);
             Jewel.SetActive(true);
@@ -1137,6 +1139,10 @@ public class LodingTxt : MonoBehaviour
         {
             Draw.JFinishWrite();
             scriptLine();
+        }
+        else if (data_Dialog[j]["scriptType"].ToString().Equals("JewelSelecFinish"))
+        {
+            Draw.JNextLevel();
         }
         else if (data_Dialog[j]["scriptType"].ToString().Equals("JewelEnd"))
         {
