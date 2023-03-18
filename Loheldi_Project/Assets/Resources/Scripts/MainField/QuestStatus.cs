@@ -32,6 +32,8 @@ public class QuestStatus : MonoBehaviour
     List<Dictionary<string, object>> Quest_Mail = new List<Dictionary<string, object>>();
 
     QuestDontDestroy QDD;
+    public QuestLoad QuestLoad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -108,7 +110,7 @@ public class QuestStatus : MonoBehaviour
     {
         for(int i = 0; i <= QuestStepNumber; i++)
         {
-            QuestButtons[i].GetComponent<Button>().enabled = false;
+            QuestButtons[i].GetComponent<Button>().enabled = true;
             QuestButtons[i].GetComponent<Image>().sprite = CompleteButton;
         }
     }
@@ -132,7 +134,7 @@ public class QuestStatus : MonoBehaviour
         }
         for (int i = 0; i < QuestButtons.Length; i++)
         {
-            Debug.Log("동일여부 = " + QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text.Equals(Quest_Mail[i]["QID"].ToString()) +"\n"+"버튼 QID숫자 = "+ QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text + "\n" + "메일 QID숫자 = "+ Quest_Mail[i]["QID"].ToString());
+            //Debug.Log("동일여부 = " + QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text.Equals(Quest_Mail[i]["QID"].ToString()) +"\n"+"버튼 QID숫자 = "+ QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text + "\n" + "메일 QID숫자 = "+ Quest_Mail[i]["QID"].ToString());
             if (click.transform.GetChild(0).gameObject.GetComponent<Text>().text.Equals(Quest_Mail[i]["QID"].ToString()))
             {
                 QIDText.text = Quest_Mail[i]["QID"].ToString();
@@ -144,6 +146,18 @@ public class QuestStatus : MonoBehaviour
             }
         }
         QSPanel.SetActive(true);
+    }
+
+    public void ReQuestButton()
+    {
+        QDD.ReQuest = true;
+        QDD.QuestNF = false;
+        PlayerPrefs.SetInt("LastQTime", 0);
+        PlayerPrefs.SetString("QuestPreg", QDD.QuestIndex);
+        QDD.LastDay = 0;
+
+
+        QuestLoad.QuestLoadStart();
     }
 
     private void PresentCheck(int num)

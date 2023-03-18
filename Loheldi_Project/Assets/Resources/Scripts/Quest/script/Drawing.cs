@@ -479,22 +479,22 @@ public class Drawing : MonoBehaviour
             //"저체중";
             BMISlinder.value = 1;
         }
-        else if (BMI > 18.5 && BMI < 22.9)
+        else if (BMI > 18.5 && BMI <= 22.9)
         {
             //"정상";
             BMISlinder.value = 3;
         }
-        else if (BMI > 22.9 && BMI < 24.9)
+        else if (BMI > 22.9 && BMI <= 24.9)
         {
             //"과체중";
             BMISlinder.value = 5;
         }
-        else if (BMI > 24.9 && BMI < 30)
+        else if (BMI > 24.9 && BMI <= 30.0)
         {
             //"비만";
             BMISlinder.value = 7;
         }
-        else if (BMI > 30)
+        else if (BMI > 30.0)
         {
             //"고도비만";
             BMISlinder.value = 9;
@@ -505,6 +505,7 @@ public class Drawing : MonoBehaviour
 
     public void BMItalk()
     {
+        BMITalk.text = BMI.ToString("F2");
         chat.LoadTxt = "그리고 "+chat.PlayerName + "의 BMI는 " + BMI.ToString("F2") + "입니다.";
         LodingTxt.spriteR.sprite = LodingTxt.CCImageList[3];
         StartCoroutine(chat._typing());
@@ -514,13 +515,14 @@ public class Drawing : MonoBehaviour
     private int JuwelLength = 0;
     private int MaxJuwelLength = 3;
     int J;
-    //public Sprite JuwelCardBackImage;
-    //public GameObject JuwelButton;
+
     public Text Jtext;
     public GameObject[] Juwels;
     public GameObject Image;
     public GameObject Basket;
     public GameObject JButton;
+    public Image JuwelCardBack;
+    public Sprite JuwelCardBackImage;
 
     public void JFinishWrite()
     {
@@ -550,10 +552,8 @@ public class Drawing : MonoBehaviour
         }
         else
         {
-            /*JuwelCardBack = GameObject.Find("JuwelCardBack");
-            spriteJ = JuwelCardBack.GetComponent<Image>();
-            spriteJ.sprite = JuwelCardBackImage;
-            JuwelButton.SetActive(false);*/
+            /*JuwelCardBack.sprite = JuwelCardBackImage;
+            JuwelCardBack.gameObject.SetActive(true);*/
 
             RectTransform RectTransform;
             GameObject parentsObject = GameObject.Find("JuwelCards").gameObject;
@@ -592,11 +592,19 @@ public class Drawing : MonoBehaviour
                             break;
                     }
 
+                    //chat.j += 1;
                     //gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    Invoke("jscriptLine", 1f);   //딜레이 후 스크립트 띄움
                 }
 
             }
         }
+    }
+
+    void jscriptLine()
+    {
+        //chat.ChatWin.SetActive(true);
+        chat.scriptLine();
     }
 
     public void JSelect()

@@ -46,19 +46,11 @@ public class QuestLoad : MonoBehaviour
             Param param2 = new Param();
 
             string QuestPreg;
-            /*if (DontDestroy.weekend) //주말일 때
-                QuestPreg = PlayerPrefs.GetString("WeeklyQuestPreg"); //주말 퀘스트 번호로 바뀔 예정
-            else //주말이 아닐 떄*/
             if (DontDestroy.ReQuest)
                 QuestPreg = DontDestroy.QuestIndex;
             else
                 QuestPreg = PlayerPrefs.GetString("QuestPreg");
 
-            /*else if (Type == "Weekend")   //주말 합체시키는 용의 if문
-            {
-                Debug.Log("수정 전 주말퀘스트");
-                return;
-            }*/
 
 
 
@@ -107,6 +99,7 @@ public class QuestLoad : MonoBehaviour
             }
             else
             {
+                Debug.Log("메일받기");
                 int r;
                 for (int i = 0; i < rows.Count; i++)
                 {
