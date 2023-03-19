@@ -237,7 +237,7 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
             }
             catch (Exception ex) //조회에는 성공했으나, 해당 값이 없음(NullPointException)
             {
-                Debug.Log(ex);
+                //Debug.Log(ex);
             }
         }
     }

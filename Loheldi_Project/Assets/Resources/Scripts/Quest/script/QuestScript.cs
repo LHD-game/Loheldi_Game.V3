@@ -61,19 +61,19 @@ public class QuestScript : MonoBehaviour
             note = true;
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (DontDestroy.QuestIndex.Equals("6_1")||DontDestroy.QuestIndex.Equals("13_1")|| DontDestroy.QuestIndex.Equals("16_1")|| DontDestroy.QuestIndex.Equals("21_1")|| DontDestroy.QuestIndex.Equals("23_1")|| DontDestroy.QuestIndex.Equals("26_1")|| DontDestroy.QuestIndex.Equals("33_1"))
+        else if (DontDestroy.QuestIndex.Equals("14_1")||DontDestroy.QuestIndex.Equals("17_1")|| DontDestroy.QuestIndex.Equals("22_1")|| DontDestroy.QuestIndex.Equals("29_1")|| DontDestroy.QuestIndex.Equals("6_1")|| DontDestroy.QuestIndex.Equals("13_1")|| DontDestroy.QuestIndex.Equals("31_1"))
         {
-            //미량 영양소, 줄넘기, 음악의 힘, 내 삶의 주인되기, 건강해진 내 모습, 도토리마을로 가기, 메이 주문
+            //미량 영양소, 줄넘기, 음악의 힘, 내 삶의 주인되기, 양치, 도토리마을로 가기, 메이 주문
             //캐릭터 플레이어 집 앞으로 데려오기
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(3.8f, -6.41383314f, -0.1f);
         }
-        else if (DontDestroy.QuestIndex.Equals("15_1")) //이장님 감사나무 앞 (감사나무)
+        else if (DontDestroy.QuestIndex.Equals("16_1")) //이장님 감사나무 앞 (감사나무)
         {
             note = true;
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(17.3f, -4.3f, 27.4f);
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation = Quaternion.Euler(new Vector3(0, 77, 0));
         }
-        else if (DontDestroy.QuestIndex.Equals("22_1")) //힘찬이 옆에 나리가져다놓기 (사방치기)
+        else if (DontDestroy.QuestIndex.Equals("23_1")) //힘찬이 옆에 나리가져다놓기 (사방치기)
         {
             //GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(125, 15, 170);
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation = Quaternion.Euler(new Vector3(0, 157, 0));
@@ -82,16 +82,16 @@ public class QuestScript : MonoBehaviour
             NariIm.transform.position = GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position+new Vector3(2, 0, -1);
             NariIm.transform.rotation = Quaternion.Euler(new Vector3(0, 207, 0));
         }
-        else if (DontDestroy.QuestIndex.Equals("25_1")|| DontDestroy.QuestIndex.Equals("12_1")|| DontDestroy.QuestIndex.Equals("18_1")) //부모님 데려다 놓기
+        else if (DontDestroy.QuestIndex.Equals("33_1")|| DontDestroy.QuestIndex.Equals("12_1")|| DontDestroy.QuestIndex.Equals("19_1")) //부모님 데려다 놓기
         {
             //건강해진 내 모습, 김밥, 자연의 아름다움
             Instantiate(Resources.Load<GameObject>("Models/NPC/npc/parents"), new Vector3(-0.2f, -6.4f, 0), Quaternion.Euler(new Vector3(0, 133, 0)));
         }
-        else if (DontDestroy.QuestIndex.Equals("28_1")) //힘찬이 훌라후프
+        else if (DontDestroy.QuestIndex.Equals("30_1")) //힘찬이 훌라후프
         {
             chat.NPCHula.SetActive(true);
         }
-        else if (DontDestroy.QuestIndex.Equals("26_2")) //도토리마을
+        else if (DontDestroy.QuestIndex.Equals("13_2")) //도토리마을
         {
             if (SceneManager.GetActiveScene().name == "MainField")
             {
@@ -133,16 +133,19 @@ public class QuestScript : MonoBehaviour
     private void ExclamationMarkCreate()
     {
         Debug.Log("퀘스트 느낌표 생성");
-        Transform Parent = GameObject.Find(DontDestroy.ButtonPlusNpc).GetComponent<Transform>();
-        GameObject child;
-        child = Instantiate(ExclamationMark[1], GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position+new Vector3(0,1.5f,0), GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation);
-        child.transform.parent = Parent;
-        file.EPin.SetActive(true);
-        file.EPin.GetComponent<MapPin>().Owner = GameObject.Find(DontDestroy.ButtonPlusNpc);
+        if (DontDestroy.ButtonPlusNpc != null)
+        {
+            Transform Parent = GameObject.Find(DontDestroy.ButtonPlusNpc).GetComponent<Transform>();
+            GameObject child;
+            child = Instantiate(ExclamationMark[1], GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position + new Vector3(0, 1.5f, 0), GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation);
+            child.transform.parent = Parent;
+            file.EPin.SetActive(true);
+            file.EPin.GetComponent<MapPin>().Owner = GameObject.Find(DontDestroy.ButtonPlusNpc);
 
-        GameObject[] clone = GameObject.FindGameObjectsWithTag("ExclamationMark");
-        if(clone.Length >2)
-            Destroy(clone[0]);
+            GameObject[] clone = GameObject.FindGameObjectsWithTag("ExclamationMark");
+            if (clone.Length > 2)
+                Destroy(clone[0]);
+        }
     }
 
     public void ChangeDrawCamera()

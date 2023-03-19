@@ -28,7 +28,7 @@ public class QuestLoad : MonoBehaviour
 
         string selectedProbabilityFileId = "";
 
-        selectedProbabilityFileId = "72120"; //퀘스트 차트
+        selectedProbabilityFileId = "74200"; //퀘스트 차트
 
         var bro3 = Backend.Chart.GetChartContents(selectedProbabilityFileId);
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];
@@ -103,13 +103,17 @@ public class QuestLoad : MonoBehaviour
                 int r;
                 for (int i = 0; i < rows.Count; i++)
                 {
+                    Debug.Log("메일받기"+" i ="+i);
                     if (DontDestroy.ReQuest && !DontDestroy.QuestNF)
                         r = i;
                     else
                         r = i + 1;
                     string QID = rows[i]["QID"]["S"].ToString();
+
+                    Debug.Log("메일받기" + " QID =" + QID + " QuestP = " + QuestPreg);
                     if (QID == QuestPreg)   //0_0은 아닌 상태에서 퀘스트 진행도와 일치
                     {
+                        Debug.Log("메일받기" + " i =" + i + " r = " + r);
                         QName = rows[r]["QName"]["S"].ToString();
                         if (QName == "end")
                         {
