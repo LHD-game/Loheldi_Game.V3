@@ -37,17 +37,14 @@ public class QuestStatus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
+        //QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
         Quest_Mail = CSVReader.Read("Scripts/Quest/QuestMail");
-        QuestIndexCheck();
-        //GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
+        //QuestIndexCheck();
+        GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
     }
-
     void GetButtons()  //인스펙터에 버튼넣는 야매 함수
     {
-        //Debug.Log("버튼들 가져오기 샤라라라랄랄라");
-        //GameObject ButtonParent = GameObject.Find("QuestContent");
-        //GameObject[] ButtonParents = new GameObject[QuestButtons.Length];
+        Debug.Log("버튼들 가져오기 샤라라라랄랄라");
         ButtonParents = new GameObject[QuestButtons.Length];
         for (int i = 0; i < QuestButtons.Length; i++)
         {
@@ -63,10 +60,10 @@ public class QuestStatus : MonoBehaviour
             QuestButtons[j] = ButtonParents[i].transform.GetChild(0).gameObject;
             j++;
         } 
-        for (int i = 0; i < QuestButtons.Length; i++)
+        for (int i = 0; i < QuestButtons.Length; i++)  //버튼에 QID넣는 for문
         {
-            //QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = Quest_Mail[i]["QID"].ToString(); //버튼Text에 QID넣는 용
-            //QuestButtons[i].GetComponent<Button>().onClick.AddListener(QuestButtonClick);//언젠간 필요하지않을까
+            QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = Quest_Mail[i]["QID"].ToString(); //버튼Text에 QID넣는 용
+            QuestButtons[i].GetComponent<Button>().onClick.AddListener(QuestButtonClick);//언젠간 필요하지않을까
         }
     }
 
@@ -81,6 +78,7 @@ public class QuestStatus : MonoBehaviour
                 return;
             }
         }
+        
     }
 
     public void PlayerStepCheck()

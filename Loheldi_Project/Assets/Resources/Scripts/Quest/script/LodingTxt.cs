@@ -189,7 +189,7 @@ public class LodingTxt : MonoBehaviour
                 else
                     AppleTreeObj.SetActive(false); 
 
-                if (Int32.Parse(QQ[0]) > 25)
+                if (Int32.Parse(QQ[0]) > 13)
                     Kangteagom.SetActive(true);
                 else
                     Kangteagom.SetActive(false);
@@ -206,12 +206,12 @@ public class LodingTxt : MonoBehaviour
                 DontDestroy.weekend = false;*/
             DontDestroy.ToDay = Int32.Parse(DateTime.Now.ToString("yyyyMMdd"));   //퀘스트용 오늘날짜 저장 */
 
-            if(DontDestroy.QuestIndex == "26_10")
+            if(DontDestroy.QuestIndex == "13_10")
             {
-                Num = "26_10";
+                Num = "13_10";
                 FileAdress = "Scripts/Quest/script";
                 NewChat();
-                DontDestroy.QuestIndex = "26_1";
+                DontDestroy.QuestIndex = "13_1";
                 Nari.transform.position = Player.transform.position + new Vector3(-1, 0, 0);
                 return;
             }
@@ -1026,7 +1026,7 @@ public class LodingTxt : MonoBehaviour
         else if (data_Dialog[j]["scriptType"].ToString().Equals("moveToA"))
         {
             Cuttoon();
-            DontDestroy.QuestIndex = "26_10";
+            DontDestroy.QuestIndex = "13_10";
             SceneLoader.instance.GotoMainAcronVillage();
         } //도토리마을로 이동
         else if (data_Dialog[j]["scriptType"].ToString().Equals("JumpRope"))
