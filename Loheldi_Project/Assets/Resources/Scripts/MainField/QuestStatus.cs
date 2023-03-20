@@ -37,10 +37,10 @@ public class QuestStatus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
+        QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
         Quest_Mail = CSVReader.Read("Scripts/Quest/QuestMail");
-        //QuestIndexCheck();
-        GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
+        QuestIndexCheck();
+        //GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
     }
     void GetButtons()  //인스펙터에 버튼넣는 야매 함수
     {

@@ -119,6 +119,7 @@ public class QuestLoad : MonoBehaviour
                         {
                             Debug.Log("마지막 퀘스트입니다");
                             DontDestroy.ReQuest = true;
+                            DontDestroy.QuestIndex = PlayerPrefs.GetString("QuestPreg");
                             return;
                         }
                         if (DontDestroy.SDA)
