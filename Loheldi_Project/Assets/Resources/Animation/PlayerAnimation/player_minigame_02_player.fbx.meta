@@ -4,11 +4,11 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 885944232402757753
-    second: Armature|Action
+      74: -8584593333892456589
+    second: Armature_|Action
   - first:
-      74: 6119859018089122290
-    second: Armature|player_minigame_02
+      74: 8139970964187619181
+    second: Armature_|player_minigame_02
   externalObjects: {}
   materials:
     materialImportMode: 2
