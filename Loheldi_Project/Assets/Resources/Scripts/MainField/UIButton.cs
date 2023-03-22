@@ -178,6 +178,7 @@ public class UIButton : MonoBehaviour
             {
                 //Debug.Log("È¦µå Áß");
                 Player.transform.Translate(0, 0.05f, 0);
+                PA.SetBool("LadderUp", true);
 
                 yield return new WaitForSecondsRealtime(0.01f);
             }
@@ -186,10 +187,10 @@ public class UIButton : MonoBehaviour
             yield return null;
         }
         ClickTime = 0;
-
+        PA.SetBool("LadderUp", false);
         Playerrb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ| RigidbodyConstraints.FreezeRotationY;
     }
-        public IEnumerator Playerturn(Transform NPC)
+    public IEnumerator Playerturn(Transform NPC)
     {
         Invoke("stopCorou", 1f);
         PA.SetBool("ChatMove", true);
