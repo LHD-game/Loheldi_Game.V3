@@ -23,7 +23,7 @@ public class NPCRandomMove : MonoBehaviour
     void Awake()
     {
         RandomPosition();
-        Box = Instantiate(boxorigin, new Vector3(this.gameObject.transform.position.x + nextMove1, -5.4f, this.gameObject.transform.position.z + nextMove2), Quaternion.identity);
+        Box = Instantiate(boxorigin, new Vector3(this.gameObject.transform.position.x + nextMove1, this.transform.position.y, this.gameObject.transform.position.z + nextMove2), Quaternion.identity);
         Box.transform.parent = this.transform.parent.transform.parent;
         Box.GetComponent<NPCRandomMove_Cube>().Range = this.transform.parent.gameObject;
         Box.GetComponent<NPCRandomMove_Cube>().Owner = this.gameObject;
