@@ -43,6 +43,10 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
     public static float LastShakeTime = 2;       //마지막으로 흔들린 시간
     public Text Score;                           //점수 텍스트 오브젝트
 
+    public bool SquirrelMoveBool = false;
+    public GameObject SquirrelMove;
+    public GameObject BasketMove;
+
     public GameObject EventSystem;
 
     public enum STATE   //현재 게임 상태 저장
@@ -70,11 +74,10 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         Acorns.transform.localPosition = new Vector3(-0.00011f, -0.00047f, Acorns.transform.localPosition.z + 0.00075f);     //바구니속 도토리 위치 설정
         if (DropCount >= 20)                        //바구니 리셋 함수
         {
+            SquirrelMoveBool = true;
             Handheld.Vibrate();                     //바구니 리셋시 진동
             Acorns.transform.localPosition = new Vector3(-0.00011f, -0.00047f, -0.01087f);                  //바구니속 도토리 위치 초기화
             DropCount = 0;                          //바구니 리셋용 도토리 갯수 카운트 초기화
-            BasketScore++;                          //점수 올리기
-            Score.text = BasketScore.ToString();    //점수 UI로 반영
         }
     }
 
@@ -87,6 +90,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         Panel.SetActive(true);
         PleaseShake.SetActive(true);
         ReStartButton.SetActive(false);
+        BasketMove.SetActive(false);
     }
 
     void Update()
@@ -175,6 +179,26 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
                 PleaseShake.SetActive(true);                            //흔들어주세요
             }
             TimerText.text = string.Format(" : {0:N2}", nowTime);      //타이머 UI에 반영
+        }
+        if (SquirrelMoveBool)                        //
+        {
+            Vector3 temp = SquirrelMove.transform.position;
+            temp.z += 0.05f;
+            SquirrelMove.transform.position = temp;
+            if (SquirrelMove.transform.position.z >= -0.21)
+            {
+                BasketMove.SetActive(true);
+            }
+            if (SquirrelMove.transform.position.z >= 3)
+            {
+                temp.z = -3f;
+                SquirrelMove.transform.position = temp;
+                BasketMove.SetActive(false);
+
+                BasketScore++;                          //점수 올리기
+                Score.text = BasketScore.ToString();    //점수 UI로 반영
+                SquirrelMoveBool = false;
+            }
         }
     }
     public void ShakeSet()
