@@ -77,6 +77,8 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
             SquirrelMoveBool = true;
             Handheld.Vibrate();                     //바구니 리셋시 진동
             Acorns.transform.localPosition = new Vector3(-0.00011f, -0.00047f, -0.01087f);                  //바구니속 도토리 위치 초기화
+            BasketScore++;                          //점수 올리기
+            Score.text = BasketScore.ToString();    //점수 UI로 반영
             DropCount = 0;                          //바구니 리셋용 도토리 갯수 카운트 초기화
         }
     }
@@ -183,7 +185,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         if (SquirrelMoveBool)                        //
         {
             Vector3 temp = SquirrelMove.transform.position;
-            temp.z += 0.05f;
+            temp.z += 0.005f;
             SquirrelMove.transform.position = temp;
             if (SquirrelMove.transform.position.z >= -0.21)
             {
@@ -194,9 +196,6 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
                 temp.z = -3f;
                 SquirrelMove.transform.position = temp;
                 BasketMove.SetActive(false);
-
-                BasketScore++;                          //점수 올리기
-                Score.text = BasketScore.ToString();    //점수 UI로 반영
                 SquirrelMoveBool = false;
             }
         }
