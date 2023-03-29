@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: e23032daa5adda447ae87faa36cf7c45
+guid: 7a38d88e711bc6c4bbf28b489bd21783
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -1149524611650042550
-    second: Armature|minigame_wood_01_player_
+      74: 5186696478651072505
+    second: Armature_dokki|player_minigame_01(2)_dokki
   - first:
-      74: -2241489093398225663
-    second: Armature|walk01
+      74: 8732472710734423699
+    second: Armature_dokki|player_minigame_02(2)_dokki
   externalObjects: {}
   materials:
     materialImportMode: 2
