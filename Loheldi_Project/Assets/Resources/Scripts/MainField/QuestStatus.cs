@@ -6,15 +6,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+//using UnityEngine.UIElements;
 
 public class QuestStatus : MonoBehaviour
 {
     public int QuestStepNumber;
+    public int TestQuestStepNumber;
     public GameObject[] QuestButtons;
+    public GameObject[] TestQuestButtons;
     public GameObject PImag;
     public GameObject ButtonParent;
     GameObject[] ButtonParents;
     public ScrollRect Qsr;
+    public ScrollRect TestQsr;
     GameObject child;
 
     public GameObject QSPanel;
@@ -40,7 +44,7 @@ public class QuestStatus : MonoBehaviour
         QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
         Quest_Mail = CSVReader.Read("Scripts/Quest/QuestMail");
         QuestIndexCheck();
-        //GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
+        GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
     }
     void GetButtons()  //인스펙터에 버튼넣는 야매 함수
     {
@@ -53,14 +57,13 @@ public class QuestStatus : MonoBehaviour
 
         Debug.Log("ButtonL = " + QuestButtons.Length);
         Debug.Log("ButtonParentsL = " + ButtonParents.Length);
-        int j = 0;
-        for (int i = QuestButtons.Length - 1; i > -1; i--)
+        for (int i = 0; i < QuestButtons.Length - 1; i++)
         {
             Debug.Log("ButtonN = " + i);
-            QuestButtons[j] = ButtonParents[i].transform.GetChild(0).gameObject;
-            j++;
+            QuestButtons[i] = ButtonParents[i].transform.GetChild(0).gameObject;
+            QuestButtons[i].name = "Button"+i.ToString();
         } 
-        for (int i = 0; i < QuestButtons.Length; i++)  //버튼에 QID넣는 for문
+        for (int i = 0; i < QuestButtons.Length-1; i++)  //버튼에 QID넣는 for문
         {
             QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = Quest_Mail[i]["QID"].ToString(); //버튼Text에 QID넣는 용
             QuestButtons[i].GetComponent<Button>().onClick.AddListener(QuestButtonClick);//언젠간 필요하지않을까
@@ -81,20 +84,64 @@ public class QuestStatus : MonoBehaviour
         
     }
 
+    public void TestPlayerStepCheck()
+    {
+        GameObject click = EventSystem.current.currentSelectedGameObject;
+        Debug.Log(click.gameObject.name);
+        TestQuestStepNumber = Int32.Parse(click.gameObject.name);
+        Transform ButtonT = TestQuestButtons[TestQuestStepNumber].GetComponent<Transform>();
+        RectTransform ButtonRT = TestQuestButtons[TestQuestStepNumber].transform.parent.GetComponent<RectTransform>();
+        child = Instantiate(PImag, new Vector3(ButtonRT.position.x, ButtonRT.position.y, ButtonRT.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
+        child.transform.SetParent(ButtonT);
+        
+
+        //ButtonActive();
+
+        float scrollValue = (TestQuestButtons[TestQuestStepNumber].transform.localPosition.x / (TestQsr.content.rect.width - TestQsr.GetComponent<RectTransform>().rect.width));
+
+
+        
+
+        TestQsr.horizontalNormalizedPosition= scrollValue;
+        /*float QFx = child.transform.position.x;// - 1500;
+        Vector3 QF = new Vector3(-QFx, Qsr.content.localPosition.y, 0);
+        Debug.Log("QF = " + QF);
+        Qsr.content.localPosition = QF;*/
+        //QuestButtons[QuestStepNumber];
+
+    }
+
+    public void TestResetValue()
+    {
+        TestQsr.horizontalNormalizedPosition = 0;
+    }
     public void PlayerStepCheck()
     {
-        Debug.Log("QuestStepNumber = " + QuestStepNumber);
-        child = Instantiate(PImag, new Vector3(QuestButtons[QuestStepNumber+1].transform.position.x, QuestButtons[QuestStepNumber+1].transform.position.y, QuestButtons[QuestStepNumber].transform.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
-        child.transform.parent = QuestButtons[QuestStepNumber+1].GetComponent<Transform>();
+        //Debug.Log("QuestStepNumber = " + QuestStepNumber); 
+        Transform ButtonT = QuestButtons[QuestStepNumber].GetComponent<Transform>();
+        float ButtonTx = QuestButtons[QuestStepNumber + 1].transform.position.x;
+        RectTransform ButtonRT = QuestButtons[QuestStepNumber + 1].transform.parent.GetComponent<RectTransform>();
+        child = Instantiate(PImag, new Vector3(ButtonRT.position.x, ButtonRT.position.y, ButtonRT.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
+        //child.transform.parent = QuestButtons[QuestStepNumber + 1].transform;
+        child.transform.SetParent(ButtonT);
 
-        ButtonActive();
+        //ButtonActive();
 
-        Debug.Log("child = " + child.transform.position.x);
-        float QFx = child.transform.position.x - 1500;
+        float scrollValue = QuestButtons[QuestStepNumber].transform.localPosition.x/ (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
+
+
+        Debug.Log("보이고 싶은거 위치 Origin = " + QuestButtons[QuestStepNumber].transform.localPosition.x);
+        //Debug.Log("보이고 싶은거 위치 Trans = " + ButtonTx);
+        Debug.Log("보이고 싶은거 위치 Rext= " + ButtonRT.position.x);
+        //Debug.Log("전체넓이 = " + Qsr.content.rect.width);
+        //Debug.Log("보이는 넓이 = " + Qsr.GetComponent<RectTransform>().rect.width);
+        Debug.Log("보이는 위치 = " + scrollValue);
+
+        Qsr.horizontalNormalizedPosition= scrollValue;
+        /*float QFx = child.transform.position.x;// - 1500;
         Vector3 QF = new Vector3(-QFx, Qsr.content.localPosition.y, 0);
-
-        Debug.Log("child = " + QF);
-        Qsr.content.localPosition = QF;
+        Debug.Log("QF = " + QF);
+        Qsr.content.localPosition = QF;*/
         //QuestButtons[QuestStepNumber];
 
         int i = 0;
@@ -108,6 +155,7 @@ public class QuestStatus : MonoBehaviour
     {
         for(int i = 0; i <= QuestStepNumber; i++)
         {
+            Debug.Log(QuestButtons[i].GetComponent<RectTransform>().position.x);
             QuestButtons[i].GetComponent<Button>().enabled = true;
             QuestButtons[i].GetComponent<Image>().sprite = CompleteButton;
         }
