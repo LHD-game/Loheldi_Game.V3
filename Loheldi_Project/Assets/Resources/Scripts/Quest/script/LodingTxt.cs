@@ -189,7 +189,7 @@ public class LodingTxt : MonoBehaviour
                 else
                     AppleTreeObj.SetActive(false); 
 
-                if (Int32.Parse(QQ[0]) > 13)
+                if (Int32.Parse(QQ[0]) > 12)
                     Kangteagom.SetActive(true);
                 else
                     Kangteagom.SetActive(false);
@@ -1393,13 +1393,13 @@ public class LodingTxt : MonoBehaviour
 
         }
         //Debug.Log(data_Dialog[j]["SoundEffect"].ToString());
-        if (data_Dialog[j]["SoundEffect"].ToString().Equals("Null"))
+        /*if (data_Dialog[j]["SoundEffect"].ToString().Equals("Null"))
         {; }
         else
         {
             string SoundName = data_Dialog[j]["SoundEffect"].ToString();
             SoundEffectManager.GetComponent<SoundEffect>().Sound(SoundName);
-        }
+        }*/
         //if (move)
         //    changeMoment();
     }
@@ -1529,6 +1529,7 @@ public class LodingTxt : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         Arrow.SetActive(true);
         yield return new WaitForSecondsRealtime(0.1f);
+
         if (data_Dialog[j - 1]["scriptType"].ToString().Equals("tutorial") || tuto)
         {
             Debug.Log("튜토리얼 실행ㅇ");
@@ -1538,6 +1539,16 @@ public class LodingTxt : MonoBehaviour
         {
             block.SetActive(false);
         }
+
+        //음성
+        if (data_Dialog[j]["SoundEffect"].ToString().Equals("Null"))
+        {; }
+        else
+        {
+            string SoundName = data_Dialog[j]["SoundEffect"].ToString();
+            SoundEffectManager.GetComponent<SoundEffect>().Sound(SoundName);
+        }
+
     }
 
     void QuizCho()
