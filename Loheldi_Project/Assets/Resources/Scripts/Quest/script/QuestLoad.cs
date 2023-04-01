@@ -20,6 +20,7 @@ public class QuestLoad : MonoBehaviour
     string Type;
     public QuestScript Quest;
     public QuestDontDestroy DontDestroy;
+    public QuestStatus QuestStatus;
 
     public void QuestLoadStart()
     {
@@ -99,21 +100,21 @@ public class QuestLoad : MonoBehaviour
             }
             else
             {
-                Debug.Log("메일받기");
+                //Debug.Log("메일받기");
                 int r;
                 for (int i = 0; i < rows.Count; i++)
                 {
-                    Debug.Log("메일받기"+" i ="+i);
+                    //Debug.Log("메일받기"+" i ="+i);
                     if (DontDestroy.ReQuest && !DontDestroy.QuestNF)
                         r = i;
                     else
                         r = i + 1;
                     string QID = rows[i]["QID"]["S"].ToString();
-
-                    Debug.Log("메일받기" + " QID =" + QID + " QuestP = " + QuestPreg);
+                    QuestStatus.QuestStepNumber = i;
+                    //Debug.Log("메일받기" + " QID =" + QID + " QuestP = " + QuestPreg);
                     if (QID == QuestPreg)   //0_0은 아닌 상태에서 퀘스트 진행도와 일치
                     {
-                        Debug.Log("메일받기" + " i =" + i + " r = " + r);
+                        //Debug.Log("메일받기" + " i =" + i + " r = " + r);
                         QName = rows[r]["QName"]["S"].ToString();
                         if (QName == "end")
                         {
