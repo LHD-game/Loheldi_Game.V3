@@ -116,8 +116,7 @@ public class LodingTxt : MonoBehaviour
     public QuestStatus QS;
 
 
-    int m = 0;                                  //카메라 무빙
-    public int o = 0;                                  //m서포터
+    public int o = 0;                                  //move서포터
     int MataNum = 0;                        //메터리얼 번호
     int QBikeSpeed;
     bool BikeQ = false;
@@ -157,7 +156,8 @@ public class LodingTxt : MonoBehaviour
     {
         color = block.GetComponent<Image>().color;
         ChatWin.SetActive(true);
-        
+
+        GameObject SoundManager = GameObject.Find("SoundManager");
         //fade_in_out = GameObject.Find("EventSystem").GetComponent<Fadeln>();
         CCImageList = Resources.LoadAll<Sprite>("Sprites/CCImage/CImage"); //이미지 경로
 
@@ -443,12 +443,14 @@ public class LodingTxt : MonoBehaviour
                 SceneLoader.instance.GotoMainField();
                 break;
             case 13:
-                Player.transform.position = new Vector3(-36.2f, -4.95455313f, -9.4f);
-                Player.transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
-                GameObject Parents = GameObject.Find("parents(Clone)");
-                Parents.transform.position = Player.transform.position + new Vector3(-1.5f, 0, 0);
-                Parents.transform.rotation = Quaternion.Euler(new Vector3(0, 150, 0));
-                break;
+                {
+                    Player.transform.position = new Vector3(-36.2f, -4.95455313f, -9.4f);
+                    Player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                    GameObject Parents = GameObject.Find("parents(Clone)");
+                    Parents.transform.position = Player.transform.position + new Vector3(-1.5f, 0, 0);
+                    Parents.transform.rotation = Quaternion.Euler(new Vector3(0, 150, 0));
+                    break;
+                }
             default:
                 break;
         }
@@ -456,808 +458,661 @@ public class LodingTxt : MonoBehaviour
     GameObject mouth; //양치겜 입
     public void QuestSubChoice()
     {
-        Debug.Log("타입"+data_Dialog[j]["scriptType"].ToString());
-        if (data_Dialog[j]["scriptType"].ToString().Equals("quiz"))  //퀴즈시작
+        Debug.Log("타입" + data_Dialog[j]["scriptType"].ToString());
+        string ST = data_Dialog[j]["scriptType"].ToString();
+        switch (ST)
         {
-            MataNum = Int32.Parse(data_Dialog[j]["QuizNumber"].ToString());
-            scriptLine();
-            for (int i = 0; i < QuizButton.Length; i++)
-            {
-                if (data_Dialog[j]["select" + (i + 1)].ToString().Equals("빈칸"))
-                    QuizButton[i].transform.parent.gameObject.SetActive(false);
+            case "quiz":  //퀴즈시작
+                MataNum = Int32.Parse(data_Dialog[j]["QuizNumber"].ToString());
+                scriptLine();
+                for (int i = 0; i < QuizButton.Length; i++)
+                {
+                    if (data_Dialog[j]["select" + (i + 1)].ToString().Equals("빈칸"))
+                        QuizButton[i].transform.parent.gameObject.SetActive(false);
+                    else
+                        QuizButton[i].transform.parent.gameObject.SetActive(true);
+                    QuizButton[i].text = data_Dialog[j]["select" + (i + 1)].ToString();
+                }
+                QuizMate();
+                break;
+            case "choice":
+                block.SetActive(false);
+                j--;
+                QuizCho();
+                break;
+            case "Move":    //Main Move
+                if (data_Dialog[j]["scriptNumber"].ToString().Equals("18_1"))  //수정한 원 주말퀘스트 번호
+                    o = 13;
+                else if (DontDestroy.tutorialLoading)
+                    o = 3;
                 else
-                    QuizButton[i].transform.parent.gameObject.SetActive(true);
-                QuizButton[i].text = data_Dialog[j]["select" + (i + 1)].ToString();
-            }
-            QuizMate();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("choice"))  //선택지
-        {
-            block.SetActive(false);
-            j--;
-            QuizCho();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Move"))  //선택지
-        {
-            if (data_Dialog[j]["scriptNumber"].ToString().Equals("18_1"))  //수정한 원 주말퀘스트 번호
-                o = 13;
-            else if (DontDestroy.tutorialLoading)
-                o = 3;
-            else
-                o += 1;
+                    o += 1;
 
-            changeMoment();
-            if (o == 12)
-                return;
-            else
-            {
+                changeMoment();
+                if (o == 12)
+                    return;
+                else
+                {
+                    j += 1;
+                    Line();
+                }
+                break;
+            case "AMove":   //at dotori Move
+                o += 1;
+                AchangeMoment();
+
                 j += 1;
                 Line();
-            }
-
-        }  //Main Move
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("AMove"))  //선택지
-        {
-            o += 1;
-            AchangeMoment();
-
-            j += 1;
-            Line();
-
-        } //dotori Move
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("ReloadEnd"))  //main으로
-        {
-            QuestEnd();
-            StartCoroutine(reload());
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("over"))  //main으로
-        {
-            if (DontDestroy.ReQuest)
-                ;
-            else
-                PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
-            SceneLoader.instance.GotoMainField();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("cuttoonE"))
-        {
-            Cuttoon();
-            ChatWin.SetActive(false);
-            Invoke("ChatEnd", 2f);
-            Invoke("QuestEnd", 2f);
-        } //컷툰 보이기
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("cuttoon"))
-        {
-            Cuttoon();
-            ChatWin.SetActive(false);
-            Invoke("scriptLine", 2f);   //딜레이 후 스크립트 띄움
-        } //컷툰 보이기
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Dcuttoon"))
-        {
-            scriptLine();
-        } //컷툰 보이기
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Panorama"))
-        {
-            c = 0;
-            ChatWin.SetActive(false);
-            InvokeRepeating("Panorama", 0f, 2f);
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Panoramas"))
-        {
-            c = 0;
-            ChatWin.SetActive(false);
-            InvokeRepeating("Panorama", 0f, 1f);
-        } //컷툰 보이기
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("tutorial"))//튜토리얼
-        {
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("video"))//동영상 실행
-        {
-            video.videoClip.clip = video.VideoClip[Int32.Parse(data_Dialog[j]["cuttoon"].ToString())];
-            movie.SetActive(true);
-            video.OnPlayVideo();
-            ChatWin.SetActive(false);
-            SoundManager = GameObject.Find("SoundManager");
-            SoundManager.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("videoEnd")) //동영상 실행 중지       영상에 몇초 뒤 버튼을 추가시켜 그걸 누르면 확인창으로 넘어가게끔
-        {
-            if (videocheckTxT.text.Equals(parentscheckTxTNum))
-            {
-                GameObject.Find("checkUI").SetActive(false);
-                videocheckTxT.text = null;
-                movie.SetActive(false);
-                video.OnFinishVideo();
-                ChatWin.SetActive(true);
-                SoundManager.SetActive(true);
+                break;
+            case "ReloadEnd":   //main씬 리로드
+                QuestEnd();
+                StartCoroutine(reload());
+                break;
+            case "over":
+                if (DontDestroy.ReQuest)
+                    ;
+                else
+                    PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+                StartCoroutine(reload());
+                break;
+            case "cuttoonE":    //컷툰으로 끝남
+                Cuttoon();
+                ChatWin.SetActive(false);
+                Invoke("ChatEnd", 2f);
+                Invoke("QuestEnd", 2f);
+                break;
+            case "cuttoon":     //컷툰 보이기
+                Cuttoon();
+                ChatWin.SetActive(false);
+                Invoke("scriptLine", 2f);   //딜레이 후 스크립트 띄움
+                break;
+            case "Dcuttoon": case "tutorial":    //컷툰 띄운 채로 다음 스크립트 생성
                 scriptLine();
-            }
-            else
-            {
-                ErrorWin.SetActive(true);
-            }
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Bike"))
-        {
-            cuttoon.SetActive(false);
-            ChatWin.SetActive(false);
-            Bike.SetActive(true);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Bicycle"))
-        {
-            if (!BikeQ)
-            {
-                NPCBike = new Vector3(-1, 0, 0);
-                bicycleRide.RideOn();
-                Destroy(GameObject.Find("Qbicycle(Clone)"));
-                Player.position = new Vector3(0, -6.39158726f, -10.6f);
-                Player.rotation = Quaternion.Euler(0, 90, 0);
-                QBikeSpeed = 1;
-                Maxtime = 3;
-                BikeQ = true;
-                StartCoroutine("QBikeLoop");
-                NPCJumpAnimator.SetBool("BikeWalk", true);
-            }
-            else if (QBikeSpeed == 3)
-            {
-                BikeQ = false;
-                Vector3 targetPositionNPC;
-                Vector3 targetPositionPlayer;
-                targetPositionNPC = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z);
-                targetPositionPlayer = new Vector3(BikeNPC.transform.position.x, BikeNPC.transform.position.y, BikeNPC.transform.position.z);
-                BikeNPC.transform.LookAt(targetPositionNPC);
-                Player.transform.LookAt(targetPositionPlayer);
-                JumpButtons.Playerrb.velocity = JumpButtons.Playerrb.velocity.normalized * 0;
-                StopCoroutine("QBikeLoop");
-                Ride.SetActive(true);
-            }
-            else if (BikeQ)
-            {
-
-                //페이드 인 페이드 아웃하면서 화면에 한시간 후... 띄우기
-                QBikeSpeed = 3;
-                Maxtime = 2f;
-                Player.position = new Vector3(0, -6.39158726f, -10.6f);
-                BikeNPC.transform.position = Player.position + new Vector3(3, 0, 3);
-                Player.rotation = Player.rotation = Quaternion.Euler(0, 90, 0);
-                bikerotate = false;
-                timer = 0;
-                NPCJumpAnimator.SetBool("BikeWalk", false);
-            }
-
-            scriptLine();
-
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("hair"))
-        {
-            ChatWin.SetActive(false);
-            hairFX(Player.gameObject);
-            j++;
-            Invoke("clearHair", 1f);
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("note"))        //퀘스트중간애들
-        {
-            if (data_Dialog[j]["cuttoon"].ToString().Equals("0"))
-            {
-                j++;
+                break;
+            case "Panorama":    //컷툰 여러개 띄우기
+                c = 0;
                 ChatWin.SetActive(false);
-                Note.SetActive(true);
-            }
-            else
-            {
-                j++;
-                ChatWin.SetActive(false);
-            }
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("noteFinish"))        //퀘스트중간애들
-        {
-            Note.transform.Find("Button").gameObject.SetActive(false);
-            Draw.FinishWrite();
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("noteEnd"))
-        {
-            Note.SetActive(false);
-            //ChatWin.SetActive(true);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("nutrient"))        //퀘스트중간애들
-        {
-            cuttoon.SetActive(false);
-            j++;
-            ChatWin.SetActive(false);
-            nutrient.SetActive(true);
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("nutrientEnd"))
-        {
-            j++;
-            nutrient.SetActive(false);
-            Cuttoon();
-            ChatWin.SetActive(false);
-            Invoke("scriptLine", 2f);   //딜레이 후 스크립트 띄움
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("train"))
-        {
-            ChatWin.SetActive(false);
-            Value.SetActive(true);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("trainEnd"))
-        {
-            Value.SetActive(false);
-            scriptLine();
-
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("draw"))
-        {
-            ChatWin.SetActive(false);
-            Draw.ChangeDrawCamera();
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("drawFinish"))
-        {
-            GameObject.Find("DrawUI").transform.Find("Button").gameObject.SetActive(false);
-            Draw.Draw = false;
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Screenshot"))
-        {
-            screenShot.SetActive(true);
-            screenShotExit.SetActive(true);
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("drawEnd"))
-        {
-            screenShot.SetActive(false);
-            Draw.ChangeDrawCamera();
-            Main_UI.SetActive(false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("listen"))
-        {
-            ChatWin.SetActive(false);
-            c = 0;
-            InvokeRepeating("QSound", 0f, 4f);
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("song"))
-        {
-            //웃어봐 송 틀기
-            SoundManager SoundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-            SoundManager.Sound("HaHasong");
-            Invoke("scriptLine", 20f);   //딜레이 후 스크립트 띄움
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("songend"))
-        {
-            //원래 노래로 바꾸기
-            SoundManager SoundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-            SoundManager.Sound("BGMField");
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("JumpRope"))
-        {
-            //줄넘기
-            if (data_Dialog[j]["cuttoon"].ToString().Equals("0"))
-            {
-                GameObject.Find("Himchan").transform.rotation = Quaternion.Euler(0, 180, 0);
-                PlayerRope.SetActive(true);
-                NPCJumpAnimator.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.SetBool("JumpRope", true);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("1"))
-            {
-                Player.rotation = Quaternion.Euler(0, 180, 0);
-                JumpAnimator.SetBool("JumpRope", true);
-                JumpAnimatorRope.SetBool("JumpRope", true);
-                JumpAnimator.speed = 0.3f;
-                JumpAnimatorRope.speed = 0.3f;
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("2"))
-            {
-                JumpAnimator.speed = 1f;
-                JumpAnimatorRope.speed = 1f;
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("3"))
-            {
-                NPCJumpAnimator.SetBool("JumpRopeSide", true);
-                NPCJumpAnimatorRope.SetBool("JumpRopeSide", true);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("4"))
-            {
-                NPCRope.transform.rotation = Quaternion.Euler(new Vector3(-180, 180, -180));
-                NPCJumpAnimator.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.SetBool("JumpRope", true);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("5"))
-            {
-                NPCRope.transform.rotation = Quaternion.Euler(-180, 0, -180);
-                NPCJumpAnimator.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.speed = 2f;
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("6"))
-            {
-                PlayerRope.SetActive(false);
-                NPCRope.SetActive(false);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("7"))
-            {
-                PlayerRope.SetActive(true);
-
-                GameObject NPC = GameObject.Find(Inter.NameNPC);
-
-
-                Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
-                NPC.transform.position = Player.transform.position + new Vector3(1.5f, 0, 0);
-                NPCRope.SetActive(true);
-
-                Vector3 targetPositionNPC;
-                Vector3 targetPositionPlayer;
-                targetPositionNPC = new Vector3(Player.transform.position.x, NPC.transform.position.y, Player.transform.position.z);
-                NPC.transform.LookAt(targetPositionNPC);
-                targetPositionPlayer = new Vector3(NPC.transform.position.x, Player.transform.position.y, NPC.transform.position.z);
-                Player.transform.LookAt(targetPositionPlayer);
-            }
-            Invoke("scriptLine", 2f);
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("JumpRopeEnd"))
-        {
-            //줄넘기
-            NPCJumpAnimator.SetBool("JumpRope", false);
-            NPCJumpAnimator.SetBool("JumpRopeSide", false);
-            NPCJumpAnimator.SetBool("JumpRopeBack", false);
-            NPCJumpAnimatorRope.SetBool("JumpRope", false);
-            NPCJumpAnimatorRope.SetBool("JumpRopeSide", false);
-            NPCJumpAnimatorRope.SetBool("JumpRopeBack", false);
-            JumpAnimator.SetBool("JumpRope", false);
-            JumpAnimator.SetBool("JumpRopeSide", false);
-            JumpAnimator.SetBool("JumpRopeBack", false);
-            JumpAnimatorRope.SetBool("JumpRope", false);
-            JumpAnimatorRope.SetBool("JumpRopeSide", false);
-            JumpAnimatorRope.SetBool("JumpRopeBack", false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("MasterOfMtLife"))
-        {
-            //나에게 편지쓰기
-            MasterOfMtLife.SetActive(true);
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("MasterOfMtLifeEnd"))
-        {
-            MasterOfMtLife.SetActive(false);
-            ChatWin.SetActive(true);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("LoveNature"))
-        {
-            LoveNature.SetActive(true);
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("LoveNatureEnd"))
-        {
-            LoveNature.SetActive(false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("AppleTree"))
-        {
-            AppleTree.SetActive(true);
-            ChatWin.SetActive(false);
-            //scriptLine();
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("AppleTreeEnd"))
-        {
-            ChatWin.SetActive(true);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("MakeAppleTree"))
-        {
-            AppleTree.SetActive(false);
-            AppleTreeObj.SetActive(true);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("KeyToDream"))
-        {
-            KeyToDream.SetActive(true);
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("KeyToDreamEnd"))
-        {
-            KeyToDreamInput.text = null;
-            KeyToDream.SetActive(false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Tooth"))    //양치게임 전 주말퀘숫자 수정
-        {
-            if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 0)
-            {
-                DontDestroy.QuestIndex = "6_10";
-                SceneLoader.instance.GotoToothGame();
-            }
-            else if (SceneManager.GetActiveScene().name == "Game_Tooth")
-            {
-                ChatWin.SetActive(false);
-                GameObject QToothBrush = GameObject.Find("QToothBrush(Clone)");
-                GameObject Maincam = GameObject.Find("Main Camera");
-                if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 1)
+                InvokeRepeating("Panorama", 0f, 2f);
+                break;
+            case "video": //비디오 실행
                 {
-                    mouth = GameObject.Find("mouth");
-                    mouth.SetActive(false);
-                    Instantiate(Resources.Load<GameObject>("Prefabs/Tooth/QTooth/AH"), new Vector3(0, -13, 17), Quaternion.Euler(new Vector3(0, 90, 0)));
-                    QToothBrush.transform.position = new Vector3(15, 8, 10);
-                    QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(1, 294, 272));
-                    Maincam.transform.position = new Vector3(26, 25, 0);
-                    Maincam.transform.rotation = Quaternion.Euler(new Vector3(36, 332, 356));
-
-
-                    ToothAnimator.SetBool("1", true);
+                    video.videoClip.clip = video.VideoClip[Int32.Parse(data_Dialog[j]["cuttoon"].ToString())];
+                    movie.SetActive(true);
+                    video.OnPlayVideo();
+                    ChatWin.SetActive(false);
+                    GameObject SoundManager = GameObject.Find("SoundManager");
+                    SoundManager.SetActive(false);
+                    j++;
+                    break;
                 }
-                else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 2)
+            case "videoEnd": //비디오 실행 중지
+                if (videocheckTxT.text.Equals(parentscheckTxTNum))
                 {
-                    mouth.SetActive(true);
-                    GameObject.Find("AH(Clone)").SetActive(false);
-                    QToothBrush.transform.position = new Vector3(-13, -10, 18);
-                    QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(52, 176, 89));
-                    Maincam.transform.position = new Vector3(2, 6, 29);
-                    Maincam.transform.rotation = Quaternion.Euler(new Vector3(63, 180, 0));
-                    ToothAnimator.SetBool("1", true);
-                }
-                else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 3)
-                {
-                    QToothBrush.transform.position = new Vector3(16, -6, 15);
-                    QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(63, -9, 347));
-                    Maincam.transform.position = new Vector3(15, 4, 4);
-                    Maincam.transform.rotation = Quaternion.Euler(new Vector3(16, 0, 0));
-                    ToothAnimator.SetBool("2", true);
-                    ToothAnimator.SetBool("1", false);
-                }
-                else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 4)
-                {
-                    QToothBrush.transform.position = new Vector3(20, 0, 26);
-                    QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(63, -3, 84));
-                    Maincam.transform.position = new Vector3(0, 5, 2);
-                    Maincam.transform.rotation = Quaternion.Euler(new Vector3(20, 0, 0));
-                    ToothAnimator.SetBool("1", true);
-                    ToothAnimator.SetBool("2", false);
-                }
-                else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 5)
-                {
-                    QToothBrush.transform.position = new Vector3(13.3f, -11, 19.7f);
-                    QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(350, 299, 4));
-                    Maincam.transform.position = new Vector3(11.5f, -3, -1);
-                    GameObject.Find("QToothBrush(Clone)").transform.Find("Dentalfloss").gameObject.SetActive(true);
-                    GameObject.Find("ToothBrush").SetActive(false);
-                    ToothAnimator.SetBool("finish", true);
-                    ToothAnimator.SetBool("2", false);
-                }
-                else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 6)
-                {
-                    QToothBrush.SetActive(false);
-                    Maincam.transform.position = new Vector3(0, 16.6f, -27);
-                    Maincam.transform.rotation = Quaternion.Euler(new Vector3(7.7f, 0, 0));
+                    GameObject.Find("checkUI").SetActive(false);
+                    videocheckTxT.text = null;
+                    movie.SetActive(false);
+                    video.OnFinishVideo();
+                    ChatWin.SetActive(true);
+                    SoundManager = GameObject.Find("SoundManager");
+                    SoundManager.SetActive(true);
                     scriptLine();
-                    return;
                 }
-                else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 7)
+                else
                 {
-                    DontDestroy.ToothQ = true;
-                    DontDestroy.QuestIndex = "6_1";
-                    if (DontDestroy.ReQuest)
-                        ;
-                    else
-                        PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
-                    SceneLoader.instance.GotoMainField();
-                    return;
+                    ErrorWin.SetActive(true);
                 }
+                break;
+            case "Bike": //자전거 UI이벤트
+                cuttoon.SetActive(false);
+                ChatWin.SetActive(false);
+                Bike.SetActive(true);
+                j++;
+                break;
+            case "Bicycle":  //자전거 타기 이벤트
+                {
+                    if (!BikeQ)
+                    {
+                        NPCBike = new Vector3(-1, 0, 0);
+                        bicycleRide.RideOn();
+                        Destroy(GameObject.Find("Qbicycle(Clone)"));
+                        Player.position = new Vector3(0, -6.39158726f, -10.6f);
+                        Player.rotation = Quaternion.Euler(0, 90, 0);
+                        QBikeSpeed = 1;
+                        Maxtime = 3;
+                        BikeQ = true;
+                        StartCoroutine("QBikeLoop");
+                        NPCJumpAnimator.SetBool("BikeWalk", true);
 
-                Invoke("scriptLine", 3f);   //딜레이 후 스크립트 띄움
-            }
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("LookAt"))  //퀘스트번호쓰는거 수정  사방치기퀘스트
-        {
-            Transform NPC = GameObject.Find(Inter.NameNPC).transform;
-            Vector3 targetPositionNPC;
-            targetPositionNPC = new Vector3(Player.transform.position.x, NPC.position.y, Player.transform.position.z);
-            StartCoroutine(JumpButtons.NPCturn(NPC, targetPositionNPC));
-            if (Quest.note)
-            {
-                Quest.note = false;
-                GameObject[] objs = GameObject.FindGameObjectsWithTag("note");
-                for (int i = 0; i < objs.Length; i++)
-                    Destroy(objs[i]);
-            }
-            else if (data_Dialog[j]["scriptNumber"].ToString().Equals("22_1"))
-            {
-                Transform NPC2 = GameObject.Find("Nari").transform;
-                StartCoroutine(JumpButtons.NPCturn(NPC2, targetPositionNPC));
-            }
-            Invoke("stopCorou", 1f);
-            //딜레이 후 스크립트 띄움
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("moveTos"))
-        {
-            StartCoroutine(fade());
+                        scriptLine();
+                    }
+                    else if (QBikeSpeed == 3)
+                    {
+                        BikeQ = false;
+                        Vector3 targetPositionNPC;
+                        Vector3 targetPositionPlayer;
+                        targetPositionNPC = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z);
+                        targetPositionPlayer = new Vector3(BikeNPC.transform.position.x, BikeNPC.transform.position.y, BikeNPC.transform.position.z);
+                        BikeNPC.transform.LookAt(targetPositionNPC);
+                        Player.transform.LookAt(targetPositionPlayer);
+                        JumpButtons.Playerrb.velocity = JumpButtons.Playerrb.velocity.normalized * 0;
+                        StopCoroutine("QBikeLoop");
+                        Ride.SetActive(true);
 
-            /*Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
-            Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+                        scriptLine();
+                    }
+                    else if (BikeQ)
+                    {
+                        //페이드 인 페이드 아웃하면서 화면에 한시간 후... 띄우기
+                        cuttontext.text = "한시간 후...";
+                        fadein();
+                        QBikeSpeed = 3;
+                        Maxtime = 2f;
+                        Player.position = new Vector3(0, -6.39158726f, -10.6f);
+                        BikeNPC.transform.position = Player.position + new Vector3(3, 0, 3);
+                        Player.rotation = Player.rotation = Quaternion.Euler(0, 90, 0);
+                        bikerotate = false;
+                        timer = 0;
+                        NPCJumpAnimator.SetBool("BikeWalk", false);
+                    }
+                    break;
+                }
+            case "hair":    //머리반짝 이벤트
+                ChatWin.SetActive(false);
+                hairFX(Player.gameObject);
+                j++;
+                Invoke("clearHair", 1f);
+                break;
+            case "note":    //포스터잇 쓰기 이벤트
+                if (data_Dialog[j]["cuttoon"].ToString().Equals("0"))
+                {
+                    j++;
+                    ChatWin.SetActive(false);
+                    Note.SetActive(true);
+                }
+                else
+                {
+                    j++;
+                    ChatWin.SetActive(false);
+                }
+                break;
+            case "noteFinish":
+                Note.transform.Find("Button").gameObject.SetActive(false);
+                Draw.FinishWrite();
+                scriptLine();
+                break;
+            case "noteEnd":
+                Note.SetActive(false);
+                scriptLine();
+                break;
+            case "nutrient":    //건강주스
+                cuttoon.SetActive(false);
+                j++;
+                ChatWin.SetActive(false);
+                nutrient.SetActive(true);
+                break;
+            case "nutrientEnd":
+                j++;
+                nutrient.SetActive(false);
+                Cuttoon();
+                ChatWin.SetActive(false);
+                Invoke("scriptLine", 2f);   //딜레이 후 스크립트 띄움
+                break;
+            case "train":   //가치관 카드
+                ChatWin.SetActive(false);
+                Value.SetActive(true);
+                j++;
+                break;
+            case "trainEnd":
+                Value.SetActive(false);
+                scriptLine();
+                break;
+            case "draw":     //그림판
+                ChatWin.SetActive(false);
+                Draw.ChangeDrawCamera();
+                j++;
+                break;
+            case "drawFinish":
+                GameObject.Find("DrawUI").transform.Find("Button").gameObject.SetActive(false);
+                Draw.Draw = false;
+                scriptLine();
+                break;  
+            case "Screenshot":      //스크린샷 카메라 setactive(true)
+                screenShot.SetActive(true);
+                screenShotExit.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "drawEnd":
+                screenShot.SetActive(false);
+                Draw.ChangeDrawCamera();
+                Main_UI.SetActive(false);
+                scriptLine();
+                break;
+            case "listen":  //자연소리 실행
+                ChatWin.SetActive(false);
+                c = 0;
+                InvokeRepeating("QSound", 0f, 4f);
+                break;
+            case "song":    //웃어봐 송 틀기
+                {
+                    SoundManager SoundManager_ = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+                    SoundManager_.Sound("HaHasong");
+                    Invoke("scriptLine", 20f);   //딜레이 후 스크립트 띄움
+                    break;
+                }
+            case "songend":
+                {//원래 노래로 바꾸기
+                    SoundManager SoundManager_ = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+                    SoundManager_.Sound("BGMField");
+                    scriptLine();
+                    break;
+                }
+            case "JumpRope":        //줄넘기
+                int RopeNum = int.Parse(data_Dialog[j]["cuttoon"].ToString());
+                switch(RopeNum)
+                {
+                    case 0:
+                        GameObject.Find("Himchan").transform.rotation = Quaternion.Euler(0, 180, 0);
+                        PlayerRope.SetActive(true);
+                        NPCJumpAnimator.SetBool("JumpRope", true);
+                        NPCJumpAnimatorRope.SetBool("JumpRope", true);
+                        break; 
+                    case 1:
+                        Player.rotation = Quaternion.Euler(0, 180, 0);
+                        JumpAnimator.SetBool("JumpRope", true);
+                        JumpAnimatorRope.SetBool("JumpRope", true);
+                        JumpAnimator.speed = 0.3f;
+                        JumpAnimatorRope.speed = 0.3f;
+                        break; 
+                    case 2:
+                        JumpAnimator.speed = 1f;
+                        JumpAnimatorRope.speed = 1f;
+                        break; 
+                    case 3:
+                        NPCJumpAnimator.SetBool("JumpRopeSide", true);
+                        NPCJumpAnimatorRope.SetBool("JumpRopeSide", true);
+                        break;
+                    case 4:
+                        NPCRope.transform.rotation = Quaternion.Euler(new Vector3(-180, 180, -180));
+                        NPCJumpAnimator.SetBool("JumpRope", true);
+                        NPCJumpAnimatorRope.SetBool("JumpRope", true);
+                        break;
+                    case 5:
+                        NPCRope.transform.rotation = Quaternion.Euler(-180, 0, -180);
+                        NPCJumpAnimator.SetBool("JumpRope", true);
+                        NPCJumpAnimatorRope.SetBool("JumpRope", true);
+                        NPCJumpAnimatorRope.speed = 2f;
+                        break; 
+                    case 6:
+                        PlayerRope.SetActive(false);
+                        NPCRope.SetActive(false);
+                        break; 
+                    case 7:
+                        {
+                            PlayerRope.SetActive(true);
 
-            Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
-            Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
-
-            Kangteagom.SetActive(true);
-            scriptLine();*/
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("BMI"))
-        {
-            BMI.SetActive(true);
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("BMITalk"))
-        {
-            Inter.NpcNameTF = true;
-            BMI.SetActive(false);
-            BMItalk.SetActive(true);
-            ChatWin.SetActive(true);
-            j++;
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("BMITalkT"))
-        {
-            j++;
-            Draw.BMItalk();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("BMIEnd"))
-        {
-            Inter.NpcNameTF = false;
-
-            chatName.text = PlayerName;
-            LoadTxt = "그럼 나는 " + Draw.BMIresult + "이네. 그런데, 과체중이랑 비만이 무슨 뜻이야?"; 
-            CCImage.SetActive(false);
-            j++;
-            StartCoroutine(_typing());
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("moveToA"))
-        {
-            Cuttoon();
-            DontDestroy.QuestIndex = "13_10";
-            SceneLoader.instance.GotoMainAcronVillage();
-        } //도토리마을로 이동
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("JumpRope"))
-        {
-            //줄넘기
-            if (data_Dialog[j]["cuttoon"].ToString().Equals("0"))
-            {
-                GameObject.Find("Himchan").transform.rotation = Quaternion.Euler(0, 180, 0);
-                PlayerRope.SetActive(true);
-                NPCJumpAnimator.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.SetBool("JumpRope", true);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("1"))
-            {
-                Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
-                Player.rotation = Quaternion.Euler(0, 180, 0);
-                JumpAnimator.SetBool("JumpRope", true);
-                JumpAnimatorRope.SetBool("JumpRope", true);
-                JumpAnimator.speed = 0.3f;
-                JumpAnimatorRope.speed = 0.3f;
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("2"))
-            {
-                JumpAnimator.speed = 1f;
-                JumpAnimatorRope.speed = 1f;
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("3"))
-            {
-                NPCJumpAnimator.SetBool("JumpRopeSide", true);
-                NPCJumpAnimatorRope.SetBool("JumpRopeSide", true);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("4"))
-            {
-                NPCRope.transform.rotation = Quaternion.Euler(new Vector3(-180, 180, -180));
-                NPCJumpAnimator.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.SetBool("JumpRope", true);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("5"))
-            {
-                NPCRope.transform.rotation = Quaternion.Euler(-180, 0, -180);
-                NPCJumpAnimator.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.SetBool("JumpRope", true);
-                NPCJumpAnimatorRope.speed = 2f;
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("6"))
-            {
-                PlayerRope.SetActive(false);
-                NPCRope.SetActive(false);
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("7"))
-            {
-                PlayerRope.SetActive(true);
-
-                GameObject NPC = GameObject.Find(Inter.NameNPC);
-
-                Player.transform.position = new Vector3(54, 5, -15);
-                NPC.transform.position = Player.transform.position + new Vector3(5, 0, 0);
-                NPCRope.SetActive(true);
-
-                Vector3 targetPositionNPC;
-                Vector3 targetPositionPlayer;
-                targetPositionNPC = new Vector3(Player.transform.position.x, NPC.transform.position.y, Player.transform.position.z);
-                NPC.transform.LookAt(targetPositionNPC);
-                targetPositionPlayer = new Vector3(NPC.transform.position.x, Player.transform.position.y, NPC.transform.position.z);
-                Player.transform.LookAt(targetPositionPlayer);
-            }
-            Invoke("scriptLine", 2f);
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("JumpRopeEnd"))
-        {
-            //줄넘기
-            NPCJumpAnimator.SetBool("JumpRope", false);
-            NPCJumpAnimator.SetBool("JumpRopeSide", false);
-            NPCJumpAnimator.SetBool("JumpRopeBack", false);
-            NPCJumpAnimatorRope.SetBool("JumpRope", false);
-            NPCJumpAnimatorRope.SetBool("JumpRopeSide", false);
-            NPCJumpAnimatorRope.SetBool("JumpRopeBack", false);
-            JumpAnimator.SetBool("JumpRope", false);
-            JumpAnimator.SetBool("JumpRopeSide", false);
-            JumpAnimator.SetBool("JumpRopeBack", false);
-            JumpAnimatorRope.SetBool("JumpRope", false);
-            JumpAnimatorRope.SetBool("JumpRopeSide", false);
-            JumpAnimatorRope.SetBool("JumpRopeBack", false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Nanum")) //26
-        {
-            cuttoon.SetActive(false);
-            Nanum.SetActive(true);
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("NanumEnd"))
-        {
-            Nanum.SetActive(false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Jewel"))
-        {
-            ChatWin.SetActive(false);
-            Jewel.SetActive(true);
-            j++;
-        }else if (data_Dialog[j]["scriptType"].ToString().Equals("Jewelselect"))
-        {
-            ChatWin.SetActive(false);
-            Jewel.SetActive(true);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("JewelFinish"))        //퀘스트중간애들
-        {
-            Draw.JFinishWrite();
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("JewelSelecFinish"))
-        {
-            Draw.JNextLevel();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("JewelEnd"))
-        {
-            Jewel.SetActive(false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Healthy")) //29
-        {
-            Healthy.SetActive(true);
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("HealthyEnd"))
-        {
-            Healthy.SetActive(false);
-            scriptLine();
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("Hulahoop"))
-        {
-            //훌라후프
-        /*public Animator PlayerHulaAnimator;  //플레이어 accessories에 들어있는 애니메이터
-        public Animator NPCHulaAnimator;   //힘찬이 모델링 최상위오브젝트에 든 애니메이터
-        public Animator PHulaAnimator; //플레이어 훌라후프 애니메이터
-        public Animator NHulaAnimator;  //NPC훌라후프 애니메이터
-        public GameObject PlayerHula; //플레이어 훌라후프 모델링
-        public GameObject NPCHula;  //NPC훌라후프 모델링*/
-            if (data_Dialog[j]["cuttoon"].ToString().Equals("0")) //플레이어한테 훌라후프 만들기 기존 애니메이터 끄기
-            {
-                GameObject.Find("Himchan").transform.rotation = Quaternion.Euler(0, 180, 0);
-                Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
-                Player.rotation = Quaternion.Euler(0, 180, 0);
-
-                PlayerHula.SetActive(true) ;  //P H active
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("1")) //힘찬 훌라후프 애니매니터 켜기 힘찬이 훌라후프 들기
-            {
-                JumpAnimator.enabled = false; //P A off
-                NPCJumpAnimator.enabled = false;  //N A off
-                NPCHulaAnimator.enabled = true;
-                NHulaAnimator.SetBool("Hoopup", true);
-                NPCHulaAnimator.SetBool("Hoopup", true);  //들기
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("2")) //플레이어 훌라후프 애니메이터 켜기 플레이어 훌라후프 들기
-            {
-                PlayerHulaAnimator.enabled = true;
-                PHulaAnimator.SetBool("Hoopup", true);
-                PlayerHulaAnimator.SetBool("Hoopup", true);  //들기
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("3")) //힘찬이 훌라후프 돌리기, 플레이어 돌리다 떨구기 1
-            {
-                NHulaAnimator.SetBool("HoopStart", true);
-                NPCHulaAnimator.SetBool("HoopStart", true); //돌리기 시작
-                NHulaAnimator.SetBool("HoopRotation", true);
-                NPCHulaAnimator.SetBool("HoopRotation", true); //돌리기
-
-                PHulaAnimator.SetBool("HoopStart", true);
-                PlayerHulaAnimator.SetBool("HoopStart", true); //돌리기 시작
-                PHulaAnimator.SetBool("HoopRotation", true);
-                PlayerHulaAnimator.SetBool("HoopRotation", true); //돌리기
-                PHulaAnimator.SetBool("HoopFail", true);
-                PlayerHulaAnimator.SetBool("HoopFail", true); //떨구기
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("4")) //계속 돌리기
-            {
-                PHulaAnimator.SetBool("HoopFail", false);
-                PlayerHulaAnimator.SetBool("HoopFail", false); //떨구기 취소
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("5")) //멈추고 내려두기 그리고 대기모션
-            {
-                NHulaAnimator.SetBool("HoopEnd", true);
-                NPCHulaAnimator.SetBool("HoopEnd", true); //멈추기
-                NHulaAnimator.SetBool("HoopDown", true);
-                NPCHulaAnimator.SetBool("HoopDown", true); //내리기
-
-                PHulaAnimator.SetBool("HoopEnd", true);
-                PlayerHulaAnimator.SetBool("HoopEnd", true); //멈추기
-                PHulaAnimator.SetBool("HoopDown", true);
-                PlayerHulaAnimator.SetBool("HoopDown", true); //내리기
+                            GameObject NPC_ = GameObject.Find(Inter.NameNPC);
 
 
-            }
-            else if (data_Dialog[j]["cuttoon"].ToString().Equals("6")) //훌라후프들 없애기
-            {
-                NPCHulaAnimator.enabled = false;
-                PlayerHulaAnimator.enabled = false;
-                JumpAnimator.enabled = true; //P A off
-                NPCJumpAnimator.enabled = true;  //N A off
-                PlayerHula.SetActive(false);  //P H active
-                NPCHula.SetActive(false);  //P H active
-            }
-            Invoke("scriptLine", 2f);
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("spell")) //29
-        {
-            spell.SetActive(true);
-            Draw.startWrite();
-            ChatWin.SetActive(false);
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("spellWriteEnd"))
-        {
-            Draw.SFinishWrite();
-            j++;
-        }
-        else if (data_Dialog[j]["scriptType"].ToString().Equals("spellEnd"))
-        {
-            spell.SetActive(false);
-            scriptLine();
+                            Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
+                            NPC_.transform.position = Player.transform.position + new Vector3(1.5f, 0, 0);
+                            NPCRope.SetActive(true);
+
+                            Vector3 targetPositionNPC;
+                            Vector3 targetPositionPlayer;
+                            targetPositionNPC = new Vector3(Player.transform.position.x, NPC_.transform.position.y, Player.transform.position.z);
+                            NPC_.transform.LookAt(targetPositionNPC);
+                            targetPositionPlayer = new Vector3(NPC_.transform.position.x, Player.transform.position.y, NPC_.transform.position.z);
+                            Player.transform.LookAt(targetPositionPlayer);
+                            break;
+                        }
+                }    
+                Invoke("scriptLine", 2f);
+                break;
+            case "JumpRopeEnd":
+                //줄넘기
+                NPCJumpAnimator.SetBool("JumpRope", false);
+                NPCJumpAnimator.SetBool("JumpRopeSide", false);
+                NPCJumpAnimator.SetBool("JumpRopeBack", false);
+                NPCJumpAnimatorRope.SetBool("JumpRope", false);
+                NPCJumpAnimatorRope.SetBool("JumpRopeSide", false);
+                NPCJumpAnimatorRope.SetBool("JumpRopeBack", false);
+                JumpAnimator.SetBool("JumpRope", false);
+                JumpAnimator.SetBool("JumpRopeSide", false);
+                JumpAnimator.SetBool("JumpRopeBack", false);
+                JumpAnimatorRope.SetBool("JumpRope", false);
+                JumpAnimatorRope.SetBool("JumpRopeSide", false);
+                JumpAnimatorRope.SetBool("JumpRopeBack", false);
+                scriptLine();
+                break;
+            case "MasterOfMtLife":
+                //나에게 편지쓰기
+                MasterOfMtLife.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "MasterOfMtLifeEnd":
+                MasterOfMtLife.SetActive(false);
+                ChatWin.SetActive(true);
+                scriptLine();
+                break;
+            case "LoveNature":
+                LoveNature.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "LoveNatureEnd":
+                LoveNature.SetActive(false);
+                scriptLine();
+                break;
+            case "AppleTree":
+                AppleTree.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "AppleTreeEnd":
+                ChatWin.SetActive(true);
+                scriptLine();
+                break;
+            /*case "MakeAppleTree":
+                AppleTree.SetActive(false);
+                AppleTreeObj.SetActive(true);
+                scriptLine();
+                break;*/
+            case "KeyToDream":
+                KeyToDream.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "KeyToDreamEnd":
+                KeyToDreamInput.text = null;
+                KeyToDream.SetActive(false);
+                scriptLine();
+                break;
+            case "Tooth":
+                if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 0)
+                {
+                    DontDestroy.QuestIndex = "6_10";
+                    SceneLoader.instance.GotoToothGame();
+                }
+                else if (SceneManager.GetActiveScene().name == "Game_Tooth")
+                {
+                    ChatWin.SetActive(false);
+                    GameObject QToothBrush = GameObject.Find("QToothBrush(Clone)");
+                    GameObject Maincam = GameObject.Find("Main Camera");
+                    if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 1)
+                    {
+                        mouth = GameObject.Find("mouth");
+                        mouth.SetActive(false);
+                        Instantiate(Resources.Load<GameObject>("Prefabs/Tooth/QTooth/AH"), new Vector3(0, -13, 17), Quaternion.Euler(new Vector3(0, 90, 0)));
+                        QToothBrush.transform.position = new Vector3(15, 8, 10);
+                        QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(1, 294, 272));
+                        Maincam.transform.position = new Vector3(26, 25, 0);
+                        Maincam.transform.rotation = Quaternion.Euler(new Vector3(36, 332, 356));
+
+
+                        ToothAnimator.SetBool("1", true);
+                    }
+                    else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 2)
+                    {
+                        mouth.SetActive(true);
+                        GameObject.Find("AH(Clone)").SetActive(false);
+                        QToothBrush.transform.position = new Vector3(-13, -10, 18);
+                        QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(52, 176, 89));
+                        Maincam.transform.position = new Vector3(2, 6, 29);
+                        Maincam.transform.rotation = Quaternion.Euler(new Vector3(63, 180, 0));
+                        ToothAnimator.SetBool("1", true);
+                    }
+                    else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 3)
+                    {
+                        QToothBrush.transform.position = new Vector3(16, -6, 15);
+                        QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(63, -9, 347));
+                        Maincam.transform.position = new Vector3(15, 4, 4);
+                        Maincam.transform.rotation = Quaternion.Euler(new Vector3(16, 0, 0));
+                        ToothAnimator.SetBool("2", true);
+                        ToothAnimator.SetBool("1", false);
+                    }
+                    else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 4)
+                    {
+                        QToothBrush.transform.position = new Vector3(20, 0, 26);
+                        QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(63, -3, 84));
+                        Maincam.transform.position = new Vector3(0, 5, 2);
+                        Maincam.transform.rotation = Quaternion.Euler(new Vector3(20, 0, 0));
+                        ToothAnimator.SetBool("1", true);
+                        ToothAnimator.SetBool("2", false);
+                    }
+                    else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 5)
+                    {
+                        QToothBrush.transform.position = new Vector3(13.3f, -11, 19.7f);
+                        QToothBrush.transform.rotation = Quaternion.Euler(new Vector3(350, 299, 4));
+                        Maincam.transform.position = new Vector3(11.5f, -3, -1);
+                        GameObject.Find("QToothBrush(Clone)").transform.Find("Dentalfloss").gameObject.SetActive(true);
+                        GameObject.Find("ToothBrush").SetActive(false);
+                        ToothAnimator.SetBool("finish", true);
+                        ToothAnimator.SetBool("2", false);
+                    }
+                    else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 6)
+                    {
+                        QToothBrush.SetActive(false);
+                        Maincam.transform.position = new Vector3(0, 16.6f, -27);
+                        Maincam.transform.rotation = Quaternion.Euler(new Vector3(7.7f, 0, 0));
+                        scriptLine();
+                        return;
+                    }
+                    else if (Int32.Parse(data_Dialog[j]["cuttoon"].ToString()) == 7)
+                    {
+                        DontDestroy.ToothQ = true;
+                        DontDestroy.QuestIndex = "6_1";
+                        if (DontDestroy.ReQuest)
+                            ;
+                        else
+                            PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
+                        SceneLoader.instance.GotoMainField();
+                        return;
+                    }
+
+                    Invoke("scriptLine", 3f);   //딜레이 후 스크립트 띄움
+                }
+                break;
+            case "LookAt":
+                {
+                    Transform NPC = GameObject.Find(Inter.NameNPC).transform;
+                    Vector3 targetPositionNPC;
+                    targetPositionNPC = new Vector3(Player.transform.position.x, NPC.position.y, Player.transform.position.z);
+                    StartCoroutine(JumpButtons.NPCturn(NPC, targetPositionNPC));
+                    if (Quest.note)
+                    {
+                        Quest.note = false;
+                        GameObject[] objs = GameObject.FindGameObjectsWithTag("note");
+                        for (int i = 0; i < objs.Length; i++)
+                            Destroy(objs[i]);
+                    }
+                    else if (data_Dialog[j]["scriptNumber"].ToString().Equals("22_1"))
+                    {
+                        Transform NPC2 = GameObject.Find("Nari").transform;
+                        StartCoroutine(JumpButtons.NPCturn(NPC2, targetPositionNPC));
+                    }
+                    Invoke("stopCorou", 1f);
+                    break;
+                }
+            case "moveTos":
+                cuttontext.text = "다음날 아침";
+                StartCoroutine(fadein());
+                Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
+                Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+
+                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
+                Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+
+                Kangteagom.SetActive(true);
+                scriptLine();
+                break;
+            case "BMI":
+                BMI.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "BMITalk":
+                Inter.NpcNameTF = true;
+                BMI.SetActive(false);
+                BMItalk.SetActive(true);
+                ChatWin.SetActive(true);
+                j++;
+                scriptLine();
+                break;
+            case "BMITalkT":
+                j++;
+                Draw.BMItalk();
+                break;
+            case "BMIEnd":
+                Inter.NpcNameTF = false;
+
+                chatName.text = PlayerName;
+                LoadTxt = "그럼 나는 " + Draw.BMIresult + "이네. 그런데, 과체중이랑 비만이 무슨 뜻이야?";
+                CCImage.SetActive(false);
+                j++;
+                StartCoroutine(_typing());
+                break;
+            case "moveToA":     //도토리 마을로 이동
+                Cuttoon();
+                DontDestroy.QuestIndex = "13_10";
+                SceneLoader.instance.GotoMainAcronVillage();
+                break;
+            case "Nanum":
+                cuttoon.SetActive(false);
+                Nanum.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "NanumEnd":
+                Nanum.SetActive(false);
+                scriptLine();
+                break;
+            case "Jewel":
+                ChatWin.SetActive(false);
+                Jewel.SetActive(true);
+                j++;
+                break;
+            case "Jewelselect":
+                ChatWin.SetActive(false);
+                Jewel.SetActive(true);
+                j++;
+                break;
+            case "JewelFinish":
+                Draw.JFinishWrite();
+                scriptLine();
+                break;
+            case "JewelSelecFinish":
+                Draw.JNextLevel();
+                break;
+            case "JewelEnd":
+                Jewel.SetActive(false);
+                scriptLine();
+                break;
+            case "Healthy":
+                Healthy.SetActive(true);
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "HealthyEnd":
+                Healthy.SetActive(false);
+                scriptLine();
+                break;
+            case "Hulahoop":
+                //훌라후프
+                /*public Animator PlayerHulaAnimator;  //플레이어 accessories에 들어있는 애니메이터
+                public Animator NPCHulaAnimator;   //힘찬이 모델링 최상위오브젝트에 든 애니메이터
+                public Animator PHulaAnimator; //플레이어 훌라후프 애니메이터
+                public Animator NHulaAnimator;  //NPC훌라후프 애니메이터
+                public GameObject PlayerHula; //플레이어 훌라후프 모델링
+                public GameObject NPCHula;  //NPC훌라후프 모델링*/
+                if (data_Dialog[j]["cuttoon"].ToString().Equals("0")) //플레이어한테 훌라후프 만들기 기존 애니메이터 끄기
+                {
+                    GameObject.Find("Himchan").transform.rotation = Quaternion.Euler(0, 180, 0);
+                    Player.position = new Vector3(3.5f, -6.39158678f, -9.3f);
+                    Player.rotation = Quaternion.Euler(0, 180, 0);
+
+                    PlayerHula.SetActive(true);  //P H active
+                }
+                else if (data_Dialog[j]["cuttoon"].ToString().Equals("1")) //힘찬 훌라후프 애니매니터 켜기 힘찬이 훌라후프 들기
+                {
+                    JumpAnimator.enabled = false; //P A off
+                    NPCJumpAnimator.enabled = false;  //N A off
+                    NPCHulaAnimator.enabled = true;
+                    NHulaAnimator.SetBool("Hoopup", true);
+                    NPCHulaAnimator.SetBool("Hoopup", true);  //들기
+                }
+                else if (data_Dialog[j]["cuttoon"].ToString().Equals("2")) //플레이어 훌라후프 애니메이터 켜기 플레이어 훌라후프 들기
+                {
+                    PlayerHulaAnimator.enabled = true;
+                    PHulaAnimator.SetBool("Hoopup", true);
+                    PlayerHulaAnimator.SetBool("Hoopup", true);  //들기
+                }
+                else if (data_Dialog[j]["cuttoon"].ToString().Equals("3")) //힘찬이 훌라후프 돌리기, 플레이어 돌리다 떨구기 1
+                {
+                    NHulaAnimator.SetBool("HoopStart", true);
+                    NPCHulaAnimator.SetBool("HoopStart", true); //돌리기 시작
+                    NHulaAnimator.SetBool("HoopRotation", true);
+                    NPCHulaAnimator.SetBool("HoopRotation", true); //돌리기
+
+                    PHulaAnimator.SetBool("HoopStart", true);
+                    PlayerHulaAnimator.SetBool("HoopStart", true); //돌리기 시작
+                    PHulaAnimator.SetBool("HoopRotation", true);
+                    PlayerHulaAnimator.SetBool("HoopRotation", true); //돌리기
+                    PHulaAnimator.SetBool("HoopFail", true);
+                    PlayerHulaAnimator.SetBool("HoopFail", true); //떨구기
+                }
+                else if (data_Dialog[j]["cuttoon"].ToString().Equals("4")) //계속 돌리기
+                {
+                    PHulaAnimator.SetBool("HoopFail", false);
+                    PlayerHulaAnimator.SetBool("HoopFail", false); //떨구기 취소
+                }
+                else if (data_Dialog[j]["cuttoon"].ToString().Equals("5")) //멈추고 내려두기 그리고 대기모션
+                {
+                    NHulaAnimator.SetBool("HoopEnd", true);
+                    NPCHulaAnimator.SetBool("HoopEnd", true); //멈추기
+                    NHulaAnimator.SetBool("HoopDown", true);
+                    NPCHulaAnimator.SetBool("HoopDown", true); //내리기
+
+                    PHulaAnimator.SetBool("HoopEnd", true);
+                    PlayerHulaAnimator.SetBool("HoopEnd", true); //멈추기
+                    PHulaAnimator.SetBool("HoopDown", true);
+                    PlayerHulaAnimator.SetBool("HoopDown", true); //내리기
+
+
+                }
+                else if (data_Dialog[j]["cuttoon"].ToString().Equals("6")) //훌라후프들 없애기
+                {
+                    NPCHulaAnimator.enabled = false;
+                    PlayerHulaAnimator.enabled = false;
+                    JumpAnimator.enabled = true; //P A off
+                    NPCJumpAnimator.enabled = true;  //N A off
+                    PlayerHula.SetActive(false);  //P H active
+                    NPCHula.SetActive(false);  //P H active
+                }
+                Invoke("scriptLine", 2f);
+                break;
+            case "spell":
+                spell.SetActive(true);
+                Draw.startWrite();
+                ChatWin.SetActive(false);
+                j++;
+                break;
+            case "spellWriteEnd":
+                Draw.SFinishWrite();
+                j++;
+                break;
+            case "spellEnd":
+                spell.SetActive(false);
+                scriptLine();
+                break;
         }
     }
+    
 
-    IEnumerator fade()
+    IEnumerator fadein()
     {
         ChatWin.SetActive(false);
-        cuttontext.text = "다음날 아침";
         cuttontext.gameObject.SetActive(true);
         cuttoon.SetActive(true);
         cuttoonspriteR = cuttoon.GetComponent<Image>();
@@ -1278,24 +1133,21 @@ public class LodingTxt : MonoBehaviour
                 fadein =false;
             }
         }
-        yield return new WaitForSecondsRealtime(0.2f);
-        Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
-        Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
-
-        Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
-        Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
-
-        Kangteagom.SetActive(true);
-        //scriptLine();
         yield return new WaitForSecondsRealtime(1.5f);
-
+        StartCoroutine(fadeout(fadein));
+        
+    }
+    IEnumerator fadeout(bool fadein)
+    {
+        if(fadein)
+            fadein = false;
         while (!fadein)
         {
             Debug.Log("페이드 아웃");
             cuttoonspriteR.color = color;
             color.a -= 0.1f;
             yield return new WaitForSecondsRealtime(0.05f);
-            if(color.a < 0.0f)
+            if (color.a < 0.0f)
             {
                 //yield break;
                 fadein = true;
@@ -1309,7 +1161,7 @@ public class LodingTxt : MonoBehaviour
         //j++;
         scriptLine();
     }
-    void stopCorou()
+        void stopCorou()
     {
         JumpButtons.Nstop = false;
         scriptLine();
@@ -1648,8 +1500,8 @@ public class LodingTxt : MonoBehaviour
         {
             PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
             if (SceneManager.GetActiveScene().name == "Quiz") ;
-            else
-                QS.QuestStepNumber++;
+            else;
+                //QS.QuestStepNumber++;
         }
         if (data_Dialog[j]["dialog"].ToString().Equals("end"))
         {
@@ -1678,7 +1530,7 @@ public class LodingTxt : MonoBehaviour
             else
             { 
                 PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
-                QS.QuestStepNumber++;
+                //QS.QuestStepNumber++;
             }
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
             DontDestroy.LastDay = DontDestroy.ToDay;
