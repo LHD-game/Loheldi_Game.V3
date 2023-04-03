@@ -110,10 +110,10 @@ public class QuestLoad : MonoBehaviour
                     else
                         r = i + 1;
                     string QID = rows[i]["QID"]["S"].ToString();
-                    QuestStatus.QuestStepNumber = i;
                     //Debug.Log("메일받기" + " QID =" + QID + " QuestP = " + QuestPreg);
                     if (QID == QuestPreg)   //0_0은 아닌 상태에서 퀘스트 진행도와 일치
                     {
+                        QuestStatus.QuestStepNumber = i;
                         //Debug.Log("메일받기" + " i =" + i + " r = " + r);
                         QName = rows[r]["QName"]["S"].ToString();
                         if (QName == "end")
