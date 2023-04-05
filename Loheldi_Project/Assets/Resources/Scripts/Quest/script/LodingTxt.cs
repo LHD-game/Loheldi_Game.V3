@@ -9,24 +9,66 @@ using UnityEngine.ProBuilder.MeshOperations;
 
 public class LodingTxt : MonoBehaviour
 {
+    [Header("Player")]
     public Transform Player;
     public Transform Nari;
     public Transform NariMom;
 
 
+    [Header("Chatting")]
     public Text chatName;
-    //public Text QuizName;
     public Text chatTxt;
-    //메일 내용 뜨는거
-    public Text Mailcontent;
-    //public Text QuizTxt;
-    public Text[] QuizButton = new Text[3];
-
     public GameObject[] SelecButton = new GameObject[5];
     public Text[] SelecButtonTxt = new Text[5];
 
+    public GameObject Arrow;
+    public GameObject block;        //넘김방지 맨앞 블럭
+    public Color color;
+    public GameObject Chat;
+    public GameObject ChatWin;
+
+    public int NPCButton = 0;
+    public string LoadTxt;
+    private string[] Xdialog = { "다시 한번 생각해봐.", "아쉽지만 틀렸어.", "땡!", "다시 도전해봐" };
+
+    public List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
+    public string FileAdress;                // 스크립트 파일 위치
+    public string cuttoonFileAdress;         // 컷툰 파일 위치
+
+    public string Num;                       //스크립트 번호
+    public int j;                                  //data_Dialog 줄갯수
+    public int c = 0;                              //컷툰 이미지 번호
+    public int l;                            //뜨는 이미지 번호
+    string Answer;               //누른 버튼 인식
+    public string PlayerName;
+
+    public GameObject CCImage;     //캐릭터 이미지
+    public static Sprite[] CCImageList;
+    public static Image spriteR;
+
+    public GameObject cuttoon;        //컷툰 이미지
+    public Sprite[] cuttoonImageList;
+    static Image cuttoonspriteR;
+    public Text cuttontext;
+
+    [Header("mail")]
+    //메일 내용 뜨는거
+    public Text Mailcontent;
+
+    [Header("Quiz")]
+    public Text[] QuizButton = new Text[3];
+    public GameObject OImage;
+    public GameObject XImage;
+    public GameObject Quiz;
+    public Material[] Quiz_material;
+    [SerializeField]
+    private Material[] material; 
+    int MataNum = 0;                        //메터리얼 번호
+
+    [Header("Quest")]
     public InputField videocheckTxT;
-    public InputField ParentscheckTxt;     
+    public InputField ParentscheckTxt;
+    public TMP_InputField KeyToDreamInput;
     public string parentscheckTxTNum;
     public GameObject ErrorWin;      //홈트인증실패
     public GameObject ClearWin;     //인증클리어
@@ -36,23 +78,36 @@ public class LodingTxt : MonoBehaviour
     public GameObject Main_UI;
     public GameObject Button;
     public GameObject NPCButtons;
-    public GameObject OImage;
-    public GameObject XImage;
-    public GameObject Quiz;
-    public Material[] Quiz_material;
-    [SerializeField]
-    private Material[] material;
-
-    public GameObject Arrow;
-    public GameObject block;        //넘김방지 맨앞 블럭
-    public Color color;
-    public GameObject Chat;
-    public GameObject ChatWin;
     public GameObject chatCanvus;
     public GameObject shopCanvus;
     public GameObject MailCanvus;
 
+    int QBikeSpeed;
+    bool BikeQ = false;
+    float timer = 0.0f;
+    float Maxtime;
+    bool bikerotate = false;
+    Vector3 NPCBike;
+
+    public Animator JumpAnimator; //플레이어 애니메이터
+    public Animator NPCJumpAnimator;  //힘찬이 애니메이터
+    public Animator JumpAnimatorRope;
+    public Animator NPCJumpAnimatorRope;
+    public GameObject PlayerRope;
+    public GameObject NPCRope;
+
+    public Animator PlayerHulaAnimator;  //플레이어 accessories에 들어있는 애니메이터
+    public Animator NPCHulaAnimator;   //힘찬이 모델링 최상위오브젝트에 든 애니메이터
+    public Animator PHulaAnimator; //플레이어 훌라후프 애니메이터
+    public Animator NHulaAnimator;  //NPC훌라후프 애니메이터
+    public GameObject PlayerHula; //플레이어 훌라후프 모델링
+    public GameObject NPCHula;  //NPC훌라후프 모델링
+
+    Animator ToothAnimator;
+    [Header("QuestWindow")]
     public GameObject movie;
+    public GameObject NextVideoWindow;
+    public GameObject VideoParentsCheckUI;
     public GameObject DrawUI;
     public GameObject Note;
     public GameObject Value;
@@ -71,60 +126,38 @@ public class LodingTxt : MonoBehaviour
     public GameObject Healthy;
     public GameObject spell;
 
+    [Header("Bike&BikeQuest")]
     public GameObject Ride;
     public GameObject Bike;
     public GameObject BikeNPC;
 
+    [Header("ThankAppleTree")]
     public GameObject AppleTreeObj;
+
+    [Header("GotoDotori")]
     public GameObject Kangteagom;
 
+    [Header(".ect")]
+    public int o = 0;                                  //move서포터
     public GameObject SoundEffectManager;
     GameObject SoundManager;
-
-    public int NPCButton = 0;
-    public string LoadTxt;
-    private string[] Xdialog = {"다시 한번 생각해봐.","아쉽지만 틀렸어.","땡!","다시 도전해봐"};
-
-    public List<Dictionary<string, object>> data_Dialog = new List<Dictionary<string, object>>();
-    public string FileAdress;                // 스크립트 파일 위치
-    public string cuttoonFileAdress;         // 컷툰 파일 위치
-
-    public string Num;                       //스크립트 번호
-    public int j;                                  //data_Dialog 줄갯수
-    public int c = 0;                              //컷툰 이미지 번호
-    public int l;                            //뜨는 이미지 번호
-    string Answer;               //누른 버튼 인식
-
+    [SerializeField]
+    private ParticleSystem hairPs;
+    [Header("tutorial")]
     public bool tutoFinish = false;
     public bool tuto;
     public bool tutoclick;
 
-    public GameObject CCImage;     //캐릭터 이미지
-    public static Sprite[] CCImageList;
-    public static Image spriteR;
-
-    public GameObject cuttoon;        //컷툰 이미지
-    public Sprite[] cuttoonImageList;
-    static Image cuttoonspriteR;
-    public Text cuttontext;
-
-    public TMP_InputField KeyToDreamInput;
     //public Fadeln fade_in_out;
+
+
+    
+
+    [Header("scrips")]
     public UIButton JumpButtons;
     public tutorial tu;
     public Interaction Inter;
     public QuestStatus QS;
-
-
-    public int o = 0;                                  //move서포터
-    int MataNum = 0;                        //메터리얼 번호
-    int QBikeSpeed;
-    bool BikeQ = false;
-    float timer=0.0f;
-    float Maxtime;
-    bool bikerotate = false;
-    Vector3 NPCBike;
-
     public QuestDontDestroy DontDestroy;
     public QuestScript Quest;
     public VideoScript video;
@@ -132,32 +165,14 @@ public class LodingTxt : MonoBehaviour
     public BicycleRide bicycleRide;
     public QuestLoad QuestLoad;
     public NpcButtonClick NpcButton;
-    [SerializeField]
-    private ParticleSystem hairPs;
 
-    public Animator JumpAnimator; //플레이어 애니메이터
-    public Animator NPCJumpAnimator;  //힘찬이 애니메이터
-    public Animator JumpAnimatorRope;
-    public Animator NPCJumpAnimatorRope;
-    public GameObject PlayerRope;
-    public GameObject NPCRope;
 
-    public Animator PlayerHulaAnimator;  //플레이어 accessories에 들어있는 애니메이터
-    public Animator NPCHulaAnimator;   //힘찬이 모델링 최상위오브젝트에 든 애니메이터
-    public Animator PHulaAnimator; //플레이어 훌라후프 애니메이터
-    public Animator NHulaAnimator;  //NPC훌라후프 애니메이터
-    public GameObject PlayerHula; //플레이어 훌라후프 모델링
-    public GameObject NPCHula;  //NPC훌라후프 모델링
-
-    public string PlayerName;
-
-    Animator ToothAnimator;
     private void Awake()
     {
         color = block.GetComponent<Image>().color;
         ChatWin.SetActive(true);
 
-        GameObject SoundManager = GameObject.Find("SoundManager");
+        SoundManager = GameObject.Find("SoundManager");
         //fade_in_out = GameObject.Find("EventSystem").GetComponent<Fadeln>();
         CCImageList = Resources.LoadAll<Sprite>("Sprites/CCImage/CImage"); //이미지 경로
 
@@ -242,6 +257,18 @@ public class LodingTxt : MonoBehaviour
         Main_UI.SetActive(false);
         SoundManager = GameObject.Find("SoundManager");
         SoundManager.SetActive(false);
+    }
+
+    public void LastVideoCheck()
+    {
+        if (data_Dialog[j]["scriptType"].ToString().Equals("video"))
+        {
+            NextVideoWindow.SetActive(true);
+        }
+        else
+        {
+            VideoParentsCheckUI.SetActive(true);
+        }
     }
     public void QuestTest()
     {
@@ -537,11 +564,23 @@ public class LodingTxt : MonoBehaviour
             case "video": //비디오 실행
                 {
                     video.videoClip.clip = video.VideoClip[Int32.Parse(data_Dialog[j]["cuttoon"].ToString())];
-                    movie.SetActive(true);
+                    if (movie.activeSelf)
+                    {
+                        Debug.Log("비디오창 on");
+                        //video.videoClip.Stop();
+                        NextVideoWindow.SetActive(false);
+                        VideoParentsCheckUI.SetActive(false);
+                        videocheckTxT.text = null;
+                    }
+                    else
+                    {
+                        Debug.Log("비디오창 off");
+                        movie.SetActive(true);
+                        SoundManager = GameObject.Find("SoundManager");
+                        SoundManager.SetActive(false);
+                    }
                     video.OnPlayVideo();
                     ChatWin.SetActive(false);
-                    GameObject SoundManager = GameObject.Find("SoundManager");
-                    SoundManager.SetActive(false);
                     j++;
                     break;
                 }
@@ -551,11 +590,10 @@ public class LodingTxt : MonoBehaviour
                     GameObject.Find("checkUI").SetActive(false);
                     videocheckTxT.text = null;
                     movie.SetActive(false);
-                    video.OnFinishVideo();
                     ChatWin.SetActive(true);
-                    SoundManager = GameObject.Find("SoundManager");
                     SoundManager.SetActive(true);
                     scriptLine();
+                    video.OnFinishVideo();
                 }
                 else
                 {
