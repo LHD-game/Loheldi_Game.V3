@@ -1537,14 +1537,13 @@ public class LodingTxt : MonoBehaviour
         else
         {
             PlayerPrefs.SetString("QuestPreg", DontDestroy.QuestIndex);
-            if (SceneManager.GetActiveScene().name == "Quiz") ;
-            else;
-                //QS.QuestStepNumber++;
         }
         if (data_Dialog[j]["dialog"].ToString().Equals("end"))
         {
             PlayerPrefs.SetInt("LastQTime", DontDestroy.ToDay);
-            NpcButton.Chat.EPin.SetActive(false);
+            if (SceneManager.GetActiveScene().name == "Quiz") ;
+            else
+                NpcButton.Chat.EPin.SetActive(false);
             if (DontDestroy.ReQuest)
                 DontDestroy.QuestNF = false;
             DontDestroy.LastDay = DontDestroy.ToDay;

@@ -29,7 +29,7 @@ public class QuestLoad : MonoBehaviour
 
         string selectedProbabilityFileId = "";
 
-        selectedProbabilityFileId = "74200"; //퀘스트 차트
+        selectedProbabilityFileId = "76254"; //퀘스트 차트
 
         var bro3 = Backend.Chart.GetChartContents(selectedProbabilityFileId);
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];

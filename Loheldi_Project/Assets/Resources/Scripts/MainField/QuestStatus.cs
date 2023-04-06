@@ -62,14 +62,14 @@ public class QuestStatus : MonoBehaviour
         Debug.Log("ButtonParentsL = " + ButtonParents.Length);
         for (int i = 0; i < QuestButtons.Length - 1; i++)
         {
-            Debug.Log("ButtonN = " + i);
-            QuestButtons[i] = ButtonParents[i].transform.GetChild(0).gameObject;
+            //Debug.Log("ButtonN = " + i);
+            //QuestButtons[i] = ButtonParents[i].transform.GetChild(0).gameObject;
             QuestButtons[i].name = "Button"+i.ToString();
         } 
         for (int i = 0; i < QuestButtons.Length-1; i++)  //버튼에 QID넣는 for문
         {
-            QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = Quest_Mail[i]["QID"].ToString(); //버튼Text에 QID넣는 용
-            QuestButtons[i].GetComponent<Button>().onClick.AddListener(QuestButtonClick);//언젠간 필요하지않을까
+            //QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = Quest_Mail[i]["QID"].ToString(); //버튼Text에 QID넣는 용
+            //QuestButtons[i].GetComponent<Button>().onClick.AddListener(QuestButtonClick);//언젠간 필요하지않을까
         }
     }
 
@@ -127,11 +127,11 @@ public class QuestStatus : MonoBehaviour
             Debug.Log("보이고 싶은거 위치 Rext= " + ButtonRT.position.x);
             Debug.Log("보이는 위치 = " + scrollValue);
             //float scrollValue = QuestButtons[QuestStepNumber].transform.localPosition.x / (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
-            scrollValue = QuestButtons[QuestStepNumber-1].transform.parent.localPosition.x / (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
+            scrollValue = QuestButtons[QuestStepNumber - 1].transform.parent.localPosition.x / (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
         }
 
 
-        Qsr.horizontalNormalizedPosition= scrollValue;
+        Qsr.horizontalNormalizedPosition = scrollValue;
 
 
         if (!LetCheck)
