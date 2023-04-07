@@ -1,0 +1,7 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+14_2,quiz,하미,퀴즈 타임! 다음 중 비타민이 많이 들어있는 음식은 무엇일까요?,,,,,,3,3,,,8,Null,,
+14_2,choice,주인공,딩동댕 정답,햄버거,떡볶이,아몬드,피자,핫도그,,9,,,,Null,,
+14_2,quiz,하미,퀴즈 타임! 다음 중 무기질이 많이 들어있는 음식은 무엇일까요?,,,,,,2,3,,,9,Null,,
+14_2,choice,주인공,딩동댕 정답,치킨,우유,스테이크,삼겹살,핫도그,,9,,,,Null,,
+14_3,nomal,하미,"최고야, 최고!",,,,,,,3,,,,hami,,
+14_2,ReloadEnd,end,z,,,,,,,3,,,,Null,,

@@ -27,7 +27,7 @@ public class FlieChoice : MonoBehaviour
         Debug.Log("튜토리얼");
         //Save_Log.instance.SaveQStartLog();  //퀘스트 시작 시간 로그
         chat.Main_UI.SetActive(false);
-        chat.FileAdress = "Scripts/Quest/script";
+        chat.FileAdress = "Scripts/Quest/Dialog/Korean/" + QDD.QuestIndex;
         chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/tutorial");
         chat.Num = "0_1";
         
@@ -41,10 +41,8 @@ public class FlieChoice : MonoBehaviour
             Inter.NpcNameTF = false;
             chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/Quest" + chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
         }
-        /*if (QDD.weekend) 
-            chat.FileAdress = "Scripts/Quest/scriptWeekend";
-        else*/
-            chat.FileAdress = "Scripts/Quest/script";
+
+            chat.FileAdress = "Scripts/Quest/Dialog/Korean/" + QDD.QuestIndex;
         chat.Num = chat.DontDestroy.QuestIndex;
         chat.NewChat();
         if (SceneManager.GetActiveScene().name == "Quiz") ;
@@ -168,7 +166,7 @@ public class FlieChoice : MonoBehaviour
                 return;
                 break;
         }
-        chat.NewChat();
+        chat.NPCNewChat();
         chat.Buttons();
 
     }

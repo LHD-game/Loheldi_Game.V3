@@ -1,0 +1,13 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+2_1,nomal,힘찬,드디어 왔다! 여기서 P_name를 기다리고 있었다구.,,,,,,,1,,,,Null,,
+2_1,nomal,주인공,힘찬이가 날 기다리고 있었다니 기뻐.,,,,,,,9,,(멋쩍은 듯),,Null,,
+2_1,nomal,힘찬,운동은 혼자 보다 둘이서 하는 게 더 신나니까. 우하하,,,,,,,1,,,,himchan,,
+2_1,nomal,힘찬,오늘은 스트레칭으로 몸을 풀자. 준비 됐니?,,,,,,,1,,,,Null,,
+2_1,nomal,주인공,어. 준비 됐어.,,,,,,,9,,,,Null,,
+2_1,nomal,힘찬,"참참, 운동을 할때는 반드시 부모님과 함께 하고, 인증도 받아, 꼭꼭. ",,,,,,,1,,,,Null,,
+2_1,video,힘찬,1,,,,,,,1,0,,,Null,,
+2_1,video,힘찬,2,,,,,,,1,1,,,Null,,
+2_1,video,힘찬,3,,,,,,,1,2,,,Null,,
+2_1,videoEnd,주인공,휴~ 생각보다 어렵지 않네. 몸이 가벼워진 것 같아.,,,,,,,9,,,,Null,,
+2_1,nomal,힘찬,나이스! 다음에는 더 신나는 운동을 하자. 우하하,,,,,,,1,,,,himchan,,
+2_1,end,end,end,,,,,,,1,,,,Null,,

@@ -1,0 +1,5 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+13_10,nomal,나리,드디어 도착! 여기가 도토리 마을이야! ,,,,,,,5,,도토리 마을 도착,,Null,,
+13_1,nomal,주인공,와! 마을 풍경이 아름답다! 경치가 정말 좋아. ,,,,,,,9,,,,Null,,
+13_1,nomal,나리, P_name가 우리 마을을 좋아할 줄 알았어. 먼저 우리집부터 가보자. ,,,,,,,5,,,,Null,,
+13_1,end,end,,,,,,,,,,,,Null,,

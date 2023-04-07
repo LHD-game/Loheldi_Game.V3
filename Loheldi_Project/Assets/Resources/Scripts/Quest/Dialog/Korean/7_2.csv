@@ -1,0 +1,7 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+7_2,quiz,하미,퀴즈 타임! 다음 중 탄수화물이 많이 들어있는 음식은 무엇일까요?,,,,,,2,3,,,6,Null,,
+7_2,choice,하미,딩동댕! 정답! ,치킨,단팥빵, 오이 무침, 미역국,젤리,,3,,,,Null,,
+7_2,quiz,하미,퀴즈 타임! 다음 중 단백질이 많이 들어있는 음식은 무엇일까요?,,,,,,4,3,,,7,Null,,
+7_2,choice,하미,딩동댕! 정답! ,쌀밥,떡꼬치,시금치 무침,갈비찜,초콜릿,,3,,,,Null,,
+7_2,nomal,하미,다음에는 또 다른 영양소에 대해 알아보자. ,,,,,,,3,,,,Null,,
+7_2,ReloadEnd,end,딩동댕! 정답! ,쌀밥,떡꼬치,시금치 무침,갈비찜,초콜릿,,3,,,,Null,,
