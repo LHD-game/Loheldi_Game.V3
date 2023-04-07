@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
 //using UnityEngine.UIElements;
@@ -28,7 +29,10 @@ public class QuestStatus : MonoBehaviour
     public Text ContentText;
     public Text FromText;
 
+    public GameObject[] PresentButtons;
+    public GameObject PresentButton;
     public Sprite CompleteButton;
+    int j = 0;
 
     public List<GameObject> QuestButtonList = new List<GameObject>();
     int Qnum;
@@ -148,6 +152,10 @@ public class QuestStatus : MonoBehaviour
             }
             LetCheck = false;
         }
+        for (int i = 0; i < QuestButtons.Length - 1 ; i++)
+        {
+            InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject);
+        }
     }
 
     void ButtonActive()
@@ -215,69 +223,64 @@ public class QuestStatus : MonoBehaviour
         }
     }
 
-    public void GetPresent(GameObject gameobject)
+    public void InstantiatePresentButton(GameObject gameobject)
     {
+        String[] Num = gameobject.name.Split('-');
+        String[] NextNum = gameobject.name.Split('-');
+        int i = 0;
+        int result;
+
+        if (Int32.TryParse(Num[0], out result))
+        {
+            if (gameobject.name == "0-1")
+            {
+                PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
+                PresentButtons[j].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[j].gameObject); });
+            }
+            if (Int32.Parse(Num[0]) % 3 == 0 && Num[0] != "1" && Num[0] != "0" && Num[0] != "33")
+            {
+                while (gameobject.transform.parent.transform.GetChild(i) != gameobject.transform)
+                {
+                    i++;
+                }
+                i++;
+                NextNum = gameobject.transform.parent.transform.GetChild(i).name.Split('-');
+                if (Int32.Parse(Num[1]) >= Int32.Parse(NextNum[1]))
+                {
+                    PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
+                    PresentButtons[j].GetComponent<Button>().onClick.AddListener(delegate { GetPresentButton(PresentButtons[j].gameObject); });
+                }
+            } 
+            else if(Num[0] == "33")
+            {
+                PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
+                PresentButtons[j].GetComponent<Button>().onClick.AddListener(delegate { GetPresentButton(PresentButtons[j].gameObject); });
+            }
+        }
+    }
+
+    public void GetPresentButton(GameObject gameobject)
+    {
+        String[] Num = gameobject.transform.parent.name.Split('-');
+
+        Debug.Log("붑");
         Save_Basic.LoadQuestPresentInfo();
 
-        switch (gameobject.name)
-        {
-            case "ButtonBse" :
-                Qnum = 00;
-                break;
-            case "ButtonBse (5)":
-                Qnum = 01;
-                break;
-            case "ButtonBse (12)":
-                Qnum = 04;
-                break;
-            case "ButtonBse (19)":
-                Qnum = 07;
-                break;
-            case "ButtonBse (24)":
-                Qnum = 10;
-                break;
-            case "ButtonBse (31)":
-                Qnum = 13;
-                break;
-            case "ButtonBse (35)":
-                Qnum = 16;
-                break;
-            case "ButtonBse (40)":
-                Qnum = 19;
-                break;
-            case "ButtonBse (44)":
-                Qnum = 22;
-                break;
-            case "ButtonBse (48)":
-                Qnum = 25;
-                break;
-            case "ButtonBse (52)":
-                Qnum = 28;
-                break;
-            case "ButtonBse (57)":
-                Qnum = 31;
-                break;
-            case "ButtonBse (61)":
-                Qnum = 34;
-                break;
-            default:
-                break;
-        }
-
-        QuestButtonList[0].GetComponent<Image>().sprite = CompleteButton;
-        QuestButtonList[0].GetComponent<Button>().enabled = false;
+        gameobject.GetComponent<Image>().sprite = CompleteButton;
+        gameobject.GetComponent<Button>().enabled = false;
 
         Param param = new Param();
-        param.Add("Q" + Qnum, 1);
+        param.Add("Q" + Int32.Parse(Num[0]), true);
 
-        var bro = Backend.GameData.Get("QUEST_PRESENT", new Where());
+        Where where = new Where();
+        where.Equal("Q" + Int32.Parse(Num[0]), true);
+        var bro = Backend.GameData.GetMyData("QUEST_PRESENT", where);
         string rowIndate = bro.FlattenRows()[0]["inDate"].ToString();
 
         var bro2 = Backend.GameData.UpdateV2("QUEST_PRESENT", rowIndate, Backend.UserInDate, param);
 
         if (bro2.IsSuccess())
         {
-            Debug.Log("오예~");
             Debug.Log("GetPresent 성공. QUEST_PRESENT 업데이트 되었습니다.");
         }
         else

@@ -209,7 +209,7 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
     }
     public static void LoadQuestPresentInfo()
     {
-        BackendReturnObject bro = Backend.GameData.GetMyData("QUEST_PRESENT", new Where(), 10);
+        BackendReturnObject bro = Backend.GameData.GetMyData("QUEST_PRESENT", new Where(), 13);
         
         if (bro.IsSuccess())
         {
