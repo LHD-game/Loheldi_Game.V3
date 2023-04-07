@@ -224,7 +224,7 @@ public class LodingTxt : MonoBehaviour
             if(DontDestroy.QuestIndex == "13_10")
             {
                 Num = "13_10";
-                FileAdress = "Scripts/Quest/script";
+                FileAdress = "Scripts/Quest/Dialog/Korean/" + DontDestroy.QuestIndex;
                 NewChat();
                 DontDestroy.QuestIndex = "13_1";
                 Nari.transform.position = Player.transform.position + new Vector3(-1, 0, 0);
@@ -308,7 +308,7 @@ public class LodingTxt : MonoBehaviour
     {
         ToothAnimator = GameObject.Find("ToothBrush").transform.Find("Armature").gameObject.GetComponent<Animator>();
         Num = "6_2";     //양치게임 스크립트 번호로 수정필요
-        FileAdress = "Scripts/Quest/script";
+        FileAdress = "Scripts/Quest/Dialog/Korean/" + DontDestroy.QuestIndex;
         NewChat();
     }
 
@@ -368,17 +368,30 @@ public class LodingTxt : MonoBehaviour
     {
         Input.multiTouchEnabled = false;
         //PlayerCamera.SetActive(true);
+        Debug.Log(FileAdress);
         data_Dialog = CSVReader.Read(FileAdress);
+        if (DontDestroy.tutorialLoading)
+            j = 14;
+        else
+            j = 0;
+        chatCanvus.SetActive(true);
+        Line();
+        //Debug.Log("퀴즈4");
+        Main_UI.SetActive(false);
+    }
+    public void NPCNewChat()
+    {
+        Input.multiTouchEnabled = false;
+        //PlayerCamera.SetActive(true);
+        Debug.Log(FileAdress);
+        data_Dialog = CSVReader.Read(FileAdress);
+
         for (int k = 0; k <= data_Dialog.Count; k++)
         {
             if (data_Dialog[k]["scriptNumber"].ToString().Equals(Num))
             {
-                j = k; 
-                if (DontDestroy.tutorialLoading)
-                    j=14;
+                j = k;
                 chatCanvus.SetActive(true);
-                Line();
-                //Debug.Log("퀴즈4");
                 break;
             }
             else
@@ -386,6 +399,9 @@ public class LodingTxt : MonoBehaviour
                 continue;
             }
         }
+
+        chatCanvus.SetActive(true);
+        Line();
         Main_UI.SetActive(false);
     }
 
@@ -483,10 +499,10 @@ public class LodingTxt : MonoBehaviour
         }
     }
     GameObject mouth; //양치겜 입
-    public void QuestSubChoice()
+    public void QuestSubChoice(string ST)
     {
         Debug.Log("타입" + data_Dialog[j]["scriptType"].ToString());
-        string ST = data_Dialog[j]["scriptType"].ToString();
+        //string ST = data_Dialog[j]["scriptType"].ToString();
         switch (ST)
         {
             case "quiz":  //퀴즈시작
@@ -642,15 +658,22 @@ public class LodingTxt : MonoBehaviour
                     {
                         //페이드 인 페이드 아웃하면서 화면에 한시간 후... 띄우기
                         cuttontext.text = "한시간 후...";
-                        fadein();
-                        QBikeSpeed = 3;
-                        Maxtime = 2f;
-                        Player.position = new Vector3(0, -6.39158726f, -10.6f);
-                        BikeNPC.transform.position = Player.position + new Vector3(3, 0, 3);
-                        Player.rotation = Player.rotation = Quaternion.Euler(0, 90, 0);
-                        bikerotate = false;
-                        timer = 0;
-                        NPCJumpAnimator.SetBool("BikeWalk", false);
+                        IEnumerator BikeFade()
+                        {
+                            StartCoroutine(fadein());
+                            yield return new WaitForSecondsRealtime(1.5f);
+                            QBikeSpeed = 3;
+                            Maxtime = 2f;
+                            Player.position = new Vector3(0, -6.39158726f, -10.6f);
+                            BikeNPC.transform.position = Player.position + new Vector3(3, 0, 3);
+                            Player.rotation = Player.rotation = Quaternion.Euler(0, 90, 0);
+                            bikerotate = false;
+                            timer = 0;
+                            NPCJumpAnimator.SetBool("BikeWalk", false);
+                        }
+
+                        IEnumerator BF = BikeFade();
+                        StartCoroutine(BF);
                     }
                     break;
                 }
@@ -975,15 +998,21 @@ public class LodingTxt : MonoBehaviour
                 }
             case "moveTos":
                 cuttontext.text = "다음날 아침";
-                StartCoroutine(fadein());
-                Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
-                Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+                IEnumerator NextMorning()
+                {
+                    StartCoroutine(fadein());
+                    yield return new WaitForSecondsRealtime(1.5f);
+                    Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
+                    Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
 
-                Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
-                Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+                    Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
+                    Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
 
-                Kangteagom.SetActive(true);
-                scriptLine();
+                    Kangteagom.SetActive(true);
+                    //scriptLine();
+                }
+                IEnumerator NM = NextMorning();
+                StartCoroutine(NM);
                 break;
             case "BMI":
                 BMI.SetActive(true);
@@ -1166,26 +1195,27 @@ public class LodingTxt : MonoBehaviour
             cuttoonspriteR.color = color;
             color.a += 0.1f;
             yield return new WaitForSecondsRealtime(0.05f);
-            if(color.a > 1.1f)
+            if(color.a >= 1.1f)
             {
                 fadein =false;
             }
         }
         yield return new WaitForSecondsRealtime(1.5f);
-        StartCoroutine(fadeout(fadein));
+        StartCoroutine(fadeout(fadein, color));
         
     }
-    IEnumerator fadeout(bool fadein)
+    IEnumerator fadeout(bool fadein, Color color)
     {
         if(fadein)
             fadein = false;
+        //color.a = 1f;
         while (!fadein)
         {
             Debug.Log("페이드 아웃");
             cuttoonspriteR.color = color;
             color.a -= 0.1f;
             yield return new WaitForSecondsRealtime(0.05f);
-            if (color.a < 0.0f)
+            if (color.a <= -0.1f)
             {
                 //yield break;
                 fadein = true;
@@ -1271,7 +1301,7 @@ public class LodingTxt : MonoBehaviour
             if (!data_Dialog[j]["scriptType"].ToString().Equals("nomal"))
             {
                 //Debug.Log(data_Dialog[j]["scriptType"].ToString());
-                QuestSubChoice(); 
+                QuestSubChoice(data_Dialog[j]["scriptType"].ToString()); 
             }
             else
             {

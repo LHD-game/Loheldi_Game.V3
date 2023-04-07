@@ -1,0 +1,7 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+1_2,quiz,하미,퀴즈타임! 빵은 식품구성 자전거 중에서 어떤 종류에 속할까요?,,,,,,1,3,,,1,Null,,
+1_2,choice,주인공,"와, 맞혔다.",곡류,고기·생선·계란·콩류,채소류,과일류,우유·유제품류,,9,,,,Null,,
+1_2,quiz,하미,다음 중 올바른 식사법은 무엇일까요?,,,,,,4,3,,,2,Null,,
+1_2,choice,주인공,"앗싸, 또 맞혔다! ",최대한 빨리 밥을 먹는다.,반찬을 주로 먹는다.,식사 중에 틈틈이 물을 마신다.,각 영양소 별로 골고루 먹는다.,맛있는 것만 먼저 골라 먹는다.,,9,,,,Null,,
+1_2,nomal,하미,"오, 대단해. 다음에도 흥미진진한 영양이야기 들려줄게. ",,,,,,,3,,,,Null,,
+1_2,ReloadEnd,end,안끝남,,,,,,,3,,,,Null,,

@@ -1,0 +1,8 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+4_1,nomal,힘찬,안녕! 나는 오늘도 운동 중이야. ,,,,,,,1,,,,Null,,
+4_1,nomal,주인공,"힘찬아, 오늘은 자전거를 타는 구나.",,,,,,,9,,"(무릎, 팔꿈치 보호대와 헬멧을 착용하고 있는 모습)",,Null,,
+4_1,nomal,힘찬,응. 자전거를 타면 다리도 튼튼해지고 심장과 폐도 건강해져. 기분도 좋아지고.,,,,,,,1,,,,Null,,
+4_1,nomal,주인공,"아, 나도 한번 타보고 싶다. ",,,,,,,9,,,,Null,,
+4_1,nomal,힘찬,타봐. 오늘은 자전거의 매력에 푹 빠져보라구. 우하하 ,,,,,,,1,,,,himchan,,
+4_1,nomal,주인공,"근데, 나 자전거 탈 줄 몰라. 타 본 적이 없거든.",,,,,,,9,,,,Null,,
+4_1,nomal,힘찬,그렇다면 도전! 자전거 타기! 내가 자전거 타는 법을 알려줄게.,,,,,,,1,,,,Null,,

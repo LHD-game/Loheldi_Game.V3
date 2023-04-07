@@ -1,0 +1,11 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+21_1,nomal,힘찬,"헤이, 나의 반가운 운동친구! ",,,,,,,1,,,,Null,,
+21_1,nomal,힘찬,"P_name이랑 함께 해서 난 운동이 더 좋아졌어, 우하하.",,,,,,,1,,,,himchan,,
+21_1,nomal,주인공,나도 그래.  힘찬아! 오늘도 즐겁게 운동하자! ,,,,,,,9,,(처음과 달라진 태도를 표현),,Null,,
+21_2,nomal,힘찬,오늘은 둘이서 사이좋게 하는 운동이야. 오늘도 부모님과 함께하고 운동 후 인증 받는거 잊지마! ,,,,,,,1,,(힘찬&주인공 차림새 변경) ,,Null,,
+21_2,nomal,힘찬,첫번째 동작! 2인 다리 늘리기. 쭉! 쭉! 쭉!  ,,,,,,,1,,(2인 다리 늘이기-영상 재생),,Null,,
+21_2,video,힘찬,영상 재생,,,,,,,1,9,,,Null,,
+21_2,nomal,힘찬,다음 동작도 잘 해보자.,,,,,,,1,,,,Null,,
+21_2,video,힘찬,영상 재생,,,,,,,1,10,,,Null,,
+21_2,videoEnd,힘찬,"역시 우리는 척척 잘 맞는 운동친구라니까, 우하하.",,,,,,,1,,(꼭 안아주며),,himchan,,
+21_2,end,end,end,,,,,,,1,,(꼭 안아주며),,Null,,
