@@ -22359,8 +22359,16 @@ PrefabInstance:
     - target: {fileID: 6574855640435461303, guid: 6011afdbcff021247a0b3e6b61b822f0, type: 3}
       propertyPath: m_Text
       value: "\uBE44\uBC00\uBC88\uD638\uAC00 5\uC790 \uC774\uC0C1 20\uC790 \uC0AC\uC774\uC758
-        \uC601\uBB38+\uC22B\uC790+\uD2B9\uC218\uBB38\uC790\uAC00 \n\uBAA8\uB450 1\uC790
+        \uC601\uBB38+\uC22B\uC790+\uD2B9\uC218\uBB38\uC790\uAC00 \uBAA8\uB450 1\uC790
         \uC774\uC0C1 \uB4E4\uC5B4\uC788\uB294\uC9C0 \uD655\uC778\uD574\uC8FC\uC138\uC694."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574855640435461303, guid: 6011afdbcff021247a0b3e6b61b822f0, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574855640435461303, guid: 6011afdbcff021247a0b3e6b61b822f0, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7693745491401942632, guid: 6011afdbcff021247a0b3e6b61b822f0, type: 3}
       propertyPath: m_Pivot.x
@@ -25861,6 +25869,14 @@ PrefabInstance:
     - target: {fileID: 6008805417627218978, guid: 669fa36a29238a041ba7b6f3492ec48e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008805417627218979, guid: 669fa36a29238a041ba7b6f3492ec48e, type: 3}
+      propertyPath: m_Size
+      value: 0.388544
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008805417627218979, guid: 669fa36a29238a041ba7b6f3492ec48e, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669fa36a29238a041ba7b6f3492ec48e, type: 3}

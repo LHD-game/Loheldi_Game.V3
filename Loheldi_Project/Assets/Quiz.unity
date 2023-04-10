@@ -1546,8 +1546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.8333969, y: -46.908493}
-  m_SizeDelta: {x: 425.96948, y: 140.621}
+  m_AnchoredPosition: {x: -22.884262, y: 5.484947}
+  m_SizeDelta: {x: 280.16437, y: 99.05927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &543825164261828883
 GameObject:
@@ -2702,8 +2702,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.8333969, y: -46.9085}
-  m_SizeDelta: {x: 425.9695, y: 140.621}
+  m_AnchoredPosition: {x: -24.366608, y: 5.3853836}
+  m_SizeDelta: {x: 309.41052, y: 112.02492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &543825166225893146
 CanvasRenderer:
@@ -3085,7 +3085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1319.3892, y: -4.2659}
+  m_AnchoredPosition: {x: -1319.3892, y: -4.26593}
   m_SizeDelta: {x: 390.8207, y: 331.3995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &990802779379428437
@@ -4945,11 +4945,11 @@ RectTransform:
   m_Father: {fileID: 4578157346217255378}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -37.5}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1302.5}
+  m_SizeDelta: {x: -5880, y: 100}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &3710262190403471710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5530,11 +5530,11 @@ RectTransform:
   m_Father: {fileID: 4578157346217255378}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 166.81714, y: -462.7049}
-  m_SizeDelta: {x: 2076.0474, y: 424.0527}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 166.81714, y: 715.26874}
+  m_SizeDelta: {x: -3903.9526, y: 424.05273}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &4578157345545927087
 GameObject:
   m_ObjectHideFlags: 0
@@ -5701,6 +5701,7 @@ MonoBehaviour:
   Chat: {fileID: 0}
   ParentscheckUI: {fileID: 0}
   ThankTreeUI: {fileID: 0}
+  Inter: {fileID: 0}
 --- !u!114 &4578157345972647817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5794,13 +5795,6 @@ MonoBehaviour:
   NariMom: {fileID: 0}
   chatName: {fileID: 4578157347405030646}
   chatTxt: {fileID: 4578157346213389555}
-  Mailcontent: {fileID: 0}
-  QuizButton:
-  - {fileID: 543825164584681232}
-  - {fileID: 543825165479270396}
-  - {fileID: 543825164667087838}
-  - {fileID: 6317707520961594919}
-  - {fileID: 6317707521516957122}
   SelecButton:
   - {fileID: 3710262189514482108}
   - {fileID: 3710262188973178293}
@@ -5813,16 +5807,31 @@ MonoBehaviour:
   - {fileID: 3710262188785619678}
   - {fileID: 3710262189208909987}
   - {fileID: 3710262188903764851}
-  videocheckTxT: {fileID: 0}
-  ParentscheckTxt: {fileID: 0}
-  parentscheckTxTNum: 
-  ErrorWin: {fileID: 0}
-  ClearWin: {fileID: 0}
-  ParentsErrorWin: {fileID: 0}
-  ParentscheckUI: {fileID: 0}
-  Main_UI: {fileID: 7161784171492150577}
-  Button: {fileID: 543825164787935984}
-  NPCButtons: {fileID: 3710262190403471710}
+  Arrow: {fileID: 4479026978649076132}
+  block: {fileID: 4578157346739931789}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  Chat: {fileID: 4578157345545927087}
+  ChatWin: {fileID: 4578157346217255379}
+  NPCButton: 0
+  LoadTxt: 
+  FileAdress: Scripts/Quest/Dialog
+  cuttoonFileAdress: 
+  Num: 
+  j: 0
+  c: 0
+  l: 0
+  PlayerName: 
+  CCImage: {fileID: 1673590601387860345}
+  cuttoon: {fileID: 3663610446106529300}
+  cuttoonImageList: []
+  cuttontext: {fileID: 0}
+  Mailcontent: {fileID: 0}
+  QuizButton:
+  - {fileID: 543825164584681232}
+  - {fileID: 543825165479270396}
+  - {fileID: 543825164667087838}
+  - {fileID: 6317707520961594919}
+  - {fileID: 6317707521516957122}
   OImage: {fileID: 543825164844636348}
   XImage: {fileID: 543825165574336877}
   Quiz: {fileID: 4633729073123998824}
@@ -5838,15 +5847,35 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7ec0879e729cf9a4697414ff2eedf8f4, type: 2}
   - {fileID: 2100000, guid: afaf19e38e340aa4796efb499d357226, type: 2}
   - {fileID: 2100000, guid: 11c7078c2caa17143b428cdac93a5c80, type: 2}
-  Arrow: {fileID: 4479026978649076132}
-  block: {fileID: 4578157346739931789}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  Chat: {fileID: 4578157345545927087}
-  ChatWin: {fileID: 4578157346217255379}
+  videocheckTxT: {fileID: 0}
+  ParentscheckTxt: {fileID: 0}
+  KeyToDreamInput: {fileID: 0}
+  parentscheckTxTNum: 
+  ErrorWin: {fileID: 0}
+  ClearWin: {fileID: 0}
+  ParentsErrorWin: {fileID: 0}
+  ParentscheckUI: {fileID: 0}
+  Main_UI: {fileID: 7161784171492150577}
+  Button: {fileID: 543825164787935984}
+  NPCButtons: {fileID: 3710262190403471710}
   chatCanvus: {fileID: 7683672405540369555}
   shopCanvus: {fileID: 0}
   MailCanvus: {fileID: 0}
+  JumpAnimator: {fileID: 0}
+  NPCJumpAnimator: {fileID: 0}
+  JumpAnimatorRope: {fileID: 0}
+  NPCJumpAnimatorRope: {fileID: 0}
+  PlayerRope: {fileID: 0}
+  NPCRope: {fileID: 0}
+  PlayerHulaAnimator: {fileID: 0}
+  NPCHulaAnimator: {fileID: 0}
+  PHulaAnimator: {fileID: 0}
+  NHulaAnimator: {fileID: 0}
+  PlayerHula: {fileID: 0}
+  NPCHula: {fileID: 0}
   movie: {fileID: 0}
+  NextVideoWindow: {fileID: 0}
+  VideoParentsCheckUI: {fileID: 0}
   DrawUI: {fileID: 0}
   Note: {fileID: 0}
   Value: {fileID: 0}
@@ -5862,32 +5891,22 @@ MonoBehaviour:
   Nanum: {fileID: 0}
   Jewel: {fileID: 0}
   Healthy: {fileID: 0}
+  spell: {fileID: 0}
   Ride: {fileID: 0}
   Bike: {fileID: 0}
   BikeNPC: {fileID: 0}
   AppleTreeObj: {fileID: 0}
   Kangteagom: {fileID: 0}
+  o: 0
   SoundEffectManager: {fileID: 5149831034500970561}
-  NPCButton: 0
-  LoadTxt: 
-  FileAdress: Scripts/Quest/Dialog
-  cuttoonFileAdress: 
-  Num: 
-  j: 0
-  c: 0
-  l: 0
+  hairPs: {fileID: 8784905137610187154, guid: 8ce2c8c2a2aa24c42b64663c907c2cf0, type: 3}
   tutoFinish: 0
   tuto: 0
   tutoclick: 0
-  CCImage: {fileID: 1673590601387860345}
-  cuttoon: {fileID: 3663610446106529300}
-  cuttoonImageList: []
-  cuttontext: {fileID: 0}
-  KeyToDreamInput: {fileID: 0}
   JumpButtons: {fileID: 0}
   tu: {fileID: 0}
   Inter: {fileID: 0}
-  o: 0
+  QS: {fileID: 0}
   DontDestroy: {fileID: 0}
   Quest: {fileID: 0}
   video: {fileID: 0}
@@ -5895,20 +5914,6 @@ MonoBehaviour:
   bicycleRide: {fileID: 0}
   QuestLoad: {fileID: 0}
   NpcButton: {fileID: 0}
-  hairPs: {fileID: 8784905137610187154, guid: 8ce2c8c2a2aa24c42b64663c907c2cf0, type: 3}
-  JumpAnimator: {fileID: 0}
-  NPCJumpAnimator: {fileID: 0}
-  JumpAnimatorRope: {fileID: 0}
-  NPCJumpAnimatorRope: {fileID: 0}
-  PlayerRope: {fileID: 0}
-  NPCRope: {fileID: 0}
-  PlayerHulaAnimator: {fileID: 0}
-  NPCHulaAnimator: {fileID: 0}
-  PHulaAnimator: {fileID: 0}
-  NHulaAnimator: {fileID: 0}
-  PlayerHula: {fileID: 0}
-  NPCHula: {fileID: 0}
-  PlayerName: 
   typingSkip: 1
 --- !u!114 &4578157345972647823
 MonoBehaviour:
