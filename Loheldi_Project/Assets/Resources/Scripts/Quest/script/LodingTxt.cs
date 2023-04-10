@@ -1274,7 +1274,7 @@ public class LodingTxt : MonoBehaviour
     }
     public void Line()  //줄넘김 (scriptType이 뭔지 걸러냄)
     {
-        
+        String SType = data_Dialog[j]["scriptType"].ToString();
         block.SetActive(true);
         //Debug.Log("scriptNumber" + data_Dialog[j]["scriptNumber"].ToString());
         //Debug.Log("scriptCount" + j);
@@ -1287,7 +1287,7 @@ public class LodingTxt : MonoBehaviour
             tuto = false;
             tutoFinish = false;
         }
-        if (data_Dialog[j]["scriptType"].ToString().Equals("end")) //대화 끝
+        if (SType.Equals("end")) //대화 끝
         {
             if (data_Dialog[j]["name"].ToString().Equals("end"))
             {
@@ -1298,10 +1298,10 @@ public class LodingTxt : MonoBehaviour
         }
         else
         {
-            if (!data_Dialog[j]["scriptType"].ToString().Equals("nomal"))
+            if (!SType.Equals("nomal"))
             {
                 //Debug.Log(data_Dialog[j]["scriptType"].ToString());
-                QuestSubChoice(data_Dialog[j]["scriptType"].ToString()); 
+                QuestSubChoice(SType); 
             }
             else
             {
@@ -1337,13 +1337,10 @@ public class LodingTxt : MonoBehaviour
             spriteR.sprite = CCImageList[l];
         }
 
-        LoadTxt = data_Dialog[j]["dialog"].ToString().Replace("P_name",PlayerName);//로컬값 가져오긴
-        LoadTxt = LoadTxt.Replace("<n>", "\n");
-        if (data_Dialog[j]["name"].ToString().Equals("주인공"))
-            chatName.text = PlayerName;
-        else
-            chatName.text = data_Dialog[j]["name"].ToString();
-        
+        LoadTxt = data_Dialog[j]["dialog"].ToString();
+        LoadTxt = LoadTxt.Replace("<n>", "\n").Replace("P_name", PlayerName);
+
+        chatName.text = data_Dialog[j]["name"].ToString().Replace("주인공", PlayerName);
         StartCoroutine(_typing());
         Arrow.SetActive(false);
         j++;
@@ -1428,6 +1425,8 @@ public class LodingTxt : MonoBehaviour
     }
     public IEnumerator _typing()  //타이핑 효과
     {
+        string SoundJ = data_Dialog[j]["SoundEffect"].ToString();
+        block.SetActive(true);
         typingSkip = true;
         if (!ChatWin.activeSelf)
             ChatWin.SetActive(true);
@@ -1442,16 +1441,20 @@ public class LodingTxt : MonoBehaviour
                 yield return new WaitForSecondsRealtime(0.03f);
             }
             else
+            {
                 break;
+            }
         }
         chatTxt.text = LoadTxt;
-
+        yield return new WaitForSecondsRealtime(0.3f);
+        ChVoice(SoundJ);
         yield return new WaitForSecondsRealtime(0.2f);
         Arrow.SetActive(true);
         yield return new WaitForSecondsRealtime(0.1f);
 
-        if (data_Dialog[j - 1]["scriptType"].ToString().Equals("tutorial") || tuto)
+        if (tuto)
         {
+            if(data_Dialog[j - 1]["scriptType"].ToString().Equals("tutorial"))
             Debug.Log("튜토리얼 실행ㅇ");
             Invoke("Tutorial_", 1f);
         }
@@ -1460,15 +1463,17 @@ public class LodingTxt : MonoBehaviour
             block.SetActive(false);
         }
 
+    }
+
+    void ChVoice(String SoundJ)
+    {
         //음성
-        if (data_Dialog[j]["SoundEffect"].ToString().Equals("Null"))
+        if (SoundJ.Equals("Null"))
         {; }
         else
         {
-            string SoundName = data_Dialog[j]["SoundEffect"].ToString();
-            SoundEffectManager.GetComponent<SoundEffect>().Sound(SoundName);
+            SoundEffectManager.GetComponent<SoundEffect>().Sound(SoundJ);
         }
-
     }
 
     void QuizCho()
