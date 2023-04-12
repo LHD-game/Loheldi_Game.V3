@@ -120,12 +120,11 @@ public class QuestStatus : MonoBehaviour
             Quest_Mail = CSVReader.Read("Scripts/Quest/QuestMail");
             //QuestIndexCheck();
             ButtonActive();
-
-            int i = 0;
             LetCheck = false;
         }
         Save_Basic.LoadQuestPresentInfo();
         PresentButtons = new GameObject[100];
+
         for (int i = 0; i < QuestButtons.Length - 1 ; i++)
         {
             InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject, i);
