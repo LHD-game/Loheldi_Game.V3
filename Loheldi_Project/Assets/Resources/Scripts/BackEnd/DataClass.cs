@@ -138,17 +138,17 @@ public class QuestInfo{
 }
 public class QuestPresent
 {
-    public int Q0;
-    public int Q1;
-    public int Q2;
-    public int Q3;
-    public int Q4;
-    public int Q5;
-    public int Q6;
-    public int Q7;
-    public int Q8;
-    public int Q9;
-    public int Q10;
-    public int Q11;
-    public int Q12;
+    public string Q0;
+    public string Q1;
+    public string Q3;
+    public string Q6;
+    public string Q9;
+    public string Q12;
+    public string Q15;
+    public string Q18;
+    public string Q21;
+    public string Q24;
+    public string Q27;
+    public string Q30;
+    public string Q33;
 }

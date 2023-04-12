@@ -210,7 +210,7 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
     public static void LoadQuestPresentInfo()
     {
         BackendReturnObject bro = Backend.GameData.GetMyData("QUEST_PRESENT", new Where(), 13);
-        
+
         if (bro.IsSuccess())
         {
             var json = bro.GetReturnValuetoJSON();
@@ -221,23 +221,23 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
                 ParsingJSON pj = new ParsingJSON();
                 QuestPresent data = pj.ParseBackendData<QuestPresent>(json_data);
                 //Debug.Log("퀘스트 진행도:" + data.QuestPreg);
-                PlayerPrefs.SetInt("Q00", data.Q0);
-                PlayerPrefs.SetInt("Q01", data.Q1);
-                PlayerPrefs.SetInt("Q04", data.Q2);
-                PlayerPrefs.SetInt("Q07", data.Q3);
-                PlayerPrefs.SetInt("Q10", data.Q4);
-                PlayerPrefs.SetInt("Q13", data.Q5);
-                PlayerPrefs.SetInt("Q16", data.Q6);
-                PlayerPrefs.SetInt("Q19", data.Q7);
-                PlayerPrefs.SetInt("Q22", data.Q8);
-                PlayerPrefs.SetInt("Q25", data.Q9);
-                PlayerPrefs.SetInt("Q28", data.Q10);
-                PlayerPrefs.SetInt("Q31", data.Q11);
-                PlayerPrefs.SetInt("Q34", data.Q12);
+                PlayerPrefs.SetString("Q0", data.Q0);
+                PlayerPrefs.SetString("Q1", data.Q1);
+                PlayerPrefs.SetString("Q3", data.Q3);
+                PlayerPrefs.SetString("Q6", data.Q6);
+                PlayerPrefs.SetString("Q9", data.Q9);
+                PlayerPrefs.SetString("Q12", data.Q12);
+                PlayerPrefs.SetString("Q15", data.Q15);
+                PlayerPrefs.SetString("Q18", data.Q18);
+                PlayerPrefs.SetString("Q21", data.Q21);
+                PlayerPrefs.SetString("Q24", data.Q24);
+                PlayerPrefs.SetString("Q27", data.Q27);
+                PlayerPrefs.SetString("Q30", data.Q30);
+                PlayerPrefs.SetString("Q33", data.Q33);
             }
             catch (Exception ex) //조회에는 성공했으나, 해당 값이 없음(NullPointException)
             {
-                //Debug.Log(ex);
+                Debug.Log("ex");
             }
         }
     }
