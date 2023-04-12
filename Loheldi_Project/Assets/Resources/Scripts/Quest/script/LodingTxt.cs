@@ -6,6 +6,7 @@ using System;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.ProBuilder.MeshOperations;
+using System.Net.Sockets;
 
 public class LodingTxt : MonoBehaviour
 {
@@ -106,6 +107,8 @@ public class LodingTxt : MonoBehaviour
     Animator ToothAnimator;
     [Header("QuestWindow")]
     public GameObject movie;
+    [SerializeField]
+    private Sprite videoImg;
     public GameObject NextVideoWindow;
     public GameObject VideoParentsCheckUI;
     public GameObject DrawUI;
@@ -169,6 +172,7 @@ public class LodingTxt : MonoBehaviour
 
     private void Awake()
     {
+        Input.multiTouchEnabled = true;
         color = block.GetComponent<Image>().color;
         ChatWin.SetActive(true);
 
@@ -308,7 +312,7 @@ public class LodingTxt : MonoBehaviour
     {
         ToothAnimator = GameObject.Find("ToothBrush").transform.Find("Armature").gameObject.GetComponent<Animator>();
         Num = "6_2";     //양치게임 스크립트 번호로 수정필요
-        FileAdress = "Scripts/Quest/Dialog/Korean/" + DontDestroy.QuestIndex;
+        FileAdress = "Scripts/Quest/Dialog/Korean/6_2";
         NewChat();
     }
 
@@ -610,6 +614,7 @@ public class LodingTxt : MonoBehaviour
                     SoundManager.SetActive(true);
                     scriptLine();
                     video.OnFinishVideo();
+                    cuttontext.text = " ";
                 }
                 else
                 {
@@ -1433,6 +1438,7 @@ public class LodingTxt : MonoBehaviour
 
         chatTxt.text = " ";
         yield return new WaitForSecondsRealtime(0.1f);
+        ChVoice(SoundJ);
         for (int i = 0; i < LoadTxt.Length + 1; i++)
         {
             if (typingSkip)
@@ -1446,8 +1452,7 @@ public class LodingTxt : MonoBehaviour
             }
         }
         chatTxt.text = LoadTxt;
-        yield return new WaitForSecondsRealtime(0.3f);
-        ChVoice(SoundJ);
+        //ChVoice(SoundJ);
         yield return new WaitForSecondsRealtime(0.2f);
         Arrow.SetActive(true);
         yield return new WaitForSecondsRealtime(0.1f);
@@ -1557,7 +1562,10 @@ public class LodingTxt : MonoBehaviour
     private IEnumerator reload()
     {
         yield return new WaitForEndOfFrame();
-        SceneLoader.instance.GotoMainField();
+        if (SceneManager.GetActiveScene().name == "Acorn Willage")
+            SceneLoader.instance.GotoMainAcronVillage();
+        else
+            SceneLoader.instance.GotoMainField();
     }
     public void QuestEnd()
     {
@@ -1591,6 +1599,7 @@ public class LodingTxt : MonoBehaviour
                 QuestLoad.QuestLoadStart();
         }
         PlayInfoManager.GetQuestPreg();
+        Input.multiTouchEnabled = true;
     }
 
     public void ParentsCheck()
