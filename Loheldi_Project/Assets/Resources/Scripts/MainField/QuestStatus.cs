@@ -29,7 +29,7 @@ public class QuestStatus : MonoBehaviour
     public Text ContentText;
     public Text FromText;
 
-    public GameObject[] PresentButtons;
+    public GameObject[] PresentButtons = new GameObject[100];
     public GameObject PresentButton;
     public Sprite CompleteButton;
     int j = 0;
@@ -53,30 +53,6 @@ public class QuestStatus : MonoBehaviour
         //QuestIndexCheck();
         //GetButtons();     //퀘스트 추가되면 열어서 일괄넣기 하기
     }
-    void GetButtons()  //인스펙터에 버튼넣는 야매 함수
-    {
-        Debug.Log("버튼들 가져오기 샤라라라랄랄라");
-        ButtonParents = new GameObject[QuestButtons.Length];
-        for (int i = 0; i < QuestButtons.Length; i++)
-        {
-            ButtonParents[i] = ButtonParent.transform.GetChild(i).gameObject;
-        }
-
-        Debug.Log("ButtonL = " + QuestButtons.Length);
-        Debug.Log("ButtonParentsL = " + ButtonParents.Length);
-        for (int i = 0; i < QuestButtons.Length - 1; i++)
-        {
-            //Debug.Log("ButtonN = " + i);
-            //QuestButtons[i] = ButtonParents[i].transform.GetChild(0).gameObject;
-            QuestButtons[i].name = "Button"+i.ToString();
-        } 
-        for (int i = 0; i < QuestButtons.Length-1; i++)  //버튼에 QID넣는 for문
-        {
-            //QuestButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = Quest_Mail[i]["QID"].ToString(); //버튼Text에 QID넣는 용
-            //QuestButtons[i].GetComponent<Button>().onClick.AddListener(QuestButtonClick);//언젠간 필요하지않을까
-        }
-    }
-
     public void QuestIndexCheck()
     {
         string QID = PlayerPrefs.GetString("QuestPreg");
@@ -146,15 +122,13 @@ public class QuestStatus : MonoBehaviour
             ButtonActive();
 
             int i = 0;
-            foreach (GameObject a in QuestButtonList)
-            {
-                PresentCheck(i++);
-            }
             LetCheck = false;
         }
+        Save_Basic.LoadQuestPresentInfo();
+        PresentButtons = new GameObject[100];
         for (int i = 0; i < QuestButtons.Length - 1 ; i++)
         {
-            InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject);
+            InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject, i);
         }
     }
 
@@ -213,18 +187,9 @@ public class QuestStatus : MonoBehaviour
         QuestLoad.QuestLoadStart();
     }
 
-    private void PresentCheck(int num)
+    public void InstantiatePresentButton(GameObject gameobject, int j)
     {
-        Save_Basic.LoadQuestPresentInfo();
-        if (PlayerPrefs.GetInt("Q" + num) == 1)
-        {
-            QuestButtonList[num].GetComponent<Image>().sprite = CompleteButton;
-            QuestButtonList[num].GetComponent<Button>().enabled = false;
-        }
-    }
-
-    public void InstantiatePresentButton(GameObject gameobject)
-    {
+        bool OK = false;
         String[] Num = gameobject.name.Split('-');
         String[] NextNum = gameobject.name.Split('-');
         int i = 0;
@@ -235,7 +200,10 @@ public class QuestStatus : MonoBehaviour
             if (gameobject.name == "0-1")
             {
                 PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
-                PresentButtons[j].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[j].gameObject); });
+                int temp = j;
+                PresentButtons[temp].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[temp].gameObject); });
+                OK = true;
+                j++;
             }
             if (Int32.Parse(Num[0]) % 3 == 0 && Num[0] != "1" && Num[0] != "0" && Num[0] != "33")
             {
@@ -248,13 +216,29 @@ public class QuestStatus : MonoBehaviour
                 if (Int32.Parse(Num[1]) >= Int32.Parse(NextNum[1]))
                 {
                     PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
-                    PresentButtons[j].GetComponent<Button>().onClick.AddListener(delegate { GetPresentButton(PresentButtons[j].gameObject); });
+                    int temp = j;
+                    PresentButtons[temp].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[temp].gameObject); });
+                    OK = true;
+                    j++;
                 }
             } 
             else if(Num[0] == "33")
             {
                 PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
-                PresentButtons[j].GetComponent<Button>().onClick.AddListener(delegate { GetPresentButton(PresentButtons[j].gameObject); });
+                int temp = j;
+                PresentButtons[temp].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[temp].gameObject); });
+                OK = true;
+                j++;
+            }
+
+            if (OK)
+            {
+                Debug.Log(gameobject.name + " " + "Q" + j + " " + PlayerPrefs.GetString("Q" + Int32.Parse(Num[0])));
+                if ("true" == PlayerPrefs.GetString("Q" + Int32.Parse(Num[0])))
+                {
+                    gameobject.transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/FieldUI/Complete");
+                    gameobject.transform.GetChild(1).GetComponent<Button>().enabled = false;
+                }
             }
         }
     }
@@ -263,25 +247,21 @@ public class QuestStatus : MonoBehaviour
     {
         String[] Num = gameobject.transform.parent.name.Split('-');
 
-        Debug.Log("붑");
-        Save_Basic.LoadQuestPresentInfo();
-
-        gameobject.GetComponent<Image>().sprite = CompleteButton;
-        gameobject.GetComponent<Button>().enabled = false;
-
         Param param = new Param();
-        param.Add("Q" + Int32.Parse(Num[0]), true);
+        param.Add("Q" + Int32.Parse(Num[0]), "true");
 
-        Where where = new Where();
-        where.Equal("Q" + Int32.Parse(Num[0]), true);
-        var bro = Backend.GameData.GetMyData("QUEST_PRESENT", where);
+        var bro = Backend.GameData.Get("QUEST_PRESENT", new Where());
         string rowIndate = bro.FlattenRows()[0]["inDate"].ToString();
 
         var bro2 = Backend.GameData.UpdateV2("QUEST_PRESENT", rowIndate, Backend.UserInDate, param);
 
         if (bro2.IsSuccess())
         {
+            Debug.Log("Q" + Int32.Parse(Num[0]) + " " + "true");
             Debug.Log("GetPresent 성공. QUEST_PRESENT 업데이트 되었습니다.");
+
+            gameobject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/FieldUI/Complete");
+            gameobject.GetComponent<Button>().enabled = false;
         }
         else
         {
