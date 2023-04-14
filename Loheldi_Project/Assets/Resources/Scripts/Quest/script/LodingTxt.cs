@@ -505,7 +505,7 @@ public class LodingTxt : MonoBehaviour
     GameObject mouth; //양치겜 입
     public void QuestSubChoice(string ST)
     {
-        Debug.Log("타입" + data_Dialog[j]["scriptType"].ToString());
+        //Debug.Log("타입" + data_Dialog[j]["scriptType"].ToString());
         //string ST = data_Dialog[j]["scriptType"].ToString();
         switch (ST)
         {

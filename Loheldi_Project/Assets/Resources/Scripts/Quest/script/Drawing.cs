@@ -22,6 +22,8 @@ public class Drawing : MonoBehaviour
     private bool Erase = false;
     public bool Draw = false;
 
+    [SerializeField]
+    private Animator DrawPen;
     int i=0;  //메테리얼 번호
     private LodingTxt chat;
     void Start()
@@ -112,17 +114,33 @@ public class Drawing : MonoBehaviour
 
     public void changeColor()
     {
+        DrawPen.Rebind();
         GameObject click = EventSystem.current.currentSelectedGameObject;
         if (click.name.Equals("red"))
+        {
             i = 1;
+            DrawPen.SetTrigger("Red0");
+        }
         else if (click.name.Equals("pink"))
+        {
             i = 2;
+            DrawPen.SetTrigger("Pink0");
+        }
         else if (click.name.Equals("green"))
+        {
             i = 3;
+            DrawPen.SetTrigger("Green0");
+        }
         else if (click.name.Equals("blue"))
+        {
             i = 4;
+            DrawPen.SetTrigger("Blue0");
+        }
         else if (click.name.Equals("black"))
+        {
             i = 0;
+            DrawPen.SetTrigger("Black0");
+        }
         Erase = false;
     }
     
@@ -153,7 +171,11 @@ public class Drawing : MonoBehaviour
     public void Eraser()
     {
         if (!Erase)
+        {
+            DrawPen.Rebind();
+            DrawPen.SetTrigger("Erase0");
             Erase = true;
+        }
     }
 
     //kkkkk노트버리기kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk

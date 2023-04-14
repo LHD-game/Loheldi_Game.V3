@@ -33,6 +33,7 @@ public class ScreenShot : MonoBehaviour
     
     private IEnumerator CaptureScreenForMobile(string FileName)
     {
+        yield return new WaitForEndOfFrame();
         Texture2D texture = ScreenCapture.CaptureScreenshotAsTexture();
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
         // do something with texture
