@@ -33,6 +33,7 @@ public class QuestStatus : MonoBehaviour
     public GameObject PresentButton;
     public Sprite CompleteButton;
     int j = 0;
+    public bool FirstLoad = true;
 
     public List<GameObject> QuestButtonList = new List<GameObject>();
     int Qnum;
@@ -125,9 +126,13 @@ public class QuestStatus : MonoBehaviour
         Save_Basic.LoadQuestPresentInfo();
         PresentButtons = new GameObject[100];
 
-        for (int i = 0; i < QuestButtons.Length - 1 ; i++)
+        if (FirstLoad)
         {
-            InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject, i);
+            for (int i = 0; i < QuestButtons.Length - 1; i++)
+            {
+                InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject, i);
+            }
+            FirstLoad = false;
         }
     }
 
@@ -253,6 +258,50 @@ public class QuestStatus : MonoBehaviour
         string rowIndate = bro.FlattenRows()[0]["inDate"].ToString();
 
         var bro2 = Backend.GameData.UpdateV2("QUEST_PRESENT", rowIndate, Backend.UserInDate, param);
+
+        switch (gameobject.transform.parent.name)
+        {
+            case "0-1":
+                PlayInfoManager.GetCoin(50);
+                Debug.Log("Coin 50");
+                break;
+            case "3-4":
+                PlayInfoManager.GetHP(1);
+                Debug.Log("HP 1");
+                break;
+            case "6-2":
+                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                break;
+            case "9-2":
+                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                break;
+            case "12-2":
+                PlayInfoManager.GetCoin(60);
+                break;
+            case "15-1":
+                PlayInfoManager.GetHP(2);
+                break;
+            case "18-1":
+                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                break;
+            case "21-1":
+                PlayInfoManager.GetCoin(70);
+                break;
+            case "24-2":
+                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                break;
+            case "27-1":
+                PlayInfoManager.GetHP(2);
+                break;
+            case "30-1":
+                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                break;
+            case "33-1":
+                PlayInfoManager.GetCoin(100);
+                break;
+            default:
+                break;
+        }
 
         if (bro2.IsSuccess())
         {

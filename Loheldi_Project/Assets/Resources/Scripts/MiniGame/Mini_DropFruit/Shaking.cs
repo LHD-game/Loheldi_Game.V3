@@ -180,20 +180,20 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
                 Panel.SetActive(true);                                  //판넬UI등장
                 PleaseShake.SetActive(true);                            //흔들어주세요
             }
-            TimerText.text = string.Format(" : {0:N2}", nowTime);      //타이머 UI에 반영
+            TimerText.text = string.Format(" : {0:N2}", nowTime);       //타이머 UI에 반영
         }
-        if (SquirrelMoveBool)                        //
+        if (SquirrelMoveBool)                                           //도토리 훔쳐가는 다람쥐 움직임
         {
             Vector3 temp = SquirrelMove.transform.position;
-            temp.z += 0.005f;
+            temp.z += 0.005f;                                           //다람쥐 속도
             SquirrelMove.transform.position = temp;
-            if (SquirrelMove.transform.position.z >= -0.21)
+            if (SquirrelMove.transform.position.z >= -0.21)             //다람쥐가 바구니에 가까워지면 다람쥐가 들 바구니 생성
             {
                 BasketMove.SetActive(true);
             }
-            if (SquirrelMove.transform.position.z >= 3)
+            if (SquirrelMove.transform.position.z >= 3)                 //다람쥐가 범위 밖으로 나가면 초기화
             {
-                temp.z = -3f;
+                temp.z = -3f;                                           //다람쥐가 초기화뒴 (처음)위치
                 SquirrelMove.transform.position = temp;
                 BasketMove.SetActive(false);
                 SquirrelMoveBool = false;
