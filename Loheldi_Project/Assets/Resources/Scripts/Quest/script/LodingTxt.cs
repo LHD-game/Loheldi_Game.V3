@@ -259,8 +259,8 @@ public class LodingTxt : MonoBehaviour
         movie.SetActive(true);
         video.OnPlayVideo();
         Main_UI.SetActive(false);
-        SoundManager = GameObject.Find("SoundManager");
-        SoundManager.SetActive(false);
+        //SoundManager = GameObject.Find("SoundManager");
+        //SoundManager.SetActive(false);
     }
 
     public void LastVideoCheck()
@@ -614,6 +614,7 @@ public class LodingTxt : MonoBehaviour
                     SoundManager.SetActive(true);
                     scriptLine();
                     video.OnFinishVideo();
+                    video.VideoPlayUI.SetActive(false) ;
                     cuttontext.text = " ";
                 }
                 else
