@@ -573,8 +573,12 @@ public class LodingTxt : MonoBehaviour
                 ChatWin.SetActive(false);
                 Invoke("scriptLine", 2f);   //µô·¹ÀÌ ÈÄ ½ºÅ©¸³Æ® ¶ç¿ò
                 break;
-            case "Dcuttoon": case "tutorial":    //ÄÆÅ÷ ¶ç¿î Ã¤·Î ´ÙÀ½ ½ºÅ©¸³Æ® »ý¼º
+            case "Dcuttoon":     //ÄÆÅ÷ ¶ç¿î Ã¤·Î ´ÙÀ½ ½ºÅ©¸³Æ® »ý¼º
                 scriptLine();
+                break;
+            case "tutorial":
+                scriptLine();
+                tuto = true;
                 break;
             case "Panorama":    //ÄÆÅ÷ ¿©·¯°³ ¶ç¿ì±â
                 c = 0;
