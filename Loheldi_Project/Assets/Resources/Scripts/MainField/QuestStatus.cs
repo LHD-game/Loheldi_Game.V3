@@ -270,31 +270,31 @@ public class QuestStatus : MonoBehaviour
                 Debug.Log("HP 1");
                 break;
             case "6-2":
-                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                BuyItemBtn("1010103");
                 break;
             case "9-2":
-                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                PlayInfoManager.GetCoin(50);
                 break;
             case "12-2":
-                PlayInfoManager.GetCoin(60);
+                PlayInfoManager.GetHP(1);
                 break;
             case "15-1":
-                PlayInfoManager.GetHP(2);
+                BuyItemBtn("1010106");
                 break;
             case "18-1":
-                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                PlayInfoManager.GetCoin(60);
                 break;
             case "21-1":
-                PlayInfoManager.GetCoin(70);
-                break;
-            case "24-2":
-                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
-                break;
-            case "27-1":
                 PlayInfoManager.GetHP(2);
                 break;
+            case "24-2":
+                BuyItemBtn("1010206");
+                break;
+            case "27-1":
+                PlayInfoManager.GetCoin(70);
+                break;
             case "30-1":
-                //PlayerPrefs.SetInt("", PlayerPrefs.GetInt("") + 50);
+                PlayInfoManager.GetHP(2);
                 break;
             case "33-1":
                 PlayInfoManager.GetCoin(100);
@@ -314,6 +314,66 @@ public class QuestStatus : MonoBehaviour
         else
         {
             Debug.Log("GetPresent 실패.");
+        }
+    }
+
+
+    public void BuyItemBtn(String iCode)
+    {
+        //Inventory 테이블 불러와서, 여기에 해당하는 아이템과 일치하는 코드가 있을 경우 개수를 1증가시켜서 업데이트
+
+        Where where = new Where();
+        where.Equal("ICode", iCode);
+        var bro = Backend.GameData.GetMyData("INVENTORY", where);
+
+        if (bro.IsSuccess() == false)
+        {
+            Debug.Log("요청 실패");
+        }
+        else
+        {
+            JsonData rows = bro.GetReturnValuetoJSON()["rows"];
+            //없을 경우 아이템 행 추가
+            if (rows.Count <= 0)
+            {
+                Param param = new Param();
+                param.Add("ICode", iCode);
+                param.Add("Amount", 1);
+
+                var insert_bro = Backend.GameData.Insert("INVENTORY", param);
+
+                if (insert_bro.IsSuccess())
+                {
+                    Debug.Log("아이템 받기 완료: " + iCode);
+                }
+                else
+                {
+                    Debug.Log("아이템 받기 오류");
+                }
+            }
+            //있을 경우 해당 아이템 indate찾고, 개수 수정
+            else
+            {
+                string rowIndate = bro.FlattenRows()[0]["inDate"].ToString();
+
+                int item_amount = (int)bro.FlattenRows()[0]["Amount"];
+                item_amount++;
+                Debug.Log(item_amount);
+
+                Param param = new Param();
+                param.Add("ICode", iCode);
+                param.Add("Amount", item_amount);
+
+                var update_bro = Backend.GameData.UpdateV2("INVENTORY", rowIndate, Backend.UserInDate, param);
+                if (update_bro.IsSuccess())
+                {
+                    Debug.Log("아이템 받기 완료: " + iCode);
+                }
+                else
+                {
+                    Debug.Log("아이템 받기 오류");
+                }
+            }
         }
     }
 }
