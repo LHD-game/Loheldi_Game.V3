@@ -4633,7 +4633,7 @@ MonoBehaviour:
   ParentsErrorWin: {fileID: 0}
   ParentscheckUI: {fileID: 0}
   Main_UI: {fileID: 7161784171492150577}
-  Button: {fileID: 0}
+  Button: {fileID: 1424501539}
   NPCButtons: {fileID: 0}
   chatCanvus: {fileID: 7683672405540369555}
   shopCanvus: {fileID: 0}

@@ -1567,7 +1567,7 @@ public class LodingTxt : MonoBehaviour
     private IEnumerator reload()
     {
         yield return new WaitForEndOfFrame();
-        if (SceneManager.GetActiveScene().name == "Acorn Willage")
+        if (SceneManager.GetActiveScene().name == "AcornVillage")
             SceneLoader.instance.GotoMainAcronVillage();
         else
             SceneLoader.instance.GotoMainField();
