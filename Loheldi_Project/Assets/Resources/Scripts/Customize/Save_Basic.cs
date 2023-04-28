@@ -129,6 +129,26 @@ public class Save_Basic //초기값을 서버에 저장해주는 클래스
             Debug.Log("SubQuestInfoInit() Fail");
         }
     }
+    public static void QuestStatusInfoInit()
+    {
+        Param param = new Param();
+
+        param.Add("Q0", false);
+        param.Add("Q1", false);
+        param.Add("Q3", false);
+        param.Add("Q6", false);
+        param.Add("Q9", false);
+        param.Add("Q12", false);
+        param.Add("Q15", false);
+        param.Add("Q18", false);
+        param.Add("Q21", false);
+        param.Add("Q24", false);
+        param.Add("Q27", false);
+        param.Add("Q30", false);
+        param.Add("Q33", false);
+
+        var bro = Backend.GameData.Insert("QUEST_PRESENT", param);
+    }
 
     //USER_GARDEN 테이블 초기값 저장
     public static void UserGardenInit()
