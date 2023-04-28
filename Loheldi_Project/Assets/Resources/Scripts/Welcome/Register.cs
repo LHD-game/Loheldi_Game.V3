@@ -142,6 +142,7 @@ public class Register : MonoBehaviour
             Save_Basic.UserGardenInit();    //텃밭 초기 행 저장
             Save_Basic.UserHousingInit();    //하우징 초기 행 저장
             Save_Basic.UserHousingInit2();    //하우징 초기 행 2 저장
+            Save_Basic.QuestStatusInfoInit();
             Save_Basic.SubQuestInfoInit();    //하우징 초기 행 2 저장
             //Save_Basic.Save0_0Quest();
 
