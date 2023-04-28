@@ -259,8 +259,8 @@ public class LodingTxt : MonoBehaviour
         movie.SetActive(true);
         video.OnPlayVideo();
         Main_UI.SetActive(false);
-        SoundManager = GameObject.Find("SoundManager");
-        SoundManager.SetActive(false);
+        //SoundManager = GameObject.Find("SoundManager");
+        //SoundManager.SetActive(false);
     }
 
     public void LastVideoCheck()
@@ -505,7 +505,7 @@ public class LodingTxt : MonoBehaviour
     GameObject mouth; //¾çÄ¡°× ÀÔ
     public void QuestSubChoice(string ST)
     {
-        Debug.Log("Å¸ÀÔ" + data_Dialog[j]["scriptType"].ToString());
+        //Debug.Log("Å¸ÀÔ" + data_Dialog[j]["scriptType"].ToString());
         //string ST = data_Dialog[j]["scriptType"].ToString();
         switch (ST)
         {
@@ -573,8 +573,12 @@ public class LodingTxt : MonoBehaviour
                 ChatWin.SetActive(false);
                 Invoke("scriptLine", 2f);   //µô·¹ÀÌ ÈÄ ½ºÅ©¸³Æ® ¶ç¿ò
                 break;
-            case "Dcuttoon": case "tutorial":    //ÄÆÅ÷ ¶ç¿î Ã¤·Î ´ÙÀ½ ½ºÅ©¸³Æ® »ý¼º
+            case "Dcuttoon":     //ÄÆÅ÷ ¶ç¿î Ã¤·Î ´ÙÀ½ ½ºÅ©¸³Æ® »ý¼º
                 scriptLine();
+                break;
+            case "tutorial":
+                scriptLine();
+                tuto = true;
                 break;
             case "Panorama":    //ÄÆÅ÷ ¿©·¯°³ ¶ç¿ì±â
                 c = 0;
@@ -614,6 +618,7 @@ public class LodingTxt : MonoBehaviour
                     SoundManager.SetActive(true);
                     scriptLine();
                     video.OnFinishVideo();
+                    video.VideoPlayUI.SetActive(false) ;
                     cuttontext.text = " ";
                 }
                 else

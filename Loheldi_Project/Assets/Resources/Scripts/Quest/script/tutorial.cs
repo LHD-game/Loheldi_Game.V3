@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class tutorial : MonoBehaviour
@@ -13,7 +14,7 @@ public class tutorial : MonoBehaviour
 
     public void Tutorial()
     {
-        if (!chat.tuto)
+        if (SceneManager.GetActiveScene().name == "MainField")
             chat.Chat.SetActive(false);
         if(chat.o ==2 && !chat.DontDestroy.tutorialLoading)
         {
