@@ -610,10 +610,10 @@ public class Drawing : MonoBehaviour
                             RectTransform.anchoredPosition = new Vector2(-460, 0);
                             gameObject.transform.GetChild(1).gameObject.SetActive(false);
                             //Debug.Log("끝!");
-                            Jtext.gameObject.SetActive(false);
                             break;
                     }
 
+                    Jtext.text = MaxJuwelLength.ToString() + "내가 가장 소중한 것";
                     //chat.j += 1;
                     //gameObject.transform.GetChild(1).gameObject.SetActive(false);
                     Invoke("jscriptLine", 1f);   //딜레이 후 스크립트 띄움

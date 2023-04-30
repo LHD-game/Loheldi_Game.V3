@@ -385,6 +385,7 @@ public class LodingTxt : MonoBehaviour
     }
     public void NPCNewChat()
     {
+        Main_UI.SetActive(false);
         Input.multiTouchEnabled = false;
         //PlayerCamera.SetActive(true);
         Debug.Log(FileAdress);
