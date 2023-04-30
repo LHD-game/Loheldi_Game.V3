@@ -64,11 +64,11 @@ public class FlieChoice : MonoBehaviour
                 else
                     chat.Num = "1";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "Markatman":
                 chat.Num = "2";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "Hami":
                 if (chat.DontDestroy.From.Equals("퀴즈") && chat.DontDestroy.ButtonPlusNpc.Equals("Hami"))
                     chat.Num = "11";
@@ -77,7 +77,7 @@ public class FlieChoice : MonoBehaviour
                 else
                     chat.Num = "3";
                 chat.NPCButton += 1;
-                break;
+                goto case "i";
             case "Suho":
                 if (chat.DontDestroy.From.Equals("퀴즈") && chat.DontDestroy.ButtonPlusNpc.Equals("Suho"))
                     chat.Num = "12";
@@ -88,11 +88,11 @@ public class FlieChoice : MonoBehaviour
                 else
                     chat.Num = "4";
                 chat.NPCButton += 1;
-                break;
+                goto case "i";
             case "Nari":
                 chat.Num = "5";
                 chat.NPCButton += 1;
-                break;
+                goto case "i";
             case "Mei":
                 if (chat.DontDestroy.From.Equals("실천해보기") && chat.DontDestroy.ButtonPlusNpc.Equals("Mei"))
                     chat.Num = "17";
@@ -101,31 +101,31 @@ public class FlieChoice : MonoBehaviour
                 else
                 chat.Num = "6";
                 chat.NPCButton += 1;
-                break;
+                goto case "i";
             case "Yomi":
                 chat.Num = "7";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "Yeomi":
                 chat.Num = "8";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "Mu":
                 chat.Num = "9";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "WallMirror":
                 chat.Num = "10";
                 chat.NPCButton += 3;
-                break;
+                goto case "i";
             case "parents(Clone)":
                 chat.Num = "13";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "GachaMachine":
                 chat.Num = "20";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "ThankApplesTree":
                 int nowTime = Int32.Parse(DateTime.Now.ToString("yyyyMMdd"));
                 if (UI.time == nowTime)
@@ -138,7 +138,7 @@ public class FlieChoice : MonoBehaviour
                     chat.Num = "21";
                     chat.NPCButton += 2;
                 }
-                break;
+                goto case "i";
             case "Kangteagom":
 
                 if (SceneManager.GetActiveScene().name == "AcornVillage")
@@ -146,28 +146,33 @@ public class FlieChoice : MonoBehaviour
                 else
                     chat.Num = "23";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "Bibim":
-
-                    chat.Num = "25";
+                chat.Num = "25";
                 chat.NPCButton += 2;
-                break;
+                goto case "i";
             case "Wood":
 
                     chat.Num = "26";
-                chat.NPCButton += 2;
-                break;
+                chat.NPCButton += 1;
+                goto case "i";
             case "Fruit":
 
                     chat.Num = "27";
-                chat.NPCButton += 2;
+                chat.NPCButton += 1;
+                goto case "i";
+            case "InfoSign":
+                chat.Num = "28";
+                goto case "i";
+            case "i":
+                Debug.Log("i");
+                chat.NPCNewChat();
+                chat.Buttons();
                 break;
             default:
-                return;
+                Debug.Log("디폴트");
                 break;
         }
-        chat.NPCNewChat();
-        chat.Buttons();
 
     }
     

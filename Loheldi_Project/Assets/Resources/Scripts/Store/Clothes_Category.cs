@@ -153,7 +153,7 @@ public class Clothes_Category : StoreCategoryControl
             //change catalog box img
             GameObject item_img = ItemBtn.transform.Find("ItemImg").gameObject;
             Image img = item_img.GetComponent<Image>();
-            Debug.Log("카탈로그이미지 삽입: " + dialog[i]["ICode"] + "_catalog");
+            //Debug.Log("카탈로그이미지 삽입: " + dialog[i]["ICode"] + "_catalog");
             img.sprite = Resources.Load<Sprite>("Sprites/Catalog_Images/Customize/" + dialog[i]["ICode"] + "_catalog");
 
 
