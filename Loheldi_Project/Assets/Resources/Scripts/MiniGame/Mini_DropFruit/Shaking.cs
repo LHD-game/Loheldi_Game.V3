@@ -92,6 +92,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         Panel.SetActive(true);
         PleaseShake.SetActive(true);
         ReStartButton.SetActive(false);
+        GameOverPanel.SetActive(false);
         BasketMove.SetActive(false);
     }
 
@@ -210,6 +211,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         Panel.SetActive(true);
         PleaseShake.SetActive(true);
         ReStartButton.SetActive(false);
+        GameOverPanel.SetActive(false);
         BasketMove.SetActive(false);
     }
 
