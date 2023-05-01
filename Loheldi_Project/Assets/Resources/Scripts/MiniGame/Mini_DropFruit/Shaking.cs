@@ -200,6 +200,19 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
             }
         }
     }
+
+    public void Welcome()
+    {
+        DropCount = 0;
+        DropCount2 = 0;
+        BasketScore = 0;
+        nowTime = 30;
+        Panel.SetActive(true);
+        PleaseShake.SetActive(true);
+        ReStartButton.SetActive(false);
+        BasketMove.SetActive(false);
+    }
+
     public void ShakeSet()
     {
         nowTime = 30;
