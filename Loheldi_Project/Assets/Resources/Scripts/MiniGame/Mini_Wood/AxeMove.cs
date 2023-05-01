@@ -57,7 +57,8 @@ public class AxeMove : MonoBehaviour
 
     public void Update()
     {
-        AxeUI.transform.localPosition = new Vector2(tilty * 1300f, AxeUI.transform.localPosition.y);
+        tilty = Input.acceleration.y;
+        AxeUI.transform.localPosition = new Vector2( tilty * 1300f, AxeUI.transform.localPosition.y);
         text.text = tilty.ToString();
 
         AllowSlider.value = AllowTime;
