@@ -28,6 +28,8 @@ public class AxeMove : MonoBehaviour
     public float AllowTimeMax;
     public Slider AllowSlider;                          //겹친 시간을 표시하는 슬라이더
 
+    Quaternion CalibrationQuaternion;
+
     public Text ScoreText;                              //점수 텍스트 오브젝트
     public int Score = 0;                               //점수 텍스트 오브젝트
     public int ScoreMax = 0;                            //점수 텍스트 오브젝트
@@ -42,6 +44,7 @@ public class AxeMove : MonoBehaviour
         Effect.SetActive(false);
         Panel.SetActive(true);
         AllowTime = 0;
+        Calibrate();
 
         Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform);
         if (AxeUI.transform.localPosition.x + AllowArea >= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea <= LogUI.transform.localPosition.x)
@@ -51,13 +54,12 @@ public class AxeMove : MonoBehaviour
                 Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform);
             }
         }
-
-            LogInstiate();
+        LogInstiate();
     }
 
     public void Update()
     {
-        tilty = Input.acceleration.y + 1;
+        tilty = CalibrationQuaternion.y;
         AxeUI.transform.localPosition = new Vector2( tilty * 1300f, AxeUI.transform.localPosition.y);
         text.text = tilty.ToString();
 
@@ -89,6 +91,15 @@ public class AxeMove : MonoBehaviour
             }
         }
     }
+    public void Calibrate()
+    {
+        Vector3 accelerationSnapshot = Input.acceleration;
+
+        Quaternion rotateQuaternion = Quaternion.FromToRotation(new Vector3(0.0f, 0.0f, -1.0f), accelerationSnapshot);
+
+        CalibrationQuaternion = Quaternion.Inverse(rotateQuaternion);
+    }
+
     public void LogInstiate()
     {
         Logx = Random.Range(1200f, -1200f);
