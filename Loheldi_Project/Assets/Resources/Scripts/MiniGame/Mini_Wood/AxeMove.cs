@@ -21,7 +21,8 @@ public class AxeMove : MonoBehaviour
 
     int AllowArea = 100;                         //허용범위(도끼가 통나무와 겹치는 범위)
     float Logx;                                  //통나무 UI x값
-    float tilty;                                 //좌우 기울임 값
+    public float tilty;                                 //좌우 기울임 값
+    public Text text;
 
     public float AllowTime;                             //겹친 시간
     public float AllowTimeMax;
@@ -57,6 +58,7 @@ public class AxeMove : MonoBehaviour
     public void Update()
     {
         AxeUI.transform.localPosition = new Vector2(tilty * 1300f, AxeUI.transform.localPosition.y);
+        text.text = tilty.ToString();
 
         AllowSlider.value = AllowTime;
         if (AxeUI.transform.localPosition.x + AllowArea >= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea <= LogUI.transform.localPosition.x)
