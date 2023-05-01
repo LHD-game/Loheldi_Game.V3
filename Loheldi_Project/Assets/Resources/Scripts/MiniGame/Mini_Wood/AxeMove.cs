@@ -57,7 +57,7 @@ public class AxeMove : MonoBehaviour
 
     public void Update()
     {
-        tilty = Input.acceleration.y;
+        tilty = Input.acceleration.y + 1;
         AxeUI.transform.localPosition = new Vector2( tilty * 1300f, AxeUI.transform.localPosition.y);
         text.text = tilty.ToString();
 
