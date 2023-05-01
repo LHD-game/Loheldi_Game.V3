@@ -22,13 +22,13 @@ public class AxeMove : MonoBehaviour
     int AllowArea = 100;                         //허용범위(도끼가 통나무와 겹치는 범위)
     float Logx;                                  //통나무 UI x값
     public float tilty;                                 //좌우 기울임 값
+    private float yatstart = 0;
+
     public Text text;
 
     public float AllowTime;                             //겹친 시간
     public float AllowTimeMax;
     public Slider AllowSlider;                          //겹친 시간을 표시하는 슬라이더
-
-    Quaternion CalibrationQuaternion;
 
     public Text ScoreText;                              //점수 텍스트 오브젝트
     public int Score = 0;                               //점수 텍스트 오브젝트
@@ -44,7 +44,8 @@ public class AxeMove : MonoBehaviour
         Effect.SetActive(false);
         Panel.SetActive(true);
         AllowTime = 0;
-        Calibrate();
+
+        yatstart = Input.acceleration.y;
 
         Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform);
         if (AxeUI.transform.localPosition.x + AllowArea >= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea <= LogUI.transform.localPosition.x)
@@ -59,7 +60,7 @@ public class AxeMove : MonoBehaviour
 
     public void Update()
     {
-        tilty = CalibrationQuaternion.y + Input.acceleration.y;
+        tilty = Input.acceleration.y + yatstart;
         AxeUI.transform.localPosition = new Vector2( tilty * 1300f, AxeUI.transform.localPosition.y);
         text.text = tilty.ToString();
 
@@ -90,14 +91,6 @@ public class AxeMove : MonoBehaviour
                 AllowTime = 0;
             }
         }
-    }
-    public void Calibrate()
-    {
-        Vector3 accelerationSnapshot = Input.acceleration;
-
-        Quaternion rotateQuaternion = Quaternion.FromToRotation(new Vector3(0.0f, 0.0f, -1.0f), accelerationSnapshot);
-
-        CalibrationQuaternion = Quaternion.Inverse(rotateQuaternion);
     }
 
     public void LogInstiate()
