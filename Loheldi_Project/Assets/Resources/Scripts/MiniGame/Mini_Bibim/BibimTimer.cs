@@ -55,7 +55,7 @@ public class BibimTimer : MonoBehaviour
     {
         timeTxt.text = $"{time_current:N1}";
         isRun = false;
-        Bibim.GameReset();
+        Bibim.GameEnd();
     }
 
 
