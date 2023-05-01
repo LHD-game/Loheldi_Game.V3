@@ -85,7 +85,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
 
     private void Start()
     {
-        state = STATE.START;
+        state = STATE.IDLE;
         DropCount = 0;
         DropCount2 = 0;
         BasketScore = 0;
@@ -205,7 +205,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
 
     public void Welcome()
     {
-        state = STATE.START;
+        state = STATE.IDLE;
         DropCount = 0;
         DropCount2 = 0;
         BasketScore = 0;

@@ -22,7 +22,6 @@ public class AxeMove : MonoBehaviour
     int AllowArea = 100;                         //허용범위(도끼가 통나무와 겹치는 범위)
     float Logx;                                  //통나무 UI x값
     public float tilty;                                 //좌우 기울임 값
-    private float yatstart = 0;
 
     public Text text;
 
@@ -45,7 +44,6 @@ public class AxeMove : MonoBehaviour
         Panel.SetActive(true);
         AllowTime = 0;
 
-        yatstart = Input.acceleration.y;
 
         Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform);
         if (AxeUI.transform.localPosition.x + AllowArea >= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea <= LogUI.transform.localPosition.x)
@@ -60,7 +58,7 @@ public class AxeMove : MonoBehaviour
 
     public void Update()
     {
-        tilty = Input.acceleration.y + yatstart;
+        tilty = Input.acceleration.x;
         AxeUI.transform.localPosition = new Vector2( tilty * 1300f, AxeUI.transform.localPosition.y);
         text.text = tilty.ToString();
 
