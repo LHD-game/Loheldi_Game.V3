@@ -6,11 +6,16 @@ public class NpcName : MonoBehaviour
 {
     public GameObject Npc;
     public Interaction Inter;
+    public bool BibimGame = false;
     // Start is called before the first frame update
 
     void Update()
     {
-        if (Inter.NpcNameTF)
+        if (BibimGame)
+        {
+            this.transform.position = Camera.main.WorldToScreenPoint(Npc.GetComponent<Collider>().bounds.center - new Vector3(0, 1.3f, 0));
+        }
+        else if (Inter.NpcNameTF)
         {
             this.transform.position = Camera.main.WorldToScreenPoint(Npc.transform.position + new Vector3(0, 1.5f, 0));
         }
