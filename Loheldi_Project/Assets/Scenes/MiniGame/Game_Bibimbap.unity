@@ -1171,6 +1171,7 @@ GameObject:
   - component: {fileID: 138779101}
   - component: {fileID: 138779103}
   - component: {fileID: 138779102}
+  - component: {fileID: 138779104}
   m_Layer: 5
   m_Name: Food
   m_TagString: Untagged
@@ -1236,6 +1237,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138779100}
   m_CullTransparentMesh: 1
+--- !u!114 &138779104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138779100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 365873027}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!4 &142332158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3148781907919116153, guid: 59dbd0cbe75bebe4385484ca4fc71790, type: 3}
@@ -1394,6 +1410,249 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153804534}
   m_CullTransparentMesh: 1
+--- !u!1 &157652116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157652117}
+  - component: {fileID: 157652120}
+  - component: {fileID: 157652118}
+  m_Layer: 0
+  m_Name: foodNameG_go
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &157652117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157652116}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: 4.52, y: -2.74, z: -0.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &157652118
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157652116}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &157652120
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157652116}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &160670774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160670775}
+  - component: {fileID: 160670778}
+  - component: {fileID: 160670776}
+  m_Layer: 0
+  m_Name: foodNameG_Ko
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &160670775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160670774}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: 2.9, y: -2.2698536, z: 2.3213372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &160670776
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160670774}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &160670778
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160670774}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &193103680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 193103681}
+  - component: {fileID: 193103684}
+  - component: {fileID: 193103682}
+  m_Layer: 0
+  m_Name: foodNameG_sang
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &193103681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193103680}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: 5.5, y: -2.2698536, z: 2.3213372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &193103682
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193103680}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &193103684
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193103680}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &207747193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1909,7 @@ GameObject:
   - component: {fileID: 243519710}
   - component: {fileID: 243519712}
   - component: {fileID: 243519711}
+  - component: {fileID: 243519713}
   m_Layer: 5
   m_Name: Food (3)
   m_TagString: Untagged
@@ -1715,6 +1975,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243519709}
   m_CullTransparentMesh: 1
+--- !u!114 &243519713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243519709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 160670774}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &244399264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,6 +2362,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308810203}
   m_CullTransparentMesh: 1
+--- !u!1 &309742787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309742788}
+  m_Layer: 0
+  m_Name: foodNameGuide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &309742788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309742787}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9499998, z: -0.97000027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 868289751}
+  - {fileID: 365873028}
+  - {fileID: 1867170122}
+  - {fileID: 160670775}
+  - {fileID: 193103681}
+  - {fileID: 2132908140}
+  - {fileID: 1732761911}
+  - {fileID: 157652117}
+  - {fileID: 1973270276}
+  m_Father: {fileID: 644299648}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319930689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,6 +2831,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360329756}
   m_CullTransparentMesh: 1
+--- !u!1 &365873027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 365873028}
+  - component: {fileID: 365873031}
+  - component: {fileID: 365873029}
+  m_Layer: 0
+  m_Name: foodNameG_Pum
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &365873028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365873027}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: -2, y: -2.2698536, z: 2.3213372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &365873029
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365873027}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &365873031
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365873027}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &367449842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3591,7 @@ GameObject:
   - component: {fileID: 458119506}
   - component: {fileID: 458119508}
   - component: {fileID: 458119507}
+  - component: {fileID: 458119509}
   m_Layer: 5
   m_Name: Food (8)
   m_TagString: Untagged
@@ -3261,6 +3657,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458119505}
   m_CullTransparentMesh: 1
+--- !u!114 &458119509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458119505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 1973270272}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &460675304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5850457858804700752, guid: f2e55bc59b69f7e43b31091f54a44e08, type: 3}
@@ -3871,6 +4282,7 @@ GameObject:
   - component: {fileID: 620016227}
   - component: {fileID: 620016229}
   - component: {fileID: 620016228}
+  - component: {fileID: 620016230}
   m_Layer: 5
   m_Name: Food (2)
   m_TagString: Untagged
@@ -3936,6 +4348,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620016226}
   m_CullTransparentMesh: 1
+--- !u!114 &620016230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620016226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 1867170121}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &630314268
 GameObject:
   m_ObjectHideFlags: 0
@@ -4105,6 +4532,7 @@ Transform:
   m_Children:
   - {fileID: 1957091889}
   - {fileID: 2105588984}
+  - {fileID: 309742788}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4306,7 +4734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749582910}
   m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
-  m_LocalPosition: {x: 4.27, y: -2.9681084, z: -0.61398}
+  m_LocalPosition: {x: 4.27, y: -2.87, z: -0.46}
   m_LocalScale: {x: 0.8283936, y: 1.2241, z: 0.77762}
   m_Children: []
   m_Father: {fileID: 1957091889}
@@ -5307,6 +5735,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8d831278837ec1428e2934c78f37874, type: 3}
   m_PrefabInstance: {fileID: 394789708437608767}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &868289750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 868289751}
+  - component: {fileID: 868289754}
+  - component: {fileID: 868289752}
+  m_Layer: 0
+  m_Name: foodNameG_Egg
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &868289751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868289750}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: -4.4, y: -2.2698536, z: 2.3213372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &868289752
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868289750}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &868289754
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868289750}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &879097936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f749c9f44f29ca64aa2502107f5ea14d, type: 3}
@@ -5323,6 +5832,7 @@ GameObject:
   - component: {fileID: 883822447}
   - component: {fileID: 883822449}
   - component: {fileID: 883822448}
+  - component: {fileID: 883822450}
   m_Layer: 5
   m_Name: Food (6)
   m_TagString: Untagged
@@ -5388,6 +5898,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883822446}
   m_CullTransparentMesh: 1
+--- !u!114 &883822450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883822446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 1732761910}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &889860236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5850457858804700752, guid: 798b0ef1800b38d4e88d13f0a38388d0, type: 3}
@@ -5788,7 +6313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964557932}
   m_LocalRotation: {x: -0.19024503, y: -0, z: -0, w: 0.98173666}
-  m_LocalPosition: {x: -6.48, y: -3.6, z: 0.74}
+  m_LocalPosition: {x: -6.89, y: -3.48, z: 1.05}
   m_LocalScale: {x: 2.6296682, y: 1, z: 2.4124086}
   m_Children: []
   m_Father: {fileID: 1957091889}
@@ -7002,6 +7527,7 @@ GameObject:
   - component: {fileID: 1175710305}
   - component: {fileID: 1175710307}
   - component: {fileID: 1175710306}
+  - component: {fileID: 1175710308}
   m_Layer: 5
   m_Name: Food (7)
   m_TagString: Untagged
@@ -7067,6 +7593,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175710304}
   m_CullTransparentMesh: 1
+--- !u!114 &1175710308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175710304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 157652116}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &1203079414
 GameObject:
   m_ObjectHideFlags: 0
@@ -7761,6 +8302,7 @@ GameObject:
   - component: {fileID: 1342262645}
   - component: {fileID: 1342262647}
   - component: {fileID: 1342262646}
+  - component: {fileID: 1342262648}
   m_Layer: 5
   m_Name: Food (5)
   m_TagString: Untagged
@@ -7826,6 +8368,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342262644}
   m_CullTransparentMesh: 1
+--- !u!114 &1342262648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342262644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 2132908139}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &1346102022
 GameObject:
   m_ObjectHideFlags: 0
@@ -9512,6 +10069,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6abc61eeef4829845a90a13a93f23142, type: 3}
   m_PrefabInstance: {fileID: 394789708637461468}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1732761910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732761911}
+  - component: {fileID: 1732761914}
+  - component: {fileID: 1732761912}
+  m_Layer: 0
+  m_Name: foodNameG_cham
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1732761911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732761910}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: 4.6, y: -2.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &1732761912
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732761910}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1732761914
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732761910}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1743856355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10043,7 +10681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3348349259917752914, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3348349259917752915, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Pivot.x
@@ -10222,6 +10860,7 @@ GameObject:
   - component: {fileID: 1844798509}
   - component: {fileID: 1844798510}
   - component: {fileID: 1844798511}
+  - component: {fileID: 1844798512}
   m_Layer: 0
   m_Name: BibimbabM
   m_TagString: Untagged
@@ -10395,6 +11034,36 @@ MonoBehaviour:
   Inter: {fileID: 0}
   Camera: {fileID: 0}
   FarmCamera: {fileID: 0}
+--- !u!114 &1844798512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844798506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb35c0565d1cf3841a6eec6f3bf04071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  JumpButton: {fileID: 0}
+  NearNPC: 0
+  NameNPC: 
+  Door: 0
+  Gacha: 0
+  Farm: 0
+  ThankTree: 0
+  Ladder: 0
+  NpcNameTF: 0
+  Npcs: []
+  NpcNames: []
+  FarmingMaster: {fileID: 0}
+  MainCam: {fileID: 0}
+  TCam: {fileID: 0}
+  VJS: {fileID: 0}
+  FCC: {fileID: 0}
+  HE: {fileID: 0}
 --- !u!1 &1864487601
 GameObject:
   m_ObjectHideFlags: 0
@@ -10470,6 +11139,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864487601}
   m_CullTransparentMesh: 1
+--- !u!1 &1867170121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1867170122}
+  - component: {fileID: 1867170125}
+  - component: {fileID: 1867170123}
+  m_Layer: 0
+  m_Name: foodNameG_ca
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1867170122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867170121}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: 0.45, y: -2.2698536, z: 2.3213372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &1867170123
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867170121}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1867170125
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867170121}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1871925017
 GameObject:
   m_ObjectHideFlags: 0
@@ -10682,6 +11432,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6abc61eeef4829845a90a13a93f23142, type: 3}
   m_PrefabInstance: {fileID: 177298634327605529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1973270272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1973270276}
+  - component: {fileID: 1973270275}
+  - component: {fileID: 1973270273}
+  m_Layer: 0
+  m_Name: foodNameG_tra
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1973270273
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973270272}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1973270275
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973270272}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1973270276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973270272}
+  m_LocalRotation: {x: -0.19024503, y: -0, z: -0, w: 0.98173666}
+  m_LocalPosition: {x: -6.89, y: -3.48, z: 1.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: -21.934, y: 0, z: 0}
 --- !u!4 &1973986233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 778f567755db1f44dba845a854789207, type: 3}
@@ -11211,6 +12042,7 @@ GameObject:
   - component: {fileID: 2060552435}
   - component: {fileID: 2060552437}
   - component: {fileID: 2060552436}
+  - component: {fileID: 2060552438}
   m_Layer: 5
   m_Name: Food (4)
   m_TagString: Untagged
@@ -11276,6 +12108,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060552434}
   m_CullTransparentMesh: 1
+--- !u!114 &2060552438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060552434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 193103680}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &2062714586
 GameObject:
   m_ObjectHideFlags: 0
@@ -11287,6 +12134,7 @@ GameObject:
   - component: {fileID: 2062714587}
   - component: {fileID: 2062714589}
   - component: {fileID: 2062714588}
+  - component: {fileID: 2062714590}
   m_Layer: 5
   m_Name: Food (1)
   m_TagString: Untagged
@@ -11312,7 +12160,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -983, y: -267}
-  m_SizeDelta: {x: 145.6884, y: 59.7014}
+  m_SizeDelta: {x: 145.68848, y: 59.701416}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062714588
 MonoBehaviour:
@@ -11352,6 +12200,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062714586}
   m_CullTransparentMesh: 1
+--- !u!114 &2062714590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062714586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137d147e8706b349a24cbbe1968b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 868289750}
+  Inter: {fileID: 1844798512}
+  BibimGame: 1
 --- !u!1 &2090085770
 GameObject:
   m_ObjectHideFlags: 0
@@ -11591,7 +12454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107272563}
   m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
-  m_LocalPosition: {x: 4.46, y: -2.8715088, z: 0.63170004}
+  m_LocalPosition: {x: 4.46, y: -2.74, z: 0.84}
   m_LocalScale: {x: 0.8283936, y: 1.2241, z: 0.77762}
   m_Children: []
   m_Father: {fileID: 1957091889}
@@ -11799,6 +12662,87 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2132908139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2132908140}
+  - component: {fileID: 2132908143}
+  - component: {fileID: 2132908141}
+  m_Layer: 0
+  m_Name: foodNameG_kim
+  m_TagString: BibimFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2132908140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132908139}
+  m_LocalRotation: {x: -0.27616662, y: -0, z: -0, w: 0.96110976}
+  m_LocalPosition: {x: 7.9, y: -2.2698536, z: 2.3213372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309742788}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -32.063, y: 0, z: 0}
+--- !u!23 &2132908141
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132908139}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2132908143
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132908139}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2133546523
 GameObject:
   m_ObjectHideFlags: 0
@@ -13363,7 +14307,7 @@ Transform:
   m_GameObject: {fileID: 201406347992854428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.51, y: 0, z: 4.65}
-  m_LocalScale: {x: 4.406655, y: 5, z: 2.438474}
+  m_LocalScale: {x: 6.096166, y: 5, z: 3.9359407}
   m_Children: []
   m_Father: {fileID: 201406348351487125}
   m_RootOrder: 0
@@ -15785,7 +16729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249694109823067531, guid: 28bb84f5b984a814b882c56f28b8029a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.46
+      value: -7.75
       objectReference: {fileID: 0}
     - target: {fileID: 3249694109823067531, guid: 28bb84f5b984a814b882c56f28b8029a, type: 3}
       propertyPath: m_LocalPosition.y

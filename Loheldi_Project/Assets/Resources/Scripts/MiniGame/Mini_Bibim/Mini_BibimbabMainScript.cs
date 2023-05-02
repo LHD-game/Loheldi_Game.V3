@@ -56,6 +56,14 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     private void Start()
     {
+        float i_width = Screen.width;
+        float i_hight = Screen.height;
+        float i_ratio = i_width / i_hight;
+        if (i_ratio < 2)
+            Camera.main.fieldOfView = 42;
+        else;
+
+        Debug.Log("가로: " + i_width + "\n세로: " + i_hight + "\n계산결과: " + i_ratio);
         FoodImg[0] = FoodImg1;
         FoodImg[1] = FoodImg2;
         FoodImg[2] = FoodImg3;
