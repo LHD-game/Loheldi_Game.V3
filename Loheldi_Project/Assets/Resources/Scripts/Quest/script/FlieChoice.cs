@@ -163,6 +163,7 @@ public class FlieChoice : MonoBehaviour
                 goto case "i";
             case "InfoSign":
                 chat.Num = "28";
+                chat.NPCButton += 1;
                 goto case "i";
             case "i":
                 Debug.Log("i");
