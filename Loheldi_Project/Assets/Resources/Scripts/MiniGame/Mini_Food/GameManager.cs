@@ -66,7 +66,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CreateFoodRoutine()
     {
-        
+        int now_hp = PlayerPrefs.GetInt("HP");
+
+        Debug.Log("코루틴: " + now_hp);
         while (stopTrigger)
         {
             CreateFood();
@@ -99,8 +101,10 @@ public class GameManager : MonoBehaviour
     {
         int now_hp = PlayerPrefs.GetInt("HP");
 
+        Debug.Log("밖: "+now_hp);
         if (now_hp > 0)  //현재 hp가 0보다 크다면
         {
+            Debug.Log("안: "+now_hp);
             //hp 1 감소
             PlayInfoManager.GetHP(-1);
             stopTrigger = true;

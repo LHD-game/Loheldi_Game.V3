@@ -69,6 +69,7 @@ public class MainGameManager : MonoBehaviour
     //좌측 상단의 내정보 ui 정보 업데이트
     void UpdateFieldMyInfo()
     {
+        Debug.Log("실행 HP: " + PlayerPrefs.GetInt("HP"));
         //재화
         FieldWalletTxt.text = PlayerPrefs.GetInt("Wallet").ToString();
         //HP
