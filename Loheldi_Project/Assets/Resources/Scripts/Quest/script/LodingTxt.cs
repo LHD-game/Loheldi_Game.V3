@@ -169,6 +169,8 @@ public class LodingTxt : MonoBehaviour
     public QuestLoad QuestLoad;
     public NpcButtonClick NpcButton;
 
+    [Header("Language")]
+    public Dropdown LanguageDropDown = null;
 
     private void Awake()
     {
@@ -215,9 +217,9 @@ public class LodingTxt : MonoBehaviour
             }
             
             //주말체크
-            DateTime nowDT = DateTime.Now;
+            /*DateTime nowDT = DateTime.Now;
             if (nowDT.DayOfWeek == DayOfWeek.Saturday)
-                DontDestroy.SDA = true;
+                DontDestroy.SDA = true;*/
             /*
             else if (nowDT.DayOfWeek == DayOfWeek.Sunday)
                 DontDestroy.weekend = true;
@@ -246,9 +248,14 @@ public class LodingTxt : MonoBehaviour
             CCImage = GameObject.Find("CCImage");
             SoundEffectManager = GameObject.Find("GameManager");
         }
-        
+
+        Debug.Log(DontDestroy.Language);
     }
 
+    public void SetLanguage()
+    {
+        DontDestroy.Language = LanguageDropDown.captionText.text;
+    }
     public void AnimationActivation()
     {
         PlayerHulaAnimator.enabled = true;
@@ -304,10 +311,10 @@ public class LodingTxt : MonoBehaviour
         QuestLoad.QuestLoadStart();
     }
 
-    public void NotSDA()
+    /*public void NotSDA()
     {
             DontDestroy.SDA = false;
-    }
+    }*/
     public void ToothQuest()  //수정
     {
         ToothAnimator = GameObject.Find("ToothBrush").transform.Find("Armature").gameObject.GetComponent<Animator>();

@@ -123,8 +123,8 @@ public class QuestLoad : MonoBehaviour
                             DontDestroy.QuestIndex = PlayerPrefs.GetString("QuestPreg");
                             return;
                         }
-                        if (DontDestroy.SDA)
-                            return;
+                        /*if (DontDestroy.SDA)
+                            return;*/
                         else if (DontDestroy.ToDay != DontDestroy.LastDay)
                         {
                             QID3 = rows[r]["QID"]["S"].ToString();

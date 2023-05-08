@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
+
 public class QuestDontDestroy : MonoBehaviour
 {
 
@@ -21,8 +23,10 @@ public class QuestDontDestroy : MonoBehaviour
     public bool NtoSControl = false;
     public bool ToothQ = false;
     //public bool weekend = false;
-    public bool SDA = false;
+    //public bool SDA = false;
     public bool tutorialLoading=false; //튜토리얼 진행 중인지(하우징갔다가 메인왔을 때 진행 시키는 용)
+
+    public string Language = "Korean";
 
     public bool ReQuest = false;
     public bool QuestNF = false;
