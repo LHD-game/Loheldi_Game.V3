@@ -108,7 +108,9 @@ public class QuestStatus : MonoBehaviour
             Debug.Log("보이고 싶은거 위치 Rext= " + ButtonRT.position.x);
             Debug.Log("보이는 위치 = " + scrollValue);
             //float scrollValue = QuestButtons[QuestStepNumber].transform.localPosition.x / (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
-            scrollValue = QuestButtons[QuestStepNumber - 1].transform.parent.localPosition.x / (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
+            if (QuestStepNumber - 1 <0)
+                QuestStepNumber+=1;
+                scrollValue = QuestButtons[QuestStepNumber - 1].transform.parent.localPosition.x / (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
         }
 
 
