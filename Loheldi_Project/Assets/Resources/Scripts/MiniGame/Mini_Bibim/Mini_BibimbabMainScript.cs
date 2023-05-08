@@ -296,6 +296,7 @@ public class Mini_BibimbabMainScript : MonoBehaviour
 
     void BibimReset()
     {
+        EggFinish = false;
         foreach (GameObject i in food)
         {
             if (i != food[0])

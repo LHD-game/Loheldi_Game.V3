@@ -27,8 +27,8 @@ public class FlieChoice : MonoBehaviour
         Debug.Log("튜토리얼");
         //Save_Log.instance.SaveQStartLog();  //퀘스트 시작 시간 로그
         chat.Main_UI.SetActive(false);
-        chat.FileAdress = "Scripts/Quest/Dialog/Korean/" + QDD.QuestIndex;
-        chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/tutorial");
+        chat.FileAdress = "Scripts/Quest/Dialog/"+QDD.Language+"/" + QDD.QuestIndex;
+        chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/"+QDD.Language+"/tutorial");
         chat.Num = "0_1";
         
         chat.NewChat();
@@ -39,10 +39,10 @@ public class FlieChoice : MonoBehaviour
         {
             EPin.SetActive(false);
             Inter.NpcNameTF = false;
-            chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/Quest" + chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
+            chat.cuttoonImageList = Resources.LoadAll<Sprite>("Sprites/Quest/cuttoon/"+QDD.Language+"/Quest" + chat.DontDestroy.QuestIndex.Substring(0, chat.DontDestroy.QuestIndex.IndexOf("_")));
         }
 
-            chat.FileAdress = "Scripts/Quest/Dialog/Korean/" + QDD.QuestIndex;
+            chat.FileAdress = "Scripts/Quest/Dialog/"+QDD.Language+"/" + QDD.QuestIndex;
         chat.Num = chat.DontDestroy.QuestIndex;
         chat.NewChat();
         if (SceneManager.GetActiveScene().name == "Quiz") ;
@@ -53,7 +53,7 @@ public class FlieChoice : MonoBehaviour
     public void NpcChoice(string NameNPC) //npc와 대화 선택하는 함수
     {
         chat.NPCButton = 0;
-        chat.FileAdress = "Scripts/Quest/DialogNPC";
+        chat.FileAdress = "Scripts/Quest/Dialog/"+QDD.Language+"/DialogNPC";
 
         string[] QuestF = chat.DontDestroy.QuestIndex.Split('_');
             switch (NameNPC)

@@ -136,10 +136,10 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
             {
                 /*Debug.Log("this_type == \"weekend\":" + (this_type == "weekend")+ this_type);
                 Debug.Log("this_type == \"weekend\":" + (this_type == "week"));*/
-                if (QDD.SDA && (q_front !=0&& q_back !=2))
+                /*if (QDD.SDA && (q_front !=0&& q_back !=2))
                 {
                     content_detail_txt.text = "토요일은 퀘스트 진행이 불가합니다";
-                }
+                }*/
                 /*else if (!QDD.weekend && this_type == "weekend")
                 {
                     content_detail_txt.text = "해당 퀘스트는 일요일에만 진행이 가능합니다";
