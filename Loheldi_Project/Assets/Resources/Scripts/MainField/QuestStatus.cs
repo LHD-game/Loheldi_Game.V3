@@ -33,6 +33,7 @@ public class QuestStatus : MonoBehaviour
     public GameObject PresentButton;
     public Sprite CompleteButton;
     int j = 0;
+    int k = 0;
     public bool FirstLoad = true;
 
     public List<GameObject> QuestButtonList = new List<GameObject>();
@@ -126,16 +127,18 @@ public class QuestStatus : MonoBehaviour
             LetCheck = false;
         }
         Save_Basic.LoadQuestPresentInfo();
-        PresentButtons = new GameObject[100];
 
-        if (FirstLoad)
-        {
-            for (int i = 0; i < QuestButtons.Length - 1; i++)
-            {
-                InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject, i);
-            }
-            FirstLoad = false;
+        for (int i = 0; i < PresentButtons.Length - 1; i++) {
+            Destroy(PresentButtons[i]);
         }
+
+        j = 0;
+        for (int i = 0; i < QuestButtons.Length - 1; i++)
+        {
+            InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject);
+        }
+        k = 1;
+        FirstLoad = false;
     }
 
     void ButtonActive()
@@ -193,8 +196,9 @@ public class QuestStatus : MonoBehaviour
         QuestLoad.QuestLoadStart();
     }
 
-    public void InstantiatePresentButton(GameObject gameobject, int j)
+    public void InstantiatePresentButton(GameObject gameobject)
     {
+        Debug.Log(j);
         bool OK = false;
         String[] Num = gameobject.name.Split('-');
         String[] NextNum = gameobject.name.Split('-');
@@ -239,11 +243,11 @@ public class QuestStatus : MonoBehaviour
 
             if (OK)
             {
-                Debug.Log(gameobject.name + " " + "Q" + j + " " + PlayerPrefs.GetString("Q" + Int32.Parse(Num[0])));
                 if ("true" == PlayerPrefs.GetString("Q" + Int32.Parse(Num[0])))
                 {
-                    gameobject.transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/FieldUI/Complete");
-                    gameobject.transform.GetChild(1).GetComponent<Button>().enabled = false;
+                    gameobject.transform.GetChild(1 + k).GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/FieldUI/Complete");
+                    gameobject.transform.GetChild(1 + k).GetComponent<Button>().enabled = false;
+                    Debug.Log(gameobject.transform.GetChild(1));
                 }
             }
         }
