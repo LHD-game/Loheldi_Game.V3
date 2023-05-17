@@ -60,7 +60,6 @@ public class AxeMove : MonoBehaviour
     {
         tilty = Input.acceleration.x;
         AxeUI.transform.localPosition = new Vector2( tilty * 1300f, AxeUI.transform.localPosition.y);
-        text.text = tilty.ToString();
 
         AllowSlider.value = AllowTime;
         if (AxeUI.transform.localPosition.x + AllowArea >= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea <= LogUI.transform.localPosition.x)
