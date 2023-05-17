@@ -536,7 +536,7 @@ public class LodingTxt : MonoBehaviour
                 QuizCho();
                 break;
             case "Move":    //Main Move
-                if (data_Dialog[j]["scriptNumber"].ToString().Equals("18_1"))  //수정한 원 주말퀘스트 번호
+                if (data_Dialog[j]["scriptNumber"].ToString().Equals("19_1"))  //수정한 원 주말퀘스트 번호
                     o = 13;
                 else if (DontDestroy.tutorialLoading)
                     o = 3;
@@ -1020,11 +1020,11 @@ public class LodingTxt : MonoBehaviour
                 {
                     StartCoroutine(fadein());
                     yield return new WaitForSecondsRealtime(1.5f);
-                    Player.transform.position = new Vector3(-17.3f, -6.41383362f, -20);
-                    Player.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+                    Player.transform.position = new Vector3(-25.5f, -6.41383362f, -20);
+                    Player.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
                     Nari.transform.position = Player.transform.position + new Vector3(1, 0, 0);
-                    Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 151, 0));
+                    Nari.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
                     Kangteagom.SetActive(true);
                     //scriptLine();
