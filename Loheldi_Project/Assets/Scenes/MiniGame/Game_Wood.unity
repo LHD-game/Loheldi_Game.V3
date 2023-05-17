@@ -3354,7 +3354,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366000896206410696, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_Text
-      value: "<\uACF5\uBC31>"
+      value: "\uB3C4\uD1A0\uB9AC \uB9C8\uC744 \uC8FC\uBBFC\uB4E4\uC5D0\uAC8C \uD544\uC694\uD55C
+        \uC7A5\uC791\uC744 \uD328 \uBCF4\uC544\uC694!\r\n\n\n<\uAC8C\uC784 \uBC29\uBC95)\n\uD578\uB4DC\uD3F0\uC744
+        \uC591 \uC606\uC73C\uB85C \uC774\uB9AC\uC800\uB9AC \uAE30\uC6B8\uC5EC\uC11C
+        \uB098\uBB34\uC640 \uB3C4\uB07C\uAC00 \uACB9\uCCD0\uC9C0\uBA74 \n\uB3C4\uB07C\uC758
+        \uAC8C\uC774\uC9C0\uAC00 \uCC28\uC624\uB985\uB2C8\uB2E4. \n\uC77C\uC815 \uAC8C\uC774\uC9C0\uAC00
+        \uAC00\uB4DD \uCC28\uBA74 \uC7A5\uC791\uC744 \uD330 \uC218 \uC788\uC5B4\uC694!\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 366000896206410696, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5545007697980067839, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_Enabled
