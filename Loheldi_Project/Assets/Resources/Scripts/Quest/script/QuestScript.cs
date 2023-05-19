@@ -69,7 +69,6 @@ public class QuestScript : MonoBehaviour
         }
         else if (DontDestroy.QuestIndex.Equals("16_1")) //이장님 감사나무 앞 (감사나무)
         {
-            note = true;
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.position = new Vector3(17.3f, -4.3f, 27.4f);
             GameObject.Find(DontDestroy.ButtonPlusNpc).transform.rotation = Quaternion.Euler(new Vector3(0, 77, 0));
         }

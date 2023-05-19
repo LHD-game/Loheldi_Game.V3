@@ -98,7 +98,9 @@ public class PlayerInfoControl : MonoBehaviour
             allBadgeChart = Backend.Chart.GetChartContents(itemChart);
             is_get_b_chart = true;
         }
-            var myBadge = Backend.GameData.GetMyData("ACC_BADGE", new Where(), 100);
+
+        allBadgeChart = Backend.Chart.GetChartContents(itemChart);
+        var myBadge = Backend.GameData.GetMyData("ACC_BADGE", new Where(), 100);
 
             JsonData allBadge_rows = allBadgeChart.GetReturnValuetoJSON()["rows"];
             myBadge_rows = myBadge.GetReturnValuetoJSON()["rows"];
