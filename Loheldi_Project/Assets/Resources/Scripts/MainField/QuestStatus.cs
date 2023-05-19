@@ -105,9 +105,9 @@ public class QuestStatus : MonoBehaviour
             child = Instantiate(PImag, new Vector3(ButtonRT.position.x, ButtonRT.position.y, ButtonRT.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
             child.transform.SetParent(ButtonT);
 
-            Debug.Log("보이고 싶은거 위치 Origin = " + QuestButtons[QuestStepNumber].transform.parent.localPosition.x);
+            /*Debug.Log("보이고 싶은거 위치 Origin = " + QuestButtons[QuestStepNumber].transform.parent.localPosition.x);
             Debug.Log("보이고 싶은거 위치 Rext= " + ButtonRT.position.x);
-            Debug.Log("보이는 위치 = " + scrollValue);
+            Debug.Log("보이는 위치 = " + scrollValue);*/
             //float scrollValue = QuestButtons[QuestStepNumber].transform.localPosition.x / (Qsr.content.rect.width - Qsr.GetComponent<RectTransform>().rect.width);
             if (QuestStepNumber - 1 <0)
                 QuestStepNumber+=1;
