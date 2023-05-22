@@ -215,7 +215,7 @@ public class QuestStatus : MonoBehaviour
         {
             if (gameobject.name == "0_1")
             {
-                PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
+                PresentButtons[j] = Instantiate(PresentButton, gameobject.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, gameobject.transform);
                 int temp = j;
                 PresentButtons[temp].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[temp].gameObject); });
                 OK = true;
