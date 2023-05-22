@@ -213,7 +213,7 @@ public class QuestStatus : MonoBehaviour
 
         if (Int32.TryParse(Num[0], out result))
         {
-            if (gameobject.name == "0-1")
+            if (gameobject.name == "0_1")
             {
                 PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
                 int temp = j;
@@ -228,8 +228,8 @@ public class QuestStatus : MonoBehaviour
                     i++;
                 }
                 i++;
-                NextNum = gameobject.transform.parent.transform.GetChild(i).name.Split('-');
-                if (Int32.Parse(Num[1]) >= Int32.Parse(NextNum[1]))
+                NextNum = gameobject.transform.parent.transform.GetChild(i).name.Split('_');
+                if (Int32.Parse(Num[0]) >= Int32.Parse(NextNum[0]))
                 {
                     PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
                     int temp = j;
@@ -262,7 +262,7 @@ public class QuestStatus : MonoBehaviour
 
     public void GetPresentButton(GameObject gameobject)
     {
-        String[] Num = gameobject.transform.parent.name.Split('-');
+        String[] Num = gameobject.transform.parent.name.Split('_');
 
         Param param = new Param();
         param.Add("Q" + Int32.Parse(Num[0]), "true");
@@ -274,42 +274,42 @@ public class QuestStatus : MonoBehaviour
 
         switch (gameobject.transform.parent.name)
         {
-            case "0-1":
+            case "0_1":
                 PlayInfoManager.GetCoin(50);
                 Debug.Log("Coin 50");
                 break;
-            case "3-4":
+            case "3_4":
                 PlayInfoManager.GetHP(1);
                 Debug.Log("HP 1");
                 break;
-            case "6-2":
+            case "6_2":
                 BuyItemBtn("1010103");
                 break;
-            case "9-2":
+            case "9_2":
                 PlayInfoManager.GetCoin(50);
                 break;
-            case "12-2":
+            case "12_2":
                 PlayInfoManager.GetHP(1);
                 break;
-            case "15-1":
+            case "15_1":
                 BuyItemBtn("1010106");
                 break;
-            case "18-1":
+            case "18_1":
                 PlayInfoManager.GetCoin(60);
                 break;
-            case "21-1":
+            case "21_1":
                 PlayInfoManager.GetHP(2);
                 break;
-            case "24-2":
+            case "24_2":
                 BuyItemBtn("1010206");
                 break;
-            case "27-1":
+            case "27_1":
                 PlayInfoManager.GetCoin(70);
                 break;
-            case "30-1":
+            case "30_1":
                 PlayInfoManager.GetHP(2);
                 break;
-            case "33-1":
+            case "33_1":
                 PlayInfoManager.GetCoin(100);
                 break;
             default:
