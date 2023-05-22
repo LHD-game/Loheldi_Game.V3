@@ -154,12 +154,12 @@ public class FlieChoice : MonoBehaviour
             case "Wood":
 
                     chat.Num = "26";
-                chat.NPCButton += 1;
+                chat.NPCButton += 2;
                 goto case "i";
             case "Fruit":
 
                     chat.Num = "27";
-                chat.NPCButton += 1;
+                chat.NPCButton += 2;
                 goto case "i";
             case "InfoSign":
                 chat.Num = "28";
