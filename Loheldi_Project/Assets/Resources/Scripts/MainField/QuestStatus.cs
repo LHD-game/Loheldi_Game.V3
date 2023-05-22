@@ -135,6 +135,11 @@ public class QuestStatus : MonoBehaviour
         j = 0;
         for (int i = 0; i < QuestButtons.Length - 1; i++)
         {
+            Debug.Log(PlayerPrefs.GetString("QuestPreg") + "  " + QuestButtons[i].transform.parent.gameObject.name);
+            if (PlayerPrefs.GetString("QuestPreg") == QuestButtons[i].transform.parent.gameObject.name)
+            {
+                break;
+            }
             InstantiatePresentButton(QuestButtons[i].transform.parent.gameObject);
         }
         k = 1;
@@ -198,10 +203,11 @@ public class QuestStatus : MonoBehaviour
 
     public void InstantiatePresentButton(GameObject gameobject)
     {
+
         Debug.Log(j);
         bool OK = false;
-        String[] Num = gameobject.name.Split('-');
-        String[] NextNum = gameobject.name.Split('-');
+        String[] Num = gameobject.name.Split('_');
+        String[] NextNum = gameobject.name.Split('_');
         int i = 0;
         int result;
 
@@ -250,6 +256,7 @@ public class QuestStatus : MonoBehaviour
                     Debug.Log(gameobject.transform.GetChild(1));
                 }
             }
+
         }
     }
 
