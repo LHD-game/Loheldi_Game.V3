@@ -135,7 +135,6 @@ public class QuestStatus : MonoBehaviour
         j = 0;
         for (int i = 0; i < QuestButtons.Length - 1; i++)
         {
-            Debug.Log(PlayerPrefs.GetString("QuestPreg") + "  " + QuestButtons[i].transform.parent.gameObject.name);
             if (PlayerPrefs.GetString("QuestPreg") == QuestButtons[i].transform.parent.gameObject.name)
             {
                 break;
@@ -203,8 +202,7 @@ public class QuestStatus : MonoBehaviour
 
     public void InstantiatePresentButton(GameObject gameobject)
     {
-
-        Debug.Log(j);
+        bool inst = false;
         bool OK = false;
         String[] Num = gameobject.name.Split('_');
         String[] NextNum = gameobject.name.Split('_');
@@ -215,11 +213,7 @@ public class QuestStatus : MonoBehaviour
         {
             if (gameobject.name == "0_1")
             {
-                PresentButtons[j] = Instantiate(PresentButton, gameobject.transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, gameobject.transform);
-                int temp = j;
-                PresentButtons[temp].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[temp].gameObject); });
-                OK = true;
-                j++;
+                inst = true;
             }
             if (Int32.Parse(Num[0]) % 3 == 0 && Num[0] != "1" && Num[0] != "0" && Num[0] != "33")
             {
@@ -229,22 +223,27 @@ public class QuestStatus : MonoBehaviour
                 }
                 i++;
                 NextNum = gameobject.transform.parent.transform.GetChild(i).name.Split('_');
-                if (Int32.Parse(Num[0]) >= Int32.Parse(NextNum[0]))
+                if (Int32.Parse(Num[1]) >= Int32.Parse(NextNum[1]))
                 {
-                    PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
-                    int temp = j;
-                    PresentButtons[temp].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[temp].gameObject); });
-                    OK = true;
-                    j++;
+                    inst = true;
                 }
             } 
             else if(Num[0] == "33")
             {
+                inst = true;
+            }
+
+            if (inst)
+            {
+                Debug.Log(gameobject.transform.GetChild(0).localPosition);
                 PresentButtons[j] = Instantiate(PresentButton, gameobject.transform);
+                PresentButtons[j].transform.localPosition = gameobject.transform.GetChild(0).localPosition + new Vector3(150f, 150f, 0f);
+                Debug.Log(PresentButtons[j].transform.localPosition);
                 int temp = j;
                 PresentButtons[temp].GetComponent<Button>().onClick.AddListener(delegate () { GetPresentButton(PresentButtons[temp].gameObject); });
                 OK = true;
                 j++;
+                inst = false;
             }
 
             if (OK)
@@ -253,7 +252,6 @@ public class QuestStatus : MonoBehaviour
                 {
                     gameobject.transform.GetChild(1 + k).GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/FieldUI/Complete");
                     gameobject.transform.GetChild(1 + k).GetComponent<Button>().enabled = false;
-                    Debug.Log(gameobject.transform.GetChild(1));
                 }
             }
 
