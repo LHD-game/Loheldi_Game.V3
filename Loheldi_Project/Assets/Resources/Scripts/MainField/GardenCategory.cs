@@ -89,13 +89,13 @@ public class GardenCategory : MonoBehaviour
 
             //아이템 테마에 따라 다른 리스트에 저장.
 
-            if (data.Category.Equals("seed"))   //씨앗 아이템
+            if (data.ItemType.Equals("seed"))   //씨앗 아이템
             {
                 seedItem.Add(new Dictionary<string, object>()); // list에 공간을 만들어줍니다.
                 initItem(seedItem[s], data);
                 s++;
             }
-            if (data.Category.Equals("tree"))   //나무 아이템
+            if (data.ItemType.Equals("tree"))   //나무 아이템
             {
                 treeItem.Add(new Dictionary<string, object>()); // list에 공간을 만들어줍니다.
                 initItem(treeItem[t], data);
