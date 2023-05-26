@@ -101,7 +101,7 @@ public class QuestStatus : MonoBehaviour
         if (scrollValue == 0)
         {
             Transform ButtonT = QuestButtons[QuestStepNumber + 1].GetComponent<Transform>();
-            RectTransform ButtonRT = QuestButtons[QuestStepNumber + 1].transform.parent.GetComponent<RectTransform>();
+            RectTransform ButtonRT = QuestButtons[QuestStepNumber + 1].GetComponent<RectTransform>();
             child = Instantiate(PImag, new Vector3(ButtonRT.position.x, ButtonRT.position.y, ButtonRT.position.z), Quaternion.Euler(0, 0, 0), GameObject.Find("Canvas").transform);
             child.transform.SetParent(ButtonT);
 
