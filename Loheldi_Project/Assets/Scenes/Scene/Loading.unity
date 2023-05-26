@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1745343138}
+  loadingtext: {fileID: 2117407420}
   LoadingImages:
   - {fileID: 21300000, guid: 4eaae857d9c63fd439e19dae50693c6b, type: 3}
   - {fileID: 21300000, guid: e8998ba791da4cb4398b1fa778cb0876, type: 3}

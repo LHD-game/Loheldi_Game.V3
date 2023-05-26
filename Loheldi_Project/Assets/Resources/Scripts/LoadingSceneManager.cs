@@ -9,6 +9,7 @@ public class LoadingSceneManager : MonoBehaviour
     public static string nextScene;
     [SerializeField] Slider progressBar;
 
+    public Text LoadingText;
     public static Text tiptext;
 
     public Sprite[] LoadingImages;
@@ -16,8 +17,11 @@ public class LoadingSceneManager : MonoBehaviour
     //public Image LoadingImage3;
     //public Image LoadingImage4;
 
+    private string text = "이동하는 중...";
+
     private void Start()
     {
+        StartCoroutine(_typing());
         tiptext = GameObject.Find("Text").GetComponent<Text>();
         int tipnum = Random.Range(0, 4);
         switch (tipnum)
@@ -94,6 +98,20 @@ public class LoadingSceneManager : MonoBehaviour
                     op.allowSceneActivation = true;
                     yield break;
                 }
+            }
+        }
+    }
+    IEnumerator _typing()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            LoadingText.text = "";
+            for (int i = 0; i <= text.Length; i++)
+            {
+                LoadingText.text = text.Substring(0, i);
+
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }
