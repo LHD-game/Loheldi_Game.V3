@@ -32,6 +32,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
     public GameObject WelcomePanel;
     public GameObject GameOverPanel;
     public GameObject PausePanel;
+    public GameObject HPDisablePanel;
 
     //결과 출력
     public Text ResultTxt;
@@ -219,9 +220,21 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
 
     public void ShakeSet()
     {
-        nowTime = 30;
-        WelcomePanel.SetActive(false);
-        state = STATE.IDLE;
+        int now_hp = PlayerPrefs.GetInt("HP");
+
+        if (now_hp > 0)  //현재 hp가 0보다 크다면
+        {
+            //hp 1 감소
+            PlayInfoManager.GetHP(-1);
+            nowTime = 30;
+            WelcomePanel.SetActive(false);
+            state = STATE.IDLE;
+        }
+        else    //0 이하라면: 게임 플레이 불가
+        {
+            // hp가 부족합니다! 팝업 띄우기
+            HPDisablePanel.SetActive(true);
+        }
     }
 
     void Clear()
@@ -230,6 +243,7 @@ public class Shaking : MonoBehaviour            //흔드는거 감지하는 함수
         GameOverPanel.SetActive(true);
         GameResult();
     }
+
     public void StageFail()
     {
         GameStart = false;

@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &39521490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1152,6 +1152,7 @@ MonoBehaviour:
   WelcomePanel: {fileID: 81826282}
   GameOverPanel: {fileID: 1952116905}
   PausePanel: {fileID: 195476396}
+  HPDisablePanel: {fileID: 1305402670}
   ResultTxt: {fileID: 394119318}
   ResultCoinTxt: {fileID: 573957406}
   ResultExpTxt: {fileID: 2094459072}
@@ -2044,7 +2045,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD754\uB4E4\uC5B4\n\uC8FC\uC138\uC694"
+  m_Text: 
 --- !u!222 &1263525000
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2816,7 +2817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3348349259917752914, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3348349259917752915, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Pivot.x

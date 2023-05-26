@@ -360,6 +360,7 @@ MonoBehaviour:
   DifficultyPanel: {fileID: 1128105104}
   GameOverPanel: {fileID: 1468971186}
   PausePanel: {fileID: 478672075}
+  HPDisablePanel: {fileID: 1231098243586490287}
   ResultTxt: {fileID: 1797767996}
   ResultCoinTxt: {fileID: 1585984920}
   ResultExpTxt: {fileID: 1788447635}
@@ -3243,6 +3244,11 @@ PrefabInstance:
 --- !u!224 &1231098243586490286 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4109460566546522203, guid: f153df62f29bcae4eb47b5f6ef1bcae4, type: 3}
+  m_PrefabInstance: {fileID: 1231098243586490285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1231098243586490287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4109460566546522202, guid: f153df62f29bcae4eb47b5f6ef1bcae4, type: 3}
   m_PrefabInstance: {fileID: 1231098243586490285}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1441704609628497846
