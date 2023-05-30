@@ -62,4 +62,16 @@ public class QuestDontDestroy : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public void LanguChange()
+    {
+        switch (Language) {
+            case "ÇÑ±¹¾î":
+                Language = "Korean";
+                break;
+            case "English":
+                Language = "English";
+                break;
+                }
+    }
+
 }

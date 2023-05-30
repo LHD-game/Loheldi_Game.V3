@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.ProBuilder.MeshOperations;
 using System.Net.Sockets;
+using static UnityEditor.PlayerSettings.Switch;
 
 public class LodingTxt : MonoBehaviour
 {
@@ -170,7 +171,7 @@ public class LodingTxt : MonoBehaviour
     public NpcButtonClick NpcButton;
 
     [Header("Language")]
-    public Dropdown LanguageDropDown = null;
+    public Dropdown LanguageDropDown;
 
     private void Awake()
     {
@@ -252,9 +253,18 @@ public class LodingTxt : MonoBehaviour
         Debug.Log(DontDestroy.Language);
     }
 
-    public void SetLanguage()
+    public void LanguChange()
     {
-        DontDestroy.Language = LanguageDropDown.captionText.text;
+        Debug.Log(LanguageDropDown.captionText.ToString());
+        switch (LanguageDropDown.captionText.ToString())
+        {
+            case "ÇÑ±¹¾î":
+                DontDestroy.Language = "Korean";
+                break;
+            case "English":
+                DontDestroy.Language = "English";
+                break;
+        }
     }
     public void AnimationActivation()
     {
