@@ -103,7 +103,7 @@ public class QuestScript : MonoBehaviour
             case "ExMark":
                 ExclamationMarkCreate();
                 break;
-                default: break;
+                default: goto case "ExMark";
 
         }
 
