@@ -87,8 +87,7 @@ public class GardenControl : MonoBehaviour
                 Destroy(garden_crops[garden_num]);  //기존에 존재하던 작물(새싹)객체 삭제
                 garden_crops[garden_num] = Instantiate(Resources.Load<GameObject>("Prefabs/Crops/" + g_seed[garden_num] + "_crops"));
                 garden_crops[garden_num].transform.SetParent(garden_ground[garden_num].transform);
-                garden_crops[garden_num].transform.localPosition = new Vector3(0, 0, 0);
-                garden_crops[garden_num].transform.localScale = new Vector3(1, 1, 1); //작물 객체 위치 재설정
+                garden_crops[garden_num].transform.localPosition = new Vector3(0, 0, 0); //작물 객체 위치 재설정
                 //Debug.Log("작물 다 자라서 객체 변화");
             }
         }

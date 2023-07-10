@@ -30,8 +30,8 @@ public class AxeMove : MonoBehaviour
     public Slider AllowSlider;                          //겹친 시간을 표시하는 슬라이더
 
     public Text ScoreText;                              //점수 텍스트 오브젝트
-    public int Score = 0;                               //점수 텍스트 오브젝트
-    public int ScoreMax = 0;                            //점수 텍스트 오브젝트
+    public int Score = 0;                               //점수
+    public int ScoreMax = 0;                            //최대 점수 (클리어를 위한 최소 점수)
 
     public Animator Axe;                                 //도끼
     public Animator PlayerArmature;                      //통나무
@@ -46,12 +46,9 @@ public class AxeMove : MonoBehaviour
 
 
         Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform);
-        if (AxeUI.transform.localPosition.x + AllowArea >= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea <= LogUI.transform.localPosition.x)
+        while (AxeUI.transform.localPosition.x + AllowArea <= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea >= LogUI.transform.localPosition.x)
         {
-            Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform); if (AxeUI.transform.localPosition.x + AllowArea >= LogUI.transform.localPosition.x && AxeUI.transform.localPosition.x - AllowArea <= LogUI.transform.localPosition.x)
-            {
-                Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform);
-            }
+            Wood_Log_Separate_temp = Instantiate(Wood_Log_Separate, Wood_Log_Separate.transform);
         }
         LogInstiate();
     }
@@ -90,13 +87,17 @@ public class AxeMove : MonoBehaviour
         }
     }
 
-    public void LogInstiate()
+    public void LogInstiate()             //통나무 UI 생성
     {
         Logx = Random.Range(1200f, -1200f);
         LogUI.transform.localPosition = new Vector2 (Logx, LogUI.transform.localPosition.y);
+        if (Score >= ScoreMax)
+        {
+            LogUI.transform.localScale = new Vector3 (LogUI.transform.localScale.x * 0.8f, LogUI.transform.localScale.y, LogUI.transform.localScale.z);
+        }
     }
 
-    public void DifficultyWoodEasy()
+    public void DifficultyWoodEasy()     //난이도 설정
     {
         AllowSlider.maxValue = 2;
         ScoreMax = 3;
