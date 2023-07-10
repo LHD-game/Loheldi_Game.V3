@@ -67,7 +67,7 @@ public class WoodGameManager : MonoBehaviour
             GameStart = true;
             state = STATE.FAIL;
         }
-        if (state == STATE.IDLE && EventSystem.GetComponent<AxeMove>().Score >= EventSystem.GetComponent<AxeMove>().ScoreMax)   //일정 점수를 획득하면
+        if (state == STATE.IDLE && EventSystem.GetComponent<AxeMove>().Score >= EventSystem.GetComponent<AxeMove>().ScoreMax && nowTime <= 0)   //일정 점수를 획득하고, 시간이 0 이하이면
         {
             GameStart = true;
             state = STATE.CLEAR;
@@ -75,7 +75,11 @@ public class WoodGameManager : MonoBehaviour
         if (state == STATE.IDLE)
         {
             nowTime -= Time.deltaTime;                                  //현재 타이머에서 전 프레임이 지난 시간을 뺌
-            TimerText.text = string.Format("{0:N2}", nowTime);       //타이머 UI에 반영
+            TimerText.text = string.Format("{0:N2}", nowTime);          //타이머 UI에 반영
+            if (nowTime <= 0)
+            {
+                TimerText.text = "0";
+            }
         }
     }
 
