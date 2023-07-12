@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 9b419c1d29589bd4290989c4a1aa00c5
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 5118643533491855965
+    second: arm.L|Action.009
+  - first:
+      74: 3845567068800002652
+    second: arm.L|Action.010
+  - first:
+      74: 1970860425798035866
+    second: arm.L|Action.011
+  - first:
+      74: 2922742981405409414
+    second: arm.L|Action.012
+  - first:
+      74: -5276675456350348363
+    second: arm.R|Action.009
+  - first:
+      74: 8532074049629711121
+    second: arm.R|Action.010
+  - first:
+      74: -4552480140912841821
+    second: arm.R|Action.011
+  - first:
+      74: -8660156229356325556
+    second: arm.R|Action.012
+  - first:
+      74: -6848887421984353586
+    second: Body|Action.009
+  - first:
+      74: 95697012884019956
+    second: Body|Action.010
+  - first:
+      74: -8078475832949561371
+    second: Body|Action.011
+  - first:
+      74: -6921835248623583766
+    second: Body|Action.012
+  - first:
+      74: -2964690285992078518
+    second: T-shirt.L|Action.009
+  - first:
+      74: 2154516257437142241
+    second: T-shirt.L|Action.010
+  - first:
+      74: -2841194949691370784
+    second: T-shirt.L|Action.011
+  - first:
+      74: 3065395042902166607
+    second: T-shirt.L|Action.012
+  - first:
+      74: 6432370856567168847
+    second: T-shirt.L|jump.003
+  - first:
+      74: -6662007116792938988
+    second: T-shirt.R|Action.009
+  - first:
+      74: 755849956716503626
+    second: T-shirt.R|Action.010
+  - first:
+      74: -315012801181760480
+    second: T-shirt.R|Action.011
+  - first:
+      74: 326730010646271286
+    second: T-shirt.R|Action.012
+  - first:
+      74: -6051129716272431825
+    second: T-shirt|Action.009
+  - first:
+      74: 6650296897693488506
+    second: T-shirt|Action.010
+  - first:
+      74: 6440117424378546878
+    second: T-shirt|Action.011
+  - first:
+      74: 4763215300722130315
+    second: T-shirt|Action.012
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
