@@ -49,11 +49,7 @@ ExportedObj/
 #*.pidb.meta
 #*.pdb.meta
 #*.mdb.meta
-/Assets/Resources/Customize/Materials/Eyes.mat
-/Assets/Resources/Customize/Materials/Lower.mat
-/Assets/Resources/Customize/Materials/Shoes.mat
-/Assets/Resources/Customize/Materials/Skin.mat
-/Assets/Resources/Customize/Materials/Upper.mat
+
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -67,4 +63,8 @@ crashlytics-build.properties
 
 
 #player materials
-Assets/Resources/Customize/Materials/
+/Assets/Resources/Customize/Materials/
+/Loheldi_Project/Assets/Resources/Customize/Materials/Lower.mat
+/Loheldi_Project/Assets/Resources/Customize/Materials/Shoes.mat
+/Loheldi_Project/Assets/Resources/Customize/Materials/Skin.mat
+/Loheldi_Project/Assets/Resources/Customize/Materials/Upper.mat

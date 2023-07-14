@@ -142,7 +142,7 @@ public class BuyItem : MonoBehaviour
         }
     }
 
-    public void BuyItemBtn()
+        public void BuyItemBtn()
     {
         //Inventory 테이블 불러와서, 여기에 해당하는 아이템과 일치하는 코드가 있을 경우 개수를 1증가시켜서 업데이트
         
@@ -252,25 +252,73 @@ public class BuyItem : MonoBehaviour
         }
     }
 
-    public void BuyUpgradeBtn()
+    public void BuyUpgradeBtn(GameObject ItemnameObject)
     {
-        int new_house_lv = PlayerPrefs.GetInt("HouseLv");
-        new_house_lv++;
-        PlayerPrefs.SetInt("HouseLv", new_house_lv);
-        PlayInfoManager.GetCoin(-this_cost);
-
-        if (new_house_lv == 2)
+        string Itemname = ItemnameObject.GetComponent<Text>().text;
+        if (Itemname == "기본집" || Itemname == "알록달록집" || Itemname == "한옥" || Itemname == "통나무집")
         {
-            BadgeManager.GetBadge("B11");
-        }
-        else if( new_house_lv == 3)
-        {
-            BadgeManager.GetBadge("B12");
-        }
+            string Themename;
+            switch (Itemname)
+            {
 
+                case "기본집":
+                    Themename = "Plane";
+                    break;
+                case "알록달록집":
+                    Themename = "RRok";
+                    break;
+                case "한옥":
+                    Themename = "Hanok";
+                    break;
+                case "통나무집":
+                    Themename = "Wood";
+                    break;
+                default:
+                    Debug.Log("집 이름 다름");
+                    Themename = "Plane";
+                    break;
+            }
+
+            PlayInfoManager.GetCoin(-this_cost);
+            Param param = new Param();
+            param.Add("HouseShape", Themename);
+
+            var bro = Backend.GameData.Get("PLAY_INFO", new Where());
+            string rowIndate = bro.FlattenRows()[0]["inDate"].ToString();
+            //해당 row의 값을 update
+            var bro2 = Backend.GameData.UpdateV2("PLAY_INFO", rowIndate, Backend.UserInDate, param);
+
+            if (bro2.IsSuccess())
+            {
+                Debug.Log(Themename);
+                Debug.Log("SaveUserTheme 성공. PLAY_INFO 업데이트 되었습니다.");
+            }
+            else
+            {
+                Debug.Log("SaveUserTheme 실패.");
+            }
+
+        }
+        else
+        {
+            int new_house_lv = PlayerPrefs.GetInt("HouseLv");
+            new_house_lv++;
+            PlayerPrefs.SetInt("HouseLv", new_house_lv);
+            PlayInfoManager.GetCoin(-this_cost);
+
+            if (new_house_lv == 2)
+            {
+                BadgeManager.GetBadge("B11");
+            }
+            else if (new_house_lv == 3)
+            {
+                BadgeManager.GetBadge("B12");
+            }
+        }
         CancleUpgradeBtn();
         buy_suc_panel.SetActive(true);
         Gagu_Category.instance.ChkUpgrade();
+        GameObject.Find("SceneLoader").GetComponent<SceneLoader>().GotoWelcome();
     }
 
 
