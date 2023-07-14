@@ -49,6 +49,11 @@ ExportedObj/
 #*.pidb.meta
 #*.pdb.meta
 #*.mdb.meta
+/Assets/Resources/Customize/Materials/Eyes.mat
+/Assets/Resources/Customize/Materials/Lower.mat
+/Assets/Resources/Customize/Materials/Shoes.mat
+/Assets/Resources/Customize/Materials/Skin.mat
+/Assets/Resources/Customize/Materials/Upper.mat
 
 # Unity3D generated file on crash reports
 sysinfo.txt

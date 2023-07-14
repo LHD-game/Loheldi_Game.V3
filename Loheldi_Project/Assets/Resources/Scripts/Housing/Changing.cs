@@ -939,7 +939,7 @@ public class Changing : MonoBehaviour
             else if (ItemCode == "2040104")       //네번째 옵션을 선택했다면
             {
                 Destroy(KitchenPosition.transform.GetChild(0).gameObject);
-                TempObject = Instantiate(Resources.Load<GameObject>("Prefabs/Furniture/FurnitureSets/Kitchen_A"), KitchenPosition.transform);
+                TempObject = Instantiate(Resources.Load<GameObject>("Prefabs/Furniture/Kitchen/Kitchen_A"), KitchenPosition.transform);
                 TempObject.transform.SetParent(KitchenPosition.transform);
             }
             if (!Starting)
