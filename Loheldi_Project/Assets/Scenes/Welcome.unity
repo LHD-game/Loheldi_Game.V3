@@ -10829,6 +10829,7 @@ MonoBehaviour:
   himchan: {fileID: 8300000, guid: 64468ca1b0e526b438f878f814ae7b1f, type: 3}
   yeomi: {fileID: 8300000, guid: ceb21b08689e39448b74a176b27c7880, type: 3}
   yomi: {fileID: 8300000, guid: 62875d7df9814f34bbfa838f40be3148, type: 3}
+  walk: {fileID: 8300000, guid: cc0d893cba4593f4facc099f7aaafb2b, type: 3}
 --- !u!114 &1216886569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13567,6 +13568,7 @@ MonoBehaviour:
   himchan: {fileID: 8300000, guid: 64468ca1b0e526b438f878f814ae7b1f, type: 3}
   yeomi: {fileID: 8300000, guid: ceb21b08689e39448b74a176b27c7880, type: 3}
   yomi: {fileID: 8300000, guid: 62875d7df9814f34bbfa838f40be3148, type: 3}
+  walk: {fileID: 0}
 --- !u!4 &1693154529
 Transform:
   m_ObjectHideFlags: 0

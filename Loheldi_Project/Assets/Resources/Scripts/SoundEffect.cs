@@ -54,6 +54,7 @@ public class SoundEffect : MonoBehaviour
     public AudioClip himchan;
     public AudioClip yeomi;
     public AudioClip yomi;
+    public AudioClip walk;
 
     AudioSource audioSource;
 
@@ -248,6 +249,10 @@ public class SoundEffect : MonoBehaviour
             case "yomi":
                 audioSource.clip = yomi;
                 audioSource.volume = 2 * PlayerSett.SEValue;
+                break;
+            case "walk":
+                audioSource.clip = walk;
+                audioSource.volume = 5 * PlayerSett.SEValue;
                 break;
             default:
                 audioSource.clip = null;
