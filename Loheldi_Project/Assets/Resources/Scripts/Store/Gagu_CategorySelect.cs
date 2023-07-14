@@ -9,7 +9,7 @@ public class Gagu_CategorySelect : MonoBehaviour
     public GameObject ModernPanel;
     public GameObject KitschPanel;
     public GameObject ClassicPanel;
-    public GameObject WallPaperPanel;
+    public GameObject ThemePanel;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class Gagu_CategorySelect : MonoBehaviour
         ModernPanel.SetActive(false);
         KitschPanel.SetActive(false);
         ClassicPanel.SetActive(false);
-        WallPaperPanel.SetActive(false);
+        ThemePanel.SetActive(false);
         UpgradePanel.SetActive(false);
     }
 
@@ -32,7 +32,7 @@ public class Gagu_CategorySelect : MonoBehaviour
         ModernPanel.SetActive(false);
         KitschPanel.SetActive(false);
         ClassicPanel.SetActive(false);
-        WallPaperPanel.SetActive(false);
+        ThemePanel.SetActive(false);
         UpgradePanel.SetActive(false);
     }
 
@@ -42,7 +42,7 @@ public class Gagu_CategorySelect : MonoBehaviour
         ModernPanel.SetActive(true);
         KitschPanel.SetActive(false);
         ClassicPanel.SetActive(false);
-        WallPaperPanel.SetActive(false);
+        ThemePanel.SetActive(false);
         UpgradePanel.SetActive(false);
     }
 
@@ -52,7 +52,7 @@ public class Gagu_CategorySelect : MonoBehaviour
         ModernPanel.SetActive(false);
         KitschPanel.SetActive(true);
         ClassicPanel.SetActive(false);
-        WallPaperPanel.SetActive(false);
+        ThemePanel.SetActive(false);
         UpgradePanel.SetActive(false);
     }
 
@@ -62,17 +62,17 @@ public class Gagu_CategorySelect : MonoBehaviour
         ModernPanel.SetActive(false);
         KitschPanel.SetActive(false);
         ClassicPanel.SetActive(true);
-        WallPaperPanel.SetActive(false);
+        ThemePanel.SetActive(false);
         UpgradePanel.SetActive(false);
     }
 
-    public void PopWallPaper()
+    public void PopTheme()
     {
         WoodPanel.SetActive(false);
         ModernPanel.SetActive(false);
         KitschPanel.SetActive(false);
         ClassicPanel.SetActive(false);
-        WallPaperPanel.SetActive(true);
+        ThemePanel.SetActive(true);
         UpgradePanel.SetActive(false);
     }
 
@@ -82,7 +82,7 @@ public class Gagu_CategorySelect : MonoBehaviour
         ModernPanel.SetActive(false);
         KitschPanel.SetActive(false);
         ClassicPanel.SetActive(false);
-        WallPaperPanel.SetActive(false);
+        ThemePanel.SetActive(false);
         UpgradePanel.SetActive(true);
     }
 }

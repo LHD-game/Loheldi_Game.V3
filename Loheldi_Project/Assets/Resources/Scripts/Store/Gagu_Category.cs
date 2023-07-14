@@ -149,13 +149,14 @@ public class Gagu_Category : StoreCategoryControl
                 initItem(classicItem[c], data);
                 c++;
             }
-            else if (data.Category.Equals("wallpaper"))
+            /*else if (data.Category.Equals("wallpaper"))
             {
                 wallpaperItem.Add(new Dictionary<string, object>());
                 
                 initItem(wallpaperItem[wa], data);
                 wa++;
             }
+            */
         }
         all_gagu_cnt = w + m + k + c + wa;
     }
