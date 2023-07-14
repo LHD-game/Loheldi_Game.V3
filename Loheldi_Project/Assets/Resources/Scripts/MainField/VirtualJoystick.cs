@@ -22,8 +22,11 @@ public class VirtualJoystick : MonoBehaviour
 
     public int TempInt = 0;
 
+    SoundEffect soundEffect;
+
     void Start()
     {
+
         //레벨에 따른 속도 조절
         int my_lev = PlayerPrefs.GetInt("Level");
         if (my_lev >= 5)
@@ -56,6 +59,11 @@ public class VirtualJoystick : MonoBehaviour
         MoveFlag = false;
     }
 
+    void Awake()
+    {
+        soundEffect = GameObject.Find("SoundManager").GetComponent<SoundEffect>();
+    }
+
     void FixedUpdate()
     {
         if (MoveFlag)  //Player가 움직이고 있다면
@@ -81,6 +89,8 @@ public class VirtualJoystick : MonoBehaviour
                         PlayerAnimator.GetComponent<Animator>().speed = 1;
                         Playerrb.velocity = (Playerrb.velocity.normalized * speed2 * 3);  //최대 속도
                     }
+                    else
+                        //soundEffect.Sound("walk");
                 }
             }
         }

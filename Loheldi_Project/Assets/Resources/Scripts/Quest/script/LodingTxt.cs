@@ -226,7 +226,7 @@ public class LodingTxt : MonoBehaviour
                 DontDestroy.weekend = true;
             else
                 DontDestroy.weekend = false;*/
-            DontDestroy.ToDay = Int32.Parse(DateTime.Now.ToString("yyyyMMdd"));   //퀘스트용 오늘날짜 저장 */
+            DontDestroy.ToDay = Int32.Parse(DateTime.Now.ToString("yyyyMMdd"));   //퀘스트용 오늘날짜 저장 */ 
 
             if(DontDestroy.QuestIndex == "13_10")
             {
