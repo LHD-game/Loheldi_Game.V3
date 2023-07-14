@@ -139,14 +139,14 @@ public class FlieChoice : MonoBehaviour
                     chat.NPCButton += 2;
                 }
                 goto case "i";
-            case "Kangteagom":
+            /*case "Kangteagom":
 
                 if (SceneManager.GetActiveScene().name == "AcornVillage")
                     chat.Num = "24";
                 else
                     chat.Num = "23";
                 chat.NPCButton += 2;
-                goto case "i";
+                goto case "i";*/
             case "Bibim":
                 chat.Num = "25";
                 chat.NPCButton += 2;
@@ -173,6 +173,16 @@ public class FlieChoice : MonoBehaviour
             default:
                 Debug.Log("µðÆúÆ®");
                 break;
+
+            case "Jimi":
+                chat.Num = "23";
+                chat.NPCButton += 2;
+                goto case "i";
+
+            case "Jerry":
+                chat.Num = "24";
+                chat.NPCButton += 2;
+                goto case "i";
         }
 
     }
