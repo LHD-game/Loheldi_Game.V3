@@ -89,7 +89,7 @@ public class VirtualJoystick : MonoBehaviour
                         PlayerAnimator.GetComponent<Animator>().speed = 1;
                         Playerrb.velocity = (Playerrb.velocity.normalized * speed2 * 3);  //최대 속도
                     }
-                    else
+                    //else
                         //soundEffect.Sound("walk");
                 }
             }

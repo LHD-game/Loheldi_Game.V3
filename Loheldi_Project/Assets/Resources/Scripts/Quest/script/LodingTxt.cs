@@ -784,9 +784,7 @@ public class LodingTxt : MonoBehaviour
                 break;
             case "song":    //¿ô¾îºÁ ¼Û Æ²±â
                 {
-                    SoundManager SoundManager_ = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-                    SoundManager_.Sound("HaHasong");
-                    Invoke("scriptLine", 20f);   //µô·¹ÀÌ ÈÄ ½ºÅ©¸³Æ® ¶ç¿ò
+                    StartCoroutine(song());
                     break;
                 }
             case "songend":
@@ -1683,4 +1681,18 @@ public class LodingTxt : MonoBehaviour
         c++;
     }
 
+    IEnumerator song()
+    {
+        Debug.Log("song ½ÇÇà");
+        SoundManager SoundManager_ = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        SoundManager_.Sound("HaHasong");
+        cuttoonspriteR = cuttoon.GetComponent<Image>();
+        cuttoonspriteR.sprite = cuttoonImageList[0];
+        cuttoon.SetActive(true);
+        ChatWin.SetActive(false);
+        yield return new WaitForSeconds(20);
+        cuttoonspriteR.sprite = cuttoonImageList[1];
+        yield return new WaitForSeconds(15);
+        scriptLine();   //µô·¹ÀÌ ÈÄ ½ºÅ©¸³Æ® ¶ç¿ò
+    }
 }

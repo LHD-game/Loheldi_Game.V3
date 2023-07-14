@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoreBuyPanel: {fileID: 8900221212779909639, guid: 0e466210e00d8e14e8e6f246068189b8, type: 3}
+  MirrorInfoPanel: {fileID: 8900221212779909639, guid: 1e31557cc209f0442bc874f76b909db7, type: 3}
 --- !u!1 &893034735674047052
 GameObject:
   m_ObjectHideFlags: 0
