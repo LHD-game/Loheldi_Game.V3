@@ -10,12 +10,15 @@ public class BuyItem : MonoBehaviour
 {
     [SerializeField]
     private GameObject StoreBuyPanel;
+    [SerializeField]
+    private GameObject MirrorInfoPanel;
 
     static GameObject main_ui;
     static GameObject buy_suc_panel;
     static string iCode = "";
 
     static int this_cost = 0;
+    static int buycount = 0;
 
     public void PopBuyBtn()
     {
@@ -223,6 +226,8 @@ public class BuyItem : MonoBehaviour
             CancleClothesBtn();
             buy_suc_panel.SetActive(true);
             Clothes_Category.instance.PopClothesStore();
+            if (buycount == 0)
+                MInfoPanel();
         }
         else
         {
@@ -245,6 +250,8 @@ public class BuyItem : MonoBehaviour
             CancleCustomBtn();
             buy_suc_panel.SetActive(true);
             Custom_Category.instance.PopCustomStore();
+            if (buycount == 0)
+                MInfoPanel();
         }
         else
         {
@@ -341,5 +348,22 @@ public class BuyItem : MonoBehaviour
     {
         GameObject panel = main_ui.transform.Find("UpgradeBuyPanel(Clone)").gameObject;
         Destroy(panel);
+    }
+    public void CancleMInfoPanel()
+    {
+        GameObject panel = main_ui.transform.Find("MirrorInfoPanel(Clone)").gameObject;
+        Destroy(panel);
+    }
+
+    public void MInfoPanel()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        main_ui = canvas.transform.Find("mainUI").gameObject;
+        GameObject child = Instantiate(MirrorInfoPanel, main_ui.transform);
+
+        buy_suc_panel = canvas.transform.Find("StoreBuySucPanel").gameObject;
+
+        GameObject Asset_StorePopup = child.transform.Find("Asset_StorePopup").gameObject;
+        buycount++;
     }
 }
