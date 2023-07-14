@@ -1,83 +1,14 @@
 fileFormatVersion: 2
-guid: 6fd57b425fb1ccf4e989a3213da5a1f9
+guid: f93afbeda411d5349aa82ac9aad4fc24
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 5118643533491855965
-    second: arm.L|Action.009
+      74: 2600575247895873231
+    second: Armature_|Action.013
   - first:
-      74: 3845567068800002652
-    second: arm.L|Action.010
-  - first:
-      74: 1970860425798035866
-    second: arm.L|Action.011
-  - first:
-      74: 2922742981405409414
-    second: arm.L|Action.012
-  - first:
-      74: -5276675456350348363
-    second: arm.R|Action.009
-  - first:
-      74: 8532074049629711121
-    second: arm.R|Action.010
-  - first:
-      74: -4552480140912841821
-    second: arm.R|Action.011
-  - first:
-      74: -8660156229356325556
-    second: arm.R|Action.012
-  - first:
-      74: -6848887421984353586
-    second: Body|Action.009
-  - first:
-      74: 95697012884019956
-    second: Body|Action.010
-  - first:
-      74: -8078475832949561371
-    second: Body|Action.011
-  - first:
-      74: -6921835248623583766
-    second: Body|Action.012
-  - first:
-      74: -2964690285992078518
-    second: T-shirt.L|Action.009
-  - first:
-      74: 2154516257437142241
-    second: T-shirt.L|Action.010
-  - first:
-      74: -2841194949691370784
-    second: T-shirt.L|Action.011
-  - first:
-      74: 3065395042902166607
-    second: T-shirt.L|Action.012
-  - first:
-      74: 6432370856567168847
-    second: T-shirt.L|jump.003
-  - first:
-      74: -6662007116792938988
-    second: T-shirt.R|Action.009
-  - first:
-      74: 755849956716503626
-    second: T-shirt.R|Action.010
-  - first:
-      74: -315012801181760480
-    second: T-shirt.R|Action.011
-  - first:
-      74: 326730010646271286
-    second: T-shirt.R|Action.012
-  - first:
-      74: -6051129716272431825
-    second: T-shirt|Action.009
-  - first:
-      74: 6650296897693488506
-    second: T-shirt|Action.010
-  - first:
-      74: 6440117424378546878
-    second: T-shirt|Action.011
-  - first:
-      74: 4763215300722130315
-    second: T-shirt|Action.012
+      74: -5315433627765142413
+    second: Armature_|walk
   externalObjects: {}
   materials:
     materialImportMode: 2
