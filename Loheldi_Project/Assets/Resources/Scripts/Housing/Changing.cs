@@ -113,33 +113,23 @@ public class Changing : MonoBehaviour
             ButtonClick(TempItemCode);
         TempItemCode.text = PlayerPrefs.GetString("chair");
         if (TempItemCode.text != "")
-        {
             ButtonClick(TempItemCode);
-        }
         temp = 1;
         TempItemCode.text = PlayerPrefs.GetString("chair2");
         if (TempItemCode.text != "")
-        {
             ButtonClick(TempItemCode);
-        }
         temp = 2;
         TempItemCode.text = PlayerPrefs.GetString("chair3");
         if (TempItemCode.text != "")
-        {
             ButtonClick(TempItemCode);
-        }
         temp = 3;
         TempItemCode.text = PlayerPrefs.GetString("sunbed");
         if (TempItemCode.text != "")
-        {
             ButtonClick(TempItemCode);
-        }
         temp = 4;
         TempItemCode.text = PlayerPrefs.GetString("sunbed2");
         if (TempItemCode.text != "")
-        {
             ButtonClick(TempItemCode);
-        }
         temp = 0;
         TempItemCode.text = PlayerPrefs.GetString("kitchen");
         if (TempItemCode.text != "")
@@ -147,7 +137,7 @@ public class Changing : MonoBehaviour
         TempItemCode.text = PlayerPrefs.GetString("fridge");
         if (TempItemCode.text != "")
             ButtonClick(TempItemCode);
-        TempItemCode.text = PlayerPrefs.GetString("standingsink");
+        TempItemCode.text = PlayerPrefs.GetString("standsink");
         if (TempItemCode.text != "")
             ButtonClick(TempItemCode);
         TempItemCode.text = PlayerPrefs.GetString("sofa");
@@ -598,7 +588,7 @@ public class Changing : MonoBehaviour
             if (!Starting)
             {
                 Param param = new Param();
-                param.Add("standingsink", ItemCode);
+                param.Add("standsink", ItemCode);
 
                 //유저 현재 row 검색
                 var bro = Backend.GameData.Get("USER_HOUSE", new Where());
