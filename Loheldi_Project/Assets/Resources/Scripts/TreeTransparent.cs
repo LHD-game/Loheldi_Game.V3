@@ -23,7 +23,7 @@ public class TreeTransparent : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Debug.Log(MaterialChange);
+        //Debug.Log(MaterialChange);
         ray = MainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0f));
 
         if (Physics.Raycast(ray, out rayhit, MaxDistance))
