@@ -26,6 +26,8 @@ public class MainGameManager : MonoBehaviour
     GameObject BikeBtn;
     [SerializeField]
     GameObject NineOClockPanel;
+    [SerializeField]
+    GameObject ElevenOClockPanel; //임시조치 (태스트 후 게임 오브젝트 포함 삭제)
     QuestDontDestroy QDD;
 
     void Start()
@@ -50,7 +52,20 @@ public class MainGameManager : MonoBehaviour
             //Debug.Log(now.Hour);
             if ((now.Hour >= 21 || now.Hour < 6)&&(!QDD.NtoSControl))
             {
-                NineOClockPanel.SetActive(true);
+                //NineOClockPanel.SetActive(true);                              //아래 부분 삭제시 사용
+                Save_Basic.LoadAccInfo();                                       //┐특정 플레이어를 위한 부분 (태스트 완료시 삭제)
+                Debug.Log(PlayerPrefs.GetString("Nickname") != "박단아");
+                if (PlayerPrefs.GetString("Nickname") != "박단아")  
+                {
+                    NineOClockPanel.SetActive(true);
+                }
+                else
+                {
+                    if ((now.Hour >= 23 || now.Hour < 6) && (!QDD.NtoSControl))
+                    {
+                        ElevenOClockPanel.SetActive(true);
+                    }
+                }                                                               //┘여기까지
             }
             else
             {
