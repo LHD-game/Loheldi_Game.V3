@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.ProBuilder.MeshOperations;
 using System.Net.Sockets;
-using static UnityEditor.PlayerSettings.Switch;
+//using static UnityEditor.PlayerSettings.Switch;
 
 public class LodingTxt : MonoBehaviour
 {
