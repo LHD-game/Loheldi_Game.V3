@@ -19,7 +19,7 @@ public class UIButton : MonoBehaviour
     public GameObject Main_UI;
     public GameObject FarmUI;
     public GameObject chatBlock;
-
+    public GameObject LadderPanel;
 
     public Camera Camera1;
     public Camera Camera2;
@@ -165,12 +165,15 @@ public class UIButton : MonoBehaviour
     public bool Nstop = true;
     public Transform Ptransform=null;
     public Transform Ntransform=null;
+
     public IEnumerator Ladderup()
     {
         if (chat.bicycleRide.Ride)
             chat.bicycleRide.RideOn();
 
         Playerrb.constraints = RigidbodyConstraints.FreezePositionY| RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+
+        bool isLadder = false;
         while (isClick)
         {
             //Debug.Log("isCLick");
@@ -179,16 +182,23 @@ public class UIButton : MonoBehaviour
                 //Debug.Log("È¦µå Áß");
                 Player.transform.Translate(0, 0.1f, 0);
                 PA.SetBool("LadderUp", true);
-
+                isLadder = true;
                 yield return new WaitForSecondsRealtime(0.01f);
             }
             ClickTime += Time.deltaTime;
 
             yield return null;
         }
+        if (isLadder)
+            isLadder = false;
+        else
+             LadderPanel.SetActive(true);
         ClickTime = 0;
         PA.SetBool("LadderUp", false);
         Playerrb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ| RigidbodyConstraints.FreezeRotationY;
+        yield return new WaitForSeconds(0.5f);
+        LadderPanel.SetActive(false);
+
     }
     public IEnumerator Playerturn(Transform NPC)
     {

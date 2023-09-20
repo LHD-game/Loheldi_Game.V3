@@ -73,9 +73,9 @@ public class RunCountDown : MonoBehaviour
                 Light[1].GetComponent<MeshRenderer>().material = Light_material;
             //Num_1.SetActive(true);
             SoundManager.GetComponent<SoundEffect>().Sound("RunCountFinish");
-            SoundManager.GetComponent<RunGameManager>().NPC[1].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", true);
-            SoundManager.GetComponent<RunGameManager>().NPC[2].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", true);
-            SoundManager.GetComponent<RunGameManager>().NPC[3].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", true);
+            SoundManager.GetComponent<RunGameManager>().NPC[1].GetComponent<RunNPC>().Animator.SetBool("run", true);
+            SoundManager.GetComponent<RunGameManager>().NPC[2].GetComponent<RunNPC>().Animator.SetBool("run", true);
+            SoundManager.GetComponent<RunGameManager>().NPC[3].GetComponent<RunNPC>().Animator.SetBool("run", true);
         }
         else if(timer == -1)
         {

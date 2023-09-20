@@ -28,7 +28,7 @@ public class RealClock : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainField")
             Quest = GameObject.Find("EventSystem").GetComponent<QuestScript>();
         GetCurrentDate();               //시간 불러오는 함수
-        TimeSetting(Time);
+        TimeSetting(15);  //Time
         PreTime = Time;                 //변경 함수 초기화
 
         StartCoroutine(TimeCheckCorutine()); //시간 검사하는 메소드 (코루틴으로 1분마다 반복)

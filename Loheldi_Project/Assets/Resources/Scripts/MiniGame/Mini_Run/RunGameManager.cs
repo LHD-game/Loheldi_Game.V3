@@ -74,9 +74,9 @@ public class RunGameManager : MonoBehaviour
                 RunBtnPanel.SetActive(false);
                 GameOverPanel.SetActive(true);
 
-                NPC[1].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", false);
-                NPC[2].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", false);
-                NPC[3].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", false);
+                NPC[1].GetComponent<RunNPC>().Animator.SetBool("run", false);
+                NPC[2].GetComponent<RunNPC>().Animator.SetBool("run", false);
+                NPC[3].GetComponent<RunNPC>().Animator.SetBool("run", false);
 
                 if (!FinishSound)
                 {
@@ -93,9 +93,9 @@ public class RunGameManager : MonoBehaviour
                 RunBtnPanel.SetActive(false);
                 GameOverPanel.SetActive(true);
 
-                NPC[1].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", false);
-                NPC[2].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", false);
-                NPC[3].GetComponent<RunNPC>().Animator.SetBool("NPCRunBool", false);
+                NPC[1].GetComponent<RunNPC>().Animator.SetBool("run", false);
+                NPC[2].GetComponent<RunNPC>().Animator.SetBool("run", false);
+                NPC[3].GetComponent<RunNPC>().Animator.SetBool("run", false);
 
                 if (!FinishSound)
                 {
