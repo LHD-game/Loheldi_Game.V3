@@ -63,6 +63,10 @@ public class Interaction : MonoBehaviour
             {
                 text.text = "미니게임";
             }
+            else if (other.gameObject.name == "InfoSign")
+            {
+                text.text = "사다리 설명";
+            }
             else
             {
                 ThankTree = false;

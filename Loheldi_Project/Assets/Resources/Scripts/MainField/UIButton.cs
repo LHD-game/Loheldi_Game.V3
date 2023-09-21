@@ -65,7 +65,7 @@ public class UIButton : MonoBehaviour
             Vector3 targetPositionNPC;
             NPC = GameObject.Find(Inter.NameNPC).transform;
             targetPositionNPC = new Vector3(Player.transform.position.x, NPC.position.y, Player.transform.position.z);
-            if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine")|| Inter.NameNPC.Equals("InfoSign")  )
+            if (Inter.NameNPC.Equals("WallMirror") || Inter.NameNPC.Equals("GachaMachine") || Inter.NameNPC.Equals("InfoSign"))
             { stopCorou(); }
             else if (chat.DontDestroy.QuestIndex.Equals("9_1") && Inter.NameNPC.Equals("Mei"))  //Äù½ºÆ® ¼öÁ¤
             { stopCorou(); }
