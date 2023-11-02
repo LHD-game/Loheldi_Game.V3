@@ -2949,6 +2949,7 @@ MonoBehaviour:
   himchan: {fileID: 0}
   yeomi: {fileID: 0}
   yomi: {fileID: 0}
+  walk: {fileID: 0}
 --- !u!1 &526308376
 GameObject:
   m_ObjectHideFlags: 0
@@ -7127,6 +7128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1715235348}
     m_Modifications:
+    - target: {fileID: 3324796861714182887, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_Text
+      value: Game Start
+      objectReference: {fileID: 0}
     - target: {fileID: 3348349259548654465, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Text
       value: "\uC591\uCE58\uD558\uAE30"
@@ -7286,6 +7291,10 @@ PrefabInstance:
     - target: {fileID: 3348349260204227198, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538922263048598271, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_Text
+      value: Game rules
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
