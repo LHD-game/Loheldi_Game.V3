@@ -277,7 +277,7 @@ public class Drawing : MonoBehaviour
                     ValueLength = 0;
                     j++;
                     RectTransform.transform.localScale = new Vector2(4f, 3f);
-                    gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    gameObject.transform.GetChild(2).gameObject.SetActive(false);
                     gameObject.tag = "DestroyCard";
                     
                     if (ValueLevel == 1)
@@ -359,13 +359,13 @@ public class Drawing : MonoBehaviour
             if (ValueLength < MaxValueLength)
             {
                 click.gameObject.tag = "SaveCard";
-                click.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                click.gameObject.transform.GetChild(2).gameObject.SetActive(true);
                 ValueLength++;
             }
         }
         else
         {
-            click.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            click.gameObject.transform.GetChild(2).gameObject.SetActive(false);
             click.gameObject.tag = "DestroyCard";
             ValueLength--;
         }
