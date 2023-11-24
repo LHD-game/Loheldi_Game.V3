@@ -771,7 +771,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Brushing one's teeth
+  m_Text: Brushing teeth
 --- !u!222 &804269646
 CanvasRenderer:
   m_ObjectHideFlags: 0
