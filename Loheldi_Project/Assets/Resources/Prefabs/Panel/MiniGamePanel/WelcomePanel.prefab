@@ -967,9 +967,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game Start
-
-'
+  m_Text: Game Start
 --- !u!1 &8029055534252075411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,9 +1046,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game rules
-
-'
+  m_Text: Help
 --- !u!1 &8406095508001551178
 GameObject:
   m_ObjectHideFlags: 0
