@@ -1922,7 +1922,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5226829351895454098, guid: bff58d340eabe44488569ef227b388bd, type: 3}
       propertyPath: m_Text
-      value: Head
+      value: Hair
       objectReference: {fileID: 0}
     - target: {fileID: 5226829351895454099, guid: bff58d340eabe44488569ef227b388bd, type: 3}
       propertyPath: m_Pivot.x
@@ -3078,7 +3078,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A hair salon
+  m_Text: Hair salon
 --- !u!222 &1197433274
 CanvasRenderer:
   m_ObjectHideFlags: 0
