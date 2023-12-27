@@ -2586,7 +2586,19 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5146687596870138750, guid: edbc415bce23a6a4d9d49370b890bf35, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655782109261094123, guid: edbc415bce23a6a4d9d49370b890bf35, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6809692104668245176, guid: edbc415bce23a6a4d9d49370b890bf35, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016604694329246559, guid: edbc415bce23a6a4d9d49370b890bf35, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
@@ -3700,89 +3712,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526614392}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &527009390
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 527009391}
-  - component: {fileID: 527009393}
-  - component: {fileID: 527009392}
-  m_Layer: 5
-  m_Name: Howtogame_E
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &527009391
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527009390}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1930546655}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &527009392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527009390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 19cd694d7f37a50479adcebb27355d2c, type: 3}
-    m_FontSize: 50
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 80
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "Brush your teeth clean! Selecting the difficulty level will start the
-    game. \nPlease touch the teeth that turned black within the time limit to make
-    them clean! \nIf you have more than 13 black teeth, game over!\n\n<How to play>\r\nIf
-    you touch your black teeth several times, \nthe character brushes hard! Be careful
-    not to have too many black teeth~"
---- !u!222 &527009393
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527009390}
-  m_CullTransparentMesh: 1
 --- !u!1 &537111294
 GameObject:
   m_ObjectHideFlags: 0
@@ -5765,7 +5694,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal_K
       objectReference: {fileID: 0}
+    - target: {fileID: 745835790477045616, guid: 492783c0d8b4e1948a9a57126dd49b5f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1847499403815650981, guid: 492783c0d8b4e1948a9a57126dd49b5f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174302905248546082, guid: 492783c0d8b4e1948a9a57126dd49b5f, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
@@ -8104,7 +8041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 389751530934512409, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1924799509297052332, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Name
@@ -8293,6 +8230,10 @@ PrefabInstance:
     - target: {fileID: 3756161814811203885, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Name
       value: Start_E
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715881998063089660, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1445
       objectReference: {fileID: 0}
     - target: {fileID: 5538922263048598271, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Text
@@ -8835,85 +8776,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9ce1553e8521f6449c5a506c1846f47, type: 3}
---- !u!1 &1294562288
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1294562289}
-  - component: {fileID: 1294562291}
-  - component: {fileID: 1294562290}
-  m_Layer: 5
-  m_Name: Howto_E
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1294562289
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294562288}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1930546653}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 180}
-  m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1294562290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294562288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: e6b4cea3ee8367f47822a5daf0051356, type: 3}
-    m_FontSize: 70
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 7
-    m_MaxSize: 70
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Rules
---- !u!222 &1294562291
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294562288}
-  m_CullTransparentMesh: 1
 --- !u!1 &1308210405
 GameObject:
   m_ObjectHideFlags: 0
@@ -10357,94 +10219,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -125487420747130336, guid: 81cdea665ba496a42b75c2be4c8429f0, type: 3}
---- !u!1 &1586560464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1586560465}
-  - component: {fileID: 1586560467}
-  - component: {fileID: 1586560466}
-  m_Layer: 5
-  m_Name: Howtogame_K
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1586560465
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586560464}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1930546655}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1586560466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586560464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 19cd694d7f37a50479adcebb27355d2c, type: 3}
-    m_FontSize: 50
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 80
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uCE58\uCE74\uCE58\uCE74~\uAE68\uB057\uD558\uAC8C \uC774\uBE68\uC744 \uB2E6\uC544\uBCF4\uC544\uC694!
-    \uB09C\uC774\uB3C4\uB97C \uC120\uD0DD\uD558\uBA74 \uAC8C\uC784\uC774 \uC2DC\uC791\uB429\uB2C8\uB2E4.
-    \n\uC81C\uD55C\uC2DC\uAC04 \uB0B4\uC5D0 \uAC80\uC740\uC0C9\uC73C\uB85C \uBCC0\uD55C
-    \uC774\uBE68\uB4E4\uC744 \uC5F4\uC2EC\uD788 \uD130\uCE58\uD574 \uC774\uBE68\uC744
-    \uAE68\uB057\uD558\uAC8C \uB9CC\uB4E4\uC5B4\uC8FC\uC138\uC694! \n\uAC80\uC740\uC0C9
-    \uC774\uBE68\uC774 13\uAC1C\uBCF4\uB2E4 \uB9CE\uC544\uC9C0\uBA74 \uAC8C\uC784
-    \uC624\uBC84!\n\n<\uC870\uC791\uBC95>\n\uAC80\uC740\uC0C9 \uC774\uBE68\uC744
-    \uC5EC\uB7EC\uBC88 \uD130\uCE58\uD558\uBA74 \uCE90\uB9AD\uD130\uAC00 \uC5F4\uC2EC\uD788
-    \uCE6B\uC194\uC9C8\uC744 \uD574\uC694! \n\uAC80\uC740\uC0C9 \uC774\uBE68\uC774
-    \uB9CE\uC774 \uC0DD\uAE30\uC9C0 \uC54A\uB3C4\uB85D \uC8FC\uC758\uD558\uC138\uC694~"
---- !u!222 &1586560467
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586560464}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1594966867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11208,8 +10982,8 @@ MonoBehaviour:
   - {fileID: 445239355}
   - {fileID: 504936762}
   - {fileID: 193571333}
-  - {fileID: 527009390}
-  - {fileID: 1294562288}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 245922754}
   tranbool: 0
 --- !u!1 &1742695956
@@ -13044,7 +12818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366000895293585524, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 366000895293585525, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_Pivot.x
@@ -13155,9 +12929,50 @@ PrefabInstance:
         \uC5F4\uC2EC\uD788 \uCE6B\uC194\uC9C8\uC744 \uD574\uC694! \r\n\uAC80\uC740\uC0C9
         \uC774\uBE68\uC774 \uB9CE\uC774 \uC0DD\uAE30\uC9C0 \uC54A\uB3C4\uB85D \uC8FC\uC758\uD558\uC138\uC694~\r\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 3029784361644637761, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445010024838325518, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5305425657239762016, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_Name
       value: Howto_K
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628848496525446143, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_Text
+      value: "\uCE58\uCE74\uCE58\uCE74~\uAE68\uB057\uD558\uAC8C \uC774\uBE68\uC744
+        \uB2E6\uC544\uBCF4\uC544\uC694! \n\uB09C\uC774\uB3C4\uB97C \uC120\uD0DD\uD558\uBA74
+        \uAC8C\uC784\uC774 \uC2DC\uC791\uB429\uB2C8\uB2E4. \n\uC81C\uD55C\uC2DC\uAC04
+        \uB0B4\uC5D0 \uAC80\uC740\uC0C9\uC73C\uB85C \uBCC0\uD55C \uC774\uBE68\uB4E4\uC744
+        \uC5F4\uC2EC\uD788 \uD130\uCE58\uD574 \uC774\uBE68\uC744 \uAE68\uB057\uD558\uAC8C
+        \uB9CC\uB4E4\uC5B4\uC8FC\uC138\uC694! \n\uAC80\uC740\uC0C9 \uC774\uBE68\uC774
+        13\uAC1C\uBCF4\uB2E4 \uB9CE\uC544\uC9C0\uBA74 \uAC8C\uC784 \uC624\uBC84!\n\n<\uC870\uC791\uBC95>\n\uAC80\uC740\uC0C9
+        \uC774\uBE68\uC744 \uC5EC\uB7EC\uBC88 \uD130\uCE58\uD558\uBA74 \uCE90\uB9AD\uD130\uAC00
+        \uC5F4\uC2EC\uD788 \uCE6B\uC194\uC9C8\uC744 \uD574\uC694! \n\uAC80\uC740\uC0C9
+        \uC774\uBE68\uC774 \uB9CE\uC774 \uC0DD\uAE30\uC9C0 \uC54A\uB3C4\uB85D \uC8FC\uC758\uD558\uC138\uC694~"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7242234166923877061, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889876680840994115, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904136007216955527, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_Text
+      value: "Brush your teeth clean! \nSelecting the difficulty level will start
+        the game. \nPlease touch the teeth that turned black within the time limit
+        to make them clean! \nIf you have more than 13 black teeth, game over!\n\n<How
+        to play>\nIf you touch your black teeth several times, \nthe character brushes
+        hard! Be careful not to have too many black teeth~"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219932118536173039, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
@@ -13177,19 +12992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a769fc5522619b9439949665d875642b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1930546653 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 366000895434293796, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
-  m_PrefabInstance: {fileID: 1930546650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1930546654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5305425657239762016, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
-  m_PrefabInstance: {fileID: 1930546650}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1930546655 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5776067928197009438, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
   m_PrefabInstance: {fileID: 1930546650}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1946966394

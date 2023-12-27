@@ -2547,6 +2547,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4784843464330836908}
     m_Modifications:
+    - target: {fileID: 389751530934512409, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_Text
+      value: Firewood chopping
+      objectReference: {fileID: 0}
+    - target: {fileID: 389751530934512409, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924799509297052332, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_Name
+      value: Tittle_E
+      objectReference: {fileID: 0}
     - target: {fileID: 3348349259548654464, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.5
@@ -2554,6 +2566,10 @@ PrefabInstance:
     - target: {fileID: 3348349259548654465, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Text
       value: "\uC7A5\uC791\uD328\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348349259548654471, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_Name
+      value: Tittle_K
       objectReference: {fileID: 0}
     - target: {fileID: 3348349259697357432, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_Sprite
@@ -2740,12 +2756,20 @@ PrefabInstance:
       value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 4715881998063089660, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1800
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715881998063089660, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4715881998063089660, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 160.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406095508001551178, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
+      propertyPath: m_Name
+      value: Tittle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
@@ -3322,7 +3346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366000895293585524, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 366000895293585525, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_Pivot.x
@@ -3408,6 +3432,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 366000895434293795, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 366000895434293796, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1992.1094
@@ -3437,12 +3465,29 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6628848496525446143, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_Text
+      value: "<\uC870\uC791\uBC95>\n\uD578\uB4DC\uD3F0\uC744 \uAE30\uC6B8\uC5EC \uB098\uBB34\uC640
+        \uB3C4\uB07C\uB97C \uACB9\uCCD0\uC9C0\uAC8C \uD558\uBA74 \uB3C4\uB07C \uBC11
+        \uAC8C\uC774\uC9C0\uAC00 \uCC28\uC624\uB974\uACE0,\n \uAC8C\uC774\uC9C0\uAC00
+        \uB2E4 \uCC28\uBA74 \uCE90\uB9AD\uD130\uAC00 \uC7A5\uC791\uC744  \uD339\uB2C8\uB2E4"
+      objectReference: {fileID: 0}
     - target: {fileID: 7066466640429476004, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_Text
       value: "Let\u2019s chop down the firewood needed by the residents of Acorn
         Village!\n\n<How to play>\n- If you tilt your cell phone to overlap the tree
         and the ax, \nthe gauge under the ax rises.  \n- The gauge is full, the character
         cuts firewood."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977624930360707066, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904136007216955527, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
+      propertyPath: m_Text
+      value: "<How to play>\nIf you tilt your cell phone to overlap the tree and
+        the ax, \nthe gauge under the ax rises and when the gauge is full, \nthe
+        character cuts firewood."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
