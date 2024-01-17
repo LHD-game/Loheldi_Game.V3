@@ -191,7 +191,10 @@ public class Drawing : MonoBehaviour
 
     public void FinishWrite()
     {
-        Ntext.text = "쪽지를 클릭해 쓰레기통에 버리세요";
+        if (!itrans.tranbool)
+            Ntext.text = "쪽지를 클릭해 쓰레기통에 버리세요";
+        else
+            Ntext.text = "Click the note and throw it in the trash";
         for (int i = 0; i < notes.Length; i++)
         {
             Destroy(notes[i].GetComponent<InputField>());
@@ -276,7 +279,7 @@ public class Drawing : MonoBehaviour
                 {
                     ValueLength = 0;
                     j++;
-                    RectTransform.transform.localScale = new Vector2(4f, 3f);
+                    //RectTransform.transform.localScale = new Vector2(4f, 3f);
                     gameObject.transform.GetChild(2).gameObject.SetActive(false);
                     gameObject.tag = "DestroyCard";
                     
