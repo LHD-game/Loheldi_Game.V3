@@ -3,7 +3,14 @@ guid: a13d872f66a5111499e38a8bc1900f3f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - WelcomePanel: {instanceID: 0}
+  - GameOverPanel: {instanceID: 0}
+  - PausePanel: {fileID: 3519665674670071860, guid: edbc415bce23a6a4d9d49370b890bf35, type: 3}
+  - ResultTxt: {instanceID: 0}
+  - ResultCoinTxt: {instanceID: 0}
+  - ResultExpTxt: {instanceID: 0}
+  - stageTxt: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -21,11 +21,13 @@ public class Drawing : MonoBehaviour
     int layerMask;
     private bool Erase = false;
     public bool Draw = false;
+    
 
     [SerializeField]
     private Animator DrawPen;
     int i=0;  //메테리얼 번호
     private LodingTxt chat;
+    Trans trans;
     void Start()
     {
         chat = GameObject.Find("chatManager").GetComponent<LodingTxt>();
@@ -191,7 +193,7 @@ public class Drawing : MonoBehaviour
 
     public void FinishWrite()
     {
-        if (!itrans.tranbool)
+        if (!trans.tranbool)
             Ntext.text = "쪽지를 클릭해 쓰레기통에 버리세요";
         else
             Ntext.text = "Click the note and throw it in the trash";
