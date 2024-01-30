@@ -21,41 +21,22 @@ public class SubQuest : MonoBehaviour
     private ParticleSystem HeartFx;
 
 
-    /*public void TimeCheck()
-    {
-        var bro = Backend.GameData.GetMyData("USER_SUBQUEST", new Where());
+    [SerializeField]
+    Trans trans;
 
-        if (bro.IsSuccess() == false)
-        {
-            Debug.Log("요청 실패");
-            return;
-        }
-        int time = 0;
-        if (bro.GetReturnValuetoJSON()["rows"].Count <= 0)
-        {
-            Param param = new Param();  // 새 객체 생성
-
-            param.Add("LastThankTreeTime", time);    //객체에 값 추가
-
-            Backend.GameData.Insert("USER_SUBQUEST", param);   //객체를 서버에 업로드
-        }
-        else
-        {
-            var json = bro.GetReturnValuetoJSON();
-            var json_data = json["rows"][0];
-            ParsingJSON pj = new ParsingJSON();
-            MySubQuest data = pj.ParseBackendData<MySubQuest>(json_data);
-            time = data.LastThankTreeTime;
-        }
-        
-
-    }*/
     public void AppleTreeQ()
     {
         if(AppleTreeTxt.text.Length<10)
         {
-            ErrorWin.SetActive(true);
-            ErrorWinTxt.text = "감사했던 일을 조금만 더 자세히 적어봐요! \n <10글자 이상 적어주세요>";
+            ErrorWin.SetActive(true); 
+            if (trans.tranbool)
+            {
+                ErrorWinTxt.text = "감사했던 일을 조금만 더 자세히 적어봐요! \n <10글자 이상 적어주세요>";
+            }
+            else
+            {
+                ErrorWinTxt.text = "Write down what you were thankful for in more detail! \n <Please write at least 10 letters>";
+            }
         }
         else
         {

@@ -13,6 +13,10 @@ public class AccNariAdvice : MonoBehaviour
     Image nari_background;
     int script_num = 0;
     public static int print_line = 0;
+
+    [SerializeField]
+    private Trans trans;
+
     List<Dictionary<string, object>> nari_script = new List<Dictionary<string, object>>();
     // Start is called before the first frame update
     void Start()
@@ -24,7 +28,10 @@ public class AccNariAdvice : MonoBehaviour
 
     void GetScript()
     {
-        nari_script = CSVReader.Read("DB/AccNariAdviceDB");
+        if (!trans.tranbool)
+            nari_script = CSVReader.Read("DB/AccNariAdviceDB_K");
+        else
+            nari_script = CSVReader.Read("DB/AccNariAdviceDB_E");
         script_num = (int)nari_script[0]["Num"];
     }
 
@@ -67,7 +74,7 @@ public class AccNariAdvice : MonoBehaviour
                 string txt = nari_script[print_line]["Text"].ToString();
                 string txt2 = txt.Replace("n", "\n");
                 string txt3 = txt2.Replace("<이름>", NewAccSave.uNickName);
-                string result = txt3.Replace("<생년월일>", NewAccSave.uBirth.ToString("yyyy년 M월 d일"));
+                string result = txt3.Replace("<생년월일>", NewAccSave.uBirth.ToString("yyyy.M.d"));
                 TextBox.text = result;
 
                 print_line++;

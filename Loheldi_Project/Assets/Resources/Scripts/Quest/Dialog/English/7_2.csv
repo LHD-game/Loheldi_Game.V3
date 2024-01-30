@@ -1,0 +1,7 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+7_2,quiz,Hami,Quiz time! What food has a lot of carbohydrates?,,,,,,2,3,,,6,Null,,
+7_2,choice,Hami,Ding-dong-dang! Correct answer!,Chicken,Red Bean Bun,Cucumber Salad,Seaweed Soup,Jelly,,3,,,,Null,,
+7_2,quiz,Hami,Quiz time! What food has a lot of protein?,,,,,,4,3,,,7,Null,,
+7_2,choice,Hami,Ding-dong-dang! Correct answer!,Rice,Rice Cake Skewer,Spinach Salad,Braised Short Ribs,Chocolate,,3,,,,Null,,
+7_2,nomal,Hami,Let's learn about another nutrient next time.,,,,,,,3,,,,Null,,
+7_2,ReloadEnd,end,end,,,,,,,3,,,,Null,,

@@ -8,7 +8,7 @@ public class LoadingSceneManager : MonoBehaviour
 {
     public static string nextScene;
     [SerializeField] Slider progressBar;
-
+    [SerializeField] Trans trans;
     public Text LoadingText;
     public static Text tiptext;
 
@@ -23,7 +23,48 @@ public class LoadingSceneManager : MonoBehaviour
     {
         StartCoroutine(_typing());
         tiptext = GameObject.Find("Text").GetComponent<Text>();
-        int tipnum = Random.Range(0, 4);
+        int tipnum = Random.Range(0, 6);
+        if (trans.tranbool)
+            EngLoading(tipnum);
+        else
+            KrLoading(tipnum);
+        int imagenum = Random.Range(0, 4);
+        StartCoroutine(LoadScene());
+        LoadingImage.sprite = LoadingImages[imagenum];
+    }
+
+    private void EngLoading(int tipnum)
+    {
+        switch (tipnum)
+        {
+            case 0:
+                tiptext.text = "In the small garden on the left side of the house, you can plant and harvest seeds.";
+                break;
+            case 1:
+                tiptext.text = "You can earn coins and experience points through mini games.";
+                break;
+            case 2:
+                tiptext.text = "You can perform a new main quest every day. Get rich rewards.";
+                break;
+            case 3:
+                tiptext.text = "Did you save a lot of coins? Try the claw machine in front of the supermarket.";
+                break;
+            case 4:
+                tiptext.text = "I'm getting the data I need for the game, so please wait.";
+                break;
+            case 5:
+                tiptext.text = "Quests are divided into weekday quests and weekend quests.";
+                break;
+            case 6:
+                tiptext.text = "On Saturdays, quests are not conducted to allow the residents to rest.";
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void KrLoading(int tipnum)
+    {
         switch (tipnum)
         {
             case 0:
@@ -41,29 +82,15 @@ public class LoadingSceneManager : MonoBehaviour
             case 4:
                 tiptext.text = "게임에 필요한 데이터를 가져오고 있으니 잠시만 기다려 주세요.";
                 break;
+            case 5:
+                tiptext.text = "퀘스트는 평일 퀘스트와 주말 퀘스트가 구분되어 있습니다.";
+                break;
+            case 6:
+                tiptext.text = "토요일에는 주민들의 휴식을 위해 퀘스트 진행이 되지 않습니다.";
+                break;
             default:
                 break;
         }
-        int imagenum = Random.Range(0, 4);
-        StartCoroutine(LoadScene());
-        LoadingImage.sprite = LoadingImages[imagenum];
-        /*switch (imagenum)
-        {
-            case 0:
-                LoadingImage.sprite = LoadingImages[imagenum];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading1");
-                break;
-            case 1:
-                LoadingImage.sprite = LoadingImages[1];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading2");
-                break;
-            case 2:
-                LoadingImage.sprite = LoadingImages[2];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading3");
-                break;
-            case 3:
-                LoadingImage.sprite = LoadingImages[3];//Resources.Load<Sprite>("Resources/Sprites/lodingWindow/Loading4");
-                break;
-            default:
-                break;
-        }*/
     }
 
     public static void LoadScene(string sceneName)

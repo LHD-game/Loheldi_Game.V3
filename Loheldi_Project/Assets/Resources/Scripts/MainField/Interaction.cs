@@ -31,6 +31,8 @@ public class Interaction : MonoBehaviour
 
     private ChangeMode change;
 
+    [SerializeField] Trans trans;
+
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "Housing")
@@ -41,36 +43,53 @@ public class Interaction : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)             //다른 콜리더와 부딛혔을때
     {
+        BollFalse();
         if (other.gameObject.tag == "NPC")          //콜리더의 Tag가 NPC라면
         {
-            Door = false;
-            Farm = false;
             if (other.gameObject.name == "WallMirror")
             {
-                text.text = "거울";
+                if (!trans.tranbool)
+                    text.text = "거울";
+                else
+                    text.text = "Mirror";
             }
             else if (other.gameObject.name == "GachaMachine")
             {
                 Gacha = true;
-                text.text = "뽑기";
+                if (!trans.tranbool)
+                    text.text = "뽑기";
+                else
+                    text.text = "Gacha";
             }
             else if (other.gameObject.name == "ThankApplesTree")
             {
                 ThankTree = true;
-                text.text = "감사나무";
+                if (!trans.tranbool)
+                    text.text = "감사나무";
+                else
+                    text.text = "Tankree";
             }
             else if (other.gameObject.name == "Bibim" || other.gameObject.name == "Fruit" || other.gameObject.name == "Wood")
             {
-                text.text = "미니게임";
+                if (!trans.tranbool)
+                    text.text = "미니게임";
+                else
+                    text.text = "MiniGame";
             }
             else if (other.gameObject.name == "InfoSign")
             {
-                text.text = "사다리 설명";
+                if (!trans.tranbool)
+                    text.text = "정보";
+                else
+                    text.text = "Info";
             }
             else
             {
                 ThankTree = false;
-                text.text = "대화";
+                if (!trans.tranbool)
+                    text.text = "대화";
+                else
+                    text.text = "Talk";
             }
             NearNPC = true;
             NameNPC = other.gameObject.name.ToString();
@@ -84,30 +103,49 @@ public class Interaction : MonoBehaviour
         }
         else if (other.gameObject.name == "InDoor")          //콜리더의 Tag가 InDoor라면
         {
-            ThankTree = false;
-            Door = true;
-            text.text = "들어가기";
+            Door = true; 
+            if (!trans.tranbool)
+                text.text = "들어가기";
+            else
+                text.text = "in";
             NameNPC = other.gameObject.name.ToString();
         }
         else if (other.gameObject.name == "ExitDoor")
         {
             JumpButton.SetActive(true);
             Door = true;
-            text.text = "나가기";
+            if (!trans.tranbool)
+                text.text = "나가기";
+            else
+                text.text = "Out";
             NameNPC = other.gameObject.name.ToString();
         }
         else if (other.gameObject.name == "Field")
         {
-            NearNPC = false;
-            ThankTree = false;
             Farm = true;
-            text.text = "농장";
+            if (!trans.tranbool)
+                text.text = "농장";
+            else
+                text.text = "Farm";
         }
         else if(other.gameObject.tag == "Ladder")
         {
-            text.text = "오르기";
+            
             Ladder = true;
+            if (!trans.tranbool)
+                text.text = "오르기";
+            else
+                text.text = "Up";
         }
+    }
+    void BollFalse()
+    {
+        Door = false;
+        Gacha = false;
+        Farm = false;
+        ThankTree = false;
+        NearNPC = false;
+        Ladder = false;
     }
 
     void OnTriggerExit(Collider other)              //다른 콜리더와 떨어졌을때
@@ -142,13 +180,11 @@ public class Interaction : MonoBehaviour
             {
                 NpcNameTF = false;
             }
-            Door = false;
-            Gacha = false;
-            Farm = false;
-            ThankTree = false;
-            NearNPC = false;
-            Ladder = false;
-            text.text = "점프";
+
+            BollFalse();
+            if (!trans.tranbool)
+                text.text = "점프";
+            else text.text = "Jump";
             NameNPC = " ";
         }
         
@@ -164,15 +200,4 @@ public class Interaction : MonoBehaviour
             //StartCoroutine(NpcNameFollow(other, NpcNum));
         }
     }
-    /*IEnumerator NpcNameFollow(GameObject Npc, int NpcNum)
-    {
-        GameObject NPCName_ = NpcNames[NpcNum];
-        while (NpcNameTF)
-        {
-            NPCName_.transform.position = Camera.main.WorldToScreenPoint(Npc.transform.position + new Vector3(0, 1.5f, 0));
-            yield return null;
-        }
-        NPCName_.SetActive(false);
-        yield break;
-    }*/
 }

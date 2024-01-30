@@ -22,6 +22,9 @@ public class QuestLoad : MonoBehaviour
     public QuestDontDestroy DontDestroy;
     public QuestStatus QuestStatus;
 
+
+    [SerializeField] Trans trans;
+
     public void QuestLoadStart()
     {
         DontDestroy = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
@@ -29,7 +32,10 @@ public class QuestLoad : MonoBehaviour
 
         string selectedProbabilityFileId = "";
 
-        selectedProbabilityFileId = "76254"; //Äù½ºÆ® Â÷Æ®
+        if (!trans.tranbool)
+            selectedProbabilityFileId = "76254"; //Äù½ºÆ® Â÷Æ®
+        else
+            selectedProbabilityFileId = "106927";
 
         var bro3 = Backend.Chart.GetChartContents(selectedProbabilityFileId);
         JsonData rows = bro3.GetReturnValuetoJSON()["rows"];

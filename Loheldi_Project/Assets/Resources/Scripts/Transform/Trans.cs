@@ -9,6 +9,11 @@ public class Trans : MonoBehaviour
 {
     public GameObject[] KList;
     public GameObject[] EList;
+
+
+    public Text[] TList;
+    public string[] T_KList;
+    public string[] T_EList;
     QuestDontDestroy QDD;
     public bool tranbool = false;  //f-한글 t-영어
     Dropdown options;
@@ -45,6 +50,19 @@ public class Trans : MonoBehaviour
             else
                 e.SetActive(false);
         }
+
+        if (TList ==null) ;
+        else
+        {
+            for(int i=0; i<TList.Length;i++)
+            {
+                if (!tranbool)
+                    TList[i].text = T_KList[i];
+                else
+                    TList[i].text = T_EList[i];
+            }
+        }
+
         chartNumChange();
     }
 

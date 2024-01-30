@@ -1,0 +1,10 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+3_2,quiz,Suho,Practice time! Your friend gave you a gift. How do you respond?,,,,,,3,4,,,3,Null,,
+3_2,choice,주인공,Well done!,I don't like this.,I'm surprised you gave me a present!!,Thank you so much,You're such a good friend.,I love presents,,9,,,,Null,,
+3_2,quiz,Suho,Practice time! Your friend broke something I treasure. How do I express my feelings to my friend?,,,,,,4,4,,,4,Null,,
+3_2,choice,주인공,Well done. You did really well.,Go away,You're so bad! Apologize right now!,That's too much!,My heart is breaking.,(I ignore friend's apology),,9,,,,Null,,
+3_2,nomal,Suho,"Ding dong, you passed the practice questions. Now, should we try apologizing to Nari for real?",,,,,,,4,,,,Null,,
+3_2,nomal,주인공,"Yes, I'll try... I think I can do it...",,,,,,,9,,,,Null,,
+3_2,quiz,주인공,I'll write a note of apology to Nari. How should I write it?,,,,,,2,9,,,5,Null,,
+3_2,choice,주인공,"Okay, I've made up my mind. Let's go apologize to Nari!","I'm sorry. it's enough, right?",I was so upset. I'm so sorry.,"Sorry, but you caught most of the fish.","You were bad, too",Let's not fish from now on.,,9,,,,Null,,
+3_2,ReloadEnd,주인공,"Okay, I've made up my mind. Let's go apologize to Nari! ",,,,,,,9,,,,Null,,

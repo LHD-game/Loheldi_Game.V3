@@ -42,6 +42,9 @@ public class NewAccSave : MonoBehaviour
     bool isPrivacyChk = false;
     public static bool nari_can_talk = true;
 
+    [SerializeField]
+    private Trans trans;
+
     void Start()
     {
         NariField.SetActive(true);
@@ -54,12 +57,24 @@ public class NewAccSave : MonoBehaviour
     private void Update()
     {
         //입력 확인용 결과 출력
-        if (ResultField.activeSelf)
+        String name = "";
+        String YMD = "";
+        String ParentsN = "";
+        if (!trans.tranbool)
         {
-            nick.text = "닉네임: " + uNickName;
-            birth.text = "생년월일: " + uBirth.ToString("yyyy년 M월 d일");
-            parentsNo.text = "보호자 인증번호: " + uParentsNo;
+            name = "닉네임";
+            YMD = "생년월일";
+            ParentsN = "부모님 인증번호";
         }
+        else
+        {
+            name = "NickName";
+            YMD = "Birth";
+            ParentsN = "Gurdian Number";
+        }
+        nick.text = name + ": " + uNickName;
+        birth.text = YMD + ": " + uBirth.ToString("yyyy.M.d");
+        parentsNo.text = ParentsN + ": " + uParentsNo;
     }
 
     public void SaveNickName()  //닉네임 입력 후 버튼을 눌렀을 경우 실행
