@@ -1,0 +1,12 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+21_1,nomal,Himchan,"Hey, my dear workout buddy!",,,,,,,1,,,,Null,,
+21_1,nomal,Himchan,"Working out with P_name has made me enjoy exercising more, hahaha.",,,,,,,1,,,,himchan,,
+21_1,nomal,주인공,Me too. Cheer up! Let's enjoy working out today!,,,,,,,9,,(처음과 달라진 태도를 표현),,Null,,
+21_1,nomal,Himchan,"Today we'll work out together, just the two of us. Don't forget to take a photo with your parents after working out!",,,,,,,1,,(힘찬&주인공 차림새 변경) ,,Null,,
+21_1,nomal,Himchan,First move! Two-person leg stretch. Stretch! Stretch! Stretch!,,,,,,,1,,(2인 다리 늘이기-영상 재생),,Null,,
+21_1,video,Himchan,Video play,,,,,,,1,9,,,Null,,
+21_1,videoEnd,Himchan,Oh? Our breathing is perfectly in sync.,,,,,,,1,,,,Null,,
+21_1,nomal,Himchan,Let's do the next move well too.,,,,,,,1,,,,Null,,
+21_1,video,Himchan ,,,,,,,,1,10,,,Null,,
+21_1,videoEnd,Himchan,"As expected, we are good workout buddies who match well, hahaha.",,,,,,,1,,(꼭 안아주며),,himchan,,
+21_1,end,end,end,,,,,,,1,,(꼭 안아주며),,Null,,

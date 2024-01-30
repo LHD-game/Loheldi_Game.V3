@@ -499,6 +499,7 @@ GameObject:
   - component: {fileID: 727472148}
   - component: {fileID: 727472147}
   - component: {fileID: 727472150}
+  - component: {fileID: 727472151}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -567,6 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1745343138}
+  trans: {fileID: 727472151}
   LoadingText: {fileID: 2117407420}
   LoadingImages:
   - {fileID: 21300000, guid: 4eaae857d9c63fd439e19dae50693c6b, type: 3}
@@ -574,6 +576,24 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1865fb487f689c9479bdc46520e90f04, type: 3}
   - {fileID: 21300000, guid: c563f81e6dbb3c7498df3a981f92cfe4, type: 3}
   LoadingImage: {fileID: 1419065090}
+--- !u!114 &727472151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727472146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d337a87e11da3f044b3e2045e2ad3443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KList: []
+  EList: []
+  TList: []
+  T_KList: []
+  T_EList: []
+  tranbool: 0
 --- !u!1 &729245202
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,7 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+1_2,quiz,Hami,Quiz time! Which food group does bread belong to?,,,,,,1,3,,,1,Null,,
+1_2,choice,주인공,"Wow, you got it right.",Grain,"Meat, fish, eggs, beans",Vegetables,Fruits,Milk and dairy products,,9,,,,Null,,
+1_2,quiz,Hami,Which of the following is the correct way to eat?,,,,,,4,3,,,2,Null,,
+1_2,choice,주인공,"Yay, you got it right again!",Eat as soon as possible.,I usually eat side dishes.,Drink water during a meal.,Eat evenly for each nutrient.,Only eat delicious things,,9,,,,Null,,
+1_2,nomal,Hami,"Oh, great. I'll tell you some interesting nutrition stories next time.",,,,,,,3,,,,Null,,
+1_2,ReloadEnd,Hami,"Oh, great. I'll tell you some interesting nutrition stories next time.",,,,,,,3,,,,Null,,

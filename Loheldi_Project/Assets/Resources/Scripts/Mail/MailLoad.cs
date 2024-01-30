@@ -27,6 +27,8 @@ public class MailLoad : MonoBehaviour
 
     [SerializeField]
     GameObject[] RightDetail = new GameObject[5];
+    [SerializeField] 
+    Trans trans;
 
     //공지사항
     public Transform NoticeContent;
@@ -69,17 +71,19 @@ public class MailLoad : MonoBehaviour
             
             if (i == 2)
             {
-                /*if (DontDestroy.SDA)
+                if (DontDestroy.LastDay == DontDestroy.ToDay)
                 {
-                    txt.text = "토요일은 희망둥둥섬의 주민들이 쉬는날이라 퀘스트 진행을 할 수 없습니다.";
-                }*/
-                if(DontDestroy.LastDay == DontDestroy.ToDay)
-                {
-                    txt.text = "왼쪽 목록에서 읽고 싶은 편지를 선택하세요.\n\n<오늘의 일일 퀘스트를 모두 완료했습니다.>";
+                    if (trans.tranbool)
+                        txt.text = "Select the letter you want to read from the list on the left. \n\n <You have completed all of today's daily quests.>";
+                    else
+                        txt.text = "왼쪽 목록에서 읽고 싶은 편지를 선택하세요.\n\n<오늘의 일일 퀘스트를 모두 완료했습니다.>";
                 }
                 else
                 {
-                    txt.text = "왼쪽 목록에서 읽고 싶은 편지를 선택하세요.";
+                    if (trans.tranbool)
+                        txt.text = "Select the letter you want to read from the list on the left.";
+                    else
+                        txt.text = "왼쪽 목록에서 읽고 싶은 편지를 선택하세요.";
                 }
             }
             else

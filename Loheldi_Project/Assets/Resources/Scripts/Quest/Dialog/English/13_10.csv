@@ -1,0 +1,5 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+13_10,nomal,Nari,"Finally, we've arrived! This is Acorn Village!",,,,,,,5,,도토리마을 도착,,Null,,
+13_10,nomal,주인공,Wow! The village scenery is beautiful! The view is really amazing.,,,,,,,9,,,,Null,,
+13_10,nomal,Nari,I knew P_name would like our village. Let's start by visiting our house first.,,,,,,,5,,,,Null,,
+13_10,end,end,,,,,,,,,,,,,,

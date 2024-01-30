@@ -102,17 +102,6 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
             string[] q_qid = qid_txt.text.Split('_');
             string QuestType = null;
 
-            /*if (this_type == "week")
-                QDD.WeekQMail = true;
-            else if (this_type == "weekend")
-                QDD.WeekQMail = false;
-
-            if (QDD.WeekQMail)
-            {
-                QuestType = "QuestPreg";
-            }
-            else
-                QuestType = "WeeklyQuestPreg";*/
             QuestType = "QuestPreg";
             string[] my_qid = PlayerPrefs.GetString(QuestType).Split('_');
             int q_front = int.Parse(q_qid[0]);
@@ -125,27 +114,7 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
             }
             else if (q_front == my_front && q_back <= my_back) //1_1, 1_2
             {
-                //int q_back = int.Parse(q_qid[1]);
-                //int my_back = int.Parse(my_qid[1]);
-                //if (q_back <= my_back)
-                //{
                 reward_disable_btn.SetActive(false);
-                //}
-            }
-            else
-            {
-                /*Debug.Log("this_type == \"weekend\":" + (this_type == "weekend")+ this_type);
-                Debug.Log("this_type == \"weekend\":" + (this_type == "week"));*/
-                /*if (QDD.SDA && (q_front !=0&& q_back !=2))
-                {
-                    content_detail_txt.text = "토요일은 퀘스트 진행이 불가합니다";
-                }*/
-                /*else if (!QDD.weekend && this_type == "weekend")
-                {
-                    content_detail_txt.text = "해당 퀘스트는 일요일에만 진행이 가능합니다";
-                }
-                else if (QDD.weekend && this_type == "week")
-                    content_detail_txt.text = "해당 퀘스트는 평일에만 진행이 가능합니다";*/
             }
         }
     }
@@ -222,17 +191,4 @@ public class MailSelect : MonoBehaviour //우편 프리펩에 붙는 스크립트.
             }
         }
     }
-
-/*    void GetChartData(string item_type, string item_code)
-    {
-        string item_chart = "";
-        item_chart = ChartNum.AllItemChart;
-        //의상 아이템인지, 일반 아이템인지 모든 차트 뒤져야 한다. 
-        
-        BackendReturnObject bro = Backend.Chart.GetChartContents(item_chart);
-        if (bro.IsSuccess())
-        {
-
-        }
-    }*/
 }

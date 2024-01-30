@@ -717,6 +717,7 @@ public class LodingTxt : MonoBehaviour
                     j++;
                     ChatWin.SetActive(false);
                     Note.SetActive(true);
+                    Draw.StartNote();
                 }
                 else
                 {
@@ -750,6 +751,7 @@ public class LodingTxt : MonoBehaviour
                 ChatWin.SetActive(false);
                 Value.SetActive(true);
                 j++;
+                Draw.StartCard();
                 break;
             case "trainEnd":
                 Value.SetActive(false);
@@ -1081,10 +1083,11 @@ public class LodingTxt : MonoBehaviour
                 Nanum.SetActive(false);
                 scriptLine();
                 break;
-            case "Jewel":
+            case "Jewel":  //그와중에 오타..ㅋㅋㅋㅋ Juwel
                 ChatWin.SetActive(false);
                 Jewel.SetActive(true);
                 j++;
+                Draw.StartJuwel();
                 break;
             case "Jewelselect":
                 ChatWin.SetActive(false);

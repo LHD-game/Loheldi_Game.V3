@@ -1,0 +1,7 @@
+﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,answer,image,cuttoon,비고,QuizNumber,SoundEffect,,FALSE
+14_2,quiz,Hami,Quiz time! What food contains a lot of vitamins?,,,,,,3,3,,,8,Null,,
+14_2,choice,주인공,Ding dong dang! Correct!,Hamburger,Tteokbokki,Almonds,Pizza,Hot dog,,9,,,,Null,,
+14_2,quiz,Hami,Quiz time! What food contains a lot of minerals?,,,,,,2,3,,,9,Null,,
+14_2,choice,주인공,Ding dong dang! Correct!,Chicken,Milk,steak,pork belly,Hot dog,,9,,,,Null,,
+14_2,nomal,Hami,"Awesome, awesome!",,,,,,,3,,,,hami,,
+14_2,end,end,z ,,,,,,,3,,,,Null,,

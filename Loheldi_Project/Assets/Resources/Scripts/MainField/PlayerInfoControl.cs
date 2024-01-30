@@ -33,6 +33,8 @@ public class PlayerInfoControl : MonoBehaviour
     [SerializeField]
     GameObject c_mind;
 
+    [SerializeField]
+    Trans trans;
 
     GameObject badgeBtn;
 
@@ -67,16 +69,28 @@ public class PlayerInfoControl : MonoBehaviour
         MakeCategory(c_mind, mindB, mind_list, "Prefabs/UI/BadgeBox_M");
     }
 
+    string Birth;
+    string QP;
     void UpdateInfoText()
     {
+        if (trans.tranbool)
+        {
+            Birth = "Birth: ";
+            QP = "Health: ";
+        }
+        else
+        {
+            Birth = "생일: ";
+            QP = "건강도: ";
+        }
         PlayerNameTxt.text = PlayerPrefs.GetString("Nickname");
         LevelTxt.text = PlayerPrefs.GetInt("Level").ToString();
         float now_exp = PlayerPrefs.GetFloat("NowExp");
         float max_exp = PlayerPrefs.GetFloat("MaxExp");
         ExpTxt.text = now_exp + " / " + max_exp;
-        BirthTxt.text = "생년월일: " + PlayerPrefs.GetString("Birth");
+        BirthTxt.text = Birth + PlayerPrefs.GetString("Birth");
         Debug.Log(PlayerPrefs.GetString("Birth"));
-        QuestPregTxt.text = "건강도: " + PlayerPrefs.GetString("QuestPreg");
+        QuestPregTxt.text = QP + PlayerPrefs.GetString("QuestPreg");
         WalletTxt.text = PlayerPrefs.GetInt("Wallet").ToString();
 
         ExpSlider.value = (now_exp / max_exp)*100;  //백분율로 변환

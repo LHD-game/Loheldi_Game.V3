@@ -191,12 +191,21 @@ public class Drawing : MonoBehaviour
 
     public Text Ntext;
 
+    public void StartNote()
+    {
+        if (!trans.tranbool)
+            Ntext.text = "나쁜 감정을 쪽지에 적어보세요";
+        else
+            Ntext.text = "Write down your bad feelings";
+    }
+
     public void FinishWrite()
     {
         if (!trans.tranbool)
             Ntext.text = "쪽지를 클릭해 쓰레기통에 버리세요";
         else
             Ntext.text = "Click the note and throw it in the trash";
+
         for (int i = 0; i < notes.Length; i++)
         {
             Destroy(notes[i].GetComponent<InputField>());
@@ -247,6 +256,15 @@ public class Drawing : MonoBehaviour
     public Sprite ValueCardBackImage;
     public GameObject ValueButton;
     public Text Vtext;
+
+    public void StartCard()
+    {
+        if (!trans.tranbool)
+            Vtext.text = MaxValueLength + "개의 카드를 선택하세요";
+        else
+            Vtext.text = "Please select " + MaxValueLength + "cards";
+    }
+
     public void NextLevel()
     {
         j = 0;
@@ -256,7 +274,14 @@ public class Drawing : MonoBehaviour
         }
         else
         {
-            if (ValueLevel==1)
+            if (ValueLevel == 0)
+            {
+                if (!trans.tranbool)
+                    Vtext.text = MaxValueLength + "개의 카드를 선택하세요";
+                else
+                    Vtext.text = "Please select " + MaxValueLength + "cards";
+            }
+            else if (ValueLevel == 1)
             {
                 ValueCardBack = GameObject.Find("ValueCardBack");
                 spriteR = ValueCardBack.GetComponent<Image>();
@@ -268,7 +293,10 @@ public class Drawing : MonoBehaviour
             MaxValueLength = 5;
             GameObject parentsObject = GameObject.Find("ValueCards").gameObject;
 
-            Vtext.text = MaxValueLength + "개의 카드를 선택하세요";
+            if (!trans.tranbool)
+                Vtext.text = MaxValueLength + "개의 카드를 선택하세요";
+            else
+                Vtext.text = "Please select " + MaxValueLength + "cards";
             for (int i = 0; i < parentsObject.transform.childCount; i++)
             {
                 GameObject gameObject = GameObject.Find("ValueCards").transform.GetChild(i).gameObject;
@@ -533,7 +561,11 @@ public class Drawing : MonoBehaviour
     public void BMItalk()
     {
         BMITalk.text = BMI.ToString("F2");
-        chat.LoadTxt = "그리고 "+chat.PlayerName + "의 BMI는 " + BMI.ToString("F2") + "입니다.";
+        if (!trans.tranbool)
+            chat.LoadTxt = "그리고 " + chat.PlayerName + "의 BMI는 " + BMI.ToString("F2") + "입니다.";
+        else
+            chat.LoadTxt = "And " + chat.PlayerName + "'s BMI is " + BMI.ToString("F2");
+
         LodingTxt.spriteR.sprite = LodingTxt.CCImageList[3];
         StartCoroutine(chat._typing());
     }
@@ -551,9 +583,21 @@ public class Drawing : MonoBehaviour
     public Image JuwelCardBack;
     public Sprite JuwelCardBackImage;
 
+    public void StartJuwel()
+    {
+        if (!trans.tranbool)
+            Jtext.text = "2개의 보석에 자신의 소중한 것을 적어보세요";
+        else
+            Jtext.text = "Please write your precious things on 2 pieces of jewelry";
+    }
+
     public void JFinishWrite()
     {
-        Jtext.text = MaxJuwelLength.ToString() + "개의 보석을 선택하세요";
+        if (!trans.tranbool)
+            Jtext.text = MaxValueLength + "개의 보석을 선택하세요";
+        else
+            Jtext.text = "Please select " + MaxValueLength + "juwels";
+
         for (int i = 0; i < Juwels.Length; i++)
         {
             Destroy(Juwels[i].GetComponent<TMP_InputField>());
@@ -618,7 +662,10 @@ public class Drawing : MonoBehaviour
                             break;
                     }
 
-                    Jtext.text = MaxJuwelLength.ToString() + "내가 가장 소중한 것";
+                    if (!trans.tranbool)
+                        Jtext.text = "내게 가장 소중한 것";
+                    else
+                        Jtext.text = "The most precious thing to me";
                     //chat.j += 1;
                     //gameObject.transform.GetChild(1).gameObject.SetActive(false);
                     Invoke("jscriptLine", 1f);   //딜레이 후 스크립트 띄움
@@ -665,7 +712,11 @@ public class Drawing : MonoBehaviour
 
     public void startWrite()
     {
-        writting = true;
+        writting = true; 
+        if (!trans.tranbool)
+            Spelltext.text = "()안에 직접 적어보세요";
+        else
+            Spelltext.text = "Write it down yourself in '( )'";
         StartCoroutine(write());
     }
     public void SFinishWrite()
@@ -675,7 +726,10 @@ public class Drawing : MonoBehaviour
         {
             Destroy(SpellsWrites[i]);
         }
-        Spelltext.text = "주문을 하나 골라보세요";
+        if (!trans.tranbool)
+            Spelltext.text = "주문을 하나 골라보세요";
+        else
+            Spelltext.text = "Pick a spell";
         for (int i = 0; i < Spells.Length; i++)
         {
             Spells[i].AddComponent<Button>().onClick.AddListener(SelecSpell);
@@ -684,8 +738,17 @@ public class Drawing : MonoBehaviour
 
     public void SelecSpell()
     {
-        GameObject click = EventSystem.current.currentSelectedGameObject;
-        SpellFocustext.text = click.transform.GetChild(0).gameObject.GetComponent<Text>().text;
+        GameObject click = EventSystem.current.currentSelectedGameObject; 
+        foreach (Transform child in click.transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                SpellFocustext.text = child.gameObject.GetComponent<Text>().text;
+                break;
+            }
+            else
+                continue;
+        }
         SpellFocus.SetActive(true);
     }
 
@@ -699,12 +762,21 @@ public class Drawing : MonoBehaviour
     public bool writting = true;
     IEnumerator write()
     {
-        Debug.Log(" 시작");
+        Debug.Log("시작");
         while(writting)
         {
-            text1.text= "나는 ("+ write1.text+" )장점을 가지고 있어!";
-            text2.text= "나에게는 ("+ write2.text + ") 재능이 있어!";
-            text3.text= "내 곁에는 나를 응원하는 ("+ write3.text + ") 있어!";
+            if (!trans.tranbool)
+            {
+                text1.text = "나는 (" + write1.text + " )장점을 가지고 있어!";
+                text2.text = "나에게는 (" + write2.text + ") 재능이 있어!";
+                text3.text = "내 곁에는 나를 응원하는 (" + write3.text + ") 있어!";
+            }
+            else
+            {
+                text1.text = "I have a (" + write1.text + " ) advantage!";  //I have the advantage of being (" + write1.text + " )!
+                text2.text = "I have a (" + write2.text + ") talent!";  //I have a talent for (" + write2.text + ") !
+                text3.text = "There's (" + write3.text + ") who supports me by my side !";
+            }
 
             yield return null;
         }
