@@ -85,7 +85,7 @@ public class Interaction : MonoBehaviour
             }
             else
             {
-                ThankTree = false;
+                NearNPC = true;
                 if (!trans.tranbool)
                     text.text = "¥Î»≠";
                 else
