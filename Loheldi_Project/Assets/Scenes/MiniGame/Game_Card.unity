@@ -260,6 +260,9 @@ MonoBehaviour:
   - {fileID: 15092630}
   EList:
   - {fileID: 15092631}
+  TList: []
+  T_KList: []
+  T_EList: []
   tranbool: 0
 --- !u!1 &44379407 stripped
 GameObject:
@@ -506,7 +509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366000895293585524, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 366000895293585525, guid: 97f487e5b5a69264bb7820f101e08618, type: 3}
       propertyPath: m_Pivot.x
@@ -665,6 +668,9 @@ MonoBehaviour:
   EList:
   - {fileID: 332248037}
   - {fileID: 332248036}
+  TList: []
+  T_KList: []
+  T_EList: []
   tranbool: 0
 --- !u!1 &377440682 stripped
 GameObject:
@@ -2101,6 +2107,9 @@ MonoBehaviour:
   - {fileID: 1176698445}
   - {fileID: 1176698444}
   - {fileID: 1176698443}
+  TList: []
+  T_KList: []
+  T_EList: []
   tranbool: 0
 --- !u!1 &1215327468 stripped
 GameObject:
@@ -2229,6 +2238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KList: []
   EList: []
+  TList: []
+  T_KList: []
+  T_EList: []
   tranbool: 0
 --- !u!1 &1407485663
 GameObject:
@@ -2676,6 +2688,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  TList: []
+  T_KList: []
+  T_EList: []
   tranbool: 0
 --- !u!1 &1661024903
 GameObject:
@@ -4549,10 +4564,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3348349259697357437, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3348349259697357439, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4744,10 +4755,6 @@ PrefabInstance:
     - target: {fileID: 4715881998063089660, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5538922263048598271, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
-      propertyPath: m_Text
-      value: Game rules
       objectReference: {fileID: 0}
     - target: {fileID: 5871460916354263219, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: EList.Array.size

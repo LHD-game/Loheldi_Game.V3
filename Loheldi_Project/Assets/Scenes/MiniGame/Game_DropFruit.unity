@@ -3518,10 +3518,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 160.03
       objectReference: {fileID: 0}
-    - target: {fileID: 5538922263048598271, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
-      propertyPath: m_Text
-      value: Game rules
-      objectReference: {fileID: 0}
     - target: {fileID: 5871460916354263219, guid: aebc1b842ca66854a9f8aafe3906ac44, type: 3}
       propertyPath: EList.Array.size
       value: 3
