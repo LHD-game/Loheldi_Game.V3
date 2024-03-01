@@ -1,84 +1,84 @@
 ﻿scriptNumber,scriptType,name,dialog,select1,select2,select3,select4,select5,image,비고,SoundEffect
-1,nomal,힘찬,Himchan,Hi! I'm Himchan! What do you want to do today?,I'm going to get going.,Playing mini- games,Quest,0,1,기본 대화,Null
-1,nomal,힘찬,Himchan,See you next time! (Laughing),0,0,0,0,1,,Null
+1,nomal,Himchan,Hi! I'm Himchan! What do you want to do today?,Bye,Play mini game,Quest,0,0,1,기본 대화,Null
+1,nomal,Himchan,See you next time! (Laughing),0,0,0,0,0,1,,Null
 1,end,0,0,0,0,0,0,0,1,,Null
-2,nomal,슈퍼맨,Superman,"I am Superman, the owner of the supermarket. What happened?",I'm going to get going.,Using the Market,The quest,0,2,,Null
-2,nomal,슈퍼맨,Superman,Come again next time,0,0,0,0,2,,Null
+2,nomal,Superman,"I am Superman, the owner of the supermarket. What happened?",Bye,Market,Quest,0,0,2,,Null
+2,nomal,Superman,Come again next time,0,0,0,0,0,2,,Null
 2,end,0,0,0,0,0,0,0,2,,Null
-3,nomal,하미,Hami,"Hi, I'm Hami! What's the matter?",I'm going to get going.,Quest,The quest,0,3,,Null
-3,nomal,하미,Hami,Come and play again next time,0,0,0,0,3,,Null
+3,nomal,Hami,"Hi, I'm Hami! What's the matter?",Bye,Quest,Quest,0,0,3,,Null
+3,nomal,Hami,Come and play again next time,0,0,0,0,0,3,,Null
 3,end,0,0,0,0,0,0,0,3,,Null
-4,nomal,수호,Suho,"Hey, how's it going with you here?",I'm going to get going.,Quest,The quest,0,4,,Null
-4,nomal,수호,Suho,I'm glad you're having fun. See you next time.,0,0,0,0,4,,Null
+4,nomal,Suho,"Hey, how's it going with you here?",Bye,Quest,Quest,0,0,4,,Null
+4,nomal,Suho,I'm glad you're having fun. See you next time.,0,0,0,0,0,4,,Null
 4,end,0,0,0,0,0,0,0,4,,Null
-5,nomal,나리,Nari,Hi! What should we do today?,I'm going to get going.,Quest,The quest,0,5,,Null
-5,nomal,나리,Nari,See you next time!,0,0,0,0,5,,Null
+5,nomal,Nari,Hi! What should we do today?,Bye,Quest,Quest,0,0,5,,Null
+5,nomal,Nari,See you next time!,0,0,0,0,0,5,,Null
 5,end,0,0,0,0,0,0,0,5,,Null
-6,nomal,메이,May,"Hi, I'm Miss May. ",I'm going to get going.,Quest,The quest,0,6,,Null
-6,nomal,메이,May,It was a pleasure meeting you. Let's play again next time.,0,0,0,0,6,,Null
+6,nomal,May,"Hi, I'm Miss May. ",Bye,Quest,Quest,0,0,6,,Null
+6,nomal,May,It was a pleasure meeting you. Let's play again next time.,0,0,0,0,0,6,,Null
 6,end,0,0,0,0,0,0,0,6,,Null
-7,nomal,요미,Yomi,"Hoo hoo hoo, welcome~ There are a lot of cool clothes today, too? It's the perfect outfit for you!",I'm going to get going.,Using the dressing room,Quest,0,7,,Null
-7,nomal,요미,Yomi,"Feel free to come anytime, huhu.",0,0,0,0,7,,Null
+7,nomal,Yomi,"Hoo hoo hoo, welcome~ There are a lot of cool clothes today, too? It's the perfect outfit for you!",Bye,Dressing room,Quest,0,0,7,,Null
+7,nomal,Yomi,"Feel free to come anytime, huhu.",0,0,0,0,0,7,,Null
 7,end,0,0,0,0,0,0,0,7,,Null
-8,nomal,여미,Yeomi,"Oh, welcome~ What kind of hairstyle do you want to try today?",I'm going to get going.,Using a hair salon,Quest,0,8,,Null
-8,nomal,여미,Yeomi,"Feel free to come anytime next time, ho ho.",0,0,0,0,8,,Null
+8,nomal,Yeomi,"Oh, welcome~ What kind of hairstyle do you want to try today?",Bye,Hair salon,Quest,0,0,8,,Null
+8,nomal,Yeomi,"Feel free to come anytime next time, ho ho.",0,0,0,0,0,8,,Null
 8,end,0,0,0,0,0,0,0,8,,Null
-9,nomal,무무,Mumu,Hmmm... Did you come to see the furniture?,I'm going to get going.,Using a furniture store,Quest,0,0,,Null
-9,nomal,무무,Mumu,…Come again next time.,0,0,0,0,0,,Null
+9,nomal,Mumu,Hmmm... Did you come to see the furniture?,Bye,Furniture store,Quest,0,0,0,,Null
+9,nomal,Mumu,…Come again next time.,0,0,0,0,0,0,,Null
 9,end,0,0,0,0,0,0,0,0,,Null
-10,nomal,주인공,Player,I think I'm really cool?,It's good as it is.,Using the closet,Doing my hair again,0,9,옷장,Null
-10,nomal,주인공,Player,Let's change clothes next time.,0,0,0,0,9,,Null
+10,nomal,Player,I think I'm really cool?,It's good as it is.,Closet,Hair change,0,0,9,옷장,Null
+10,nomal,Player,Let's change clothes next time.,0,0,0,0,0,9,,Null
 10,end,0,0,0,0,0,0,0,9,,Null
-11,nomal,하미,Hami,Are you ready for the quiz?,"No, not yet.",I'm ready!,0,0,3,퀴즈 풀 때 뜨는 대화,Null
-11,nomal,하미,Hami,Come back to me when you're ready!,0,0,0,0,3,,Null
+11,nomal,Hami,Are you ready for the quiz?,"No, not yet.",I'm ready!,0,0,0,3,퀴즈 풀 때 뜨는 대화,Null
+11,nomal,Hami,Come back to me when you're ready!,0,0,0,0,0,3,,Null
 11,end,0,0,0,0,0,0,0,3,,Null
-12,nomal,수호,Suho,Hope! Are you ready for the quiz?,"No, it's not yet.",I'm ready!,0,0,4,퀴즈 풀 때 뜨는 대화,Null
-12,nomal,수호,Suho,Come back to me when you're ready!,0,0,0,0,4,,Null
+12,nomal,Suho,Hope! Are you ready for the quiz?,"No, it's not yet.",I'm ready!,0,0,0,4,퀴즈 풀 때 뜨는 대화,Null
+12,nomal,Suho,Come back to me when you're ready!,0,0,0,0,0,4,,Null
 12,end,0,0,0,0,0,0,0,4,,Null
-13,nomal,엄마,Mom,This is a really nice island.,See you later,Welcome!,0,0,10,부모님 기본대화,Null
-13,nomal,아빠,Dad,I'll see you later then.,0,0,0,0,11,,Null
+13,nomal,Mom,This is a really nice island.,See you later,Quest,0,0,0,10,부모님 기본대화,Null
+13,nomal,Dad,I'll see you later then.,0,0,0,0,0,11,,Null
 13,end,0,0,0,0,0,0,0,0,,Null
-14,nomal,힘찬,Himchan,Hi! Did you work out with your parents?,Not yet. I'll be back,Playing mini- games,Verifying the mission,0,1,미션 인증할 떄 대화,Null
-14,nomal,힘찬,Himchan,See you next time!,0,0,0,0,1,,Null
+14,nomal,Himchan,Hi! Did you work out with your parents?,Not yet. I'll be back,Play mini games,Verifying the mission,0,0,1,미션 인증할 떄 대화,Null
+14,nomal,Himchan,See you next time!,0,0,0,0,0,1,,Null
 14,end,0,0,0,0,0,0,0,1,,Null
-15,nomal,하미,Hami,Hi! Did you eat healthy food today?,Not yet. I'll be back,Verifying the mission,0,0,3,미션 인증할 떄 대화,Null
-15,nomal,하미,Hami,See you next time!,0,0,0,0,3,,Null
+15,nomal,Hami,Hi! Did you eat healthy food today?,Not yet. I'll be back,Verifying the mission,0,0,0,3,미션 인증할 떄 대화,Null
+15,nomal,Hami,See you next time!,0,0,0,0,0,3,,Null
 15,end,0,0,0,0,0,0,0,3,,Null
-16,nomal,수호,Suho,Have you ever expressed your feelings to your parents?,Not yet. I'll be back,Verifying the mission,0,0,4,미션 인증할 떄 대화,Null
-16,nomal,수호,Suho,See you again next time,0,0,0,0,4,,Null
+16,nomal,Suho,Have you ever expressed your feelings to your parents?,Not yet. I'll be back,Verifying the mission,0,0,0,4,미션 인증할 떄 대화,Null
+16,nomal,Suho,See you again next time,0,0,0,0,0,4,,Null
 16,end,0,0,0,0,0,0,0,4,,Null
-17,nomal,메이,May,What do you think? Did you find your own way to relieve stress?,Not yet. I'll be back,Verifying the mission,0,0,6,미션 인증할 떄 대화,Null
-17,nomal,메이,May,See you next time!,0,0,0,0,6,,Null
+17,nomal,May,What do you think? Did you find your own way to relieve stress?,Not yet. I'll be back,Verifying the mission,0,0,0,6,미션 인증할 떄 대화,Null
+17,nomal,May,See you next time!,0,0,0,0,0,6,,Null
 17,end,0,0,0,0,0,0,0,6,,Null
-18,nomal,주인공,Player,What are you doing?,Let's not talk to each other,Quest,0,0,9,감사나무,Null
-18,nomal,주인공,Player,See you next time!,0,0,0,0,9,,Null
+18,nomal,Player,What are you doing?,Let's not talk to each other,Quest,0,0,0,9,감사나무,Null
+18,nomal,Player,See you next time!,0,0,0,0,0,9,,Null
 18,end,0,0,0,0,0,0,0,9,,Null
-19,nomal,주인공,Player,What are you doing?,Let's not talk to each other.,Quest,0,0,9,스트래스야 안녕,Null
-19,nomal,주인공,Player,I'll come back next time,0,0,0,0,9,,Null
+19,nomal,Player,What are you doing?,Let's not talk to each other.,Quest,0,0,0,9,스트래스야 안녕,Null
+19,nomal,Player,I'll come back next time,0,0,0,0,0,9,,Null
 19,end,0,0,0,0,0,0,0,9,,Null
-20,nomal,주인공,Player,Fun drawing!,Maybe another time.,To draw,0,0,9,뽑기,Null
-20,nomal,주인공,Player,I'll come back next time,0,0,0,0,9,,Null
+20,nomal,Player,Fun drawing!,Maybe another time.,Gacha,0,0,0,9,뽑기,Null
+20,nomal,Player,I'll come back next time,0,0,0,0,0,9,,Null
 20,end,0,0,0,0,0,0,0,9,,Null
-21,nomal,주인공,Player,What did I thank you for today?,Do it next time.,Cultivating a Thanksgiving Tree,0,0,9,감사나무,Null
-21,nomal,주인공,Player,I need to think about it a little more,0,0,0,0,9,,Null
+21,nomal,Player,What did I thank you for today?,Do it next time.,Thanksgiving Tree,0,0,0,9,감사나무,Null
+21,nomal,Player,I need to think about it a little more,0,0,0,0,0,9,,Null
 21,end,0,0,0,0,0,0,0,9,,Null
-22,nomal,주인공,Player,I already have a thank you tree for today! <n><n> <Thank you tree can be planted once a day> ,Do it next time.,0,0,0,9,감사나무,Null
-22,nomal,주인공,Player,Let's take care of it again tomorrow,0,0,0,0,9,,Null
+22,nomal,Player,I already have a thank you tree for today! <n><n> <Thank you tree can be planted once a day> ,Do it next time.,0,0,0,0,9,감사나무,Null
+22,nomal,Player,Let's take care of it again tomorrow,0,0,0,0,0,9,,Null
 22,end,0,0,0,0,0,0,0,9,,Null
-23,nomal,지미,Jimi,Are you moving to the acorn village?,Don't move,Move,0,0,16,도토리마을 이동,Null
-23,nomal,지미,Jimi,See you again next time,0,0,0,0,16,,Null
+23,nomal,Jimi,Are you moving to the acorn village?,Don't move,Move to acorn village,0,0,0,16,도토리마을 이동,Null
+23,nomal,Jimi,See you again next time,0,0,0,0,0,16,,Null
 23,end,0,0,0,0,0,0,0,16,,Null
-24,nomal,제리,Jerry,Move to Hope Dongdoong Island?,Don't move,It's moving,0,0,17,도토리마을 이동,Null
-24,nomal,제리,Jerry,See you again next time,0,0,0,0,17,,Null
+24,nomal,Jerry,Move to Hope Dongdoong Island?,Don't move,Move to Healty village,0,0,0,17,도토리마을 이동,Null
+24,nomal,Jerry,See you again next time,0,0,0,0,0,17,,Null
 24,end,0,0,0,0,0,0,0,17,,Null
-25,nomal,주인공,Player,Making bibimbap,Maybe another time.,Playing mini games,0,0,9,뽑기,Null
-25,nomal,주인공,Player,I'll come back next time,0,0,0,0,9,,Null
+25,nomal,Player,Making bibimbap,Maybe another time.,Play mini game,0,0,0,9,뽑기,Null
+25,nomal,Player,I'll come back next time,0,0,0,0,0,9,,Null
 25,end,0,0,0,0,0,0,0,9,,Null
-26,nomal,주인공,Player,burning firewood,Maybe another time.,Playing mini games,0,0,9,뽑기,Null
-26,nomal,주인공,Player,I'll come back next time,0,0,0,0,9,,Null
+26,nomal,Player,burning firewood,Maybe another time.,Playing mini games,0,0,0,9,뽑기,Null
+26,nomal,Player,I'll come back next time,0,0,0,0,0,9,,Null
 26,end,0,0,0,0,0,0,0,9,,Null
-27,nomal,주인공,Player,The act of dropping fruit,Maybe another time.,Playing mini games,0,0,9,뽑기,Null
-27,nomal,주인공,Player,I'll come back next time,0,0,0,0,9,,Null
+27,nomal,Player,The act of dropping fruit,Maybe another time.,Play mini game,0,0,0,9,뽑기,Null
+27,nomal,Player,I'll come back next time,0,0,0,0,0,9,,Null
 27,end,0,0,0,0,0,0,0,9,,Null
 28,nomal,안내판,How to Climb the Ladder <n><n> Press the Up button in front of the ladder for at least 1 second!,Ok!,0,0,0,0,9,뽑기,Null
 28,nomal,주인공,"When climbing the ladder, press the climbing button for more than 1 second!",0,0,0,0,0,9,,Null
