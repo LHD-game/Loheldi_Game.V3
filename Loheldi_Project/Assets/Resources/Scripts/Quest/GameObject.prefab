@@ -4121,6 +4121,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 605e08ab11d576e47ad0836b1104d2dc, type: 2}
   - {fileID: 2100000, guid: d7b963067fb00b64784781df7a64c7f7, type: 2}
   Draw: 0
+  DrawPen: {fileID: 0}
   notes:
   - {fileID: 314829419637380245}
   - {fileID: 314829418241581284}
@@ -4159,6 +4160,8 @@ MonoBehaviour:
   Image: {fileID: 8831148850987860471}
   Basket: {fileID: 0}
   JButton: {fileID: 8831148852169424896}
+  JuwelCardBack: {fileID: 0}
+  JuwelCardBackImage: {fileID: 0}
   SpellsWrites: []
   Spells: []
   Spelltext: {fileID: 0}
@@ -4199,6 +4202,9 @@ MonoBehaviour:
   - {fileID: 32900000, guid: c6caefbdfcfae0642aecc2e4850fabaa, type: 3}
   - {fileID: 32900000, guid: 44d271ad318cb8f40a433aa14147947e, type: 3}
   - {fileID: 32900000, guid: 258e638faaca1a64c92223a78cf2fe42, type: 3}
+  mScreen: {fileID: 0}
+  mVideoPlayer: {fileID: 0}
+  VideoPlayUI: {fileID: 0}
   finishButton: {fileID: 8831148852254265357}
 --- !u!1 &314829418590313427
 GameObject:
@@ -15850,6 +15856,8 @@ MonoBehaviour:
   TempObject: {fileID: 0}
   Quest: {fileID: 0}
   DontDestroy: {fileID: 0}
+  QuestStatus: {fileID: 0}
+  trans: {fileID: 0}
 --- !u!1 &599730139572276025
 GameObject:
   m_ObjectHideFlags: 0
@@ -19651,13 +19659,6 @@ MonoBehaviour:
   NariMom: {fileID: 0}
   chatName: {fileID: 1345286880969992268}
   chatTxt: {fileID: 1345286880316008521}
-  Mailcontent: {fileID: 8831148850731437708}
-  QuizButton:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   SelecButton:
   - {fileID: 2188456253583043846}
   - {fileID: 2188456253050679567}
@@ -19670,8 +19671,39 @@ MonoBehaviour:
   - {fileID: 2188456253544406628}
   - {fileID: 2188456253955666969}
   - {fileID: 2188456253124141001}
+  Arrow: {fileID: 1372254136927173918}
+  block: {fileID: 1345286880859063863}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  Chat: {fileID: 1345286879670596885}
+  ChatWin: {fileID: 1345286880341634409}
+  NPCButton: 0
+  LoadTxt: 
+  FileAdress: Scripts/Quest/Dialog
+  cuttoonFileAdress: 
+  Num: 
+  j: 0
+  c: 0
+  l: 0
+  PlayerName: 
+  CCImage: {fileID: 5751474791343029894}
+  cuttoon: {fileID: 2302545409950171822}
+  cuttoonImageList: []
+  cuttontext: {fileID: 0}
+  Mailcontent: {fileID: 8831148850731437708}
+  QuizButton:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  OImage: {fileID: 0}
+  XImage: {fileID: 0}
+  Quiz: {fileID: 0}
+  Quiz_material: []
+  material: []
   videocheckTxT: {fileID: 8831148852328141022}
   ParentscheckTxt: {fileID: 8831148851771778657}
+  KeyToDreamInput: {fileID: 314829419705685013}
   parentscheckTxTNum: 
   ErrorWin: {fileID: 8831148851528233747}
   ClearWin: {fileID: 952301237514180157}
@@ -19680,20 +19712,25 @@ MonoBehaviour:
   Main_UI: {fileID: 5638592846741127563}
   Button: {fileID: 0}
   NPCButtons: {fileID: 2188456255143642596}
-  OImage: {fileID: 0}
-  XImage: {fileID: 0}
-  Quiz: {fileID: 0}
-  Quiz_material: []
-  material: []
-  Arrow: {fileID: 1372254136927173918}
-  block: {fileID: 1345286880859063863}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  Chat: {fileID: 1345286879670596885}
-  ChatWin: {fileID: 1345286880341634409}
   chatCanvus: {fileID: 5152797215716685865}
   shopCanvus: {fileID: 465792061761860969}
   MailCanvus: {fileID: 8831148851529923953}
+  JumpAnimator: {fileID: 2920832137209864136}
+  NPCJumpAnimator: {fileID: 8831148850589939359}
+  JumpAnimatorRope: {fileID: 5013930170792532868}
+  NPCJumpAnimatorRope: {fileID: 5013930170779316366}
+  PlayerRope: {fileID: 8440742201966974201}
+  NPCRope: {fileID: 8440742202014580723}
+  PlayerHulaAnimator: {fileID: 0}
+  NPCHulaAnimator: {fileID: 0}
+  PHulaAnimator: {fileID: 0}
+  NHulaAnimator: {fileID: 0}
+  PlayerHula: {fileID: 0}
+  NPCHula: {fileID: 0}
   movie: {fileID: 8831148852302439377}
+  videoImg: {fileID: 0}
+  NextVideoWindow: {fileID: 0}
+  VideoParentsCheckUI: {fileID: 0}
   DrawUI: {fileID: 314829418287144024}
   Note: {fileID: 314829418771028928}
   Value: {fileID: 314829419752115043}
@@ -19715,28 +19752,16 @@ MonoBehaviour:
   BikeNPC: {fileID: 8831148851184828017}
   AppleTreeObj: {fileID: 8831148851283607974}
   Kangteagom: {fileID: 8831148850508120948}
+  o: 0
   SoundEffectManager: {fileID: 2153352630308454638}
-  NPCButton: 0
-  LoadTxt: 
-  FileAdress: Scripts/Quest/Dialog
-  cuttoonFileAdress: 
-  Num: 
-  j: 0
-  c: 0
-  l: 0
+  hairPs: {fileID: 8784905137610187154, guid: 8ce2c8c2a2aa24c42b64663c907c2cf0, type: 3}
   tutoFinish: 0
   tuto: 0
   tutoclick: 0
-  CCImage: {fileID: 5751474791343029894}
-  cuttoon: {fileID: 2302545409950171822}
-  cuttoonImageList: []
-  cuttontext: {fileID: 0}
-  KeyToDreamInput: {fileID: 314829419705685013}
   JumpButtons: {fileID: 2153352630308454644}
   tu: {fileID: 1345286879411780403}
   Inter: {fileID: 8831148851401697625}
   QS: {fileID: 0}
-  o: 0
   DontDestroy: {fileID: 0}
   Quest: {fileID: 1345286879411780401}
   video: {fileID: 314829418576619923}
@@ -19744,20 +19769,7 @@ MonoBehaviour:
   bicycleRide: {fileID: 8831148851720855914}
   QuestLoad: {fileID: 599730139340094974}
   NpcButton: {fileID: 1345286879411780402}
-  hairPs: {fileID: 8784905137610187154, guid: 8ce2c8c2a2aa24c42b64663c907c2cf0, type: 3}
-  JumpAnimator: {fileID: 2920832137209864136}
-  NPCJumpAnimator: {fileID: 8831148850589939359}
-  JumpAnimatorRope: {fileID: 5013930170792532868}
-  NPCJumpAnimatorRope: {fileID: 5013930170779316366}
-  PlayerRope: {fileID: 8440742201966974201}
-  NPCRope: {fileID: 8440742202014580723}
-  PlayerHulaAnimator: {fileID: 0}
-  NPCHulaAnimator: {fileID: 0}
-  PHulaAnimator: {fileID: 0}
-  NHulaAnimator: {fileID: 0}
-  PlayerHula: {fileID: 0}
-  NPCHula: {fileID: 0}
-  PlayerName: 
+  LanguageDropDown: {fileID: 0}
   typingSkip: 0
 --- !u!114 &1345286879411780405
 MonoBehaviour:
@@ -23431,7 +23443,7 @@ MonoBehaviour:
   ModernPanel: {fileID: 5820745450848047189}
   KitschPanel: {fileID: 5820745451018599781}
   ClassicPanel: {fileID: 5820745450994510805}
-  WallPaperPanel: {fileID: 5820745449581705198}
+  ThemePanel: {fileID: 0}
 --- !u!114 &1696295125536814043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23734,6 +23746,7 @@ MonoBehaviour:
   SoundManager: {fileID: 2153352630308454638}
   BikeBtn: {fileID: 8831148851862697669}
   NineOClockPanel: {fileID: 8831148851349457527}
+  ElevenOClockPanel: {fileID: 0}
 --- !u!114 &2153352630308454645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23774,6 +23787,7 @@ MonoBehaviour:
   Main_UI: {fileID: 5638592846741127563}
   FarmUI: {fileID: 8831148851740616168}
   chatBlock: {fileID: 8831148850970376904}
+  LadderPanel: {fileID: 0}
   Camera1: {fileID: 6405728875932070483}
   Camera2: {fileID: 8831148850752348931}
   Chat: {fileID: 1345286879411780405}
@@ -23883,6 +23897,7 @@ MonoBehaviour:
   himchan: {fileID: 8300000, guid: 64468ca1b0e526b438f878f814ae7b1f, type: 3}
   yeomi: {fileID: 8300000, guid: ceb21b08689e39448b74a176b27c7880, type: 3}
   yomi: {fileID: 8300000, guid: 62875d7df9814f34bbfa838f40be3148, type: 3}
+  walk: {fileID: 0}
 --- !u!82 &2153352630308454640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -52252,6 +52267,7 @@ MonoBehaviour:
   c_food: {fileID: 8831148851704356310}
   c_home: {fileID: 8831148850541114950}
   c_mind: {fileID: 8831148851892771782}
+  trans: {fileID: 0}
 --- !u!114 &8831148850241249093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59308,6 +59324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211097464964985}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148850537511979
 GameObject:
   m_ObjectHideFlags: 0
@@ -60867,6 +60884,7 @@ MonoBehaviour:
   MainUI: {fileID: 2153352630308454633}
   UI: {fileID: 2153352630308454644}
   HeartFx: {fileID: 7409493837040930477, guid: cc6bf8499a8b0db479ce618c793eea7c, type: 3}
+  trans: {fileID: 0}
 --- !u!1 &8831148850608923591
 GameObject:
   m_ObjectHideFlags: 0
@@ -61051,6 +61069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211097802052094}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148850620310486
 GameObject:
   m_ObjectHideFlags: 0
@@ -63116,6 +63135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211096698091706}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148850687209630
 GameObject:
   m_ObjectHideFlags: 0
@@ -65810,6 +65830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoreBuyPanel: {fileID: 8900221212779909639, guid: f2d7b742b3922c448b9fb033b1146b0f, type: 3}
+  MirrorInfoPanel: {fileID: 0}
 --- !u!1 &8831148850817464164
 GameObject:
   m_ObjectHideFlags: 0
@@ -74592,6 +74613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 8831148851184828017}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148851217937424
 GameObject:
   m_ObjectHideFlags: 0
@@ -76841,6 +76863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211097569349719}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148851320597306
 GameObject:
   m_ObjectHideFlags: 0
@@ -77170,6 +77193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 1654004234203040459}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148851333833030
 GameObject:
   m_ObjectHideFlags: 0
@@ -78248,6 +78272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoreBuyPanel: {fileID: 8900221212779909639, guid: f2d7b742b3922c448b9fb033b1146b0f, type: 3}
+  MirrorInfoPanel: {fileID: 0}
 --- !u!222 &8831148851356711372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -79580,6 +79605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoreBuyPanel: {fileID: 8900221212779909639, guid: f2d7b742b3922c448b9fb033b1146b0f, type: 3}
+  MirrorInfoPanel: {fileID: 0}
 --- !u!1 &8831148851397209620
 GameObject:
   m_ObjectHideFlags: 0
@@ -80911,6 +80937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211097569349719}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148851462526076
 GameObject:
   m_ObjectHideFlags: 0
@@ -82850,6 +82877,7 @@ MonoBehaviour:
   - {fileID: 8831148850500277309}
   - {fileID: 8831148850731437707}
   - {fileID: 8831148851983036774}
+  trans: {fileID: 0}
   NoticeContent: {fileID: 8831148851171226916}
   NoticeTitle: {fileID: 0}
   NoticeDetail: {fileID: 0}
@@ -90567,6 +90595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 8831148850508120948}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148851937175171
 GameObject:
   m_ObjectHideFlags: 0
@@ -91164,6 +91193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211097640288995}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148851951644097
 GameObject:
   m_ObjectHideFlags: 0
@@ -91498,6 +91528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211097304234642}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148851976303447
 GameObject:
   m_ObjectHideFlags: 0
@@ -96641,6 +96672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211097724699188}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148852194920680
 GameObject:
   m_ObjectHideFlags: 0
@@ -97373,6 +97405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 8831148851674052832}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148852218770305
 GameObject:
   m_ObjectHideFlags: 0
@@ -97544,6 +97577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 7301211096569937608}
   Inter: {fileID: 8831148851401697625}
+  BibimGame: 0
 --- !u!1 &8831148852222822315
 GameObject:
   m_ObjectHideFlags: 0
@@ -110720,6 +110754,7 @@ MonoBehaviour:
   VJS: {fileID: 0}
   FCC: {fileID: 0}
   HE: {fileID: 0}
+  trans: {fileID: 0}
 --- !u!114 &8831148851401697628
 MonoBehaviour:
   m_ObjectHideFlags: 0

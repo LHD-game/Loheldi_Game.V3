@@ -675,6 +675,9 @@ MonoBehaviour:
   - {fileID: 3348349260431015685}
   EList:
   - {fileID: 3756161814811203885}
+  TList: []
+  T_KList: []
+  T_EList: []
   tranbool: 0
 --- !u!1 &3348349260204227198
 GameObject:

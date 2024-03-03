@@ -60,18 +60,7 @@ public class QuestDontDestroy : MonoBehaviour
             GameObject.Find("mouth").SetActive(false);
         }*/
         DontDestroyOnLoad(this.gameObject);
+        Language = PlayerPrefs.GetString("Language");
     }
-
-    public void LanguChange()
-    {
-        switch (Language) {
-            case "ÇÑ±¹¾î":
-                Language = "Korean";
-                break;
-            case "English":
-                Language = "English";
-                break;
-                }
-    }
-
+    
 }

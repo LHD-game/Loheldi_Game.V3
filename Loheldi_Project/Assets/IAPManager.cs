@@ -106,4 +106,9 @@ public class IAPManager : MonoBehaviour, IStoreListener
 		nCoin += value;
 		txtCoin.text = "Coin : " + nCoin.ToString("N0");
     }
+
+    public void OnInitializeFailed(InitializationFailureReason error, string message)
+    {
+        throw new System.NotImplementedException();
+    }
 }

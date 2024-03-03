@@ -8,9 +8,8 @@ labels:
 - set
 - lowpoly
 - tree
-timeCreated: 1457642347
-licenseType: Store
-NativeFormatImporter:
+PrefabImporter:
+  externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: prefab
   assetBundleVariant: 

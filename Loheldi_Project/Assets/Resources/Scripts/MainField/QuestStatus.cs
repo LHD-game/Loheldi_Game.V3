@@ -121,7 +121,10 @@ public class QuestStatus : MonoBehaviour
         if (!LetCheck)
         {
             QDD = GameObject.Find("DontDestroyQuest").GetComponent<QuestDontDestroy>();
-            Quest_Mail = CSVReader.Read("Scripts/Quest/QuestMail");
+            if (!QuestLoad.trans.tranbool)
+                Quest_Mail = CSVReader.Read("Scripts/Quest/Dialog/QuestMail_Kr");
+            else
+                Quest_Mail = CSVReader.Read("Scripts/Quest/Dialog/QuestMail_Eng");
             //QuestIndexCheck();
             ButtonActive();
             LetCheck = false;
