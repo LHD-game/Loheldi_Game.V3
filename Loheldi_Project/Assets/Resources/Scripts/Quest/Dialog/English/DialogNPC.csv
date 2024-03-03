@@ -80,6 +80,6 @@
 27,nomal,Player,The act of dropping fruit,Maybe another time.,Play mini game,0,0,0,9,뽑기,Null
 27,nomal,Player,I'll come back next time,0,0,0,0,0,9,,Null
 27,end,0,0,0,0,0,0,0,9,,Null
-28,nomal,안내판,How to Climb the Ladder <n><n> Press the Up button in front of the ladder for at least 1 second!,Ok!,0,0,0,0,9,뽑기,Null
-28,nomal,주인공,"When climbing the ladder, press the climbing button for more than 1 second!",0,0,0,0,0,9,,Null
+28,nomal,sign,How to Climb the Ladder <n><n> Press the Up button in front of the ladder for at least 1 second!,Ok!,0,0,0,0,9,뽑기,Null
+28,nomal,Player,"When climbing the ladder, press the climbing button for more than 1 second!",0,0,0,0,0,9,,Null
 28,end,안내판,사다리 오르는 방법 <n><n> 사다리 앞에서 오르기 버튼을 꾹! 누르세요!,0,0,0,0,0,9,뽑기,Null
